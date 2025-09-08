@@ -37,9 +37,11 @@ const BRAND_BLUE = "#008EE6"; // Logo blue hue
 const BRAND_DARK = "#4A4F55"; // Logo wordmark gray
 const BRAND_LIGHT = "#F2F8FF"; // Subtle blue-tinted background
 
+// ASSETS helper to respect Vite base on GitHub Pages
+const asset = (p) => `${import.meta.env.BASE_URL}${p.replace(/^\//, "")}`;
 // ASSETS (filenames to be placed under /public/assets)
-const INFO_LOGO = "/assets/informatics-logo.png"; // header + footer
-const CAMPUS_IMG = "/assets/campus2.jpg"; // hero image
+const INFO_LOGO = asset("assets/informatics-logo.png"); // header + footer
+const CAMPUS_IMG = asset("assets/campus2.jpg"); // hero image
 
 // Fallback placeholder for missing images (inline SVG data URI)
 const PLACEHOLDER_IMG =
@@ -54,12 +56,12 @@ const PLACEHOLDER_IMG =
     </svg>
   `);
 const PARTNERS = [
-  { src: "/assets/partner-cybersecurity.png", alt: "Cybersecurity Partner" },
-  { src: "/assets/partner-philsmile.png", alt: "PhilSmile" },
-  { src: "/assets/partner-ms-imagine.png", alt: "Microsoft Imagine Academy" },
-  { src: "/assets/partner-percipio.png", alt: "Percipio" },
-  { src: "/assets/partner-google-edu.png", alt: "Google for Education" },
-  { src: "/assets/partner-comptia.jpg", alt: "CompTIA" },
+  { src: asset("assets/partner-cybersecurity.png"), alt: "Cybersecurity Partner" },
+  { src: asset("assets/partner-philsmile.png"), alt: "PhilSmile" },
+  { src: asset("assets/partner-ms-imagine.png"), alt: "Microsoft Imagine Academy" },
+  { src: asset("assets/partner-percipio.png"), alt: "Percipio" },
+  { src: asset("assets/partner-google-edu.png"), alt: "Google for Education" },
+  { src: asset("assets/partner-comptia.jpg"), alt: "CompTIA" },
 ];
 
 const fadeInUp = {
@@ -614,9 +616,9 @@ function Programs() {
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {items.map((it, i) => {
             const imgMap = {
-              "BS Information Technology": "/assets/Informationsystem.jpg",
-              "BS Business Administration (Business Analytics)": "/assets/BSBA.jpg",
-              "Diploma & Short Courses": "/assets/computerscience.jpg",
+              "BS Information Technology": asset("assets/Informationsystem.jpg"),
+              "BS Business Administration (Business Analytics)": asset("assets/BSBA.jpg"),
+              "Diploma & Short Courses": asset("assets/computerscience.jpg"),
             };
             const correctedDesc =
               it.title === "Diploma & Short Courses"
