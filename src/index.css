@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations and small utilities */
+@keyframes blink {
+  0%, 60%, 100% { opacity: 1; }
+  30% { opacity: .25; }
+}
+
+/* Admissions status: add blinking green dot before "Open" without changing markup */
+#admissions .grid > div:nth-child(2) .grid > div:nth-child(1) .text-slate-600 {
+  position: relative;
+  padding-left: 16px; /* space for dot + small gap */
+}
+#admissions .grid > div:nth-child(2) .grid > div:nth-child(1) .text-slate-600::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%); /* vertically center alongside text */
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: #16a34a; /* green-600 */
+  animation: blink 1s infinite;
+}
