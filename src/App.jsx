@@ -538,12 +538,12 @@ function ProgramCard({ icon: Icon, title, desc, img, video, lottie, featured = f
       whileTap={{ scale: 0.99 }}
     >
       {lottie ? (
-        <div className="-mt-2 -mx-2 mb-4 overflow-hidden rounded-xl ring-1 ring-black/5">
+        <div className="-mt-2 -mx-2 mb-4 overflow-hidden rounded-xl ring-1 ring-black/5 h-36">
           <DotLottieReact
             src={lottie}
             loop
             autoplay
-            style={{ width: '100%', height: '9rem', objectFit: 'cover' }}
+            style={{ width: '100%', height: '100%' }}
           />
         </div>
       ) : video ? (
