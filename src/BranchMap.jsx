@@ -13,7 +13,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 })
 
-function FlyTo({ active, branches }) {
+function FlyTo({ active, branches, markersRef }) {
   const map = useMap()
   const entry = active ? branches[active] : null
   const target = entry?.coords
@@ -21,7 +21,11 @@ function FlyTo({ active, branches }) {
   useEffect(() => {
     if (!map) return
     if (target && typeof target.lat === 'number' && typeof target.lng === 'number') {
-      map.flyTo([target.lat, target.lng], 17, { duration: 1.2 })
+      map.flyTo([target.lat, target.lng], 17, { duration: 1.2, animate: true, easeLinearity: 0.25 })
+      const m = markersRef?.current?.get(active)
+      if (m && typeof m.openPopup === 'function') {
+        setTimeout(() => m.openPopup(), 500)
+      }
     } else {
       // Philippines center if none
       map.flyTo([12.8797, 121.7740], 6, { duration: 1.2 })
@@ -31,6 +35,7 @@ function FlyTo({ active, branches }) {
 }
 
 export default function BranchMap({ branches, active }) {
+  const markersRef = React.useRef(new Map())
   const markers = useMemo(() => {
     return Object.entries(branches)
       .filter(([, v]) => v?.coords && typeof v.coords.lat === 'number' && typeof v.coords.lng === 'number')
@@ -48,9 +53,12 @@ export default function BranchMap({ branches, active }) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <FlyTo active={active} branches={branches} />
+      <FlyTo active={active} branches={branches} markersRef={markersRef} />
       {markers.map((m) => (
-        <Marker key={m.key} position={[m.coords.lat, m.coords.lng]}>
+        <Marker key={m.key} position={[m.coords.lat, m.coords.lng]} ref={(ref) => {
+          if (ref) markersRef.current.set(m.key, ref)
+          else markersRef.current.delete(m.key)
+        }}>
           <Popup>
             <div style={{ minWidth: 180 }}>
               <div style={{ fontWeight: 600 }}>{m.label}</div>
@@ -62,4 +70,3 @@ export default function BranchMap({ branches, active }) {
     </MapContainer>
   )
 }
-

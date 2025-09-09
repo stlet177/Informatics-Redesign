@@ -934,7 +934,7 @@ function Contact() {
     },
     cebu: {
       label: "Cebu",
-      registrar: "N/A",
+      registrar: "registrar_conso@informatics.edu.ph",
       cashier: "N/A",
       phone: "09178364963",
       address: "National Highway, Eskina Jugan, Pitogo Consolacion, Cebu City",
