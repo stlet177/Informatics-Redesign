@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
@@ -35,6 +35,14 @@ function FlyTo({ active, branches, markersRef }) {
 }
 
 export default function BranchMap({ branches, active }) {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 640px)')
+    const set = () => setIsMobile(mq.matches)
+    set()
+    mq.addEventListener?.('change', set)
+    return () => mq.removeEventListener?.('change', set)
+  }, [])
   const markersRef = React.useRef(new Map())
   const markers = useMemo(() => {
     return Object.entries(branches)
@@ -47,6 +55,8 @@ export default function BranchMap({ branches, active }) {
       center={[12.8797, 121.7740]} // Philippines
       zoom={6}
       scrollWheelZoom={false}
+      dragging={!isMobile}
+      touchZoom={!isMobile}
       style={{ width: '100%', height: '100%' }}
     >
       <TileLayer

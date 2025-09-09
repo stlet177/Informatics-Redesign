@@ -1151,13 +1151,13 @@ function Contact() {
             {/* Always-visible map; updates/pans when branch changes */}
             <div className="mt-6" ref={mapRef}>
               <div className="font-medium mb-2" style={{color: BRAND_DARK}}>Map</div>
-              <div className="relative z-0 isolate overflow-hidden rounded-xl ring-1 ring-black/5 h-72 md:h-80">
+              <div className="relative z-0 isolate overflow-hidden rounded-xl ring-1 ring-black/5 h-64 sm:h-72 md:h-80">
                 <BranchMap branches={BRANCH_CONTACTS} active={branch} />
                 <div className="absolute bottom-2 left-2 right-2 sm:right-auto max-w-[92%] sm:max-w-md">
-                  <div className="inline-flex items-start gap-2 rounded-xl bg-white/95 backdrop-blur px-3 py-2 shadow-md ring-1 ring-black/5">
-                    <MapPin size={18} style={{ color: BRAND_BLUE }} />
+                  <div className="inline-flex items-start gap-2 rounded-xl bg-white/90 backdrop-blur px-3 py-2 shadow-md ring-1 ring-black/5">
+                    <MapPin size={16} style={{ color: BRAND_BLUE }} />
                     <div>
-                      <div className="text-sm font-semibold" style={{ color: BRAND_DARK }}>
+                      <div className="text-[13px] sm:text-sm font-semibold" style={{ color: BRAND_DARK }}>
                         {overlayInfoFor(branch).name}
                       </div>
                       {overlayInfoFor(branch).line && (
@@ -1165,7 +1165,7 @@ function Contact() {
                           href={mapsLinkFor(branch)}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs text-slate-600 underline decoration-dotted hover:decoration-solid"
+                          className="text-[11px] sm:text-xs text-slate-600 underline decoration-dotted hover:decoration-solid"
                         >
                           {overlayInfoFor(branch).line}
                         </a>
