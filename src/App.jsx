@@ -1104,9 +1104,11 @@ function Contact() {
               </div>
             </div>
 
+            {/* Mobile: combine Branch Contacts + Map into a single card; desktop/tablet: act as normal flow */}
+            <div className="sm:contents rounded-2xl bg-white ring-1 ring-black/5 p-3 mt-4">
             {branch && (
-              <div className="mt-4 grid gap-3 text-sm" ref={contactsRef}>
-                <div className="rounded-xl bg-white p-3 sm:p-4 ring-1 ring-black/5 shadow-sm">
+              <div className="grid gap-3 text-sm" ref={contactsRef}>
+                <div className="rounded-xl bg-white sm:bg-transparent p-3 sm:p-0 ring-1 sm:ring-0 ring-black/5 sm:shadow-none shadow-sm">
                   <div className="font-medium" style={{color: BRAND_DARK}}>Branch Contacts</div>
                   <div className="mt-2 space-y-2">
                     <button
@@ -1149,7 +1151,7 @@ function Contact() {
             )}
 
             {/* Always-visible map; updates/pans when branch changes */}
-            <div className="mt-6" ref={mapRef}>
+            <div className="mt-3 sm:mt-6" ref={mapRef}>
               <div className="font-medium mb-2" style={{color: BRAND_DARK}}>Map</div>
               <div className="relative z-0 isolate overflow-hidden rounded-xl ring-1 ring-black/5 h-56 sm:h-64 md:h-80">
                 <BranchMap branches={BRANCH_CONTACTS} active={branch} />
@@ -1174,6 +1176,7 @@ function Contact() {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
 
             {/* Keep technical support visible */}
