@@ -991,20 +991,19 @@ function Contact() {
       const mapEl = mapRef?.current;
       const contactsEl = contactsRef?.current;
       if (!mapEl || !contactsEl) return;
-
       const viewportH = window.innerHeight;
-      const marginTop = 72; // keep some space above contacts
-      const marginBottom = 16; // small space below map
-
       const contactsTop = contactsEl.getBoundingClientRect().top + window.scrollY;
       const mapBottom = mapEl.getBoundingClientRect().bottom + window.scrollY;
+      const sectionHeight = mapBottom - contactsTop;
 
-      // Preferred top: show contacts near the top
-      const desiredTop = Math.max(contactsTop - marginTop, 0);
-      // Minimum top so the map bottom stays in view
-      const minTopForMap = Math.max(mapBottom - viewportH + marginBottom, 0);
-      // Pick the larger to satisfy both constraints (shows contacts near top AND keeps map bottom visible)
-      const targetTop = Math.max(desiredTop, minTopForMap);
+      let targetTop;
+      if (sectionHeight <= viewportH) {
+        // Entire contacts->map section fits: align top of contacts to top of viewport
+        targetTop = Math.max(contactsTop, 0);
+      } else {
+        // Section taller than viewport: align bottom of map to bottom of viewport
+        targetTop = Math.max(mapBottom - viewportH, 0);
+      }
 
       window.scrollTo({ top: targetTop, behavior: "smooth" });
     }, 50);
