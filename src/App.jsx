@@ -1080,7 +1080,7 @@ function Contact() {
           </p>
         </div>
 
-        <motion.div {...fadeInUp} className="order-3 md:order-1 sm:px-0 px-4">
+        <motion.div {...fadeInUp} className="order-3 md:order-1 sm:px-0 px-6">
           <h2 className="hidden md:block text-2xl md:text-3xl font-semibold" style={{color: BRAND_DARK}}>Get in touch</h2>
           <p className="hidden md:block mt-3 text-slate-600">
             Questions about admissions, tuition, or programs? Our team will reach out within 1-2 business days.
