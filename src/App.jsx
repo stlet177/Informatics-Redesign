@@ -415,10 +415,20 @@ function LaptopIcon() {
 }
 
 // Reusable animated select matching the site's blue theme
-function SelectField({ label, options }) {
+function SelectField({ label, options, value: controlledValue, onChange, placeholder }) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(options?.[0] || "");
+  const [uncontrolled, setUncontrolled] = useState(controlledValue === undefined);
+  const [internalValue, setInternalValue] = useState(() => (controlledValue ?? (options?.[0]?.label ?? options?.[0] ?? "")));
   const ref = useRef(null);
+
+  const getLabel = (opt) => (typeof opt === 'object' && opt !== null ? opt.label : opt);
+  const getKey = (opt) => (typeof opt === 'object' && opt !== null ? opt.key : opt);
+  const currentLabel = (() => {
+    const val = uncontrolled ? internalValue : controlledValue;
+    // try to map key to label if options are objects
+    const match = options?.find((o) => getKey(o) === val || getLabel(o) === val);
+    return match ? getLabel(match) : (val || placeholder || "Select");
+  })();
 
   useEffect(() => {
     const onDown = (e) => {
@@ -439,7 +449,7 @@ function SelectField({ label, options }) {
         className="mt-1 w-full inline-flex items-center justify-between rounded-xl border px-4 py-2 bg-transparent text-slate-800 focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)] focus:border-[var(--brand-blue)] hover:border-[var(--brand-blue)] transition-all duration-200"
         style={{ borderColor: "#E2E8F0" }}
       >
-        <span>{value}</span>
+        <span className={!currentLabel ? 'text-slate-500' : ''}>{currentLabel}</span>
         <ChevronDown size={16} className={open ? "rotate-180 transition-transform" : "transition-transform"} />
       </button>
       <AnimatePresence>
@@ -458,14 +468,16 @@ function SelectField({ label, options }) {
                 <button
                   type="button"
                   onClick={() => {
-                    setValue(opt);
+                    const nextKey = getKey(opt);
+                    if (uncontrolled) setInternalValue(getLabel(opt));
+                    if (onChange) onChange(nextKey);
                     setOpen(false);
                   }}
                   className={`flex w-full items-center justify-between rounded-lg px-3 py-2 hover:bg-[${BRAND_LIGHT}]`}
                   style={{ color: BRAND_DARK }}
                 >
-                  <span>{opt}</span>
-                  {value === opt && <Check size={16} style={{ color: BRAND_BLUE }} />}
+                  <span>{getLabel(opt)}</span>
+                  {(uncontrolled ? internalValue === getLabel(opt) : controlledValue === getKey(opt)) && <Check size={16} style={{ color: BRAND_BLUE }} />}
                 </button>
               </li>
             ))}
@@ -1039,20 +1051,16 @@ function Contact() {
             </div>
             <div className="mt-2 text-sm text-slate-600">Pick your branch to see Registrar, Cashier, and Phone contacts. Tap to copy.</div>
 
-            <div className="mt-4 grid gap-3 sm:flex sm:items-center">
-              <label className="text-sm font-medium" style={{color: BRAND_DARK}} htmlFor="branch">Branch</label>
-              <select
-                id="branch"
-                className="rounded-xl border px-3 py-2 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)] focus:border-[var(--brand-blue)]"
-                style={{ borderColor: "#E2E8F0", minWidth: "12rem" }}
-                value={branch}
-                onChange={(e) => handleBranchChange(e.target.value)}
-              >
-                <option value="">Select a branch…</option>
-                {branchOptions.map((o) => (
-                  <option key={o.key} value={o.key}>{o.label}</option>
-                ))}
-              </select>
+            <div className="mt-4 grid gap-3 sm:flex sm:items-end">
+              <div className="w-full sm:w-auto min-w-[12rem]">
+                <SelectField
+                  label="Branch"
+                  options={branchOptions}
+                  value={branch}
+                  onChange={handleBranchChange}
+                  placeholder="Select a branch…"
+                />
+              </div>
             </div>
 
             {branch && (
