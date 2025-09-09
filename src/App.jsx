@@ -920,7 +920,7 @@ function Contact() {
       registrar: "registrar_cavite@informatics.edu.ph",
       cashier: "cashier_cavite@informatics.edu.ph",
       phone: "(Landline) 046-4712310",
-      address: null,
+      address: "Informatics Bldg. E. Aguinaldo Highway, Tanzang Luma V, Imus City, Cavite",
       coords: { lat: 14.392243795079663, lng: 120.94000059901043 },
     },
     baguio: {
@@ -928,7 +928,7 @@ function Contact() {
       registrar: "registrar_baguio@informatics.edu.ph",
       cashier: "cashierbaguio@informatics.edu.ph",
       phone: "09175753237",
-      address: null,
+      address: "3/F Decibar Bldg., #65 Lower Bonifacio St., Baguio City",
       coords: { lat: 16.41810002387948, lng: 120.59632471103312 },
     },
     cebu: {
@@ -936,7 +936,7 @@ function Contact() {
       registrar: "N/A",
       cashier: "N/A",
       phone: "09178364963",
-      address: null,
+      address: "National Highway, Eskina Jugan, Pitogo Consolacion, Cebu City",
       coords: { lat: 10.31008717904268, lng: 123.89518818022984 },
     },
     cdo: {
@@ -944,7 +944,7 @@ function Contact() {
       registrar: "registrar.cdo@informatics.edu.ph",
       cashier: "cashier.cdo@informatics.edu.ph",
       phone: "N/A",
-      address: null,
+      address: "2nd level, Stary Bldg. Max Suniel St., Carmen, Cagayan De Oro",
       coords: { lat: 8.482402863722893, lng: 124.63492003787852 },
     },
     conso: {
