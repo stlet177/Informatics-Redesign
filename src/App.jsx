@@ -1070,7 +1070,7 @@ function Contact() {
   }
 
   return (
-    <section id="contact" className="py-16 md:py-24">
+    <section id="contact" className="py-16 md:py-24 overflow-x-hidden">
       <Container className="grid gap-10 md:grid-cols-2">
         {/* Mobile heading + blurb at the top */}
         <div className="md:hidden order-1">
@@ -1113,33 +1113,33 @@ function Contact() {
                       type="button"
                       onClick={() => isAvailable(BRANCH_CONTACTS[branch].registrar) && copyToClipboard(BRANCH_CONTACTS[branch].registrar, "reg")}
                       disabled={!isAvailable(BRANCH_CONTACTS[branch].registrar)}
-                      className="w-full inline-flex items-center justify-between gap-3 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full inline-flex items-center justify-between gap-3 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed text-[13px] sm:text-sm"
                       style={{ borderColor: "#E2E8F0", color: BRAND_DARK }}
                     >
-                      <span className="inline-flex items-center gap-2"><Mail size={16} style={{ color: BRAND_BLUE }} /> Registrar</span>
-                      <span className="truncate select-text">{BRANCH_CONTACTS[branch].registrar}</span>
+                      <span className="inline-flex items-center gap-2 shrink-0"><Mail size={16} style={{ color: BRAND_BLUE }} /> Registrar</span>
+                      <span className="truncate select-text min-w-0 flex-1">{BRANCH_CONTACTS[branch].registrar}</span>
                       <span className="text-slate-500 shrink-0">{isAvailable(BRANCH_CONTACTS[branch].registrar) ? (copiedKey === "reg" ? "Copied" : "Copy") : "N/A"}</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => isAvailable(BRANCH_CONTACTS[branch].cashier) && copyToClipboard(BRANCH_CONTACTS[branch].cashier, "cash")}
                       disabled={!isAvailable(BRANCH_CONTACTS[branch].cashier)}
-                      className="w-full inline-flex items-center justify-between gap-3 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full inline-flex items-center justify-between gap-3 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed text-[13px] sm:text-sm"
                       style={{ borderColor: "#E2E8F0", color: BRAND_DARK }}
                     >
-                      <span className="inline-flex items-center gap-2"><Mail size={16} style={{ color: BRAND_BLUE }} /> Cashier</span>
-                      <span className="truncate select-text">{BRANCH_CONTACTS[branch].cashier}</span>
+                      <span className="inline-flex items-center gap-2 shrink-0"><Mail size={16} style={{ color: BRAND_BLUE }} /> Cashier</span>
+                      <span className="truncate select-text min-w-0 flex-1">{BRANCH_CONTACTS[branch].cashier}</span>
                       <span className="text-slate-500 shrink-0">{isAvailable(BRANCH_CONTACTS[branch].cashier) ? (copiedKey === "cash" ? "Copied" : "Copy") : "N/A"}</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => isAvailable(BRANCH_CONTACTS[branch].phone) && copyToClipboard(BRANCH_CONTACTS[branch].phone, "phone")}
                       disabled={!isAvailable(BRANCH_CONTACTS[branch].phone)}
-                      className="w-full inline-flex items-center justify-between gap-3 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full inline-flex items-center justify-between gap-3 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed text-[13px] sm:text-sm"
                       style={{ borderColor: "#E2E8F0", color: BRAND_DARK }}
                     >
-                      <span className="inline-flex items-center gap-2"><Phone size={16} style={{ color: BRAND_BLUE }} /> Phone</span>
-                      <span className="truncate select-text">{BRANCH_CONTACTS[branch].phone || "N/A"}</span>
+                      <span className="inline-flex items-center gap-2 shrink-0"><Phone size={16} style={{ color: BRAND_BLUE }} /> Phone</span>
+                      <span className="truncate select-text min-w-0 flex-1">{BRANCH_CONTACTS[branch].phone || "N/A"}</span>
                       <span className="text-slate-500 shrink-0">{isAvailable(BRANCH_CONTACTS[branch].phone) ? (copiedKey === "phone" ? "Copied" : "Copy") : "N/A"}</span>
                     </button>
                   </div>
@@ -1182,12 +1182,12 @@ function Contact() {
               <button
                 type="button"
                 onClick={() => copyToClipboard("tech.support@informatics.edu.ph", "tech")}
-                className="mt-1 inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] text-sm"
+                className="mt-1 inline-flex items-center justify-between gap-3 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] text-[13px] sm:text-sm w-full"
                 style={{ borderColor: "#E2E8F0", color: BRAND_DARK }}
               >
-                {copiedKey === "tech" ? <Check size={16} style={{ color: BRAND_BLUE }} /> : <Mail size={16} style={{ color: BRAND_BLUE }} />}
-                <span className="select-text">tech.support@informatics.edu.ph</span>
-                <span className="text-slate-500">{copiedKey === "tech" ? "Copied" : "Copy"}</span>
+                <span className="inline-flex items-center gap-2 shrink-0">{copiedKey === "tech" ? <Check size={16} style={{ color: BRAND_BLUE }} /> : <Mail size={16} style={{ color: BRAND_BLUE }} />} Tech Support</span>
+                <span className="truncate select-text min-w-0 flex-1">tech.support@informatics.edu.ph</span>
+                <span className="text-slate-500 shrink-0">{copiedKey === "tech" ? "Copied" : "Copy"}</span>
               </button>
             </div>
           </div>
