@@ -886,6 +886,58 @@ function News() {
 }
 
 function Contact() {
+  const BRANCH_CONTACTS = {
+    manila: {
+      label: "Manila",
+      registrar: "registrar_manila@informatics.edu.ph",
+      cashier: "cashier_manila@informatics.edu.ph",
+    },
+    eastwood: {
+      label: "Eastwood",
+      registrar: "registrar_eastwood@informatics.edu.ph",
+      cashier: "cashier_eastwood@informatics.edu.ph",
+    },
+    ng: {
+      label: "NG",
+      registrar: "registrar_ng@informatics.edu.ph",
+      cashier: "cashier_ng@informatics.edu.ph",
+    },
+    cavite: {
+      label: "Cavite",
+      registrar: "registrar_cavite@informatics.edu.ph",
+      cashier: "cashier_cavite@informatics.edu.ph",
+    },
+    baguio: {
+      label: "Baguio",
+      registrar: "registrar_baguio@informatics.edu.ph",
+      cashier: "cashierbaguio@informatics.edu.ph",
+    },
+    cdo: {
+      label: "CDO",
+      registrar: "registrar.cdo@informatics.edu.ph",
+      cashier: "cashier.cdo@informatics.edu.ph",
+    },
+    conso: {
+      label: "Consolidated",
+      registrar: "registrar_conso@informatics.edu.ph",
+      cashier: "cashier_conso@informatics.edu.ph",
+    },
+  };
+
+  const branchOptions = Object.entries(BRANCH_CONTACTS).map(([key, v]) => ({ key, label: v.label }));
+  const [branch, setBranch] = useState("");
+  const [copiedKey, setCopiedKey] = useState("");
+
+  const copyEmail = async (value, key) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopiedKey(key);
+      setTimeout(() => setCopiedKey(""), 1400);
+    } catch (e) {
+      // fallback: no permission; do nothing
+    }
+  };
+
   return (
     <section id="contact" className="py-16 md:py-24">
       <Container className="grid gap-10 md:grid-cols-2">
@@ -907,36 +959,69 @@ function Contact() {
             <div className="text-sm font-semibold flex items-center gap-2" style={{color: BRAND_DARK}}>
               <Mail size={16} style={{ color: BRAND_BLUE }} /> Emails For Your Concern
             </div>
-            <div className="mt-3 space-y-5 text-sm">
-              <div>
-                <div className="font-medium" style={{color: BRAND_DARK}}>Technical Support</div>
-                <div className="text-slate-600">tech.support@informatics.edu.ph</div>
+            <div className="mt-2 text-sm text-slate-600">Pick your branch to see Registrar and Cashier emails. Tap to copy.</div>
+
+            <div className="mt-4 grid gap-3 sm:flex sm:items-center">
+              <label className="text-sm font-medium" style={{color: BRAND_DARK}} htmlFor="branch">Branch</label>
+              <select
+                id="branch"
+                className="rounded-xl border px-3 py-2 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)] focus:border-[var(--brand-blue)]"
+                style={{ borderColor: "#E2E8F0", minWidth: "12rem" }}
+                value={branch}
+                onChange={(e) => setBranch(e.target.value)}
+              >
+                <option value="">Select a branch…</option>
+                {branchOptions.map((o) => (
+                  <option key={o.key} value={o.key}>{o.label}</option>
+                ))}
+              </select>
+            </div>
+
+            {branch && (
+              <div className="mt-4 grid gap-3 text-sm">
+                <div className="rounded-xl bg-white p-4 ring-1 ring-black/5 shadow-sm">
+                  <div className="font-medium" style={{color: BRAND_DARK}}>Registrar</div>
+                  <button
+                    type="button"
+                    onClick={() => copyEmail(BRANCH_CONTACTS[branch].registrar, "reg")}
+                    className="mt-1 inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99]"
+                    style={{ borderColor: "#E2E8F0", color: BRAND_DARK }}
+                  >
+                    {copiedKey === "reg" ? <Check size={16} style={{ color: BRAND_BLUE }} /> : <Mail size={16} style={{ color: BRAND_BLUE }} />}
+                    <span className="select-text">{BRANCH_CONTACTS[branch].registrar}</span>
+                    <span className="text-slate-500">{copiedKey === "reg" ? "Copied" : "Copy"}</span>
+                  </button>
+                </div>
+                <div className="rounded-xl bg-white p-4 ring-1 ring-black/5 shadow-sm">
+                  <div className="font-medium" style={{color: BRAND_DARK}}>Cashier</div>
+                  <button
+                    type="button"
+                    onClick={() => copyEmail(BRANCH_CONTACTS[branch].cashier, "cash")}
+                    className="mt-1 inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99]"
+                    style={{ borderColor: "#E2E8F0", color: BRAND_DARK }}
+                  >
+                    {copiedKey === "cash" ? <Check size={16} style={{ color: BRAND_BLUE }} /> : <Mail size={16} style={{ color: BRAND_BLUE }} />}
+                    <span className="select-text">{BRANCH_CONTACTS[branch].cashier}</span>
+                    <span className="text-slate-500">{copiedKey === "cash" ? "Copied" : "Copy"}</span>
+                  </button>
+                </div>
+                <div className="text-[12px] text-slate-500">records@informatics.edu.ph (for closed center)</div>
               </div>
-              <div>
-                <div className="font-medium" style={{color: BRAND_DARK}}>Registrar's Office</div>
-                <ul className="mt-1 space-y-1 text-slate-600">
-                  <li>registrar_manila@informatics.edu.ph</li>
-                  <li>registrar_eastwood@informatics.edu.ph</li>
-                  <li>registrar_ng@informatics.edu.ph</li>
-                  <li>registrar_cavite@informatics.edu.ph</li>
-                  <li>registrar_baguio@informatics.edu.ph</li>
-                  <li>registrar.cdo@informatics.edu.ph</li>
-                  <li>registrar_conso@informatics.edu.ph</li>
-                </ul>
-                <div className="mt-1 text-slate-600">records@informatics.edu.ph <span className="font-semibold">(for closed center)</span></div>
-              </div>
-              <div>
-                <div className="font-medium" style={{color: BRAND_DARK}}>Cashier</div>
-                <ul className="mt-1 space-y-1 text-slate-600">
-                  <li>cashier_manila@informatics.edu.ph</li>
-                  <li>cashier_eastwood@informatics.edu.ph</li>
-                  <li>cashier_ng@informatics.edu.ph</li>
-                  <li>cashier_cavite@informatics.edu.ph</li>
-                  <li>cashierbaguio@informatics.edu.ph</li>
-                  <li>cashier.cdo@informatics.edu.ph</li>
-                  <li>cashier_conso@informatics.edu.ph</li>
-                </ul>
-              </div>
+            )}
+
+            {/* Keep technical support visible */}
+            <div className="mt-6">
+              <div className="font-medium text-sm" style={{color: BRAND_DARK}}>Technical Support</div>
+              <button
+                type="button"
+                onClick={() => copyEmail("tech.support@informatics.edu.ph", "tech")}
+                className="mt-1 inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] text-sm"
+                style={{ borderColor: "#E2E8F0", color: BRAND_DARK }}
+              >
+                {copiedKey === "tech" ? <Check size={16} style={{ color: BRAND_BLUE }} /> : <Mail size={16} style={{ color: BRAND_BLUE }} />}
+                <span className="select-text">tech.support@informatics.edu.ph</span>
+                <span className="text-slate-500">{copiedKey === "tech" ? "Copied" : "Copy"}</span>
+              </button>
             </div>
           </div>
         </motion.div>
