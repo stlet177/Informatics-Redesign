@@ -49,18 +49,6 @@ body::after {
     conic-gradient(from 210deg at 50% -10%, rgba(0,142,230,0.08), transparent 45%);
 }
 
-/* iOS safe area padding utility for mobile gutters */
-.safe-px {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-@supports(padding: max(0px)) {
-  .safe-px {
-    padding-left: max(1rem, env(safe-area-inset-left));
-    padding-right: max(1rem, env(safe-area-inset-right));
-  }
-}
-
 /* Animated gradient text utility for hero keyword */
 @keyframes gradient-move {
   0% { background-position: 0% 50%; }
