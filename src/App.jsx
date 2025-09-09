@@ -525,10 +525,10 @@ function Hero() {
   );
 }
 
-function ProgramCard({ icon: Icon, title, desc, img, featured = false, delay = 0, tag }) {
+function ProgramCard({ icon: Icon, title, desc, img, video, featured = false, delay = 0, tag }) {
   return (
     <motion.div
-      className="rounded-2xl p-6 ring-1 ring-black/10 bg-white shadow-sm hover:shadow-md transition-shadow"
+      className="rounded-2xl p-6 ring-1 ring-black/10 bg-white shadow-sm hover:shadow-md transition-shadow flex flex-col h-full"
       initial={{ opacity: 0, y: 16, scale: featured ? 0.94 : 1 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true }}
@@ -536,18 +536,30 @@ function ProgramCard({ icon: Icon, title, desc, img, featured = false, delay = 0
       whileHover={{ y: featured ? -6 : -3, scale: featured ? 1.03 : 1.01 }}
       whileTap={{ scale: 0.99 }}
     >
-      {img && (
+      {video ? (
         <div className="-mt-2 -mx-2 mb-4 overflow-hidden rounded-xl ring-1 ring-black/5">
-          <img
-            src={img}
-            alt="Program visual"
+          <video
+            src={video}
             className="w-full h-36 object-cover"
-            onError={(e) => {
-              e.currentTarget.onerror = null;
-              e.currentTarget.src = PLACEHOLDER_IMG;
-            }}
+            controls
+            preload="metadata"
+            poster={img || undefined}
           />
         </div>
+      ) : (
+        img && (
+          <div className="-mt-2 -mx-2 mb-4 overflow-hidden rounded-xl ring-1 ring-black/5">
+            <img
+              src={img}
+              alt="Program visual"
+              className="w-full h-36 object-cover"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = PLACEHOLDER_IMG;
+              }}
+            />
+          </div>
+        )
       )}
       <div className="flex items-center gap-3">
         <div className="rounded-xl p-2" style={{ background: BRAND_LIGHT }}>
@@ -562,16 +574,18 @@ function ProgramCard({ icon: Icon, title, desc, img, featured = false, delay = 0
           </span>
         </div>
       )}
-      <p className="mt-3 text-sm text-slate-600">{desc}</p>
-      <motion.a
-        href="#"
-        className="mt-4 inline-flex items-center gap-2 text-sm"
-        style={{ color: BRAND_BLUE }}
-        whileHover={{ x: 2 }}
-        whileTap={{ scale: 0.98 }}
-      >
-        View curriculum <ChevronRight size={16} />
-      </motion.a>
+      <p className="mt-3 text-sm text-slate-600 flex-1 min-h-[64px]">{desc}</p>
+      <div className="mt-auto pt-2">
+        <motion.a
+          href="#"
+          className="inline-flex items-center gap-2 text-sm"
+          style={{ color: BRAND_BLUE }}
+          whileHover={{ x: 2 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          View curriculum <ChevronRight size={16} />
+        </motion.a>
+      </div>
     </motion.div>
   );
 }
@@ -639,7 +653,8 @@ function Programs() {
       icon: Compass,
       title: "GAS (General Academic Strand)",
       desc: "Offers a flexible mix of subjects, giving undecided students broader options for college and future careers.",
-      tag: "Exams.web M",
+      tag: "Exams.webm",
+      video: asset("assets/Exams.webm"),
     },
   ];
 
