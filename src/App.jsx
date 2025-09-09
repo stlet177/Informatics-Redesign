@@ -575,20 +575,20 @@ function ProgramCard({ icon: Icon, title, desc, img, video, lottie, featured = f
           </div>
         )
       )}
-      <div className="flex items-center gap-3">
+      <div className="flex items-start gap-3 min-h-[48px]">
         <div className="rounded-xl p-2" style={{ background: BRAND_LIGHT }}>
           <Icon style={{ color: BRAND_BLUE }} />
         </div>
         <h3 className="text-lg font-semibold" style={{color: BRAND_DARK}}>{title}</h3>
       </div>
-      {tag && (
-        <div className="mt-2">
+      <div className="mt-2 min-h-[22px]">
+        {tag ? (
           <span className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-medium" style={{ color: BRAND_BLUE, border: '1px solid rgba(0,0,0,0.06)' }}>
             {tag}
           </span>
-        </div>
-      )}
-      <p className="mt-3 text-sm text-slate-600 flex-1 min-h-[64px]">{desc}</p>
+        ) : null}
+      </div>
+      <p className="mt-3 text-sm text-slate-600 flex-1 min-h-[80px] sm:min-h-[88px]">{desc}</p>
       <div className="mt-auto pt-2">
         <motion.a
           href="#"
