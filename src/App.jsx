@@ -667,6 +667,7 @@ function Programs() {
       icon: Compass,
       title: "GAS (General Academic Strand)",
       desc: "Offers a flexible mix of subjects, giving undecided students broader options for college and future careers.",
+      lottie: asset("assets/GAS.lottie"),
       video: asset("assets/Exams.webm"),
     },
   ];
