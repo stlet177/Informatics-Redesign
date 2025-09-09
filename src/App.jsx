@@ -1090,9 +1090,9 @@ function Contact() {
             <div className="text-sm font-semibold flex items-center gap-2" style={{color: BRAND_DARK}}>
               <Mail size={16} style={{ color: BRAND_BLUE }} /> Emails For Your Concern
             </div>
-            <div className="mt-2 text-sm text-slate-600">Pick your branch to see Registrar, Cashier, and Phone contacts. Tap to copy.</div>
+            <div className="mt-2 text-sm text-slate-600 sm:mx-0 mx-2">Pick your branch to see Registrar, Cashier, and Phone contacts. Tap to copy.</div>
 
-            <div className="mt-4 grid gap-3 sm:flex sm:items-end">
+            <div className="mt-4 grid gap-3 sm:flex sm:items-end sm:mx-0 mx-2">
               <div className="w-full sm:w-auto min-w-[12rem]">
                 <SelectField
                   label="Branch"
@@ -1177,7 +1177,7 @@ function Contact() {
             </div>
 
             {/* Keep technical support visible */}
-            <div className="mt-6">
+            <div className="mt-6 sm:mx-0 mx-2">
               <div className="font-medium text-sm" style={{color: BRAND_DARK}}>Technical Support</div>
               <button
                 type="button"
