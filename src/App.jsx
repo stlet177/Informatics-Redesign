@@ -894,7 +894,7 @@ function Contact() {
       cashier: "cashier_manila@informatics.edu.ph",
       phone: "09453210716",
       address: "2070 BDO Bldg. Recto Ave Quiapo, Manila",
-      coords: null,
+      coords: { lat: 14.601307814946743, lng: 120.98930082652203 },
     },
     eastwood: {
       label: "Eastwood",
@@ -902,7 +902,7 @@ function Contact() {
       cashier: "cashier_eastwood@informatics.edu.ph",
       phone: null,
       address: null,
-      coords: null,
+      coords: { lat: 14.609839808371692, lng: 121.07665553018593 },
     },
     ng: {
       label: "Northgate",
@@ -910,7 +910,7 @@ function Contact() {
       cashier: "cashier_ng@informatics.edu.ph",
       phone: "09606114435",
       address: "Indo China Drive, Northgate Cyberzone Filinvest Corporate City, Alabang Muntinlupa City, Metro Manila",
-      coords: null,
+      coords: { lat: 14.42586527085314, lng: 121.04015885666861 },
     },
     cavite: {
       label: "Cavite",
@@ -918,7 +918,7 @@ function Contact() {
       cashier: "cashier_cavite@informatics.edu.ph",
       phone: "(Landline) 046-4712310",
       address: null,
-      coords: null,
+      coords: { lat: 14.392243795079663, lng: 120.94000059901043 },
     },
     baguio: {
       label: "Baguio",
@@ -926,7 +926,7 @@ function Contact() {
       cashier: "cashierbaguio@informatics.edu.ph",
       phone: "09175753237",
       address: null,
-      coords: null,
+      coords: { lat: 16.41810002387948, lng: 120.59632471103312 },
     },
     cebu: {
       label: "Cebu",
@@ -934,7 +934,7 @@ function Contact() {
       cashier: "N/A",
       phone: "09178364963",
       address: null,
-      coords: null,
+      coords: { lat: 10.31008717904268, lng: 123.89518818022984 },
     },
     cdo: {
       label: "CDO",
@@ -942,7 +942,7 @@ function Contact() {
       cashier: "cashier.cdo@informatics.edu.ph",
       phone: "N/A",
       address: null,
-      coords: null,
+      coords: { lat: 8.482402863722893, lng: 124.63492003787852 },
     },
     conso: {
       label: "Consolidated",
