@@ -970,6 +970,7 @@ function Contact() {
   const [branch, setBranch] = useState("");
   const [copiedKey, setCopiedKey] = useState("");
   const mapRef = useRef(null);
+  const contactsRef = useRef(null);
 
   const copyToClipboard = async (value, key) => {
     try {
@@ -987,12 +988,24 @@ function Contact() {
     setBranch(value);
     // Smoothly scroll the map into view after state updates
     setTimeout(() => {
-      if (mapRef && mapRef.current) {
-        const rect = mapRef.current.getBoundingClientRect();
-        const targetY = rect.top + window.scrollY - window.innerHeight * 0.35; // leave contacts + map visible
-        window.scrollTo({ top: Math.max(targetY, 0), behavior: "smooth" });
-      }
-    }, 0);
+      const mapEl = mapRef?.current;
+      const contactsEl = contactsRef?.current;
+      if (!mapEl || !contactsEl) return;
+      const viewportH = window.innerHeight;
+      const marginTop = 72; // keep some space above contacts
+      const marginBottom = 16; // small space below map
+
+      const contactsTop = contactsEl.getBoundingClientRect().top + window.scrollY;
+      const mapBottom = mapEl.getBoundingClientRect().bottom + window.scrollY;
+
+      // Start by aligning contacts near top
+      let desiredTop = Math.max(contactsTop - marginTop, 0);
+      // Ensure map bottom remains in view as well
+      const minTopForMap = Math.max(mapBottom - viewportH + marginBottom, 0);
+      if (desiredTop < minTopForMap) desiredTop = minTopForMap;
+
+      window.scrollTo({ top: desiredTop, behavior: "smooth" });
+    }, 50);
   };
 
   const mapUrlFor = (key) => {
@@ -1068,7 +1081,7 @@ function Contact() {
             </div>
 
             {branch && (
-              <div className="mt-4 grid gap-3 text-sm">
+              <div className="mt-4 grid gap-3 text-sm" ref={contactsRef}>
                 <div className="rounded-xl bg-white p-4 ring-1 ring-black/5 shadow-sm">
                   <div className="font-medium" style={{color: BRAND_DARK}}>Branch Contacts</div>
                   <div className="mt-2 space-y-2">
