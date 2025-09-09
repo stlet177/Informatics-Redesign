@@ -5,6 +5,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import BranchMap from "./BranchMap";
 // no portal needed for mobile drawer; render inline for reliability
 import {
   ChevronRight,
@@ -1101,16 +1102,7 @@ function Contact() {
             <div className="mt-6">
               <div className="font-medium mb-2" style={{color: BRAND_DARK}}>Map</div>
               <div className="overflow-hidden rounded-xl ring-1 ring-black/5 h-72 md:h-80 relative">
-                <iframe
-                  key={branch || 'default'}
-                  title={`Map - ${branch ? BRANCH_CONTACTS[branch].label : 'Informatics Philippines'}`}
-                  src={mapUrlFor(branch)}
-                  width="100%"
-                  height="100%"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full border-0"
-                />
+                <BranchMap branches={BRANCH_CONTACTS} active={branch} />
                 <div className="absolute bottom-2 left-2 right-2 sm:right-auto max-w-[92%] sm:max-w-md">
                   <div className="inline-flex items-start gap-2 rounded-xl bg-white/95 backdrop-blur px-3 py-2 shadow-md ring-1 ring-black/5">
                     <MapPin size={18} style={{ color: BRAND_BLUE }} />
