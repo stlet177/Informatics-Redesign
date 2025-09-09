@@ -500,7 +500,24 @@ function SelectField({ label, options, value: controlledValue, onChange, placeho
 function Hero() {
   return (
     <section className="pt-28 pb-16 md:pt-36 md:pb-24 relative overflow-hidden">
-      <div className="pointer-events-none absolute -right-40 -top-40 h-[420px] w-[420px] rounded-full opacity-10" style={{background: BRAND_BLUE}} />
+      {/* Geometric decorative shapes (right + left) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-40 -top-44 h-[460px] w-[460px] opacity-10 -z-10"
+        style={{
+          background: `linear-gradient(135deg, ${BRAND_BLUE} 0%, #0A84FF 100%)`,
+          clipPath:
+            "polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)", // hexagon
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-32 top-24 h-[340px] w-[340px] opacity-10 -z-10 rotate-12"
+        style={{
+          background: `linear-gradient(135deg, #0A84FF 0%, ${BRAND_BLUE} 100%)`,
+          clipPath: "polygon(50% 0, 100% 50%, 50% 100%, 0 50%)", // diamond
+        }}
+      />
       <Container className="grid items-center gap-10 md:grid-cols-2">
         <motion.div {...fadeInUp}>
           <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs" style={{ background: BRAND_LIGHT, color: BRAND_BLUE }}>
@@ -508,7 +525,16 @@ function Hero() {
             Enrollment for SY 2025-2026 is open
           </div>
           <h1 className="mt-4 text-5xl md:text-6xl font-extrabold tracking-tight" style={{color: BRAND_DARK}}>
-            Master the <span style={{color: BRAND_BLUE}}>Digital Age</span> with Technology Excellence
+            Master the {" "}
+            <motion.span
+              className="digital-age-animate"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
+            >
+              Digital Age
+            </motion.span>{" "}
+            with Technology Excellence
           </h1>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
             Join Informatics Philippines and transform your passion for technology into a thriving career. Our cutting-edge programs in computer science, information technology, and business administration prepare you to lead in the digital future.
@@ -809,16 +835,28 @@ function AdmissionsCTA() {
         </motion.div>
         <motion.div {...fadeInUp}>
           <div className="rounded-3xl p-6 shadow-lg ring-1 ring-black/5 bg-white">
-            <div className="text-sm font-medium" style={{color: BRAND_DARK}}>Key Dates (SY 2025–2026)</div>
+            <div className="text-sm font-medium" style={{color: BRAND_DARK}}>Key Dates (SY 2025-2026)</div>
             <div className="mt-3 grid grid-cols-2 gap-4 text-sm">
               <div className="rounded-xl p-4" style={{ background: "#EEF4FF" }}>
                 <div className="font-semibold" style={{ color: BRAND_BLUE }}>Applications</div>
-                <div className="text-slate-600">Open – Rolling</div>
+                <div className="text-slate-600">Open - Rolling</div>
               </div>
               <div className="rounded-xl p-4" style={{ background: "#EEF4FF" }}>
                 <div className="font-semibold" style={{ color: BRAND_BLUE }}>Classes Start</div>
                 <div className="text-slate-600">August 2025</div>
               </div>
+            </div>
+          </div>
+          {/* Admissions Lottie under Key Dates */}
+          <div className="mt-4 rounded-3xl bg-transparent">
+            <div className="h-56 md:h-64">
+              <DotLottieReact
+                src={asset("assets/admission.lottie")}
+                loop
+                autoplay
+                className="mix-blend-multiply"
+                style={{ width: '100%', height: '100%', mixBlendMode: 'multiply', background: 'transparent' }}
+              />
             </div>
           </div>
         </motion.div>
@@ -1113,7 +1151,7 @@ function Contact() {
             {/* Always-visible map; updates/pans when branch changes */}
             <div className="mt-6" ref={mapRef}>
               <div className="font-medium mb-2" style={{color: BRAND_DARK}}>Map</div>
-              <div className="overflow-hidden rounded-xl ring-1 ring-black/5 h-72 md:h-80 relative">
+              <div className="relative z-0 isolate overflow-hidden rounded-xl ring-1 ring-black/5 h-72 md:h-80">
                 <BranchMap branches={BRANCH_CONTACTS} active={branch} />
                 <div className="absolute bottom-2 left-2 right-2 sm:right-auto max-w-[92%] sm:max-w-md">
                   <div className="inline-flex items-start gap-2 rounded-xl bg-white/95 backdrop-blur px-3 py-2 shadow-md ring-1 ring-black/5">
