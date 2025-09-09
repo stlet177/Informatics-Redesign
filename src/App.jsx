@@ -997,6 +997,19 @@ function Contact() {
     return { name, line };
   };
 
+  const mapsLinkFor = (key) => {
+    const entry = key ? BRANCH_CONTACTS[key] : null;
+    if (entry?.coords && typeof entry.coords.lat === 'number' && typeof entry.coords.lng === 'number') {
+      const { lat, lng } = entry.coords;
+      return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+    }
+    if (entry?.address) {
+      return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(entry.address)}`;
+    }
+    const label = entry?.label || 'Informatics Philippines';
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Informatics ' + label + ' campus')}`;
+  }
+
   return (
     <section id="contact" className="py-16 md:py-24">
       <Container className="grid gap-10 md:grid-cols-2">
@@ -1106,7 +1119,14 @@ function Contact() {
                         {overlayInfoFor(branch).name}
                       </div>
                       {overlayInfoFor(branch).line && (
-                        <div className="text-xs text-slate-600">{overlayInfoFor(branch).line}</div>
+                        <a
+                          href={mapsLinkFor(branch)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs text-slate-600 underline decoration-dotted hover:decoration-solid"
+                        >
+                          {overlayInfoFor(branch).line}
+                        </a>
                       )}
                     </div>
                   </div>
