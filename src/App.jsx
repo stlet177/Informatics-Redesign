@@ -1001,10 +1001,10 @@ function Contact() {
 
       // Preferred top: show contacts near the top
       const desiredTop = Math.max(contactsTop - marginTop, 0);
-      // Upper bound so the map bottom stays in view
-      const maxAllowedTop = Math.max(mapBottom - viewportH + marginBottom, 0);
-      // Choose the smaller to avoid overscrolling past what’s needed to include the map
-      const targetTop = Math.min(desiredTop, maxAllowedTop);
+      // Minimum top so the map bottom stays in view
+      const minTopForMap = Math.max(mapBottom - viewportH + marginBottom, 0);
+      // Pick the larger to satisfy both constraints (shows contacts near top AND keeps map bottom visible)
+      const targetTop = Math.max(desiredTop, minTopForMap);
 
       window.scrollTo({ top: targetTop, behavior: "smooth" });
     }, 50);
