@@ -204,8 +204,8 @@ function Nav() {
           <a href="#admissions" className={`inline-flex items-center gap-1 relative hover:opacity-100 after:content-[""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-[var(--brand-blue)] after:transition-all hover:after:w-full`} style={{color: BRAND_DARK}}>
             <GraduationCap size={16} style={{ color: BRAND_BLUE }} /> Admissions
           </a>
-          <a href="#e-services" className={`inline-flex items-center gap-1 relative hover:opacity-100 after:content-[""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-[var(--brand-blue)] after:transition-all hover:after:w-full`} style={{color: BRAND_DARK}}>
-            <Globe size={16} style={{ color: BRAND_BLUE }} /> E-Services
+          <a href="https://ion.informatics.edu.ph/login/index.php" target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-1 relative hover:opacity-100 after:content-[""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-[var(--brand-blue)] after:transition-all hover:after:w-full`} style={{color: BRAND_DARK}}>
+            <Globe size={16} style={{ color: BRAND_BLUE }} /> ION - LMS
           </a>
           <div
             className="relative"
@@ -370,8 +370,8 @@ function Nav() {
                 <motion.a href="#admissions" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
                   <GraduationCap size={16} style={{ color: BRAND_BLUE }} /> Admissions
                 </motion.a>
-                <motion.a href="#e-services" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
-                  <Globe size={16} style={{ color: BRAND_BLUE }} /> E-Services
+                <motion.a href="https://ion.informatics.edu.ph/login/index.php" target="_blank" rel="noopener noreferrer" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
+                  <Globe size={16} style={{ color: BRAND_BLUE }} /> ION - LMS
                 </motion.a>
                 <motion.a href="#about" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
                   <Info size={16} style={{ color: BRAND_BLUE }} /> About
@@ -938,6 +938,12 @@ function Contact() {
     }
   };
 
+  const mapUrlFor = (key) => {
+    const label = BRANCH_CONTACTS[key]?.label || "";
+    const q = encodeURIComponent(`Informatics ${label} campus`);
+    return `https://www.google.com/maps?q=${q}&output=embed`;
+  };
+
   return (
     <section id="contact" className="py-16 md:py-24">
       <Container className="grid gap-10 md:grid-cols-2">
@@ -1006,6 +1012,22 @@ function Contact() {
                   </button>
                 </div>
                 <div className="text-[12px] text-slate-500">records@informatics.edu.ph (for closed center)</div>
+
+                {/* Branch Map */}
+                <div className="mt-2">
+                  <div className="font-medium mb-2" style={{color: BRAND_DARK}}>Map</div>
+                  <div className="overflow-hidden rounded-xl ring-1 ring-black/5 h-64">
+                    <iframe
+                      title={`Map - ${BRANCH_CONTACTS[branch].label}`}
+                      src={mapUrlFor(branch)}
+                      width="100%"
+                      height="100%"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="w-full h-full border-0"
+                    />
+                  </div>
+                </div>
               </div>
             )}
 
