@@ -4,6 +4,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 // no portal needed for mobile drawer; render inline for reliability
 import {
   ChevronRight,
@@ -525,7 +526,7 @@ function Hero() {
   );
 }
 
-function ProgramCard({ icon: Icon, title, desc, img, video, featured = false, delay = 0, tag }) {
+function ProgramCard({ icon: Icon, title, desc, img, video, lottie, featured = false, delay = 0, tag }) {
   return (
     <motion.div
       className="rounded-2xl p-6 ring-1 ring-black/10 bg-white shadow-sm hover:shadow-md transition-shadow flex flex-col h-full"
@@ -536,7 +537,16 @@ function ProgramCard({ icon: Icon, title, desc, img, video, featured = false, de
       whileHover={{ y: featured ? -6 : -3, scale: featured ? 1.03 : 1.01 }}
       whileTap={{ scale: 0.99 }}
     >
-      {video ? (
+      {lottie ? (
+        <div className="-mt-2 -mx-2 mb-4 overflow-hidden rounded-xl ring-1 ring-black/5">
+          <DotLottieReact
+            src={lottie}
+            loop
+            autoplay
+            style={{ width: '100%', height: '9rem', objectFit: 'cover' }}
+          />
+        </div>
+      ) : video ? (
         <div className="-mt-2 -mx-2 mb-4 overflow-hidden rounded-xl ring-1 ring-black/5">
           <video
             src={video}
@@ -657,6 +667,7 @@ function Programs() {
       icon: Compass,
       title: "GAS (General Academic Strand)",
       desc: "Offers a flexible mix of subjects, giving undecided students broader options for college and future careers.",
+      lottie: asset("assets/Exams.lottie"),
       video: asset("assets/Exams.webm"),
     },
   ];
@@ -723,6 +734,7 @@ function Programs() {
               title={it.title}
               desc={it.desc}
               tag={it.tag}
+              lottie={it.lottie}
               video={it.video}
               delay={i * 0.06}
             />
