@@ -588,6 +588,53 @@ function Programs() {
     },
   ];
 
+  // Symmetrical sets to render
+  const degreeItems = [
+    {
+      icon: BookOpen,
+      title: "BS Information Technology",
+      desc: "Core CS/IT fundamentals, software engineering, cloud, and security tracks with modern toolchains.",
+    },
+    {
+      icon: Code2,
+      title: "BS Computer Science",
+      desc: "Computational theory, algorithms, AI/ML foundations, and high‑performance software design.",
+    },
+    {
+      icon: Database,
+      title: "BS Information Systems",
+      desc: "Business process analysis, data systems, and tech-enabled decision support in organizations.",
+    },
+    {
+      icon: BarChart3,
+      title: "BS Business Administration (Business Analytics)",
+      desc: "Management + data literacy: spreadsheets to dashboards to real-world decision systems.",
+    },
+  ];
+
+  const shsItems = [
+    {
+      icon: LaptopIcon,
+      title: "ICT (Information and Communications Technology)",
+      desc: "Focuses on computers, programming, and digital skills, preparing students for careers in IT and technology.",
+    },
+    {
+      icon: BarChart3,
+      title: "ABM (Accountancy, Business, and Management)",
+      desc: "Centers on business, finance, and management, training students for entrepreneurship and corporate professions.",
+    },
+    {
+      icon: BookOpen,
+      title: "HUMSS (Humanities and Social Sciences)",
+      desc: "Emphasizes communication, society, and culture, guiding students toward careers in education, law, journalism, and the social sciences.",
+    },
+    {
+      icon: Compass,
+      title: "GAS (General Academic Strand)",
+      desc: "Offers a flexible mix of subjects, giving undecided students broader options for college and future careers.",
+    },
+  ];
+
   return (
     <section id="programs" className="py-16 md:py-24 bg-white relative overflow-hidden">
       {/* subtle geometric background */}
@@ -613,53 +660,45 @@ function Programs() {
         <motion.h2 {...fadeInUp} className="text-2xl md:text-3xl font-semibold" style={{color: BRAND_DARK}}>
           Programs that align with industry
         </motion.h2>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {items.map((it, i) => {
+        {/* Bachelor's Degree Programs */}
+        <div className="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+          <div className="col-span-full inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold" style={{ background: BRAND_LIGHT, color: BRAND_BLUE }}>
+            Bachelor's Degree Programs
+          </div>
+          {degreeItems.map((it, i) => {
             const imgMap = {
-              "BS Information Technology": asset("assets/Informationsystem.jpg"),
+              "BS Information Technology": asset("assets/informationtechnology.jpg"),
+              "BS Computer Science": asset("assets/computerscience.jpg"),
+              "BS Information Systems": asset("assets/Informationsystem.jpg"),
               "BS Business Administration (Business Analytics)": asset("assets/BSBA.jpg"),
-              "Diploma & Short Courses": asset("assets/computerscience.jpg"),
             };
-            const correctedDesc =
-              it.title === "Diploma & Short Courses"
-                ? "Industry-focused upskilling in UX, cybersecurity, cloud, and data stack credentials as you go."
-                : it.desc;
             return (
               <ProgramCard
                 key={i}
                 icon={it.icon}
                 title={it.title}
-                desc={correctedDesc}
+                desc={it.desc}
                 img={imgMap[it.title]}
-                featured={i < 3}
-                delay={i * 0.08}
+                delay={i * 0.06}
               />
             );
           })}
-          {/* Senior High School Tracks */}
+        </div>
+
+        {/* Senior High School Tracks */}
+        <div className="mt-10 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
           <div className="col-span-full inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold" style={{ background: BRAND_LIGHT, color: BRAND_BLUE }}>
             Senior High School Tracks
           </div>
-          <ProgramCard
-            icon={LaptopIcon}
-            title="ICT (Information and Communications Technology)"
-            desc="Focuses on computers, programming, and digital skills, preparing students for careers in IT and technology."
-          />
-          <ProgramCard
-            icon={BarChart3}
-            title="ABM (Accountancy, Business, and Management)"
-            desc="Centers on business, finance, and management, training students for entrepreneurship and corporate professions."
-          />
-          <ProgramCard
-            icon={BookOpen}
-            title="HUMSS (Humanities and Social Sciences)"
-            desc="Emphasizes communication, society, and culture, guiding students toward careers in education, law, journalism, and the social sciences."
-          />
-          <ProgramCard
-            icon={Compass}
-            title="GAS (General Academic Strand)"
-            desc="Offers a flexible mix of subjects, giving undecided students broader options for college and future careers."
-          />
+          {shsItems.map((it, i) => (
+            <ProgramCard
+              key={i}
+              icon={it.icon}
+              title={it.title}
+              desc={it.desc}
+              delay={i * 0.06}
+            />
+          ))}
         </div>
       </Container>
     </section>
