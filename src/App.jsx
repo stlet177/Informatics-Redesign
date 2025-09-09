@@ -464,7 +464,11 @@ function SelectField({ label, options, value: controlledValue, onChange, placeho
             style={{ borderColor: "#E2E8F0" }}
           >
             {options.map((opt, idx) => (
-              <li key={idx} role="option" aria-selected={value === opt}>
+              <li
+                key={idx}
+                role="option"
+                aria-selected={(uncontrolled ? internalValue === getLabel(opt) : controlledValue === getKey(opt))}
+              >
                 <button
                   type="button"
                   onClick={() => {
@@ -473,7 +477,7 @@ function SelectField({ label, options, value: controlledValue, onChange, placeho
                     if (onChange) onChange(nextKey);
                     setOpen(false);
                   }}
-                  className={`flex w-full items-center justify-between rounded-lg px-3 py-2 hover:bg-[${BRAND_LIGHT}]`}
+                  className="flex w-full items-center justify-between rounded-lg px-3 py-2 hover:bg-slate-50"
                   style={{ color: BRAND_DARK }}
                 >
                   <span>{getLabel(opt)}</span>
