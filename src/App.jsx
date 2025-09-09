@@ -46,6 +46,7 @@ const asset = (p) => `${import.meta.env.BASE_URL}${p.replace(/^\//, "")}`;
 // ASSETS (filenames to be placed under /public/assets)
 const INFO_LOGO = asset("assets/informatics-logo.png"); // header + footer
 const CAMPUS_IMG = asset("assets/campus2.jpg"); // hero image
+const HOME_HREF = import.meta.env.BASE_URL || "/";
 
 // Fallback placeholder for missing images (inline SVG data URI)
 const PLACEHOLDER_IMG =
@@ -108,15 +109,17 @@ function Nav() {
     <header className={`fixed inset-x-0 top-0 z-50 transition-all ${scrolled ? "backdrop-blur bg-white/80 shadow" : "bg-transparent"}`}>
       <Container className="flex items-center justify-between py-3">
         <div className="flex items-center gap-3">
-          <img
-            src={INFO_LOGO}
-            alt="Informatics Philippines logo"
-            className="h-10 md:h-11 w-auto"
-            onError={(e) => {
-              e.currentTarget.onerror = null;
-              e.currentTarget.src = PLACEHOLDER_IMG;
-            }}
-          />
+          <a href={HOME_HREF} aria-label="Go to homepage">
+            <img
+              src={INFO_LOGO}
+              alt="Informatics Philippines logo"
+              className="h-10 md:h-11 w-auto"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = PLACEHOLDER_IMG;
+              }}
+            />
+          </a>
           {/* brand text removed per request */}
         </div>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
@@ -251,7 +254,7 @@ function Nav() {
               )}
             </AnimatePresence>
           </div>
-          <a href="#microcredentials" className={`inline-flex items-center gap-1 relative hover:opacity-100 after:content-[""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-[var(--brand-blue)] after:transition-all hover:after:w-full`} style={{color: BRAND_DARK}}>
+          <a href="https://imc.informatics.edu.ph/" target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-1 relative hover:opacity-100 after:content-[""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-[var(--brand-blue)] after:transition-all hover:after:w-full`} style={{color: BRAND_DARK}}>
             <Award size={16} style={{ color: BRAND_BLUE }} /> Microcredentials
           </a>
           <a href="#corporate" className={`inline-flex items-center gap-1 relative hover:opacity-100 after:content-[""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-[var(--brand-blue)] after:transition-all hover:after:w-full`} style={{color: BRAND_DARK}}>
@@ -298,7 +301,9 @@ function Nav() {
               style={{ touchAction: "pan-y" }}
             >
               <div className="flex items-center justify-between">
-                <img src={INFO_LOGO} alt="Informatics logo" className="h-8 w-auto" />
+                <a href={HOME_HREF} aria-label="Go to homepage" onClick={() => setMobileOpen(false)}>
+                  <img src={INFO_LOGO} alt="Informatics logo" className="h-8 w-auto" />
+                </a>
                 <button aria-label="Close menu" onClick={() => setMobileOpen(false)} className="p-2">
                   <X />
                 </button>
@@ -379,7 +384,7 @@ function Nav() {
                 <motion.a href="#about" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
                   <Info size={16} style={{ color: BRAND_BLUE }} /> About
                 </motion.a>
-                <motion.a href="#microcredentials" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
+                <motion.a href="https://imc.informatics.edu.ph/" target="_blank" rel="noopener noreferrer" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
                   <Award size={16} style={{ color: BRAND_BLUE }} /> Microcredentials
                 </motion.a>
                 <motion.a href="#corporate" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
@@ -1225,15 +1230,17 @@ function Footer() {
       <Container className="grid gap-8 md:grid-cols-4">
         <div className="col-span-2">
           <div className="flex items-center gap-3">
-            <img
-              src={INFO_LOGO}
-              alt="Informatics Philippines"
-              className="h-10 md:h-11 w-auto"
-              onError={(e) => {
-                e.currentTarget.onerror = null;
-                e.currentTarget.src = PLACEHOLDER_IMG;
-              }}
-            />
+            <a href={HOME_HREF} aria-label="Go to homepage">
+              <img
+                src={INFO_LOGO}
+                alt="Informatics Philippines"
+                className="h-10 md:h-11 w-auto"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = PLACEHOLDER_IMG;
+                }}
+              />
+            </a>
             {/* brand text removed per request */}
           </div>
           <p className="mt-3 text-sm text-slate-600 max-w-md">
