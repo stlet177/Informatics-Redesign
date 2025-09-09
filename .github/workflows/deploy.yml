@@ -26,9 +26,13 @@ jobs:
           node-version: 20
           cache: npm
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: |
+          npm ci || npm install --no-audit --no-fund
       - name: Build
-        run: npm run build
+        run: |
+          node -v
+          npm -v
+          npm run build || npx vite build
         env:
           # These are set automatically by Actions, but we ensure env visibility
           GITHUB_ACTIONS: true
