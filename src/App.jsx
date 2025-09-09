@@ -525,7 +525,7 @@ function Hero() {
   );
 }
 
-function ProgramCard({ icon: Icon, title, desc, img, featured = false, delay = 0 }) {
+function ProgramCard({ icon: Icon, title, desc, img, featured = false, delay = 0, tag }) {
   return (
     <motion.div
       className="rounded-2xl p-6 ring-1 ring-black/10 bg-white shadow-sm hover:shadow-md transition-shadow"
@@ -555,6 +555,13 @@ function ProgramCard({ icon: Icon, title, desc, img, featured = false, delay = 0
         </div>
         <h3 className="text-lg font-semibold" style={{color: BRAND_DARK}}>{title}</h3>
       </div>
+      {tag && (
+        <div className="mt-2">
+          <span className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-medium" style={{ color: BRAND_BLUE, border: '1px solid rgba(0,0,0,0.06)' }}>
+            {tag}
+          </span>
+        </div>
+      )}
       <p className="mt-3 text-sm text-slate-600">{desc}</p>
       <motion.a
         href="#"
@@ -632,6 +639,7 @@ function Programs() {
       icon: Compass,
       title: "GAS (General Academic Strand)",
       desc: "Offers a flexible mix of subjects, giving undecided students broader options for college and future careers.",
+      tag: "Exams.web M",
     },
   ];
 
@@ -696,6 +704,7 @@ function Programs() {
               icon={it.icon}
               title={it.title}
               desc={it.desc}
+              tag={it.tag}
               delay={i * 0.06}
             />
           ))}
