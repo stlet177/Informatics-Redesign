@@ -541,7 +541,11 @@ function ProgramCard({ icon: Icon, title, desc, img, video, featured = false, de
           <video
             src={video}
             className="w-full h-36 object-cover"
-            controls
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls={false}
             preload="metadata"
             poster={img || undefined}
           />
@@ -653,7 +657,6 @@ function Programs() {
       icon: Compass,
       title: "GAS (General Academic Strand)",
       desc: "Offers a flexible mix of subjects, giving undecided students broader options for college and future careers.",
-      tag: "Exams.webm",
       video: asset("assets/Exams.webm"),
     },
   ];
