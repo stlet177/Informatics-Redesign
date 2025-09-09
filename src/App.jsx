@@ -27,6 +27,7 @@ import {
   Menu,
   X,
   Phone,
+  MapPin,
   Database,
   LayoutDashboard,
   Compass,
@@ -527,7 +528,7 @@ function Hero() {
   );
 }
 
-function ProgramCard({ icon: Icon, title, desc, img, video, lottie, featured = false, delay = 0, tag }) {
+function ProgramCard({ icon: Icon, title, desc, img, video, lottie, featured = false, delay = 0, tag, descLines = 3, descMin = '4.5rem' }) {
   return (
     <motion.div
       className="rounded-2xl p-6 ring-1 ring-black/10 bg-white shadow-sm hover:shadow-md transition-shadow flex flex-col h-full"
@@ -598,7 +599,7 @@ function ProgramCard({ icon: Icon, title, desc, img, video, lottie, featured = f
       </div>
       <p
         className="mt-3 text-sm text-slate-600 flex-1"
-        style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden', minHeight: '4.5rem' }}
+        style={{ display: '-webkit-box', WebkitLineClamp: descLines, WebkitBoxOrient: 'vertical', overflow: 'hidden', minHeight: descMin }}
       >
         {desc}
       </p>
@@ -752,6 +753,8 @@ function Programs() {
               tag={it.tag}
               lottie={it.lottie}
               video={it.video}
+              descLines={4}
+              descMin={'5.75rem'}
               delay={i * 0.06}
             />
           ))}
@@ -985,6 +988,15 @@ function Contact() {
     return `https://www.google.com/maps?q=${q}&output=embed`;
   };
 
+  const overlayInfoFor = (key) => {
+    const entry = key ? BRANCH_CONTACTS[key] : null;
+    const name = entry?.label || "Informatics Philippines";
+    let line = "";
+    if (entry?.address) line = entry.address;
+    else if (entry?.coords) line = `${entry.coords.lat.toFixed(6)}, ${entry.coords.lng.toFixed(6)}`;
+    return { name, line };
+  };
+
   return (
     <section id="contact" className="py-16 md:py-24">
       <Container className="grid gap-10 md:grid-cols-2">
@@ -1075,7 +1087,7 @@ function Contact() {
             {/* Always-visible map; updates/pans when branch changes */}
             <div className="mt-6">
               <div className="font-medium mb-2" style={{color: BRAND_DARK}}>Map</div>
-              <div className="overflow-hidden rounded-xl ring-1 ring-black/5 h-72 md:h-80">
+              <div className="overflow-hidden rounded-xl ring-1 ring-black/5 h-72 md:h-80 relative">
                 <iframe
                   key={branch || 'default'}
                   title={`Map - ${branch ? BRANCH_CONTACTS[branch].label : 'Informatics Philippines'}`}
@@ -1086,6 +1098,19 @@ function Contact() {
                   referrerPolicy="no-referrer-when-downgrade"
                   className="w-full h-full border-0"
                 />
+                <div className="absolute bottom-2 left-2 right-2 sm:right-auto max-w-[92%] sm:max-w-md">
+                  <div className="inline-flex items-start gap-2 rounded-xl bg-white/95 backdrop-blur px-3 py-2 shadow-md ring-1 ring-black/5">
+                    <MapPin size={18} style={{ color: BRAND_BLUE }} />
+                    <div>
+                      <div className="text-sm font-semibold" style={{ color: BRAND_DARK }}>
+                        {overlayInfoFor(branch).name}
+                      </div>
+                      {overlayInfoFor(branch).line && (
+                        <div className="text-xs text-slate-600">{overlayInfoFor(branch).line}</div>
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
