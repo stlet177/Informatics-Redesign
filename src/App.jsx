@@ -652,16 +652,19 @@ function Programs() {
       icon: LaptopIcon,
       title: "ICT (Information and Communications Technology)",
       desc: "Focuses on computers, programming, and digital skills, preparing students for careers in IT and technology.",
+      lottie: asset("assets/ICT.lottie"),
     },
     {
       icon: BarChart3,
       title: "ABM (Accountancy, Business, and Management)",
       desc: "Centers on business, finance, and management, training students for entrepreneurship and corporate professions.",
+      lottie: asset("assets/ABM.lottie"),
     },
     {
       icon: BookOpen,
       title: "HUMSS (Humanities and Social Sciences)",
       desc: "Emphasizes communication, society, and culture, guiding students toward careers in education, law, journalism, and the social sciences.",
+      lottie: asset("assets/humss.lottie"),
     },
     {
       icon: Compass,
