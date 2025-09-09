@@ -720,6 +720,7 @@ function Programs() {
               title={it.title}
               desc={it.desc}
               tag={it.tag}
+              video={it.video}
               delay={i * 0.06}
             />
           ))}
