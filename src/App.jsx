@@ -1080,7 +1080,7 @@ function Contact() {
           </p>
         </div>
 
-        <motion.div {...fadeInUp} className="order-3 md:order-1 sm:px-0 px-6">
+        <motion.div {...fadeInUp} className="order-3 md:order-1 px-0">
           <h2 className="hidden md:block text-2xl md:text-3xl font-semibold" style={{color: BRAND_DARK}}>Get in touch</h2>
           <p className="hidden md:block mt-3 text-slate-600">
             Questions about admissions, tuition, or programs? Our team will reach out within 1-2 business days.
@@ -1105,7 +1105,7 @@ function Contact() {
             </div>
 
             {/* Mobile: combine Branch Contacts + Map into a single card; desktop/tablet: act as normal flow */}
-            <div className="sm:contents rounded-2xl bg-white ring-1 ring-black/5 p-3 mt-4">
+            <div className="sm:contents rounded-2xl bg-white ring-1 ring-black/5 p-3 mt-4 space-y-3 sm:space-y-0">
             {branch && (
               <div className="grid gap-3 text-sm" ref={contactsRef}>
                 <div className="rounded-xl bg-white sm:bg-transparent p-3 sm:p-0 ring-1 sm:ring-0 ring-black/5 sm:shadow-none shadow-sm">
