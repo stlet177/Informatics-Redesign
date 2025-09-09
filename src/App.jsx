@@ -953,6 +953,7 @@ function Contact() {
   const branchOptions = Object.entries(BRANCH_CONTACTS).map(([key, v]) => ({ key, label: v.label }));
   const [branch, setBranch] = useState("");
   const [copiedKey, setCopiedKey] = useState("");
+  const mapRef = useRef(null);
 
   const copyToClipboard = async (value, key) => {
     try {
@@ -965,6 +966,16 @@ function Contact() {
   };
 
   const isAvailable = (v) => v && v !== "N/A";
+
+  const handleBranchChange = (value) => {
+    setBranch(value);
+    // Smoothly scroll the map into view after state updates
+    setTimeout(() => {
+      if (mapRef && mapRef.current) {
+        mapRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 0);
+  };
 
   const mapUrlFor = (key) => {
     const entry = key ? BRANCH_CONTACTS[key] : null;
@@ -1033,7 +1044,7 @@ function Contact() {
                 className="rounded-xl border px-3 py-2 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)] focus:border-[var(--brand-blue)]"
                 style={{ borderColor: "#E2E8F0", minWidth: "12rem" }}
                 value={branch}
-                onChange={(e) => setBranch(e.target.value)}
+                onChange={(e) => handleBranchChange(e.target.value)}
               >
                 <option value="">Select a branch…</option>
                 {branchOptions.map((o) => (
@@ -1091,7 +1102,7 @@ function Contact() {
             )}
 
             {/* Always-visible map; updates/pans when branch changes */}
-            <div className="mt-6">
+            <div className="mt-6" ref={mapRef}>
               <div className="font-medium mb-2" style={{color: BRAND_DARK}}>Map</div>
               <div className="overflow-hidden rounded-xl ring-1 ring-black/5 h-72 md:h-80 relative">
                 <BranchMap branches={BRANCH_CONTACTS} active={branch} />
