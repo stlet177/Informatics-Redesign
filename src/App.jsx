@@ -1014,6 +1014,7 @@ function Contact() {
   const [copiedKey, setCopiedKey] = useState("");
   const mapRef = useRef(null);
   const contactsRef = useRef(null);
+  const selected = branch ? BRANCH_CONTACTS[branch] : null;
 
   const copyToClipboard = async (value, key) => {
     try {
@@ -1106,49 +1107,47 @@ function Contact() {
 
             {/* Mobile: combine Branch Contacts + Map into a single card; desktop/tablet: act as normal flow */}
             <div className="sm:contents rounded-2xl bg-white ring-1 ring-black/5 p-3 mt-4 space-y-3 sm:space-y-0">
-            {branch && (
-              <div className="grid gap-3 text-sm" ref={contactsRef}>
+              <div className="grid gap-3 text-sm min-h-[148px]" ref={contactsRef}>
                 <div className="rounded-xl bg-white sm:bg-transparent p-3 sm:p-0 ring-1 sm:ring-0 ring-black/5 sm:shadow-none shadow-sm">
                   <div className="font-medium" style={{color: BRAND_DARK}}>Branch Contacts</div>
                   <div className="mt-2 space-y-2">
                     <button
                       type="button"
-                      onClick={() => isAvailable(BRANCH_CONTACTS[branch].registrar) && copyToClipboard(BRANCH_CONTACTS[branch].registrar, "reg")}
-                      disabled={!isAvailable(BRANCH_CONTACTS[branch].registrar)}
+                      onClick={() => isAvailable(selected?.registrar) && copyToClipboard(selected?.registrar, "reg")}
+                      disabled={!isAvailable(selected?.registrar)}
                       className="w-full inline-flex items-center justify-between gap-3 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed text-[13px] sm:text-sm"
                       style={{ borderColor: "#E2E8F0", color: BRAND_DARK }}
                     >
                       <span className="inline-flex items-center gap-2 shrink-0"><Mail size={16} style={{ color: BRAND_BLUE }} /> Registrar</span>
-                      <span className="truncate select-text min-w-0 flex-1">{BRANCH_CONTACTS[branch].registrar}</span>
-                      <span className="text-slate-500 shrink-0">{isAvailable(BRANCH_CONTACTS[branch].registrar) ? (copiedKey === "reg" ? "Copied" : "Copy") : "N/A"}</span>
+                      <span className="truncate select-text min-w-0 flex-1">{selected?.registrar || "Select a branch"}</span>
+                      <span className="text-slate-500 shrink-0">{isAvailable(selected?.registrar) ? (copiedKey === "reg" ? "Copied" : "Copy") : "N/A"}</span>
                     </button>
                     <button
                       type="button"
-                      onClick={() => isAvailable(BRANCH_CONTACTS[branch].cashier) && copyToClipboard(BRANCH_CONTACTS[branch].cashier, "cash")}
-                      disabled={!isAvailable(BRANCH_CONTACTS[branch].cashier)}
+                      onClick={() => isAvailable(selected?.cashier) && copyToClipboard(selected?.cashier, "cash")}
+                      disabled={!isAvailable(selected?.cashier)}
                       className="w-full inline-flex items-center justify-between gap-3 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed text-[13px] sm:text-sm"
                       style={{ borderColor: "#E2E8F0", color: BRAND_DARK }}
                     >
                       <span className="inline-flex items-center gap-2 shrink-0"><Mail size={16} style={{ color: BRAND_BLUE }} /> Cashier</span>
-                      <span className="truncate select-text min-w-0 flex-1">{BRANCH_CONTACTS[branch].cashier}</span>
-                      <span className="text-slate-500 shrink-0">{isAvailable(BRANCH_CONTACTS[branch].cashier) ? (copiedKey === "cash" ? "Copied" : "Copy") : "N/A"}</span>
+                      <span className="truncate select-text min-w-0 flex-1">{selected?.cashier || "Select a branch"}</span>
+                      <span className="text-slate-500 shrink-0">{isAvailable(selected?.cashier) ? (copiedKey === "cash" ? "Copied" : "Copy") : "N/A"}</span>
                     </button>
                     <button
                       type="button"
-                      onClick={() => isAvailable(BRANCH_CONTACTS[branch].phone) && copyToClipboard(BRANCH_CONTACTS[branch].phone, "phone")}
-                      disabled={!isAvailable(BRANCH_CONTACTS[branch].phone)}
+                      onClick={() => isAvailable(selected?.phone) && copyToClipboard(selected?.phone, "phone")}
+                      disabled={!isAvailable(selected?.phone)}
                       className="w-full inline-flex items-center justify-between gap-3 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed text-[13px] sm:text-sm"
                       style={{ borderColor: "#E2E8F0", color: BRAND_DARK }}
                     >
                       <span className="inline-flex items-center gap-2 shrink-0"><Phone size={16} style={{ color: BRAND_BLUE }} /> Phone</span>
-                      <span className="truncate select-text min-w-0 flex-1">{BRANCH_CONTACTS[branch].phone || "N/A"}</span>
-                      <span className="text-slate-500 shrink-0">{isAvailable(BRANCH_CONTACTS[branch].phone) ? (copiedKey === "phone" ? "Copied" : "Copy") : "N/A"}</span>
+                      <span className="truncate select-text min-w-0 flex-1">{selected?.phone || "N/A"}</span>
+                      <span className="text-slate-500 shrink-0">{isAvailable(selected?.phone) ? (copiedKey === "phone" ? "Copied" : "Copy") : "N/A"}</span>
                     </button>
                   </div>
                 </div>
                 <div className="text-[12px] text-slate-500">records@informatics.edu.ph (for closed center)</div>
               </div>
-            )}
 
             {/* Always-visible map; updates/pans when branch changes */}
             <div className="mt-3 sm:mt-6" ref={mapRef}>
