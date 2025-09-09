@@ -985,20 +985,8 @@ function Contact() {
   const isAvailable = (v) => v && v !== "N/A";
 
   const handleBranchChange = (value) => {
+    // Disable auto-scroll per request; keep selection + map fly-to behavior
     setBranch(value);
-    // Smoothly scroll the map into view after state updates
-    setTimeout(() => {
-      const mapEl = mapRef?.current;
-      const contactsEl = contactsRef?.current;
-      if (!mapEl || !contactsEl) return;
-      const viewportH = window.innerHeight;
-      const marginTop = 64; // keep contacts near top
-      const contactsTopAbs = contactsEl.getBoundingClientRect().top + window.scrollY;
-      const docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-      const maxScrollTop = Math.max(docH - viewportH, 0);
-      const targetTop = Math.min(Math.max(contactsTopAbs - marginTop, 0), maxScrollTop);
-      window.scrollTo({ top: targetTop, behavior: "smooth" });
-    }, 50);
   };
 
   const mapUrlFor = (key) => {
