@@ -538,7 +538,7 @@ function ProgramCard({ icon: Icon, title, desc, img, video, lottie, featured = f
       whileTap={{ scale: 0.99 }}
     >
       {lottie ? (
-        <div className="-mt-2 -mx-2 mb-4 overflow-hidden rounded-xl ring-1 ring-black/5 h-36">
+        <div className="-mt-2 -mx-2 mb-4 overflow-hidden rounded-xl ring-1 ring-black/5 h-40 sm:h-36">
           <DotLottieReact
             src={lottie}
             loop
@@ -547,10 +547,10 @@ function ProgramCard({ icon: Icon, title, desc, img, video, lottie, featured = f
           />
         </div>
       ) : video ? (
-        <div className="-mt-2 -mx-2 mb-4 overflow-hidden rounded-xl ring-1 ring-black/5">
+        <div className="-mt-2 -mx-2 mb-4 overflow-hidden rounded-xl ring-1 ring-black/5 h-40 sm:h-36">
           <video
             src={video}
-            className="w-full h-36 object-cover"
+            className="w-full h-full object-cover"
             autoPlay
             muted
             loop
@@ -562,11 +562,11 @@ function ProgramCard({ icon: Icon, title, desc, img, video, lottie, featured = f
         </div>
       ) : (
         img && (
-          <div className="-mt-2 -mx-2 mb-4 overflow-hidden rounded-xl ring-1 ring-black/5">
+          <div className="-mt-2 -mx-2 mb-4 overflow-hidden rounded-xl ring-1 ring-black/5 h-40 sm:h-36">
             <img
               src={img}
               alt="Program visual"
-              className="w-full h-36 object-cover"
+              className="w-full h-full object-cover"
               onError={(e) => {
                 e.currentTarget.onerror = null;
                 e.currentTarget.src = PLACEHOLDER_IMG;
@@ -664,13 +664,13 @@ function Programs() {
       icon: BookOpen,
       title: "HUMSS (Humanities and Social Sciences)",
       desc: "Emphasizes communication, society, and culture, guiding students toward careers in education, law, journalism, and the social sciences.",
-      lottie: asset("assets/humss.lottie"),
+      lottie: asset("assets/education.lottie"),
     },
     {
       icon: Compass,
       title: "GAS (General Academic Strand)",
       desc: "Offers a flexible mix of subjects, giving undecided students broader options for college and future careers.",
-      lottie: asset("assets/GAS.lottie"),
+      lottie: asset("assets/GAS2.lottie"),
       video: asset("assets/Exams.webm"),
     },
   ];
