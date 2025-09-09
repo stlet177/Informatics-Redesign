@@ -1105,7 +1105,7 @@ function Contact() {
             </div>
 
             {branch && (
-              <div className="mt-4 grid gap-3 text-sm" ref={contactsRef}>
+              <div className="mt-4 grid gap-3 text-sm sm:mx-0 mx-2" ref={contactsRef}>
                 <div className="rounded-xl bg-white p-4 ring-1 ring-black/5 shadow-sm">
                   <div className="font-medium" style={{color: BRAND_DARK}}>Branch Contacts</div>
                   <div className="mt-2 space-y-2">
@@ -1151,9 +1151,9 @@ function Contact() {
             {/* Always-visible map; updates/pans when branch changes */}
             <div className="mt-6" ref={mapRef}>
               <div className="font-medium mb-2" style={{color: BRAND_DARK}}>Map</div>
-              <div className="relative z-0 isolate overflow-hidden rounded-xl ring-1 ring-black/5 h-64 sm:h-72 md:h-80">
+              <div className="relative z-0 isolate overflow-hidden rounded-xl ring-1 ring-black/5 h-64 sm:h-72 md:h-80 sm:mx-0 mx-2">
                 <BranchMap branches={BRANCH_CONTACTS} active={branch} />
-                <div className="absolute bottom-2 left-2 right-2 sm:right-auto max-w-[92%] sm:max-w-md">
+                <div className="absolute bottom-2 left-3 right-3 sm:left-2 sm:right-auto max-w-[92%] sm:max-w-md">
                   <div className="inline-flex items-start gap-2 rounded-xl bg-white/90 backdrop-blur px-3 py-2 shadow-md ring-1 ring-black/5">
                     <MapPin size={16} style={{ color: BRAND_BLUE }} />
                     <div>

@@ -57,7 +57,7 @@ export default function BranchMap({ branches, active }) {
       scrollWheelZoom={false}
       dragging={!isMobile}
       touchZoom={!isMobile}
-      style={{ width: '100%', height: '100%' }}
+      style={{ width: '100%', height: '100%', touchAction: 'pan-y' }}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
