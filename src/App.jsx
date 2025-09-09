@@ -972,7 +972,9 @@ function Contact() {
     // Smoothly scroll the map into view after state updates
     setTimeout(() => {
       if (mapRef && mapRef.current) {
-        mapRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+        const rect = mapRef.current.getBoundingClientRect();
+        const targetY = rect.top + window.scrollY - window.innerHeight * 0.35; // leave contacts + map visible
+        window.scrollTo({ top: Math.max(targetY, 0), behavior: "smooth" });
       }
     }, 0);
   };
