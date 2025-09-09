@@ -575,11 +575,18 @@ function ProgramCard({ icon: Icon, title, desc, img, video, lottie, featured = f
           </div>
         )
       )}
-      <div className="flex items-start gap-3 min-h-[48px]">
-        <div className="rounded-xl p-2" style={{ background: BRAND_LIGHT }}>
-          <Icon style={{ color: BRAND_BLUE }} />
+      <div className="flex items-start gap-3 min-h-[56px]">
+        <div className="rounded-xl p-2 shrink-0" style={{ background: BRAND_LIGHT }}>
+          <Icon size={20} style={{ color: BRAND_BLUE }} />
         </div>
-        <h3 className="text-lg font-semibold" style={{color: BRAND_DARK}}>{title}</h3>
+        <div className="flex-1">
+          <h3
+            className="text-lg font-semibold leading-snug"
+            style={{ color: BRAND_DARK, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}
+          >
+            {title}
+          </h3>
+        </div>
       </div>
       <div className="mt-2 min-h-[22px]">
         {tag ? (
@@ -588,7 +595,12 @@ function ProgramCard({ icon: Icon, title, desc, img, video, lottie, featured = f
           </span>
         ) : null}
       </div>
-      <p className="mt-3 text-sm text-slate-600 flex-1 min-h-[80px] sm:min-h-[88px]">{desc}</p>
+      <p
+        className="mt-3 text-sm text-slate-600 flex-1"
+        style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden', minHeight: '4.5rem' }}
+      >
+        {desc}
+      </p>
       <div className="mt-auto pt-2">
         <motion.a
           href="#"
