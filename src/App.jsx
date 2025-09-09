@@ -1071,7 +1071,7 @@ function Contact() {
 
   return (
     <section id="contact" className="py-16 md:py-24 overflow-x-hidden">
-      <Container className="grid gap-10 md:grid-cols-2">
+      <Container className="grid gap-6 md:gap-10 md:grid-cols-2">
         {/* Mobile heading + blurb at the top */}
         <div className="md:hidden order-1">
           <h2 className="text-2xl font-semibold" style={{color: BRAND_DARK}}>Get in touch</h2>
@@ -1090,7 +1090,7 @@ function Contact() {
             <div className="text-sm font-semibold flex items-center gap-2" style={{color: BRAND_DARK}}>
               <Mail size={16} style={{ color: BRAND_BLUE }} /> Emails For Your Concern
             </div>
-            <div className="mt-2 text-sm text-slate-600 sm:mx-0 mx-2">Pick your branch to see Registrar, Cashier, and Phone contacts. Tap to copy.</div>
+            <div className="mt-2 text-sm text-slate-600 sm:mx-0 mx-4">Pick your branch to see Registrar, Cashier, and Phone contacts. Tap to copy.</div>
 
             <div className="mt-4 grid gap-3 sm:flex sm:items-end sm:mx-0 mx-4">
               <div className="w-full sm:w-auto min-w-[12rem]">
@@ -1106,7 +1106,7 @@ function Contact() {
 
             {branch && (
               <div className="mt-4 grid gap-3 text-sm sm:mx-0 mx-4" ref={contactsRef}>
-                <div className="rounded-xl bg-white p-4 ring-1 ring-black/5 shadow-sm">
+                <div className="rounded-xl bg-white p-3 sm:p-4 ring-1 ring-black/5 shadow-sm">
                   <div className="font-medium" style={{color: BRAND_DARK}}>Branch Contacts</div>
                   <div className="mt-2 space-y-2">
                     <button
@@ -1151,7 +1151,7 @@ function Contact() {
             {/* Always-visible map; updates/pans when branch changes */}
             <div className="mt-6" ref={mapRef}>
               <div className="font-medium mb-2" style={{color: BRAND_DARK}}>Map</div>
-              <div className="relative z-0 isolate overflow-hidden rounded-xl ring-1 ring-black/5 h-64 sm:h-72 md:h-80 sm:mx-0 mx-4">
+              <div className="relative z-0 isolate overflow-hidden rounded-xl ring-1 ring-black/5 h-56 sm:h-64 md:h-80 sm:mx-0 mx-4">
                 <BranchMap branches={BRANCH_CONTACTS} active={branch} />
                 <div className="absolute bottom-2 left-4 right-4 sm:left-2 sm:right-auto max-w-[92%] sm:max-w-md">
                   <div className="inline-flex items-start gap-2 rounded-xl bg-white/90 backdrop-blur px-3 py-2 shadow-md ring-1 ring-black/5">
