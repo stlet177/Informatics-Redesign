@@ -1167,7 +1167,7 @@ function Contact() {
                           href={mapsLinkFor(branch)}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[11px] sm:text-xs text-slate-600 underline decoration-dotted hover:decoration-solid"
+                          className="text-[11px] sm:text-xs text-slate-600 underline decoration-dotted hover:decoration-solid break-words"
                         >
                           {overlayInfoFor(branch).line}
                         </a>
