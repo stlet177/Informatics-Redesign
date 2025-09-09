@@ -993,27 +993,10 @@ function Contact() {
       if (!mapEl || !contactsEl) return;
       const viewportH = window.innerHeight;
       const marginTop = 64; // keep contacts near top
-
       const contactsTopAbs = contactsEl.getBoundingClientRect().top + window.scrollY;
-      const mapRect = mapEl.getBoundingClientRect();
-      const mapTopAbs = mapRect.top + window.scrollY;
-      const mapHeight = mapRect.height || 0;
-
-      // Primary goal: bring contacts near the top (with a small margin)
-      const desiredTop = Math.max(contactsTopAbs - marginTop, 0);
-
-      // Secondary goal: ensure a portion of the map is visible without forcing the entire map
-      const minVisibleMap = Math.min(Math.max(mapHeight * 0.33, 120), 220); // 33% of map (120–220px)
-      const minScrollForMap = Math.max(mapTopAbs + minVisibleMap - viewportH, 0);
-
-      let targetTop = Math.max(desiredTop, minScrollForMap);
-      const docH = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight
-      );
+      const docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
       const maxScrollTop = Math.max(docH - viewportH, 0);
-      targetTop = Math.min(targetTop, maxScrollTop);
-
+      const targetTop = Math.min(Math.max(contactsTopAbs - marginTop, 0), maxScrollTop);
       window.scrollTo({ top: targetTop, behavior: "smooth" });
     }, 50);
   };
