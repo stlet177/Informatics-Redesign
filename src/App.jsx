@@ -900,14 +900,6 @@ function Contact() {
       address: "2070 BDO Bldg. Recto Ave Quiapo, Manila",
       coords: { lat: 14.601307814946743, lng: 120.98930082652203 },
     },
-    eastwood: {
-      label: "Eastwood",
-      registrar: "registrar_eastwood@informatics.edu.ph",
-      cashier: "cashier_eastwood@informatics.edu.ph",
-      phone: null,
-      address: null,
-      coords: { lat: 14.609839808371692, lng: 121.07665553018593 },
-    },
     ng: {
       label: "Northgate",
       registrar: "registrar_ng@informatics.edu.ph",
