@@ -26,6 +26,7 @@ import {
   Briefcase,
   Menu,
   X,
+  Phone,
   Database,
   LayoutDashboard,
   Compass,
@@ -891,42 +892,64 @@ function Contact() {
       label: "Manila",
       registrar: "registrar_manila@informatics.edu.ph",
       cashier: "cashier_manila@informatics.edu.ph",
+      phone: "09453210716",
+      address: "2070 BDO Bldg. Recto Ave Quiapo, Manila",
       coords: null,
     },
     eastwood: {
       label: "Eastwood",
       registrar: "registrar_eastwood@informatics.edu.ph",
       cashier: "cashier_eastwood@informatics.edu.ph",
+      phone: null,
+      address: null,
       coords: null,
     },
     ng: {
-      label: "NG",
+      label: "Northgate",
       registrar: "registrar_ng@informatics.edu.ph",
       cashier: "cashier_ng@informatics.edu.ph",
+      phone: "09606114435",
+      address: "Indo China Drive, Northgate Cyberzone Filinvest Corporate City, Alabang Muntinlupa City, Metro Manila",
       coords: null,
     },
     cavite: {
       label: "Cavite",
       registrar: "registrar_cavite@informatics.edu.ph",
       cashier: "cashier_cavite@informatics.edu.ph",
+      phone: "(Landline) 046-4712310",
+      address: null,
       coords: null,
     },
     baguio: {
       label: "Baguio",
       registrar: "registrar_baguio@informatics.edu.ph",
       cashier: "cashierbaguio@informatics.edu.ph",
+      phone: "09175753237",
+      address: null,
+      coords: null,
+    },
+    cebu: {
+      label: "Cebu",
+      registrar: "N/A",
+      cashier: "N/A",
+      phone: "09178364963",
+      address: null,
       coords: null,
     },
     cdo: {
       label: "CDO",
       registrar: "registrar.cdo@informatics.edu.ph",
       cashier: "cashier.cdo@informatics.edu.ph",
+      phone: "N/A",
+      address: null,
       coords: null,
     },
     conso: {
       label: "Consolidated",
       registrar: "registrar_conso@informatics.edu.ph",
       cashier: "cashier_conso@informatics.edu.ph",
+      phone: null,
+      address: null,
       coords: null,
     },
   };
@@ -935,7 +958,7 @@ function Contact() {
   const [branch, setBranch] = useState("");
   const [copiedKey, setCopiedKey] = useState("");
 
-  const copyEmail = async (value, key) => {
+  const copyToClipboard = async (value, key) => {
     try {
       await navigator.clipboard.writeText(value);
       setCopiedKey(key);
@@ -945,11 +968,17 @@ function Contact() {
     }
   };
 
+  const isAvailable = (v) => v && v !== "N/A";
+
   const mapUrlFor = (key) => {
     const entry = key ? BRANCH_CONTACTS[key] : null;
     if (entry?.coords && typeof entry.coords.lat === 'number' && typeof entry.coords.lng === 'number') {
       const { lat, lng } = entry.coords;
-      return `https://www.google.com/maps?q=loc:${lat},${lng}&z=16&output=embed`;
+      return `https://www.google.com/maps?q=loc:${lat},${lng}&z=17&output=embed`;
+    }
+    if (entry?.address) {
+      const a = encodeURIComponent(entry.address);
+      return `https://www.google.com/maps?q=${a}&z=17&output=embed`;
     }
     const label = entry?.label || "Philippines";
     const q = encodeURIComponent(`Informatics ${label} campus`);
@@ -1001,26 +1030,42 @@ function Contact() {
                   <div className="font-medium" style={{color: BRAND_DARK}}>Registrar</div>
                   <button
                     type="button"
-                    onClick={() => copyEmail(BRANCH_CONTACTS[branch].registrar, "reg")}
-                    className="mt-1 inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99]"
+                    onClick={() => isAvailable(BRANCH_CONTACTS[branch].registrar) && copyToClipboard(BRANCH_CONTACTS[branch].registrar, "reg")}
+                    disabled={!isAvailable(BRANCH_CONTACTS[branch].registrar)}
+                    className="mt-1 inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{ borderColor: "#E2E8F0", color: BRAND_DARK }}
                   >
                     {copiedKey === "reg" ? <Check size={16} style={{ color: BRAND_BLUE }} /> : <Mail size={16} style={{ color: BRAND_BLUE }} />}
                     <span className="select-text">{BRANCH_CONTACTS[branch].registrar}</span>
-                    <span className="text-slate-500">{copiedKey === "reg" ? "Copied" : "Copy"}</span>
+                    <span className="text-slate-500">{isAvailable(BRANCH_CONTACTS[branch].registrar) ? (copiedKey === "reg" ? "Copied" : "Copy") : "N/A"}</span>
                   </button>
                 </div>
                 <div className="rounded-xl bg-white p-4 ring-1 ring-black/5 shadow-sm">
                   <div className="font-medium" style={{color: BRAND_DARK}}>Cashier</div>
                   <button
                     type="button"
-                    onClick={() => copyEmail(BRANCH_CONTACTS[branch].cashier, "cash")}
-                    className="mt-1 inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99]"
+                    onClick={() => isAvailable(BRANCH_CONTACTS[branch].cashier) && copyToClipboard(BRANCH_CONTACTS[branch].cashier, "cash")}
+                    disabled={!isAvailable(BRANCH_CONTACTS[branch].cashier)}
+                    className="mt-1 inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{ borderColor: "#E2E8F0", color: BRAND_DARK }}
                   >
                     {copiedKey === "cash" ? <Check size={16} style={{ color: BRAND_BLUE }} /> : <Mail size={16} style={{ color: BRAND_BLUE }} />}
                     <span className="select-text">{BRANCH_CONTACTS[branch].cashier}</span>
-                    <span className="text-slate-500">{copiedKey === "cash" ? "Copied" : "Copy"}</span>
+                    <span className="text-slate-500">{isAvailable(BRANCH_CONTACTS[branch].cashier) ? (copiedKey === "cash" ? "Copied" : "Copy") : "N/A"}</span>
+                  </button>
+                </div>
+                <div className="rounded-xl bg-white p-4 ring-1 ring-black/5 shadow-sm">
+                  <div className="font-medium" style={{color: BRAND_DARK}}>Phone</div>
+                  <button
+                    type="button"
+                    onClick={() => isAvailable(BRANCH_CONTACTS[branch].phone) && copyToClipboard(BRANCH_CONTACTS[branch].phone, "phone")}
+                    disabled={!isAvailable(BRANCH_CONTACTS[branch].phone)}
+                    className="mt-1 inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
+                    style={{ borderColor: "#E2E8F0", color: BRAND_DARK }}
+                  >
+                    {copiedKey === "phone" ? <Check size={16} style={{ color: BRAND_BLUE }} /> : <Phone size={16} style={{ color: BRAND_BLUE }} />}
+                    <span className="select-text">{BRANCH_CONTACTS[branch].phone || "N/A"}</span>
+                    <span className="text-slate-500">{isAvailable(BRANCH_CONTACTS[branch].phone) ? (copiedKey === "phone" ? "Copied" : "Copy") : "N/A"}</span>
                   </button>
                 </div>
                 <div className="text-[12px] text-slate-500">records@informatics.edu.ph (for closed center)</div>
@@ -1049,7 +1094,7 @@ function Contact() {
               <div className="font-medium text-sm" style={{color: BRAND_DARK}}>Technical Support</div>
               <button
                 type="button"
-                onClick={() => copyEmail("tech.support@informatics.edu.ph", "tech")}
+                onClick={() => copyToClipboard("tech.support@informatics.edu.ph", "tech")}
                 className="mt-1 inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] text-sm"
                 style={{ borderColor: "#E2E8F0", color: BRAND_DARK }}
               >
