@@ -891,36 +891,43 @@ function Contact() {
       label: "Manila",
       registrar: "registrar_manila@informatics.edu.ph",
       cashier: "cashier_manila@informatics.edu.ph",
+      coords: null,
     },
     eastwood: {
       label: "Eastwood",
       registrar: "registrar_eastwood@informatics.edu.ph",
       cashier: "cashier_eastwood@informatics.edu.ph",
+      coords: null,
     },
     ng: {
       label: "NG",
       registrar: "registrar_ng@informatics.edu.ph",
       cashier: "cashier_ng@informatics.edu.ph",
+      coords: null,
     },
     cavite: {
       label: "Cavite",
       registrar: "registrar_cavite@informatics.edu.ph",
       cashier: "cashier_cavite@informatics.edu.ph",
+      coords: null,
     },
     baguio: {
       label: "Baguio",
       registrar: "registrar_baguio@informatics.edu.ph",
       cashier: "cashierbaguio@informatics.edu.ph",
+      coords: null,
     },
     cdo: {
       label: "CDO",
       registrar: "registrar.cdo@informatics.edu.ph",
       cashier: "cashier.cdo@informatics.edu.ph",
+      coords: null,
     },
     conso: {
       label: "Consolidated",
       registrar: "registrar_conso@informatics.edu.ph",
       cashier: "cashier_conso@informatics.edu.ph",
+      coords: null,
     },
   };
 
@@ -939,7 +946,12 @@ function Contact() {
   };
 
   const mapUrlFor = (key) => {
-    const label = BRANCH_CONTACTS[key]?.label || "";
+    const entry = key ? BRANCH_CONTACTS[key] : null;
+    if (entry?.coords && typeof entry.coords.lat === 'number' && typeof entry.coords.lng === 'number') {
+      const { lat, lng } = entry.coords;
+      return `https://www.google.com/maps?q=loc:${lat},${lng}&z=16&output=embed`;
+    }
+    const label = entry?.label || "Philippines";
     const q = encodeURIComponent(`Informatics ${label} campus`);
     return `https://www.google.com/maps?q=${q}&output=embed`;
   };
@@ -1012,24 +1024,25 @@ function Contact() {
                   </button>
                 </div>
                 <div className="text-[12px] text-slate-500">records@informatics.edu.ph (for closed center)</div>
-
-                {/* Branch Map */}
-                <div className="mt-2">
-                  <div className="font-medium mb-2" style={{color: BRAND_DARK}}>Map</div>
-                  <div className="overflow-hidden rounded-xl ring-1 ring-black/5 h-64">
-                    <iframe
-                      title={`Map - ${BRANCH_CONTACTS[branch].label}`}
-                      src={mapUrlFor(branch)}
-                      width="100%"
-                      height="100%"
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      className="w-full h-full border-0"
-                    />
-                  </div>
-                </div>
               </div>
             )}
+
+            {/* Always-visible map; updates/pans when branch changes */}
+            <div className="mt-6">
+              <div className="font-medium mb-2" style={{color: BRAND_DARK}}>Map</div>
+              <div className="overflow-hidden rounded-xl ring-1 ring-black/5 h-72 md:h-80">
+                <iframe
+                  key={branch || 'default'}
+                  title={`Map - ${branch ? BRANCH_CONTACTS[branch].label : 'Informatics Philippines'}`}
+                  src={mapUrlFor(branch)}
+                  width="100%"
+                  height="100%"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full border-0"
+                />
+              </div>
+            </div>
 
             {/* Keep technical support visible */}
             <div className="mt-6">
