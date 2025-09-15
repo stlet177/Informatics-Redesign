@@ -228,6 +228,7 @@ export default function Nav() {
                 <div>
                   <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Programs</div>
                   <ul className="mt-2 space-y-2">
+                    <li><motion.a href="#/programs/shs" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50"><GraduationCap size={16} style={{ color: BRAND_BLUE }} /> Senior High School Tracks</motion.a></li>
                     <li><motion.a href="#/programs/information-technology" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50"><LaptopIcon /> Information Technology</motion.a></li>
                     <li><motion.a href="#/programs/computer-science" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50"><Code2 size={16} style={{ color: BRAND_BLUE }} /> Computer Science</motion.a></li>
                     <li><motion.a href="#/programs/information-systems" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50"><DatabaseIcon /> Information Systems</motion.a></li>
