@@ -5,6 +5,7 @@ import { asset } from "../lib/assets";
 import { fadeInUp } from "../lib/variants";
 import { ChevronRight } from "lucide-react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { admissionsConfig } from "../lib/content.config";
 
 export default function AdmissionsCTA() {
   return (
@@ -21,9 +22,18 @@ export default function AdmissionsCTA() {
             <li>Entrance assessment with outcomes-based advising</li>
             <li>Scholarships and partner-funded grants</li>
           </ul>
-          <div className="mt-6">
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-white" style={{ background: BRAND_BLUE }}>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a href="#/contact" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-white" style={{ background: BRAND_BLUE }}>
               Begin application <ChevronRight size={18} />
+            </a>
+            <a
+              href={admissionsConfig.imcRegistrationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl px-5 py-3 border"
+              style={{ borderColor: BRAND_BLUE, color: BRAND_BLUE }}
+            >
+              IMC application <ChevronRight size={18} />
             </a>
           </div>
         </motion.div>
@@ -52,4 +62,3 @@ export default function AdmissionsCTA() {
     </section>
   );
 }
-

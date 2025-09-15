@@ -4,21 +4,34 @@ import ProgramCard from "./ProgramCard";
 import { BRAND_BLUE } from "../lib/brand";
 import { asset } from "../lib/assets";
 import { fadeInUp } from "../lib/variants";
-import { BookOpen, Code2, Database, BarChart3, Compass } from "lucide-react";
+import { GraduationCap, BookOpen, Layers, Award } from "lucide-react";
 
 export default function Programs() {
-  const degreeItems = [
-    { icon: BookOpen, title: "BS Information Technology", desc: "Core CS/IT fundamentals, software engineering, cloud, and security tracks with modern toolchains.", href: "#/programs/information-technology" },
-    { icon: Code2, title: "BS Computer Science", desc: "Computational theory, algorithms, AI/ML foundations, and high-performance software design.", href: "#/programs/computer-science" },
-    { icon: Database, title: "BS Information Systems", desc: "Business process analysis, data systems, and tech-enabled decision support in organizations.", href: "#/programs/information-systems" },
-    { icon: BarChart3, title: "BS Business Administration (Business Analytics)", desc: "Management + data literacy: spreadsheets to dashboards to real-world decision systems.", href: "#/programs/business-administration" },
-  ];
-
-  const shsItems = [
-    { icon: BookOpen, title: "ICT (Information and Communications Technology)", desc: "Focuses on computers, programming, and digital skills, preparing students for careers in IT and technology.", lottie: asset("assets/ICT.lottie") },
-    { icon: BarChart3, title: "ABM (Accountancy, Business, and Management)", desc: "Centers on business, finance, and management, training students for entrepreneurship and corporate professions.", lottie: asset("assets/ABM.lottie") },
-    { icon: BookOpen, title: "HUMSS (Humanities and Social Sciences)", desc: "Emphasizes communication, society, and culture, guiding students toward careers in education, law, journalism, and the social sciences.", lottie: asset("assets/education.lottie") },
-    { icon: Compass, title: "GAS (General Academic Strand)", desc: "Offers a flexible mix of subjects, giving undecided students broader options for college and future careers.", lottie: asset("assets/GAS2.lottie"), video: asset("assets/Exams.webm") },
+  const categories = [
+    {
+      icon: GraduationCap,
+      title: "Higher Education",
+      desc: "Bachelor’s degree programs aligned with industry: IT, CS, IS, and Business Analytics.",
+      href: "#/programs#academic",
+    },
+    {
+      icon: BookOpen,
+      title: "Senior High School",
+      desc: "ICT, ABM, HUMSS, and GAS tracks that build strong foundations for college and careers.",
+      href: "#/programs/shs",
+    },
+    {
+      icon: Layers,
+      title: "Certificate Programs",
+      desc: "TESDA and Diploma programs focused on practical, job-ready skills.",
+      href: "#/programs#certificates",
+    },
+    {
+      icon: Award,
+      title: "Short Courses (IMC)",
+      desc: "Upskill fast with flexible short programs. Explore the IMC catalog.",
+      href: "https://imc.informatics.edu.ph/",
+    },
   ];
 
   return (
@@ -37,32 +50,19 @@ export default function Programs() {
       <Container className="relative z-10">
         <motion.h2 {...fadeInUp} className="text-2xl md:text-3xl font-semibold">Programs that align with industry</motion.h2>
 
-        {/* Bachelor's Degree Programs */}
+        {/* Program categories (4 cards) */}
         <div className="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
-          <div className="col-span-full inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold" style={{ background: '#F2F8FF', color: BRAND_BLUE }}>
-            Bachelor's Degree Programs
-          </div>
-          {degreeItems.map((it, i) => {
-            const imgMap = {
-              "BS Information Technology": asset("assets/informationtechnology.jpg"),
-              "BS Computer Science": asset("assets/computerscience.jpg"),
-              "BS Information Systems": asset("assets/Informationsystem.jpg"),
-              "BS Business Administration (Business Analytics)": asset("assets/BSBA.jpg"),
-            };
-            return (
-              <ProgramCard key={i} icon={it.icon} title={it.title} desc={it.desc} img={imgMap[it.title]} delay={i * 0.06} href={it.href}
-              />
-            );
-          })}
-        </div>
-
-        {/* Senior High School Tracks */}
-        <div className="mt-10 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
-          <div className="col-span-full inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold" style={{ background: '#F2F8FF', color: BRAND_BLUE }}>
-            Senior High School Tracks
-          </div>
-          {shsItems.map((it, i) => (
-            <ProgramCard key={i} icon={it.icon} title={it.title} desc={it.desc} tag={it.tag} lottie={it.lottie} video={it.video} descLines={4} descMin={'5.75rem'} delay={i * 0.06} />
+          {categories.map((it, i) => (
+            <ProgramCard
+              key={i}
+              icon={it.icon}
+              title={it.title}
+              desc={it.desc}
+              href={it.href}
+              descLines={4}
+              descMin={'5.75rem'}
+              delay={i * 0.06}
+            />
           ))}
         </div>
       </Container>

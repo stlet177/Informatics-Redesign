@@ -5,28 +5,22 @@ import {
   ChevronDown,
   BookOpen,
   GraduationCap,
-  Users,
-  Mail,
-  Megaphone,
   Code2,
   BarChart3,
   Shield,
-  Layers,
-  ClipboardCheck,
   Globe,
   Info,
   HelpCircle,
   Award,
-  Briefcase,
   Menu,
   X,
-  LayoutDashboard,
-  Compass,
+  Home,
 } from "lucide-react";
 import Container from "./Container";
 import LaptopIcon from "./LaptopIcon";
 import { BRAND_BLUE, BRAND_DARK, BRAND_LIGHT, HOME_HREF } from "../lib/brand";
 import { INFO_LOGO, PLACEHOLDER_IMG } from "../lib/assets";
+import { navConfig } from "../lib/content.config";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -71,7 +65,55 @@ export default function Nav() {
           </div>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium" role="menubar" aria-label="Primary">
+            <a href="#/" className={`inline-flex items-center gap-1 relative hover:opacity-100 after:content-["""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-[var(--brand-blue)] after:transition-all hover:after:w-full`} style={{color: BRAND_DARK}}>
+              <Home size={16} style={{ color: BRAND_BLUE }} /> Home
+            </a>
+
+            <div
+              className="relative"
+              onMouseEnter={() => {
+                if (aboutTimerRef.current) clearTimeout(aboutTimerRef.current);
+                setAboutOpen(true);
+              }}
+              onMouseLeave={() => {
+                aboutTimerRef.current = setTimeout(() => setAboutOpen(false), 160);
+              }}
+            >
+              <motion.button
+                className="inline-flex items-center gap-1 hover:opacity-80"
+                style={{ color: BRAND_DARK }}
+                aria-expanded={aboutOpen}
+                onClick={() => setAboutOpen((v) => !v)}
+                whileHover={{ y: -1 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Info size={16} style={{ color: BRAND_BLUE }} /> About Informatics <ChevronDown size={16} className={aboutOpen ? "transition-transform rotate-180" : "transition-transform"} />
+              </motion.button>
+              <AnimatePresence>
+                {aboutOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                    className="absolute left-0 mt-2 w-80 rounded-xl bg-white shadow-lg ring-1 ring-black/5 p-3 z-50"
+                    role="menu"
+                  >
+                    <ul className="space-y-1 text-sm" role="none">
+                      {navConfig.about.map((it) => (
+                        <li key={it.label} role="none">
+                          <a href={it.href} className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{color: BRAND_DARK}} role="menuitem">
+                            {it.label.includes('Privacy') ? <Shield size={16} style={{ color: BRAND_BLUE }} /> : it.label.includes('FAQs') ? <HelpCircle size={16} style={{ color: BRAND_BLUE }} /> : it.label.includes('Explore') ? <BookOpen size={16} style={{ color: BRAND_BLUE }} /> : <Info size={16} style={{ color: BRAND_BLUE }} />}
+                            {it.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
             <div
               className="relative"
               onMouseEnter={() => {
@@ -101,101 +143,37 @@ export default function Nav() {
                     transition={{ duration: 0.18, ease: "easeOut" }}
                     className="absolute left-0 mt-2 w-[520px] rounded-xl bg-white shadow-lg ring-1 ring-black/5 p-3 z-50"
                   >
-                    <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Bachelor's Degree</div>
-                    <ul className="mt-2 grid grid-cols-2 gap-1">
-                      <li><a href="#/programs/information-technology" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }}><LaptopIcon /> Information Technology</a></li>
-                      <li><a href="#/programs/computer-science" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }}><Code2 size={16} style={{ color: BRAND_BLUE }} /> Computer Science</a></li>
-                      <li><a href="#/programs/information-systems" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }}><DatabaseIcon /> Information Systems</a></li>
-                      <li><a href="#/programs/business-administration" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }}><BarChart3 size={16} style={{ color: BRAND_BLUE }} /> Business Administration</a></li>
-                    </ul>
-                    <div className="mt-4 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Senior High School</div>
-                    <ul className="mt-2 grid grid-cols-2 gap-1">
-                      <li><a href="#shs-ict" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }}><LaptopIcon /> ICT</a></li>
-                      <li><a href="#shs-abm" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }}><BarChart3 size={16} style={{ color: BRAND_BLUE }} /> ABM</a></li>
-                      <li><a href="#shs-humss" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }}><GraduationCap size={16} style={{ color: BRAND_BLUE }} /> HUMSS</a></li>
-                      <li><a href="#shs-gas" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }}><Compass size={16} style={{ color: BRAND_BLUE }} /> GAS</a></li>
-                    </ul>
-                    <div className="mt-4 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Corporate / Short Courses</div>
-                    <ul className="mt-2 space-y-1">
-                      <li><a href="#corp-dm" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }}><Megaphone size={16} style={{ color: BRAND_BLUE }} /> Digital Marketing</a></li>
-                      <li><a href="#corp-webdev" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }}><Code2 size={16} style={{ color: BRAND_BLUE }} /> Web Development</a></li>
-                      <li><a href="#corp-data" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }}><BarChart3 size={16} style={{ color: BRAND_BLUE }} /> Data Analytics</a></li>
-                      <li><a href="#corp-cyber" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }}><Shield size={16} style={{ color: BRAND_BLUE }} /> Cybersecurity Essentials</a></li>
-                    </ul>
-                    <div className="mt-4 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Technology</div>
-                    <ul className="mt-2 space-y-1">
-                      <li><a href="#tech-edtech" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }}><GraduationCap size={16} style={{ color: BRAND_BLUE }} /> Educational Technology</a></li>
-                      <li><a href="#tech-lms" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }}><LayoutDashboard size={16} style={{ color: BRAND_BLUE }} /> Learning Management Systems</a></li>
-                      <li><a href="#tech-assessment" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }}><ClipboardCheck size={16} style={{ color: BRAND_BLUE }} /> Assessment Technologies</a></li>
+                    <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Navigation</div>
+                    <ul className="mt-2 grid grid-cols-2 gap-1" role="none">
+                      {navConfig.programs.map((it) => (
+                        <li key={it.label} role="none">
+                          <a href={it.href} target={it.external ? "_blank" : undefined} rel={it.external ? "noopener noreferrer" : undefined} className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }} role="menuitem">
+                            {it.label.includes("Academic") ? <BookOpen size={16} style={{ color: BRAND_BLUE }} /> : it.label.includes("Certificate") ? <BarChart3 size={16} style={{ color: BRAND_BLUE }} /> : it.label.includes("ION") ? <Globe size={16} style={{ color: BRAND_BLUE }} /> : <GraduationCap size={16} style={{ color: BRAND_BLUE }} />}
+                            {it.label}
+                          </a>
+                        </li>
+                      ))}
+                      <li role="none"><a href="#/programs/information-technology" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }} role="menuitem"><LaptopIcon /> Information Technology</a></li>
+                      <li role="none"><a href="#/programs/computer-science" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }} role="menuitem"><Code2 size={16} style={{ color: BRAND_BLUE }} /> Computer Science</a></li>
+                      <li role="none"><a href="#/programs/information-systems" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }} role="menuitem"><DatabaseIcon /> Information Systems</a></li>
+                      <li role="none"><a href="#/programs/business-administration" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{ color: BRAND_DARK }} role="menuitem"><BarChart3 size={16} style={{ color: BRAND_BLUE }} /> Business Administration</a></li>
                     </ul>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
 
-            <a href="#admissions" className={`inline-flex items-center gap-1 relative hover:opacity-100 after:content-[""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-[var(--brand-blue)] after:transition-all hover:after:w-full`} style={{color: BRAND_DARK}}>
-              <GraduationCap size={16} style={{ color: BRAND_BLUE }} /> Admissions
-            </a>
-            <a href="https://ion.informatics.edu.ph/login/index.php" target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-1 relative hover:opacity-100 after:content-[""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-[var(--brand-blue)] after:transition-all hover:after:w-full`} style={{color: BRAND_DARK}}>
-              <Globe size={16} style={{ color: BRAND_BLUE }} /> ION - LMS
-            </a>
-
-            <div
-              className="relative"
-              onMouseEnter={() => {
-                if (aboutTimerRef.current) clearTimeout(aboutTimerRef.current);
-                setAboutOpen(true);
-              }}
-              onMouseLeave={() => {
-                aboutTimerRef.current = setTimeout(() => setAboutOpen(false), 160);
-              }}
-            >
-              <motion.button
-                className="inline-flex items-center gap-1 hover:opacity-80"
-                style={{ color: BRAND_DARK }}
-                aria-expanded={aboutOpen}
-                onClick={() => setAboutOpen((v) => !v)}
-                whileHover={{ y: -1 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Info size={16} style={{ color: BRAND_BLUE }} /> About <ChevronDown size={16} className={aboutOpen ? "transition-transform rotate-180" : "transition-transform"} />
-              </motion.button>
-              <AnimatePresence>
-                {aboutOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                    transition={{ duration: 0.18, ease: "easeOut" }}
-                    className="absolute left-0 mt-2 w-64 rounded-xl bg-white shadow-lg ring-1 ring-black/5 p-3 z-50"
-                  >
-                    <ul className="space-y-1 text-sm">
-                      <li><a href="#blogs" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{color: BRAND_DARK}}><BookOpen size={16} style={{ color: BRAND_BLUE }} /> Blogs</a></li>
-                      <li><a href="#contact" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{color: BRAND_DARK}}><Mail size={16} style={{ color: BRAND_BLUE }} /> Contact Us</a></li>
-                      <li><a href="#careers" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{color: BRAND_DARK}}><Briefcase size={16} style={{ color: BRAND_BLUE }} /> Careers</a></li>
-                      <li><a href="#dti-pet-project" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{color: BRAND_DARK}}><Layers size={16} style={{ color: BRAND_BLUE }} /> DTI PET Project</a></li>
-                      <li><a href="#faqs" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{color: BRAND_DARK}}><HelpCircle size={16} style={{ color: BRAND_BLUE }} /> FAQS</a></li>
-                      <li><a href="#privacy" className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-50" style={{color: BRAND_DARK}}><Shield size={16} style={{ color: BRAND_BLUE }} /> Privacy Policy</a></li>
-                    </ul>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            <a href="https://imc.informatics.edu.ph/" target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-1 relative hover:opacity-100 after:content-[""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-[var(--brand-blue)] after:transition-all hover:after:w-full`} style={{color: BRAND_DARK}}>
+            <a href="https://imc.informatics.edu.ph/" target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-1 relative hover:opacity-100 after:content-["""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-[var(--brand-blue)] after:transition-all hover:after:w-full`} style={{color: BRAND_DARK}}>
               <Award size={16} style={{ color: BRAND_BLUE }} /> Microcredentials
             </a>
-            <a href="#corporate" className={`inline-flex items-center gap-1 relative hover:opacity-100 after:content-[""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-[var(--brand-blue)] after:transition-all hover:after:w-full`} style={{color: BRAND_DARK}}>
-              <Briefcase size={16} style={{ color: BRAND_BLUE }} /> Corporate Learning
-            </a>
             <motion.a
-              href="#contact"
-              className="px-4 py-2 rounded-xl text-white shadow-sm"
+              href="#/admissions"
+              className="px-4 py-2 rounded-xl text-white shadow-sm inline-flex items-center gap-2"
               style={{ background: BRAND_BLUE }}
               whileHover={{ y: -1, boxShadow: "0 8px 24px rgba(0,0,0,0.16)" }}
               whileTap={{ scale: 0.98 }}
             >
-              Apply now
+              <GraduationCap size={16} /> Admissions
             </motion.a>
           </nav>
 
@@ -238,72 +216,32 @@ export default function Nav() {
               </div>
               <div className="mt-6 space-y-5 text-sm">
                 <div>
-                  <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Programs</div>
+                  <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Navigate</div>
                   <ul className="mt-2 space-y-2">
-                    <li>
-                      <motion.a href="#/programs/information-technology" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50">
-                        <LaptopIcon /> Information Technology
-                      </motion.a>
-                    </li>
-                    <li>
-                      <motion.a href="#/programs/computer-science" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50">
-                        <Code2 size={16} style={{ color: BRAND_BLUE }} /> Computer Science
-                      </motion.a>
-                    </li>
-                    <li>
-                      <motion.a href="#/programs/information-systems" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50">
-                        <DatabaseIcon /> Information Systems
-                      </motion.a>
-                    </li>
-                    <li>
-                      <motion.a href="#/programs/business-administration" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50">
-                        <BarChart3 size={16} style={{ color: BRAND_BLUE }} /> Business Administration
-                      </motion.a>
-                    </li>
-                    <li>
-                      <motion.a href="#programs-oa" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50">
-                        <Users size={16} style={{ color: BRAND_BLUE }} /> Office Administration
-                      </motion.a>
-                    </li>
+                    <li><motion.a href="#/" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50"><Home size={16} style={{ color: BRAND_BLUE }} /> Home</motion.a></li>
+                    <li><motion.a href="#/about" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50"><Info size={16} style={{ color: BRAND_BLUE }} /> About Informatics</motion.a></li>
+                    <li><motion.a href="#/programs" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50"><GraduationCap size={16} style={{ color: BRAND_BLUE }} /> Programs</motion.a></li>
+                    <li><motion.a href="#/admissions" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50"><GraduationCap size={16} style={{ color: BRAND_BLUE }} /> Admissions</motion.a></li>
+                    <li><motion.a href="#/contact" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50"><BookOpen size={16} style={{ color: BRAND_BLUE }} /> Contact Us</motion.a></li>
                   </ul>
                 </div>
                 <div>
-                  <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Quick Links</div>
-                  <div className="mt-2 space-y-2">
-                    <motion.a href="#admissions" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
-                      <GraduationCap size={16} style={{ color: BRAND_BLUE }} /> Admissions
-                    </motion.a>
-                    <motion.a href="https://ion.informatics.edu.ph/login/index.php" target="_blank" rel="noopener noreferrer" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
-                      <Globe size={16} style={{ color: BRAND_BLUE }} /> ION - LMS
-                    </motion.a>
-                    <motion.a href="#blogs" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
-                      <BookOpen size={16} style={{ color: BRAND_BLUE }} /> Blogs
-                    </motion.a>
-                    <motion.a href="#contact" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
-                      <Mail size={16} style={{ color: BRAND_BLUE }} /> Contact Us
-                    </motion.a>
-                    <motion.a href="#careers" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
-                      <Briefcase size={16} style={{ color: BRAND_BLUE }} /> Careers
-                    </motion.a>
-                    <motion.a href="#dti-pet-project" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
-                      <Layers size={16} style={{ color: BRAND_BLUE }} /> DTI PET Project
-                    </motion.a>
-                    <motion.a href="#faqs" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
-                      <HelpCircle size={16} style={{ color: BRAND_BLUE }} /> FAQS
-                    </motion.a>
-                    <motion.a href="#privacy" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
-                      <Shield size={16} style={{ color: BRAND_BLUE }} /> Privacy Policy
-                    </motion.a>
-                  </div>
+                  <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Programs</div>
+                  <ul className="mt-2 space-y-2">
+                    <li><motion.a href="#/programs/information-technology" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50"><LaptopIcon /> Information Technology</motion.a></li>
+                    <li><motion.a href="#/programs/computer-science" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50"><Code2 size={16} style={{ color: BRAND_BLUE }} /> Computer Science</motion.a></li>
+                    <li><motion.a href="#/programs/information-systems" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50"><DatabaseIcon /> Information Systems</motion.a></li>
+                    <li><motion.a href="#/programs/business-administration" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-50"><BarChart3 size={16} style={{ color: BRAND_BLUE }} /> Business Administration</motion.a></li>
+                  </ul>
                 </div>
-                <motion.a href="#partners" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
-                  <Award size={16} style={{ color: BRAND_BLUE }} /> Microcredentials
+                <motion.a href="https://imc.informatics.edu.ph/" target="_blank" rel="noopener noreferrer" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
+                  <Award size={16} style={{ color: BRAND_BLUE }} /> Microcredentials (IMC)
                 </motion.a>
-                <motion.a href="#corporate" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
-                  <Briefcase size={16} style={{ color: BRAND_BLUE }} /> Corporate Learning
+                <motion.a href="https://ion.informatics.edu.ph/login/index.php" target="_blank" rel="noopener noreferrer" whileTap={{ scale: 0.98 }} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-2 py-1">
+                  <Globe size={16} style={{ color: BRAND_BLUE }} /> ION - LMS
                 </motion.a>
                 <motion.a
-                  href="#contact"
+                  href="#/contact"
                   className="mt-2 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-white w-full"
                   style={{ background: BRAND_BLUE }}
                   whileHover={{ y: -1 }}

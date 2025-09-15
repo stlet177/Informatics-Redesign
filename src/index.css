@@ -17,36 +17,46 @@
 /* Global digital-age background */
 :root {
   --bg-grid-color: rgba(2, 6, 23, 0.06); /* slate-950 @ 6% */
+  --bg-geom: rgba(148, 163, 184, 0.16); /* slate-400 @ 16% */
+  --bg-geom-soft: rgba(148, 163, 184, 0.08); /* softer */
 }
 
 body {
   background-image:
-    radial-gradient(1200px 600px at 80% -10%, rgba(0, 142, 230, 0.12), transparent 60%),
-    radial-gradient(800px 400px at -10% 20%, rgba(0, 142, 230, 0.10), transparent 55%),
     linear-gradient(180deg, #ffffff 0%, #f8fafc 60%, #f1f5f9 100%),
     url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><path d='M0 39.5H40M39.5 0V40' stroke='rgba(2,6,23,0.06)' stroke-width='1'/></svg>");
-  background-repeat: no-repeat, no-repeat, no-repeat, repeat;
-  background-size: cover, cover, cover, 40px 40px;
-  background-attachment: fixed, fixed, fixed, fixed;
+  background-repeat: no-repeat, repeat;
+  background-size: cover, 40px 40px;
+  background-attachment: fixed, fixed;
 }
 
-/* Decorative tech glows (subtle) */
+/* Decorative large light-gray geometric shapes on left and right */
 body::before,
 body::after {
   content: "";
   position: fixed;
   pointer-events: none;
-  inset: 0;
   z-index: -1;
+  filter: blur(1.2px);
 }
+/* Left shape */
 body::before {
-  background:
-    radial-gradient(600px 300px at 15% 10%, rgba(0,142,230,0.10), transparent 60%),
-    radial-gradient(500px 240px at 85% 20%, rgba(0,142,230,0.08), transparent 60%);
+  width: 720px;
+  height: 720px;
+  left: -220px;
+  top: 12%;
+  background: linear-gradient(135deg, var(--bg-geom) 0%, var(--bg-geom-soft) 100%);
+  clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%);
 }
+/* Right shape */
 body::after {
-  background:
-    conic-gradient(from 210deg at 50% -10%, rgba(0,142,230,0.08), transparent 45%);
+  width: 620px;
+  height: 620px;
+  right: -200px;
+  bottom: 10%;
+  background: linear-gradient(135deg, var(--bg-geom) 0%, var(--bg-geom-soft) 100%);
+  clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%);
+  transform: rotate(18deg);
 }
 
 /* Animated gradient text utility for hero keyword */

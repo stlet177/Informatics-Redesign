@@ -8,6 +8,13 @@ import ProgramIT from "./pages/ProgramIT";
 import ProgramCS from "./pages/ProgramCS";
 import ProgramIS from "./pages/ProgramIS";
 import ProgramBA from "./pages/ProgramBA";
+import About from "./pages/About";
+import ProgramsIndex from "./pages/ProgramsIndex";
+import Admissions from "./pages/Admissions";
+import NewsIndex from "./pages/NewsIndex";
+import NewsDetail from "./pages/NewsDetail";
+import ContactPage from "./pages/ContactPage";
+import SHS from "./pages/SHS";
 import Footer from "./components/Footer";
 import SocialBar from "./components/SocialBar";
 import { BRAND_BLUE } from "./lib/brand";
@@ -38,28 +45,43 @@ export default function App() {
     return () => document.head.removeChild(style);
   }, []);
 
+  // Basic SEO title per route
+  useEffect(() => {
+    const base = "Informatics Philippines";
+    const t = titleForRoute(route);
+    document.title = t ? `${t} · ${base}` : base;
+  }, [route]);
+
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
-      {/* Global subtle geometry background */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 z-0" style={{
-        backgroundImage: 'radial-gradient(rgba(0,0,0,0.035) 1px, transparent 1px)',
-        backgroundSize: '18px 18px',
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Large light-gray geometric shapes (site background) */}
+      <div aria-hidden className="pointer-events-none absolute z-0" style={{
+        left: '-220px', top: '12%', width: '720px', height: '720px', opacity: 0.16,
+        background: 'linear-gradient(135deg, rgba(148,163,184,0.16) 0%, rgba(148,163,184,0.08) 100%)',
+        clipPath: 'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)',
+        filter: 'blur(1.2px)'
       }} />
-      <div aria-hidden className="pointer-events-none absolute inset-0 z-0 opacity-25" style={{
-        backgroundImage:
-          `radial-gradient(circle at 10% 15%, ${BRAND_BLUE}10 0, transparent 28%),` +
-          `radial-gradient(circle at 92% 12%, ${BRAND_BLUE}12 0, transparent 34%),` +
-          `radial-gradient(circle at 72% 88%, ${BRAND_BLUE}10 0, transparent 28%)`,
-      }} />
-      <div aria-hidden className="pointer-events-none absolute inset-0 z-0 opacity-10" style={{
-        backgroundImage: 'repeating-linear-gradient(45deg, rgba(0,0,0,0.05) 0 2px, transparent 2px 20px)',
+      <div aria-hidden className="pointer-events-none absolute z-0" style={{
+        right: '-200px', bottom: '10%', width: '620px', height: '620px', opacity: 0.16,
+        background: 'linear-gradient(135deg, rgba(148,163,184,0.16) 0%, rgba(148,163,184,0.08) 100%)',
+        clipPath: 'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)',
+        transform: 'rotate(18deg)',
+        filter: 'blur(1.2px)'
       }} />
 
       {/* Foreground content */}
       <div className="relative z-10">
         <Nav />
         <SocialBar />
-        {route.startsWith("#/programs/information-technology") ? (
+        {route.startsWith("#/news/") ? (
+          <NewsDetail slug={route.replace(/^#\/news\//, "")} />
+        ) : route.startsWith("#/news") ? (
+          <NewsIndex />
+        ) : route.startsWith("#/about") ? (
+          <About />
+        ) : route.startsWith("#/programs/shs") ? (
+          <SHS />
+        ) : route.startsWith("#/programs/information-technology") ? (
           <ProgramIT />
         ) : route.startsWith("#/programs/computer-science") ? (
           <ProgramCS />
@@ -67,6 +89,12 @@ export default function App() {
           <ProgramIS />
         ) : route.startsWith("#/programs/business-administration") ? (
           <ProgramBA />
+        ) : route.startsWith("#/programs") ? (
+          <ProgramsIndex />
+        ) : route.startsWith("#/admissions") ? (
+          <Admissions />
+        ) : route.startsWith("#/contact") ? (
+          <ContactPage />
         ) : (
           <Home />
         )}
@@ -74,4 +102,20 @@ export default function App() {
       </div>
     </div>
   );
+}
+
+function titleForRoute(route) {
+  if (!route) return "";
+  if (route.startsWith("#/news/")) return "News";
+  if (route.startsWith("#/news")) return "News & Events";
+  if (route.startsWith("#/about")) return "About Informatics";
+  if (route.startsWith("#/programs/shs")) return "Senior High School Tracks";
+  if (route.startsWith("#/programs/information-technology")) return "BS Information Technology";
+  if (route.startsWith("#/programs/computer-science")) return "BS Computer Science";
+  if (route.startsWith("#/programs/information-systems")) return "BS Information Systems";
+  if (route.startsWith("#/programs/business-administration")) return "BS Business Administration";
+  if (route.startsWith("#/programs")) return "Programs";
+  if (route.startsWith("#/admissions")) return "Admissions";
+  if (route.startsWith("#/contact")) return "Contact Us";
+  return "Home";
 }

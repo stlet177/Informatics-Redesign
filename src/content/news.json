@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "cloud-innovation-lab-launch",
+    "title": "Informatics launches Cloud Innovation Lab",
+    "date": "2025-08-20",
+    "image": "/assets/campus2.jpg",
+    "teaser": "Students gain hands-on exposure to multi-cloud and DevOps.",
+    "category": "news",
+    "body": "Informatics Philippines launched a hands-on Cloud Innovation Lab to support modern learning in cloud computing, DevOps, and security. The lab features container orchestration, CI/CD pipelines, and observability stacks—providing students with real-world experience."
+  },
+  {
+    "slug": "business-analytics-capstone-showcase",
+    "title": "Business Analytics Capstone Showcase",
+    "date": "2025-08-08",
+    "image": "/assets/BSBA.jpg",
+    "teaser": "Student teams present data-driven solutions to SME problems.",
+    "category": "event",
+    "body": "Student teams from Business Analytics presented capstone projects addressing real business problems in partnership with local SMEs. Solutions covered interactive dashboards, forecasting models, and process improvement analytics." 
+  },
+  {
+    "slug": "comptia-cybersecurity-bootcamp",
+    "title": "CompTIA-aligned Cybersecurity Bootcamp",
+    "date": "2025-07-30",
+    "image": "/assets/informationtechnology.jpg",
+    "teaser": "Pathway prepares learners for Security+ and SOC roles.",
+    "category": "news",
+    "body": "The intensive cybersecurity short-course pathway aligns with CompTIA competencies and prepares learners for Security+ certification and SOC analyst roles. Sessions include secure coding, threat modeling, and defensive operations labs."
+  }
+]
+

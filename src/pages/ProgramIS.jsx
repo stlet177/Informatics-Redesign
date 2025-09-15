@@ -25,8 +25,8 @@ export default function ProgramIS() {
               <span className="rounded-full px-3 py-1 bg-slate-100" style={{ color: BRAND_DARK }}>Industry-aligned</span>
             </motion.div>
             <motion.div variants={slideUp} className="mt-6 flex items-center gap-3">
-              <a href="#contact" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-white shadow-sm" style={{ background: BRAND_BLUE }}>Apply now</a>
-              <a href="#programs" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 border" style={{ borderColor: BRAND_BLUE, color: BRAND_BLUE }}>Back to Programs</a>
+              <a href="#/contact" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-white shadow-sm" style={{ background: BRAND_BLUE }}>Apply now</a>
+              <a href="#/programs" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 border" style={{ borderColor: BRAND_BLUE, color: BRAND_BLUE }}>Back to Programs</a>
             </motion.div>
           </motion.div>
           <motion.div variants={scaleIn} initial="hidden" animate="show" className="relative">
@@ -114,8 +114,8 @@ export default function ProgramIS() {
             <p className="mt-2 text-slate-600">Check admissions requirements, scholarships, and submit your application online.</p>
           </div>
           <div className="flex gap-3 md:justify-end">
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-white" style={{ background: BRAND_BLUE }}>Begin application</a>
-            <a href="#admissions" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 border" style={{ borderColor: BRAND_BLUE, color: BRAND_BLUE }}>Admissions & Scholarships</a>
+            <a href="#/contact" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-white" style={{ background: BRAND_BLUE }}>Begin application</a>
+            <a href="#/admissions" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 border" style={{ borderColor: BRAND_BLUE, color: BRAND_BLUE }}>Admissions & Scholarships</a>
           </div>
         </Container>
       </section>
