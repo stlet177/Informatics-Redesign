@@ -13,7 +13,7 @@ export default function SocialBar() {
   return (
     <div
       aria-label="Social media links"
-      className="fixed left-3 top-1/2 -translate-y-1/2 z-40"
+      className="fixed z-40 md:left-3 md:top-1/2 md:-translate-y-1/2 right-3 bottom-3"
       style={{ pointerEvents: "auto" }}
     >
       <ul className="flex flex-col gap-2">
@@ -35,4 +35,3 @@ export default function SocialBar() {
     </div>
   );
 }
-
