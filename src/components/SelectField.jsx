@@ -1,20 +1,40 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Check } from "lucide-react";
 import { BRAND_BLUE, BRAND_DARK } from "../lib/brand";
 
-export default function SelectField({ label, options, value: controlledValue, onChange, placeholder }) {
+export default function SelectField({ label, options = [], value: controlledValue, onChange, placeholder }) {
   const [open, setOpen] = useState(false);
-  const [uncontrolled, setUncontrolled] = useState(controlledValue === undefined);
-  const [internalValue, setInternalValue] = useState(() => (controlledValue ?? (options?.[0]?.label ?? options?.[0] ?? "")));
   const ref = useRef(null);
 
-  const getLabel = (opt) => (typeof opt === 'object' && opt !== null ? opt.label : opt);
-  const getKey = (opt) => (typeof opt === 'object' && opt !== null ? opt.key : opt);
+  const normalizedOptions = useMemo(() => {
+    return options.map((opt) => {
+      if (typeof opt === "object" && opt !== null) {
+        const value = opt.value ?? opt.key ?? opt.id ?? opt.label ?? "";
+        const labelText = opt.label ?? String(value);
+        return { value, label: labelText };
+      }
+      return { value: opt, label: String(opt) };
+    });
+  }, [options]);
+
+  const isControlled = controlledValue !== undefined;
+  const [internalValue, setInternalValue] = useState(() => (
+    !isControlled ? (normalizedOptions[0]?.value ?? "") : ""
+  ));
+
+  useEffect(() => {
+    if (!isControlled && normalizedOptions.length) {
+      const exists = normalizedOptions.some((opt) => opt.value === internalValue);
+      if (!exists) setInternalValue(normalizedOptions[0]?.value ?? "");
+    }
+  }, [internalValue, isControlled, normalizedOptions]);
+
+  const selectedValue = isControlled ? controlledValue : internalValue;
   const currentLabel = (() => {
-    const val = uncontrolled ? internalValue : controlledValue;
-    const match = options?.find((o) => getKey(o) === val || getLabel(o) === val);
-    return match ? getLabel(match) : (val || placeholder || "Select");
+    const match = normalizedOptions.find((opt) => opt.value === selectedValue || opt.label === selectedValue);
+    if (match) return match.label;
+    return selectedValue || placeholder || "Select";
   })();
 
   useEffect(() => {
@@ -50,25 +70,25 @@ export default function SelectField({ label, options, value: controlledValue, on
             className="absolute left-0 right-0 top-full z-30 mt-2 max-h-56 w-full overflow-auto rounded-xl border bg-white p-1 text-sm shadow-lg ring-1 ring-black/5"
             style={{ borderColor: "#E2E8F0" }}
           >
-            {options.map((opt, idx) => (
+            {normalizedOptions.map((opt, idx) => (
               <li
-                key={idx}
+                key={opt.value ?? idx}
                 role="option"
-                aria-selected={(uncontrolled ? internalValue === getLabel(opt) : controlledValue === getKey(opt))}
+                aria-selected={(isControlled ? controlledValue === opt.value : internalValue === opt.value)}
               >
                 <button
                   type="button"
                   onClick={() => {
-                    const nextKey = getKey(opt);
-                    if (uncontrolled) setInternalValue(getLabel(opt));
-                    if (onChange) onChange(nextKey);
+                    const nextValue = opt.value;
+                    if (!isControlled) setInternalValue(nextValue);
+                    if (onChange) onChange(nextValue);
                     setOpen(false);
                   }}
                   className="flex w-full items-center justify-between rounded-lg px-3 py-2 hover:bg-slate-50"
                   style={{ color: BRAND_DARK }}
                 >
-                  <span>{getLabel(opt)}</span>
-                  {(uncontrolled ? internalValue === getLabel(opt) : controlledValue === getKey(opt)) && <Check size={16} style={{ color: BRAND_BLUE }} />}
+                  <span>{opt.label}</span>
+                  {(isControlled ? controlledValue === opt.value : internalValue === opt.value) && <Check size={16} style={{ color: BRAND_BLUE }} />}
                 </button>
               </li>
             ))}
@@ -78,4 +98,3 @@ export default function SelectField({ label, options, value: controlledValue, on
     </div>
   );
 }
-

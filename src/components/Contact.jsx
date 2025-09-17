@@ -25,11 +25,40 @@ export default function Contact() {
 
   const selected = branch ? BRANCH_CONTACTS[branch] : null;
 
+  const markCopied = (key) => {
+    setCopiedKey(key);
+    setTimeout(() => setCopiedKey(""), 1400);
+  };
+
   const copyToClipboard = async (value, key) => {
+    const text = value?.toString();
+    if (!text) return;
     try {
-      await navigator.clipboard.writeText(value);
-      setCopiedKey(key);
-      setTimeout(() => setCopiedKey(""), 1400);
+      if (typeof navigator !== "undefined" && navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+        markCopied(key);
+        return;
+      }
+    } catch {}
+
+    try {
+      if (typeof document === "undefined") return;
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "absolute";
+      textarea.style.left = "-9999px";
+      document.body.appendChild(textarea);
+      const selection = document.getSelection();
+      const selectedRange = selection?.rangeCount ? selection.getRangeAt(0) : null;
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+      if (selectedRange && selection) {
+        selection.removeAllRanges();
+        selection.addRange(selectedRange);
+      }
+      markCopied(key);
     } catch {}
   };
 
@@ -123,7 +152,7 @@ export default function Contact() {
 
               <div className="relative h-[260px] sm:h-[320px] rounded-xl overflow-hidden ring-1 ring-black/5">
                 <BranchMap branches={BRANCH_CONTACTS} active={branch} />
-                <div className="absolute bottom-2 left-2 right-2 sm:left-2 sm:right-auto max-w-[92%] sm:max-w-md">
+                <div className="absolute bottom-2 left-2 right-2 sm:left-2 sm:right-auto max-w-[92%] sm:max-w-md z-20" style={{ pointerEvents: "auto" }}>
                   <div className="inline-flex items-start gap-2 rounded-xl bg-white/90 backdrop-blur px-3 py-2 shadow-md ring-1 ring-black/5">
                     <MapPin size={16} style={{ color: BRAND_BLUE }} />
                     <div>
