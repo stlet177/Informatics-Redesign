@@ -41,19 +41,19 @@ body::after {
 }
 /* Left shape */
 body::before {
-  width: 720px;
-  height: 720px;
-  left: -220px;
-  top: 12%;
+  width: 480px;
+  height: 480px;
+  left: -320px;
+  top: 8%;
   background: linear-gradient(135deg, var(--bg-geom) 0%, var(--bg-geom-soft) 100%);
   clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%);
 }
 /* Right shape */
 body::after {
-  width: 620px;
-  height: 620px;
-  right: -200px;
-  bottom: 10%;
+  width: 420px;
+  height: 420px;
+  right: -300px;
+  bottom: 5%;
   background: linear-gradient(135deg, var(--bg-geom) 0%, var(--bg-geom-soft) 100%);
   clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%);
   transform: rotate(18deg);
