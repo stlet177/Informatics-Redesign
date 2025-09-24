@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
 import Container from "./Container";
+import FancyText from "@carefully-coded/react-text-gradient";
 import { BRAND_BLUE, BRAND_DARK, BRAND_LIGHT } from "../lib/brand";
 import { CAMPUS_IMG, PLACEHOLDER_IMG } from "../lib/assets";
 import { fadeInUp } from "../lib/variants";
@@ -28,44 +28,78 @@ export default function Hero() {
       />
       <Container className="grid items-center gap-10 md:grid-cols-2">
         <motion.div {...fadeInUp}>
-          <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs" style={{ background: BRAND_LIGHT, color: BRAND_BLUE }}>
-            <span className="inline-block h-2 w-2 rounded-full" style={{background: BRAND_BLUE}} />
-            Enrollment for SY 2025-2026 is open
+          <div
+            className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold tracking-wide"
+            style={{ background: BRAND_LIGHT, color: BRAND_BLUE }}
+          >
+            🚀 Enrollment is ongoing
           </div>
-          <h1 className="mt-4 text-5xl md:text-6xl font-extrabold tracking-tight" style={{color: BRAND_DARK}}>
-            Master the {" "}
-            <motion.span
-              className="digital-age-animate"
+          <h1
+            className="mt-4 text-5xl font-extrabold tracking-tight md:text-6xl"
+            style={{ color: BRAND_DARK }}
+          >
+            <span className="block font-bold" style={{ color: "#0F172A" }}>
+              Upskill the
+            </span>
+            <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
             >
-              Digital Age
-            </motion.span>{" "}
-            with Technology Excellence
+              <FancyText
+                gradient={{ from: "#0EA5E9", to: "#1E3A8A", type: "linear" }}
+                animateTo={{ from: "#1E3A8A", to: "#0F172A" }}
+                animateDuration={2400}
+                className="block text-5xl font-extrabold leading-tight md:text-6xl"
+              >
+                Future
+              </FancyText>
+            </motion.div>
           </h1>
-          <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
-            Join Informatics Philippines and transform your passion for technology into a thriving career. Our cutting-edge programs in computer science, information technology, and business administration prepare you to lead in the digital future.
+          <p className="mt-2 text-sm font-bold uppercase tracking-[0.3em] text-slate-500">
+            Powered by Informatics
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-slate-700 md:text-lg">
+            Transform your career with cutting-edge AI and technology programs. Join thousands of professionals advancing their skills with industry-leading certifications.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <motion.a
               href="#admissions"
-              className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-white shadow-sm"
+              className="inline-flex items-center gap-1 rounded-full px-6 py-3 text-sm font-semibold text-white shadow-sm"
               style={{ background: BRAND_BLUE }}
               whileHover={{ y: -1, boxShadow: "0 8px 24px rgba(0,0,0,0.16)" }}
               whileTap={{ scale: 0.98 }}
             >
-              Start your application <ChevronRight size={18} />
+              Register now →
             </motion.a>
             <motion.a
               href="#programs"
-              className="inline-flex items-center gap-2 rounded-xl px-5 py-3 border"
-              style={{ borderColor: BRAND_BLUE, color: BRAND_BLUE }}
+              className="inline-flex items-center gap-1 rounded-full px-6 py-3 text-sm font-semibold"
+              style={{ borderColor: BRAND_BLUE, color: BRAND_BLUE, borderWidth: 1 }}
               whileHover={{ y: -1, boxShadow: "0 8px 24px rgba(0,0,0,0.08)" }}
               whileTap={{ scale: 0.98 }}
             >
-              Explore programs
+              Explore Programs
             </motion.a>
+          </div>
+          <div className="mt-10 grid gap-5 sm:grid-cols-3">
+            {[
+              { label: "Graduates", value: "50K+" },
+              { label: "Employment Rate", value: "95%" },
+              { label: "Years Experience", value: "15+" },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="rounded-3xl border border-slate-200 px-6 py-6 text-center shadow-md"
+              >
+                <p className="text-3xl font-extrabold" style={{ color: BRAND_BLUE }}>
+                  {item.value}
+                </p>
+                <p className="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
+                  {item.label}
+                </p>
+              </div>
+            ))}
           </div>
         </motion.div>
         <motion.div {...fadeInUp} className="relative">
@@ -78,9 +112,22 @@ export default function Hero() {
               e.currentTarget.src = PLACEHOLDER_IMG;
             }}
           />
+          <div className="absolute inset-x-6 bottom-6 flex items-center justify-between rounded-3xl bg-white/95 p-6 shadow-2xl backdrop-blur">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
+                Next Batch Starts
+              </p>
+              <p className="mt-1 text-lg font-semibold text-slate-900">October 15, 2024</p>
+            </div>
+            <a
+              href="/admissions#reserve"
+              className="inline-flex items-center rounded-full bg-slate-900 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-sm transition hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"
+            >
+              Reserve Spot
+            </a>
+          </div>
         </motion.div>
       </Container>
     </section>
   );
 }
-
