@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import Container from "../components/Container";
 import { BRAND_DARK, BRAND_LIGHT, BRAND_BLUE } from "../lib/brand";
 import CalendarList from "../components/CalendarList";
@@ -6,6 +7,18 @@ import { admissionsConfig } from "../lib/content.config";
 
 export default function Admissions() {
   const [news, setNews] = useState([]);
+  const goHome = () => {
+    if (typeof window === "undefined") return;
+    const hash = "#/";
+    if (window.location.hash !== hash) {
+      window.location.hash = hash;
+    } else {
+      const evt = typeof HashChangeEvent === "function"
+        ? new HashChangeEvent("hashchange")
+        : new Event("hashchange");
+      window.dispatchEvent(evt);
+    }
+  };
   useEffect(() => {
     fetch(import.meta.env.BASE_URL + "src/content/news.json").then(r => r.json()).then(setNews).catch(() => setNews([]));
   }, []);
@@ -33,7 +46,15 @@ export default function Admissions() {
               <div key={i} className="rounded-2xl bg-white p-5 ring-1 ring-black/5 shadow-sm">
                 <div className="font-semibold" style={{ color: BRAND_DARK }}>{s.title}</div>
                 <p className="mt-2 text-sm text-slate-600">{s.desc}</p>
-                <a href={s.href} className="mt-4 inline-flex items-center gap-2 rounded-xl px-4 py-2 text-white" style={{ background: BRAND_BLUE }}>{s.cta}</a>
+                <motion.button
+                  type="button"
+                  onClick={goHome}
+                  className="btn-pulse simple-btn simple-btn--primary mt-4 self-start"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.96 }}
+                >
+                  {s.cta}
+                </motion.button>
               </div>
             ))}
           </div>
@@ -63,11 +84,17 @@ export default function Admissions() {
               <div className="text-slate-600">No events yet.</div>
             ) : (
               events.map((e) => (
-                <a key={e.slug} href={`#/news/${e.slug}`} className="rounded-2xl bg-white p-5 ring-1 ring-black/5 shadow-sm hover:shadow-md transition-shadow">
+                <motion.a
+                  key={e.slug}
+                  href={`#/news/${e.slug}`}
+                  className="rounded-2xl bg-white p-5 ring-1 ring-black/5 shadow-sm transition-shadow"
+                  whileHover={{ y: -4, boxShadow: "0 18px 36px rgba(15,23,42,0.14)" }}
+                  whileTap={{ scale: 0.98 }}
+                >
                   <div className="text-xs uppercase tracking-wide text-slate-500">{formatDate(e.date)}</div>
                   <div className="mt-1 font-semibold" style={{ color: BRAND_DARK }}>{e.title}</div>
                   <p className="mt-2 text-sm text-slate-600">{e.teaser}</p>
-                </a>
+                </motion.a>
               ))
             )}
           </div>
@@ -81,7 +108,15 @@ export default function Admissions() {
             <div className="text-xl font-semibold" style={{ color: BRAND_DARK }}>Register for Short Courses (IMC)</div>
             <p className="mt-2 text-slate-700">Jumpstart your skills with flexible, short programs.</p>
           </div>
-          <a href={admissionsConfig.imcRegistrationUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-white" style={{ background: BRAND_BLUE }}>Go to IMC</a>
+          <motion.button
+            type="button"
+            onClick={goHome}
+            className="btn-pulse simple-btn simple-btn--primary"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.96 }}
+          >
+            Go to IMC
+          </motion.button>
         </Container>
       </section>
     </main>
@@ -96,4 +131,3 @@ function formatDate(d) {
     return d;
   }
 }
-

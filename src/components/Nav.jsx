@@ -90,15 +90,18 @@ export default function Nav() {
             }}
           />
         </a>
-        <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold" aria-label="Main navigation">
+        <nav
+          className="hidden lg:flex items-center gap-6 text-sm font-semibold"
+          aria-label="Main navigation"
+          style={{ color: BRAND_DARK }}
+        >
           {NAV_LINKS.map((link) => (
             <a
               key={link.label}
               href={link.href}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noopener noreferrer" : undefined}
-              className="transition hover:text-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-              style={{ color: BRAND_DARK }}
+              className="nav-glow transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
             >
               {link.label}
             </a>
@@ -220,7 +223,11 @@ export default function Nav() {
                 Close
               </button>
             </div>
-            <nav className="flex flex-col gap-2 px-6 py-6 text-sm font-semibold" aria-label="Mobile navigation">
+            <nav
+              className="flex flex-col gap-2 px-6 py-6 text-sm font-semibold"
+              aria-label="Mobile navigation"
+              style={{ color: BRAND_DARK }}
+            >
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.label}
@@ -228,8 +235,7 @@ export default function Nav() {
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noopener noreferrer" : undefined}
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-full px-4 py-2 transition hover:bg-slate-100"
-                  style={{ color: BRAND_DARK }}
+                  className="nav-glow rounded-full px-4 py-2 transition hover:bg-slate-100"
                 >
                   {link.label}
                 </a>

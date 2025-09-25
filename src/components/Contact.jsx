@@ -23,6 +23,19 @@ export default function Contact() {
   const [copiedKey, setCopiedKey] = useState("");
   const contactsRef = useRef(null);
 
+  const goHome = () => {
+    if (typeof window === "undefined") return;
+    const hash = "#/";
+    if (window.location.hash !== hash) {
+      window.location.hash = hash;
+    } else {
+      const evt = typeof HashChangeEvent === "function"
+        ? new HashChangeEvent("hashchange")
+        : new Event("hashchange");
+      window.dispatchEvent(evt);
+    }
+  };
+
   const selected = branch ? BRANCH_CONTACTS[branch] : null;
 
   const markCopied = (key) => {
@@ -206,7 +219,13 @@ export default function Contact() {
               <textarea rows={4} className="mt-1 w-full rounded-xl border px-4 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)] focus:border-[var(--brand-blue)] transition-colors" style={{ borderColor: "#E2E8F0" }} placeholder="Tell us how we can help" />
             </div>
           </div>
-          <motion.button type="button" className="mt-5 inline-flex items-center gap-2 rounded-xl px-5 py-3 text-white shadow-sm" style={{ background: BRAND_BLUE }} whileHover={{ y: -1, boxShadow: "0 8px 24px rgba(0,0,0,0.16)" }} whileTap={{ scale: 0.98 }}>
+          <motion.button
+            type="button"
+            onClick={goHome}
+            className="btn-pulse simple-btn simple-btn--primary mt-5"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.96 }}
+          >
             Send inquiry
           </motion.button>
         </motion.form>

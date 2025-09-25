@@ -6,6 +6,19 @@ import { CAMPUS_IMG, PLACEHOLDER_IMG } from "../lib/assets";
 import { fadeInUp } from "../lib/variants";
 
 export default function Hero() {
+  const goHome = () => {
+    if (typeof window === "undefined") return;
+    const hash = "#/";
+    if (window.location.hash !== hash) {
+      window.location.hash = hash;
+    } else {
+      const evt = typeof HashChangeEvent === "function"
+        ? new HashChangeEvent("hashchange")
+        : new Event("hashchange");
+      window.dispatchEvent(evt);
+    }
+  };
+
   return (
     <section className="pt-28 pb-16 md:pt-36 md:pb-24 relative overflow-hidden">
       {/* Geometric decorative shapes (right + left) */}
@@ -63,24 +76,24 @@ export default function Hero() {
             Transform your career with cutting-edge AI and technology programs. Join thousands of professionals advancing their skills with industry-leading certifications.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <motion.a
-              href="#admissions"
-              className="inline-flex items-center gap-1 rounded-full px-6 py-3 text-sm font-semibold text-white shadow-sm"
-              style={{ background: BRAND_BLUE }}
-              whileHover={{ y: -1, boxShadow: "0 8px 24px rgba(0,0,0,0.16)" }}
-              whileTap={{ scale: 0.98 }}
+            <motion.button
+              type="button"
+              onClick={goHome}
+              className="btn-pulse simple-btn simple-btn--primary"
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.96 }}
             >
-              Register now →
-            </motion.a>
-            <motion.a
-              href="#programs"
-              className="inline-flex items-center gap-1 rounded-full px-6 py-3 text-sm font-semibold"
-              style={{ borderColor: BRAND_BLUE, color: BRAND_BLUE, borderWidth: 1 }}
-              whileHover={{ y: -1, boxShadow: "0 8px 24px rgba(0,0,0,0.08)" }}
-              whileTap={{ scale: 0.98 }}
+              Register Now
+            </motion.button>
+            <motion.button
+              type="button"
+              onClick={goHome}
+              className="btn-pulse simple-btn simple-btn--outline"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.96 }}
             >
               Explore Programs
-            </motion.a>
+            </motion.button>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {[
@@ -119,12 +132,15 @@ export default function Hero() {
               </p>
               <p className="mt-1 text-lg font-semibold text-slate-900">October 15, 2024</p>
             </div>
-            <a
-              href="/admissions#reserve"
-              className="inline-flex items-center rounded-full bg-slate-900 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-sm transition hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"
+            <motion.button
+              type="button"
+              onClick={goHome}
+              className="btn-pulse simple-btn simple-btn--dark text-xs uppercase tracking-wide"
+              whileHover={{ scale: 1.05, translateY: -1 }}
+              whileTap={{ scale: 0.95 }}
             >
               Reserve Spot
-            </a>
+            </motion.button>
           </div>
         </motion.div>
       </Container>
