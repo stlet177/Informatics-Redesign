@@ -8,6 +8,19 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { admissionsConfig } from "../lib/content.config";
 
 export default function AdmissionsCTA() {
+  const goHome = () => {
+    if (typeof window === "undefined") return;
+    const hash = "#/";
+    if (window.location.hash !== hash) {
+      window.location.hash = hash;
+    } else {
+      const evt = typeof HashChangeEvent === "function"
+        ? new HashChangeEvent("hashchange")
+        : new Event("hashchange");
+      window.dispatchEvent(evt);
+    }
+  };
+
   return (
     <section id="admissions" className="py-16 md:py-24" style={{ background: BRAND_LIGHT }}>
       <Container className="grid items-center gap-10 md:grid-cols-2">
@@ -23,18 +36,24 @@ export default function AdmissionsCTA() {
             <li>Scholarships and partner-funded grants</li>
           </ul>
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href="#/contact" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-white" style={{ background: BRAND_BLUE }}>
+            <motion.button
+              type="button"
+              onClick={goHome}
+              className="btn-pulse simple-btn simple-btn--primary"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.96 }}
+            >
               Begin application <ChevronRight size={18} />
-            </a>
-            <a
-              href={admissionsConfig.imcRegistrationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl px-5 py-3 border"
-              style={{ borderColor: BRAND_BLUE, color: BRAND_BLUE }}
+            </motion.button>
+            <motion.button
+              type="button"
+              onClick={goHome}
+              className="btn-pulse simple-btn simple-btn--outline"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
             >
               IMC application <ChevronRight size={18} />
-            </a>
+            </motion.button>
           </div>
         </motion.div>
         <motion.div {...fadeInUp}>

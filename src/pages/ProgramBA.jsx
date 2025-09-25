@@ -10,6 +10,18 @@ const scaleIn = { hidden: { opacity: 0, scale: 0.94 }, show: { opacity: 1, scale
 
 export default function ProgramBA() {
   const lottie = asset("assets/ProgramBusiness.lottie");
+  const goHome = () => {
+    if (typeof window === "undefined") return;
+    const hash = "#/";
+    if (window.location.hash !== hash) {
+      window.location.hash = hash;
+    } else {
+      const evt = typeof HashChangeEvent === "function"
+        ? new HashChangeEvent("hashchange")
+        : new Event("hashchange");
+      window.dispatchEvent(evt);
+    }
+  };
   return (
     <div className="bg-white">
       <section className="pt-24 md:pt-28 pb-10 relative overflow-hidden">
@@ -25,8 +37,24 @@ export default function ProgramBA() {
               <span className="rounded-full px-3 py-1 bg-slate-100" style={{ color: BRAND_DARK }}>Industry projects</span>
             </motion.div>
             <motion.div variants={slideUp} className="mt-6 flex items-center gap-3">
-              <a href="#/contact" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-white shadow-sm" style={{ background: BRAND_BLUE }}>Apply now</a>
-              <a href="#/programs" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 border" style={{ borderColor: BRAND_BLUE, color: BRAND_BLUE }}>Back to Programs</a>
+              <motion.button
+                type="button"
+                onClick={goHome}
+                className="btn-pulse simple-btn simple-btn--primary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.96 }}
+              >
+                Apply now
+              </motion.button>
+              <motion.button
+                type="button"
+                onClick={goHome}
+                className="btn-pulse simple-btn simple-btn--outline"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+              >
+                Back to Programs
+              </motion.button>
             </motion.div>
           </motion.div>
           <motion.div variants={scaleIn} initial="hidden" animate="show" className="relative">
@@ -114,8 +142,24 @@ export default function ProgramBA() {
             <p className="mt-2 text-slate-600">Check admissions requirements, scholarships, and submit your application online.</p>
           </div>
           <div className="flex gap-3 md:justify-end">
-            <a href="#/contact" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-white" style={{ background: BRAND_BLUE }}>Begin application</a>
-            <a href="#/admissions" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 border" style={{ borderColor: BRAND_BLUE, color: BRAND_BLUE }}>Admissions & Scholarships</a>
+            <motion.button
+              type="button"
+              onClick={goHome}
+              className="btn-pulse simple-btn simple-btn--primary"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.96 }}
+            >
+              Begin application
+            </motion.button>
+            <motion.button
+              type="button"
+              onClick={goHome}
+              className="btn-pulse simple-btn simple-btn--outline"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+            >
+              Admissions & Scholarships
+            </motion.button>
           </div>
         </Container>
       </section>
