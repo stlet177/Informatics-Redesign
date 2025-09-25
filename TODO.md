@@ -1,0 +1,15 @@
+- [x] Import motion from framer-motion and fadeInUp from variants in About.jsx
+- [x] Wrap Hero Section Container with motion.div fadeInUp
+- [x] Wrap Our Story Section Container with motion.div fadeInUp
+- [x] Wrap Mission, Vision, History Section Container with motion.div fadeInUp
+- [x] Wrap Our Milestones Timeline Section Container with motion.div fadeInUp
+- [x] Wrap Core Values Section Container with motion.div fadeInUp
+- [x] Wrap Why Choose Informatics Section Container with motion.div fadeInUp
+- [x] Wrap Our Founder Section Container with motion.div fadeInUp
+- [x] Wrap Statistics Section Container with motion.div fadeInUp
+- [x] Wrap Partners Section Container with motion.div fadeInUp
+- [x] Wrap Quick Links Section Container with motion.div fadeInUp
+- [x] Wrap Contact Section Container with motion.div fadeInUp
+- [ ] Test the animations on the About page
+- [ ] Apply fadeInUp animations to Campuses page sections
+- [ ] Apply fadeInUp animations to Careers page sections

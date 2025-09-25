@@ -1,6 +1,8 @@
 import Container from "../components/Container";
 import { Users, MapPin, Clock, Mail, Phone, Building2 } from "lucide-react";
 import { BRAND_DARK, BRAND_LIGHT, BRAND_BLUE } from "../lib/brand";
+import { motion } from "framer-motion";
+import { fadeInUp } from "../lib/variants";
 
 export default function Careers() {
   const jobOpenings = [
@@ -92,57 +94,59 @@ export default function Careers() {
 
       {/* Current Openings */}
       <section id="openings" className="py-12 sm:py-16 md:py-20" style={{ background: `linear-gradient(135deg, ${BRAND_LIGHT} 0%, #e2e8f0 100%)` }}>
-        <Container>
-          <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: BRAND_DARK }}>
-              Current Openings
-            </h2>
-            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto px-4">
-              Explore exciting career opportunities and join our growing team
-            </p>
-          </div>
+        <motion.div {...fadeInUp}>
+          <Container>
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: BRAND_DARK }}>
+                Current Openings
+              </h2>
+              <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto px-4">
+                Explore exciting career opportunities and join our growing team
+              </p>
+            </div>
 
-          <div className="grid gap-6 sm:gap-8 grid-cols-1">
-            {jobOpenings.map((job, index) => (
-              <div key={index} className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100">
-                <div className="p-6 sm:p-8">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 sm:mb-6">
-                    <div className="flex-1">
-                      <h3 className="text-lg sm:text-xl font-bold mb-2" style={{ color: BRAND_DARK }}>
-                        {job.title}
-                      </h3>
-                      <div className="flex flex-wrap gap-4 text-sm text-slate-600 mb-4">
-                        <div className="flex items-center gap-1">
-                          <Building2 size={14} />
-                          <span>{job.department}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <MapPin size={14} />
-                          <span>{job.location}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock size={14} />
-                          <span>{job.type}</span>
+            <div className="grid gap-6 sm:gap-8 grid-cols-1">
+              {jobOpenings.map((job, index) => (
+                <div key={index} className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100">
+                  <div className="p-6 sm:p-8">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 sm:mb-6">
+                      <div className="flex-1">
+                        <h3 className="text-lg sm:text-xl font-bold mb-2" style={{ color: BRAND_DARK }}>
+                          {job.title}
+                        </h3>
+                        <div className="flex flex-wrap gap-4 text-sm text-slate-600 mb-4">
+                          <div className="flex items-center gap-1">
+                            <Building2 size={14} />
+                            <span>{job.department}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <MapPin size={14} />
+                            <span>{job.location}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Clock size={14} />
+                            <span>{job.type}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
+
+                    <p className="text-sm sm:text-base text-slate-700 mb-4 sm:mb-6 leading-relaxed">
+                      {job.description}
+                    </p>
+
+                    <button className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 text-white font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                      style={{ background: `linear-gradient(135deg, ${BRAND_BLUE} 0%, #1e40af 100%)` }}
+                    >
+                      <Mail size={16} />
+                      Apply Now
+                    </button>
                   </div>
-
-                  <p className="text-sm sm:text-base text-slate-700 mb-4 sm:mb-6 leading-relaxed">
-                    {job.description}
-                  </p>
-
-                  <button className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 text-white font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                    style={{ background: `linear-gradient(135deg, ${BRAND_BLUE} 0%, #1e40af 100%)` }}
-                  >
-                    <Mail size={16} />
-                    Apply Now
-                  </button>
                 </div>
-              </div>
-            ))}
-          </div>
-        </Container>
+              ))}
+            </div>
+          </Container>
+        </motion.div>
       </section>
 
       {/* Contact HR */}

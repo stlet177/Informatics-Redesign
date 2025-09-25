@@ -1,6 +1,8 @@
 import Container from "../components/Container";
 import { MapPin, Phone, Mail, Clock, Users, GraduationCap, Star, Award, Building2, Globe, BookOpen } from "lucide-react";
 import { BRAND_DARK, BRAND_LIGHT, BRAND_BLUE } from "../lib/brand";
+import { motion } from "framer-motion";
+import { fadeInUp } from "../lib/variants";
 
 export default function Campuses() {
   const campuses = [
@@ -163,7 +165,8 @@ export default function Campuses() {
 
       {/* Mobile-Friendly Enhanced Campuses Grid */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-slate-50/50">
-        <Container>
+        <motion.div {...fadeInUp}>
+          <Container>
           <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {campuses.map((campus, index) => (
               <div key={index} className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100">
@@ -279,6 +282,7 @@ export default function Campuses() {
             ))}
           </div>
         </Container>
+        </motion.div>
       </section>
 
       {/* Mobile-Friendly Enhanced Statistics Section */}
