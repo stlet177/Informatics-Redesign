@@ -6,6 +6,7 @@ import { INFO_LOGO, PLACEHOLDER_IMG } from "../lib/assets";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
+  { label: "About us", href: "#/about" },
   { label: "Programs", href: "/programs" },
   { label: "Admissions", href: "/admissions" },
   { label: "News & Events", href: "/news-events" },
