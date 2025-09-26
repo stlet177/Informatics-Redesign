@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { label: "News & Events", href: "/news-events" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
+
   {
     label: "ION-LMS (For Students)",
     href: "https://ion.informatics.edu.ph",
@@ -80,7 +81,7 @@ export default function Nav() {
       }`}
     >
       <Container className="flex items-center justify-between gap-6 py-3">
-        <a href="/" className="flex items-center" aria-label="Informatics Philippines">
+        <a href="#/" className="flex items-center" aria-label="Informatics Philippines">
           <img
             src={INFO_LOGO}
             alt="Informatics Philippines logo"
@@ -137,7 +138,7 @@ export default function Nav() {
                     type="search"
                     value={searchValue}
                     onChange={(event) => setSearchValue(event.target.value)}
-                    className="flex-1 rounded-full border border-slate-300 px-3 py-2 text-sm focus:border-sky-500 focus:outline-none"
+                    className="flex-1 h-10 rounded-full border border-slate-300 px-3 text-sm focus:border-sky-500 focus:outline-none"
                     placeholder="Search"
                     onBlur={() => {
                       window.setTimeout(() => setSearchOpen(false), 150);
@@ -145,7 +146,7 @@ export default function Nav() {
                   />
                   <button
                     type="submit"
-                    className="rounded-full bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-white"
+                    className="flex h-10 items-center justify-center rounded-full bg-slate-900 px-4 text-xs font-semibold uppercase tracking-wide text-white"
                   >
                     Go
                   </button>
@@ -187,17 +188,17 @@ export default function Nav() {
             <label htmlFor="mobile-search" className="sr-only">
               Search
             </label>
-            <input
+           <input
               id="mobile-search"
               type="search"
               value={searchValue}
               onChange={(event) => setSearchValue(event.target.value)}
-              className="flex-1 rounded-full border border-slate-300 px-4 py-2 text-sm focus:border-sky-500 focus:outline-none"
+              className="flex-1 h-10 rounded-full border border-slate-300 px-4 text-sm focus:border-sky-500 focus:outline-none"
               placeholder="Search"
             />
             <button
               type="submit"
-              className="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white"
+              className="flex h-10 items-center justify-center rounded-full bg-slate-900 px-5 text-xs font-semibold uppercase tracking-wide text-white"
             >
               Go
             </button>

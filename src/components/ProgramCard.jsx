@@ -3,21 +3,19 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { ChevronRight } from "lucide-react";
 import { BRAND_BLUE, BRAND_DARK, BRAND_LIGHT } from "../lib/brand";
 import { PLACEHOLDER_IMG } from "../lib/assets";
+import { navigateHash } from "../lib/navigation";
 
 export default function ProgramCard({ icon: Icon, title, desc, img, video, lottie, featured = false, delay = 0, tag, descLines = 3, descMin = '4.5rem', href = '#' }) {
-  const goHome = () => {
-    if (typeof window === "undefined") return;
-    const hash = "#/";
-    if (window.location.hash !== hash) {
-      window.location.hash = hash;
-    } else {
-      const evt = typeof HashChangeEvent === "function"
-        ? new HashChangeEvent("hashchange")
-        : new Event("hashchange");
-      window.dispatchEvent(evt);
+  const handleClick = () => {
+    if (!href) return;
+    if (href.startsWith("http")) {
+      if (typeof window !== "undefined") {
+        window.open(href, "_blank", "noopener");
+      }
+      return;
     }
+    navigateHash(href);
   };
-
   return (
     <motion.div
       className="rounded-2xl p-6 ring-1 ring-black/10 bg-white shadow-sm hover:shadow-md transition-shadow flex flex-col h-full"
@@ -65,16 +63,14 @@ export default function ProgramCard({ icon: Icon, title, desc, img, video, lotti
         {desc}
       </p>
       <div className="mt-auto pt-2">
-        <motion.button
+        <button
           type="button"
-          onClick={goHome}
+          onClick={handleClick}
           className="inline-flex items-center gap-2 text-sm"
           style={{ color: BRAND_BLUE }}
-          whileHover={{ x: 2 }}
-          whileTap={{ scale: 0.98 }}
         >
           View curriculum <ChevronRight size={16} />
-        </motion.button>
+        </button>
       </div>
     </motion.div>
   );

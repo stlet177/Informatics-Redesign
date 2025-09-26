@@ -3,6 +3,7 @@ import Container from "../components/Container";
 import { BRAND_BLUE, BRAND_DARK, BRAND_LIGHT } from "../lib/brand";
 import { asset } from "../lib/assets";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { navigateHash } from "../lib/navigation";
 
 const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } };
 const slideUp = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } };
@@ -10,18 +11,6 @@ const scaleIn = { hidden: { opacity: 0, scale: 0.94 }, show: { opacity: 1, scale
 
 export default function ProgramBA() {
   const lottie = asset("assets/ProgramBusiness.lottie");
-  const goHome = () => {
-    if (typeof window === "undefined") return;
-    const hash = "#/";
-    if (window.location.hash !== hash) {
-      window.location.hash = hash;
-    } else {
-      const evt = typeof HashChangeEvent === "function"
-        ? new HashChangeEvent("hashchange")
-        : new Event("hashchange");
-      window.dispatchEvent(evt);
-    }
-  };
   return (
     <div className="bg-white">
       <section className="pt-24 md:pt-28 pb-10 relative overflow-hidden">
@@ -37,24 +26,20 @@ export default function ProgramBA() {
               <span className="rounded-full px-3 py-1 bg-slate-100" style={{ color: BRAND_DARK }}>Industry projects</span>
             </motion.div>
             <motion.div variants={slideUp} className="mt-6 flex items-center gap-3">
-              <motion.button
+              <button
                 type="button"
-                onClick={goHome}
-                className="btn-pulse simple-btn simple-btn--primary"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.96 }}
+                onClick={() => navigateHash("#/contact")}
+                className="simple-btn simple-btn--primary"
               >
                 Apply now
-              </motion.button>
-              <motion.button
+              </button>
+              <button
                 type="button"
-                onClick={goHome}
-                className="btn-pulse simple-btn simple-btn--outline"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
+                onClick={() => navigateHash("#/programs")}
+                className="simple-btn simple-btn--outline"
               >
                 Back to Programs
-              </motion.button>
+              </button>
             </motion.div>
           </motion.div>
           <motion.div variants={scaleIn} initial="hidden" animate="show" className="relative">
@@ -142,24 +127,20 @@ export default function ProgramBA() {
             <p className="mt-2 text-slate-600">Check admissions requirements, scholarships, and submit your application online.</p>
           </div>
           <div className="flex gap-3 md:justify-end">
-            <motion.button
+            <button
               type="button"
-              onClick={goHome}
-              className="btn-pulse simple-btn simple-btn--primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.96 }}
+              onClick={() => navigateHash("#/contact")}
+              className="simple-btn simple-btn--primary"
             >
               Begin application
-            </motion.button>
-            <motion.button
+            </button>
+            <button
               type="button"
-              onClick={goHome}
-              className="btn-pulse simple-btn simple-btn--outline"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
+              onClick={() => navigateHash("#/admissions")}
+              className="simple-btn simple-btn--outline"
             >
               Admissions & Scholarships
-            </motion.button>
+            </button>
           </div>
         </Container>
       </section>

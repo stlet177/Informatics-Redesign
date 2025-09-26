@@ -13,8 +13,8 @@ export default function SocialBar() {
   return (
     <div
       aria-label="Social media links"
-      className="fixed z-40 md:left-3 md:top-1/2 md:-translate-y-1/2 right-3 bottom-3"
-      style={{ pointerEvents: "auto" }}
+      className="fixed z-40 right-3 bottom-3 md:left-3 md:top-1/2 md:-translate-y-1/2 md:right-auto md:bottom-auto"
+      style={{ pointerEvents: "none" }}
     >
       <ul className="flex flex-col gap-2">
         {LINKS.map(({ href, label, Icon }) => (
@@ -23,7 +23,8 @@ export default function SocialBar() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur p-2 ring-1 ring-black/5 shadow hover:shadow-md transition-shadow"
+              className="group inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur p-2 ring-1 ring-black/5 shadow hover:shadow-md"
+              style={{ pointerEvents: "auto" }}
               title={label}
             >
               <Icon size={18} style={{ color: BRAND_BLUE }} />
