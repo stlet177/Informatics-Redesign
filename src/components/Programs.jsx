@@ -1,71 +1,176 @@
-import { motion } from "framer-motion";
 import Container from "./Container";
-import ProgramCard from "./ProgramCard";
 import { BRAND_BLUE } from "../lib/brand";
-import { asset } from "../lib/assets";
-import { fadeInUp } from "../lib/variants";
-import { GraduationCap, BookOpen, Layers, Award } from "lucide-react";
+import { navigateHash } from "../lib/navigation";
+import { GraduationCap, Briefcase, TrendingUp } from "lucide-react";
+import { FcReading, FcGraduationCap, FcBusinessman } from "react-icons/fc";
+
+const PROGRAM_CARDS = [
+  {
+    title: "Senior High School",
+    copy: "Start strong with specialized academic tracks that prepare you for college and future careers.",
+    cta: { label: "Explore SHS", href: "#/programs/shs" },
+    icon: FcReading,
+  },
+  {
+    title: "College Programs",
+    copy: "Earn a degree that blends practical skills and industry-focused training for today’s job market.",
+    cta: { label: "View Degrees", href: "#/programs#academic" },
+    icon: FcGraduationCap,
+  },
+  {
+    title: "Informatics Microcredential Courses",
+    copy: "Upskill fast with short, focused programs that give you in-demand skills and certifications.",
+    cta: { label: "See Microcredentials", href: "https://imc.informatics.edu.ph/", external: true },
+    icon: FcBusinessman,
+  },
+];
+
+const WHY_POINTS = [
+  {
+    title: "Graduate faster without compromising quality",
+    copy:
+      "Our accelerated programs are designed by industry experts to deliver maximum learning in minimum time. Get job-ready skills through intensive, focused curricula.",
+    cta: "See pathways",
+    icon: GraduationCap,
+  },
+  {
+    title: "Be work-ready from day one",
+    copy:
+      "Hands-on training with real projects, OJT placements, and direct mentorship from industry professionals. Build a portfolio that showcases your skills to employers.",
+    cta: "View opportunities",
+    icon: Briefcase,
+  },
+  {
+    title: "Stay ahead of the curve",
+    copy:
+      "Industry-informed curriculum updated quarterly to reflect the latest trends, technologies, and in-demand skills. Learn what employers are actually looking for.",
+    cta: "Explore skills",
+    icon: TrendingUp,
+  },
+];
 
 export default function Programs() {
-  const categories = [
-    {
-      icon: GraduationCap,
-      title: "Higher Education",
-      desc: "Bachelor’s degree programs aligned with industry: IT, CS, IS, and Business Analytics.",
-      href: "#/programs#academic",
-    },
-    {
-      icon: BookOpen,
-      title: "Senior High School",
-      desc: "ICT, ABM, HUMSS, and GAS tracks that build strong foundations for college and careers.",
-      href: "#/programs/shs",
-    },
-    {
-      icon: Layers,
-      title: "Certificate Programs",
-      desc: "TESDA and Diploma programs focused on practical, job-ready skills.",
-      href: "#/programs#certificates",
-    },
-    {
-      icon: Award,
-      title: "Short Courses (IMC)",
-      desc: "Upskill fast with flexible short programs. Explore the IMC catalog.",
-      href: "https://imc.informatics.edu.ph/",
-    },
-  ];
-
   return (
-    <section id="programs" className="py-16 md:py-24 bg-white relative overflow-hidden">
-      {/* subtle geometric background */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 opacity-20" style={{
-        backgroundImage:
-          `radial-gradient(circle at 20% 20%, ${BRAND_BLUE}20 0, transparent 40%),` +
-          `radial-gradient(circle at 80% 30%, ${BRAND_BLUE}14 0, transparent 45%),` +
-          `radial-gradient(circle at 30% 80%, ${BRAND_BLUE}12 0, transparent 35%)`,
-      }} />
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10" style={{
-        backgroundImage: 'radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px)',
-        backgroundSize: '16px 16px',
-      }} />
-      <Container className="relative z-10">
-        <motion.h2 {...fadeInUp} className="text-2xl md:text-3xl font-semibold">Programs that align with industry</motion.h2>
+    <>
+      <section className="py-16 md:py-24 bg-white">
+        <Container>
+          <div className="text-center">
+            <span
+              className="inline-flex items-center rounded-full bg-blue-50 px-4 py-1 text-xs font-semibold tracking-[0.25em] uppercase"
+              style={{ color: BRAND_BLUE }}
+            >
+              Featured Programs
+            </span>
+            <h2 className="mt-4 text-3xl md:text-[40px] font-extrabold tracking-tight">
+              <span style={{ color: "#0F172A" }}>Choose Your </span>
+              <span style={{ color: BRAND_BLUE }}>Learning Path</span>
+            </h2>
+            <p className="mt-3 text-slate-500 text-base md:text-lg max-w-2xl mx-auto">
+              Our CAIP certification programs are designed to take you from beginner to expert, with industry-recognized credentials that employers value.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-8 lg:grid-cols-3">
+            {PROGRAM_CARDS.map((card) => {
+              const Icon = card.icon;
+              return (
+                <div
+                  key={card.title}
+                  className="flex h-full flex-col rounded-[28px] border border-blue-100 bg-white p-10 shadow-[0_20px_55px_rgba(59,130,246,0.12)] transition-all duration-300 hover:-translate-y-2 hover:border-blue-300 hover:shadow-[0_32px_70px_rgba(59,130,246,0.18)]"
+                >
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-2xl">
+                    <Icon size={28} />
+                  </div>
+                  <h3 className="mt-5 text-lg font-semibold" style={{ color: "#0f172a" }}>
+                    {card.title}
+                  </h3>
+                  <p className="mt-3 text-sm text-slate-600 leading-relaxed flex-1">
+                    {card.copy}
+                  </p>
+                  <div className="mt-6 border-t border-blue-50 pt-5">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (card.cta.external) {
+                          window.open(card.cta.href, "_blank", "noopener");
+                        } else {
+                          navigateHash(card.cta.href);
+                        }
+                      }}
+                      className="text-sm font-semibold"
+                      style={{ color: BRAND_BLUE }}
+                    >
+                      {card.cta.label} →
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
 
-        {/* Program categories (4 cards) */}
-        <div className="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
-          {categories.map((it, i) => (
-            <ProgramCard
-              key={i}
-              icon={it.icon}
-              title={it.title}
-              desc={it.desc}
-              href={it.href}
-              descLines={4}
-              descMin={'5.75rem'}
-              delay={i * 0.06}
-            />
-          ))}
+      <section id="programs" className="py-20 bg-white">
+        <Container>
+          <div className="text-center">
+            <span
+              className="inline-flex items-center rounded-full bg-blue-50 px-4 py-1 text-xs font-semibold tracking-[0.25em] uppercase"
+              style={{ color: BRAND_BLUE }}
+            >
+              Your Next Big Move
+            </span>
+            <h2 className="mt-4 text-3xl md:text-4xl font-bold">
+              <span style={{ color: "#0F172A" }}>Why Choose </span>
+              <span style={{ color: BRAND_BLUE }}>Informatics</span>
+            </h2>
+            <p className="mt-3 text-slate-600 text-base md:text-lg">
+              We're not just about education—we're about transformation. Here's how we help you make your next career breakthrough.
+            </p>
+          </div>
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-3">
+          {WHY_POINTS.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={item.title}
+                className="flex h-full flex-col rounded-[28px] border border-blue-100 bg-white p-10 shadow-[0_20px_55px_rgba(59,130,246,0.12)] transition-all duration-300 hover:-translate-y-2 hover:border-blue-300 hover:shadow-[0_32px_70px_rgba(59,130,246,0.18)]"
+              >
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50">
+                  <Icon size={22} style={{ color: BRAND_BLUE }} />
+                </div>
+                <h3 className="mt-5 text-lg font-semibold" style={{ color: "#0f172a" }}>
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm text-slate-600 leading-relaxed flex-1">
+                  {item.copy}
+                </p>
+                <div className="mt-6 border-t border-blue-50 pt-5">
+                  <button
+                    type="button"
+                    onClick={() => navigateHash("#/contact")}
+                    className="text-sm font-semibold"
+                    style={{ color: BRAND_BLUE }}
+                  >
+                    {item.cta} →
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </div>
-      </Container>
-    </section>
+
+        <div className="mt-12 flex justify-center">
+          <button
+            type="button"
+            onClick={() => navigateHash("#/contact")}
+            className="inline-flex items-center gap-2 rounded-full border-2 px-8 py-3 text-sm font-semibold"
+            style={{ borderColor: BRAND_BLUE, color: BRAND_BLUE }}
+          >
+            Start Your Journey Today →
+          </button>
+        </div>
+        </Container>
+      </section>
+    </>
   );
 }

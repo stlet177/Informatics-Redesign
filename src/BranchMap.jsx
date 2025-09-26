@@ -2,14 +2,15 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import marker2x from 'leaflet/dist/images/marker-icon-2x.png'
-import marker1x from 'leaflet/dist/images/marker-icon.png'
-import markerShadow from 'leaflet/dist/images/marker-shadow.png'
+
+const markerRetina = '/marker-icon-2x.png'
+const markerStandard = '/marker-icon.png'
+const markerShadow = '/marker-shadow.png'
 
 // Fix default icon paths in bundlers
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: marker2x,
-  iconUrl: marker1x,
+  iconRetinaUrl: markerRetina,
+  iconUrl: markerStandard,
   shadowUrl: markerShadow,
 })
 
