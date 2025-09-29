@@ -5,9 +5,9 @@ import { BRAND_DARK } from "../lib/brand";
 import { INFO_LOGO, PLACEHOLDER_IMG } from "../lib/assets";
 
 const NAV_LINKS = [
-  { label: "Home", href: "/" },
+  { label: "Home", href: "#hero" },
   { label: "About us", href: "#/about" },
-  { label: "Programs", href: "/programs" },
+  { label: "Programs", href: "#/programs" },
   { label: "Admissions", href: "/admissions" },
   { label: "News & Events", href: "/news-events" },
   { label: "Careers", href: "/careers" },

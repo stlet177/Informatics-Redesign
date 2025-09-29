@@ -8,7 +8,7 @@ import { navigateHash } from "../lib/navigation";
 
 export default function Hero() {
   return (
-    <section className="pt-28 pb-16 md:pt-36 md:pb-24 relative overflow-hidden">
+    <section id="hero" className="pt-28 pb-16 md:pt-36 md:pb-24 relative overflow-hidden">
       {/* Geometric decorative shapes (right + left) */}
       <div
         aria-hidden
