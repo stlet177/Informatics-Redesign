@@ -4,21 +4,9 @@ import FancyText from "@carefully-coded/react-text-gradient";
 import { BRAND_BLUE, BRAND_DARK, BRAND_LIGHT } from "../lib/brand";
 import { CAMPUS_IMG, PLACEHOLDER_IMG } from "../lib/assets";
 import { fadeInUp } from "../lib/variants";
+import { navigateHash } from "../lib/navigation";
 
 export default function Hero() {
-  const goHome = () => {
-    if (typeof window === "undefined") return;
-    const hash = "#/";
-    if (window.location.hash !== hash) {
-      window.location.hash = hash;
-    } else {
-      const evt = typeof HashChangeEvent === "function"
-        ? new HashChangeEvent("hashchange")
-        : new Event("hashchange");
-      window.dispatchEvent(evt);
-    }
-  };
-
   return (
     <section className="pt-28 pb-16 md:pt-36 md:pb-24 relative overflow-hidden">
       {/* Geometric decorative shapes (right + left) */}
@@ -40,7 +28,11 @@ export default function Hero() {
         }}
       />
       <Container className="grid items-center gap-10 md:grid-cols-2">
-        <motion.div {...fadeInUp}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <div
             className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold tracking-wide"
             style={{ background: BRAND_LIGHT, color: BRAND_BLUE }}
@@ -76,24 +68,20 @@ export default function Hero() {
             Transform your career with cutting-edge AI and technology programs. Join thousands of professionals advancing their skills with industry-leading certifications.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <motion.button
+            <button
               type="button"
-              onClick={goHome}
-              className="btn-pulse simple-btn simple-btn--primary"
-              whileHover={{ scale: 1.06 }}
-              whileTap={{ scale: 0.96 }}
+              onClick={() => navigateHash("#/admissions")}
+              className="simple-btn simple-btn--primary"
             >
               Register Now
-            </motion.button>
-            <motion.button
+            </button>
+            <button
               type="button"
-              onClick={goHome}
-              className="btn-pulse simple-btn simple-btn--outline"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.96 }}
+              onClick={() => navigateHash("#/programs")}
+              className="simple-btn simple-btn--outline"
             >
               Explore Programs
-            </motion.button>
+            </button>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {[
@@ -132,15 +120,13 @@ export default function Hero() {
               </p>
               <p className="mt-1 text-lg font-semibold text-slate-900">October 15, 2024</p>
             </div>
-            <motion.button
+            <button
               type="button"
-              onClick={goHome}
-              className="btn-pulse simple-btn simple-btn--dark text-xs uppercase tracking-wide"
-              whileHover={{ scale: 1.05, translateY: -1 }}
-              whileTap={{ scale: 0.95 }}
+              onClick={() => navigateHash("#/contact")}
+              className="simple-btn simple-btn--dark text-xs uppercase tracking-wide"
             >
               Reserve Spot
-            </motion.button>
+            </button>
           </div>
         </motion.div>
       </Container>

@@ -6,20 +6,10 @@ import { fadeInUp } from "../lib/variants";
 import { ChevronRight } from "lucide-react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { admissionsConfig } from "../lib/content.config";
+import { navigateHash } from "../lib/navigation";
 
 export default function AdmissionsCTA() {
-  const goHome = () => {
-    if (typeof window === "undefined") return;
-    const hash = "#/";
-    if (window.location.hash !== hash) {
-      window.location.hash = hash;
-    } else {
-      const evt = typeof HashChangeEvent === "function"
-        ? new HashChangeEvent("hashchange")
-        : new Event("hashchange");
-      window.dispatchEvent(evt);
-    }
-  };
+  const goTo = (hash) => () => navigateHash(hash);
 
   return (
     <section id="admissions" className="py-16 md:py-24" style={{ background: BRAND_LIGHT }}>
@@ -36,24 +26,21 @@ export default function AdmissionsCTA() {
             <li>Scholarships and partner-funded grants</li>
           </ul>
           <div className="mt-6 flex flex-wrap gap-3">
-            <motion.button
+            <button
               type="button"
-              onClick={goHome}
-              className="btn-pulse simple-btn simple-btn--primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.96 }}
+              onClick={goTo("#/contact")}
+              className="simple-btn simple-btn--primary"
             >
               Begin application <ChevronRight size={18} />
-            </motion.button>
-            <motion.button
-              type="button"
-              onClick={goHome}
-              className="btn-pulse simple-btn simple-btn--outline"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
+            </button>
+            <a
+              href={admissionsConfig.imcRegistrationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="simple-btn simple-btn--outline"
             >
               IMC application <ChevronRight size={18} />
-            </motion.button>
+            </a>
           </div>
         </motion.div>
         <motion.div {...fadeInUp}>

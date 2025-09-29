@@ -9,6 +9,8 @@ import ProgramCS from "./pages/ProgramCS";
 import ProgramIS from "./pages/ProgramIS";
 import ProgramBA from "./pages/ProgramBA";
 import About from "./pages/About";
+import Campuses from "./pages/Campuses";
+import Careers from "./pages/Careers";
 import ProgramsIndex from "./pages/ProgramsIndex";
 import Admissions from "./pages/Admissions";
 import NewsIndex from "./pages/NewsIndex";
@@ -79,6 +81,10 @@ export default function App() {
           <NewsIndex />
         ) : route.startsWith("#/about") ? (
           <About />
+        ) : route.startsWith("#/campuses") ? (
+          <Campuses />
+        ) : route.startsWith("#/careers") ? (
+          <Careers />
         ) : route.startsWith("#/programs/shs") ? (
           <SHS />
         ) : route.startsWith("#/programs/information-technology") ? (
@@ -109,6 +115,8 @@ function titleForRoute(route) {
   if (route.startsWith("#/news/")) return "News";
   if (route.startsWith("#/news")) return "News & Events";
   if (route.startsWith("#/about")) return "About Informatics";
+  if (route.startsWith("#/campuses")) return "Our Campuses";
+  if (route.startsWith("#/careers")) return "Careers";
   if (route.startsWith("#/programs/shs")) return "Senior High School Tracks";
   if (route.startsWith("#/programs/information-technology")) return "BS Information Technology";
   if (route.startsWith("#/programs/computer-science")) return "BS Computer Science";
