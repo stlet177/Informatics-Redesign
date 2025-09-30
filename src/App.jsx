@@ -17,6 +17,10 @@ import NewsIndex from "./pages/NewsIndex";
 import NewsDetail from "./pages/NewsDetail";
 import ContactPage from "./pages/ContactPage";
 import SHS from "./pages/SHS";
+import TuitionAid from "./pages/TuitionAid";
+import Scholarships from "./pages/Scholarships";
+import AdmissionsFAQs from "./pages/AdmissionsFAQs";
+import ExplorePrograms from "./pages/ExplorePrograms";
 import Footer from "./components/Footer";
 import SocialBar from "./components/SocialBar";
 import { BRAND_BLUE } from "./lib/brand";
@@ -95,8 +99,16 @@ export default function App() {
           <ProgramIS />
         ) : route.startsWith("#/programs/business-administration") ? (
           <ProgramBA />
+        ) : route.startsWith("#/programs/explore") ? (
+          <ExplorePrograms />
         ) : route.startsWith("#/programs") ? (
           <ProgramsIndex />
+        ) : route.startsWith("#/admissions/tuition") ? (
+          <TuitionAid />
+        ) : route.startsWith("#/admissions/scholarships") ? (
+          <Scholarships />
+        ) : route.startsWith("#/admissions/faqs") ? (
+          <AdmissionsFAQs />
         ) : route.startsWith("#/admissions") ? (
           <Admissions />
         ) : route.startsWith("#/contact") ? (
@@ -122,7 +134,11 @@ function titleForRoute(route) {
   if (route.startsWith("#/programs/computer-science")) return "BS Computer Science";
   if (route.startsWith("#/programs/information-systems")) return "BS Information Systems";
   if (route.startsWith("#/programs/business-administration")) return "BS Business Administration";
+  if (route.startsWith("#/programs/explore")) return "Explore Programs";
   if (route.startsWith("#/programs")) return "Programs";
+  if (route.startsWith("#/admissions/tuition")) return "Tuition & Financial Aid";
+  if (route.startsWith("#/admissions/scholarships")) return "Scholarships";
+  if (route.startsWith("#/admissions/faqs")) return "Admissions FAQs";
   if (route.startsWith("#/admissions")) return "Admissions";
   if (route.startsWith("#/contact")) return "Contact Us";
   return "Home";
