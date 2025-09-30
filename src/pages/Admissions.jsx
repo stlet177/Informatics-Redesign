@@ -3,7 +3,6 @@ import Container from "../components/Container";
 import { BRAND_DARK, BRAND_LIGHT, BRAND_BLUE } from "../lib/brand";
 import CalendarList from "../components/CalendarList";
 import { admissionsConfig } from "../lib/content.config";
-import { navigateHash } from "../lib/navigation";
 
 export default function Admissions() {
   const [news, setNews] = useState([]);
@@ -41,36 +40,6 @@ export default function Admissions() {
     },
   ];
 
-  const tuitionHighlights = [
-    {
-      title: "Installment Plans",
-      copy: "Spread tuition across monthly or quarterly installments to match your budget.",
-    },
-    {
-      title: "Corporate & Partner Discounts",
-      copy: "Enjoy special rates through partner schools, companies, and government programs.",
-    },
-    {
-      title: "Financial Aid Support",
-      copy: "Talk to our counselors for assistance on CHED, TESDA, and school-based aid options.",
-    },
-  ];
-
-  const faqs = [
-    {
-      question: "When do classes start?",
-      answer: "Our main intake begins in August, with rolling admissions for selected programs year-round.",
-    },
-    {
-      question: "How long does application review take?",
-      answer: "Once requirements are complete, expect results within 3-5 business days via email or SMS.",
-    },
-    {
-      question: "Can I apply even without entrance exam results?",
-      answer: "Yes. You may submit your application while scheduling the assessment. Results must be completed before enrollment.",
-    },
-  ];
-
   return (
     <main className="pt-24 md:pt-28">
       {/* Guidelines */}
@@ -101,42 +70,36 @@ export default function Admissions() {
               </div>
             ))}
           </div>
-        </Container>
-      </section>
-
-      {/* Tuition / Aid */}
-      <section id="tuition" className="py-12 md:py-16" style={{ background: BRAND_LIGHT }}>
-        <Container>
-          <h2 className="text-2xl md:text-3xl font-semibold" style={{ color: BRAND_DARK }}>Tuition & Financial Aid</h2>
-          <p className="mt-2 text-slate-700">Flexible pathways help make Informatics accessible and affordable.</p>
-          <div className="mt-6 grid gap-6 md:grid-cols-3">
-            {tuitionHighlights.map(({ title, copy }) => (
-              <div key={title} className="rounded-2xl bg-white p-5 ring-1 ring-black/5 shadow-sm">
-                <div className="font-semibold" style={{ color: BRAND_DARK }}>{title}</div>
-                <p className="mt-3 text-sm text-slate-600">{copy}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Scholarships */}
-      <section id="scholarships" className="py-12 md:py-16">
-        <Container>
-          <h2 className="text-2xl md:text-3xl font-semibold" style={{ color: BRAND_DARK }}>Scholarships</h2>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {admissionsConfig.scholarships.map((s, i) => (
-              <div key={i} className="rounded-2xl bg-white p-5 ring-1 ring-black/5 shadow-sm">
-                <div className="font-semibold" style={{ color: BRAND_DARK }}>{s.title}</div>
-                <p className="mt-2 text-sm text-slate-600">{s.desc}</p>
-                <button
-                  type="button"
-                  onClick={() => navigateHash(s.href)}
-                  className="simple-btn simple-btn--primary mt-4 self-start"
-                >
-                  {s.cta}
-                </button>
-              </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                title: "Tuition & Financial Aid",
+                copy: "Compare payment plans, sponsorship options, and counselor support.",
+                href: "#/admissions/tuition",
+              },
+              {
+                title: "Scholarships",
+                copy: "Browse merit, need-based, and partner-funded awards for learners.",
+                href: "#/admissions/scholarships",
+              },
+              {
+                title: "Admissions FAQs",
+                copy: "Find quick answers about applications, assessments, and enrollment.",
+                href: "#/admissions/faqs",
+              },
+            ].map(({ title, copy, href }) => (
+              <a
+                key={title}
+                href={href}
+                className="flex h-full flex-col rounded-2xl bg-slate-900 px-6 py-6 text-white transition hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div className="text-xs font-semibold uppercase tracking-[0.32em] text-blue-200">Learn more</div>
+                <div className="mt-3 text-lg font-semibold">{title}</div>
+                <p className="mt-2 text-sm text-slate-200 flex-1">{copy}</p>
+                <span className="mt-4 inline-flex items-center text-sm font-semibold text-blue-200">
+                  Explore →
+                </span>
+              </a>
             ))}
           </div>
         </Container>
@@ -176,21 +139,6 @@ export default function Admissions() {
                 </a>
               ))
             )}
-          </div>
-        </Container>
-      </section>
-
-      {/* FAQs */}
-      <section id="faqs" className="py-12 md:py-16" style={{ background: BRAND_LIGHT }}>
-        <Container>
-          <h2 className="text-2xl md:text-3xl font-semibold" style={{ color: BRAND_DARK }}>Admissions FAQs</h2>
-          <div className="mt-6 space-y-4">
-            {faqs.map(({ question, answer }) => (
-              <div key={question} className="rounded-2xl bg-white p-5 ring-1 ring-black/5 shadow-sm">
-                <div className="text-base font-semibold" style={{ color: BRAND_DARK }}>{question}</div>
-                <p className="mt-2 text-sm text-slate-600">{answer}</p>
-              </div>
-            ))}
           </div>
         </Container>
       </section>

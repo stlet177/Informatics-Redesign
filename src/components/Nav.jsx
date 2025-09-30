@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Search, ChevronDown, GraduationCap, University, Layers, ClipboardList, FileText, Wallet, Award, HelpCircle } from "lucide-react";
+import { Search, ChevronDown, GraduationCap, University, Layers, ClipboardList, Wallet, Award, HelpCircle } from "lucide-react";
 import Container from "./Container";
 import { BRAND_DARK } from "../lib/brand";
 import { INFO_LOGO, PLACEHOLDER_IMG } from "../lib/assets";
@@ -13,7 +13,12 @@ const NAV_LINKS = [
     children: [
       { label: "Senior High School", href: "#/programs/shs", Icon: GraduationCap },
       { label: "Higher Education", href: "#/programs#academic", Icon: University },
-      { label: "Microcredentials", href: "#/programs#certificates", Icon: Layers },
+      {
+        label: "Microcredentials",
+        href: "https://imc.informatics.edu.ph",
+        Icon: Layers,
+        external: true,
+      },
     ],
   },
   {
@@ -21,10 +26,9 @@ const NAV_LINKS = [
     href: "#/admissions",
     children: [
       { label: "How to Apply", href: "#/admissions#how-to-apply", Icon: ClipboardList },
-      { label: "Requirements", href: "#/admissions#requirements", Icon: FileText },
-      { label: "Tuition & Financial Aid", href: "#/admissions#tuition", Icon: Wallet },
-      { label: "Scholarships", href: "#/admissions#scholarships", Icon: Award },
-      { label: "FAQs", href: "#/admissions#faqs", Icon: HelpCircle },
+      { label: "Tuition & Financial Aid", href: "#/admissions/tuition", Icon: Wallet },
+      { label: "Scholarships", href: "#/admissions/scholarships", Icon: Award },
+      { label: "FAQs", href: "#/admissions/faqs", Icon: HelpCircle },
     ],
   },
   { label: "News & Events", href: "/news-events" },
@@ -186,10 +190,12 @@ export default function Nav() {
                       className="absolute left-0 top-full mt-3 w-64 rounded-2xl border border-slate-200 bg-white p-3 shadow-xl"
                     >
                       <div className="flex flex-col gap-2">
-                        {link.children.map(({ label, href, Icon }) => (
+                        {link.children.map(({ label, href, Icon, external }) => (
                           <a
                             key={label}
                             href={href}
+                            target={external ? "_blank" : undefined}
+                            rel={external ? "noopener noreferrer" : undefined}
                             className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100"
                             onClick={() => setOpenDropdown(null)}
                           >
@@ -367,10 +373,12 @@ export default function Nav() {
                       {expanded ? (
                         <div id={sectionId} className="border-t border-slate-200 px-4 py-2">
                           <div className="flex flex-col gap-2">
-                            {link.children.map(({ label, href, Icon }) => (
+                            {link.children.map(({ label, href, Icon, external }) => (
                               <a
                                 key={label}
                                 href={href}
+                                target={external ? "_blank" : undefined}
+                                rel={external ? "noopener noreferrer" : undefined}
                                 className="flex items-center gap-3 rounded-xl bg-slate-50 px-3 py-2 text-sm"
                                 onClick={() => setMobileOpen(false)}
                               >

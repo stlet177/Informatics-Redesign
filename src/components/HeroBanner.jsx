@@ -9,9 +9,13 @@ const textVariants = {
 };
 
 const CTA_LINKS = [
-  { label: "View Senior High Programs", href: "#senior-high-programs" },
-  { label: "View College Programs", href: "#college-programs" },
-  { label: "View Microcredentials", href: "#microcredential-programs" },
+  { label: "View Senior High Programs", href: "#/programs/shs" },
+  { label: "View College Programs", href: "#/programs#academic" },
+  {
+    label: "View Microcredentials",
+    href: "https://imc.informatics.edu.ph",
+    external: true,
+  },
 ];
 
 const HERO_SECONDARY = asset("assets/Herosecond.jpg");
@@ -85,10 +89,12 @@ export default function HeroBanner() {
             <div
               className="mt-10 flex w-full flex-col gap-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-3 md:justify-start md:gap-4"
             >
-              {CTA_LINKS.map(({ label, href }) => (
+              {CTA_LINKS.map(({ label, href, external }) => (
                 <a
                   key={label}
                   href={href}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
                   className="inline-flex w-full items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold transition hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-200 md:w-auto"
                 >
                   {label}
