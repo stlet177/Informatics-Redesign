@@ -5,7 +5,7 @@ import { Facebook, Instagram, Linkedin, Youtube, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-slate-800 bg-[#0F172A] pt-12 pb-8 text-slate-300">
+    <footer className="relative z-20 border-t border-slate-800 bg-[#0F172A] pt-12 pb-8 text-slate-300">
       <Container className="grid gap-10 md:grid-cols-4">
         <div className="col-span-2">
           <div className="flex items-center gap-3">
