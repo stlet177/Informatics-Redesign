@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import Container from "./Container";
+import { asset, CAMPUS_IMG } from "../lib/assets";
 
 const textVariants = {
   hidden: { opacity: 0, y: 28 },
@@ -13,6 +14,9 @@ const CTA_LINKS = [
   { label: "View Microcredentials", href: "#microcredential-programs" },
 ];
 
+const HERO_SECONDARY = asset("assets/Herosecond.jpg");
+const HERO_BACKGROUND = CAMPUS_IMG;
+
 export default function HeroBanner() {
   return (
     <section
@@ -21,7 +25,7 @@ export default function HeroBanner() {
       aria-labelledby="hero-heading"
     >
       <motion.img
-        src="/assets/campus2.jpg"
+        src={HERO_BACKGROUND}
         alt="Informatics campus exterior"
         className="absolute inset-0 h-full w-full object-cover"
         initial={{ opacity: 0, scale: 1.05 }}
@@ -102,7 +106,7 @@ export default function HeroBanner() {
             <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4 backdrop-blur">
               <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-[#0f172a]/60 md:aspect-[4/3]">
                 <img
-                  src="/assets/Herosecond.jpg"
+                  src={HERO_SECONDARY}
                   alt="Students collaborating at Informatics"
                   className="h-full w-full object-cover object-center"
                 />
