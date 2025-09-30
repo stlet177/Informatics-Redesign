@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Search, ChevronDown, GraduationCap, University, Layers, ClipboardList, Wallet, Award, HelpCircle } from "lucide-react";
+import { Search, ChevronDown, GraduationCap, University, Layers, ClipboardList, Wallet, Award, HelpCircle, Compass } from "lucide-react";
 import Container from "./Container";
 import { BRAND_DARK } from "../lib/brand";
 import { INFO_LOGO, PLACEHOLDER_IMG } from "../lib/assets";
@@ -11,6 +11,7 @@ const NAV_LINKS = [
     label: "Programs",
     href: "#/programs",
     children: [
+      { label: "Explore Our Programs", href: "#/programs/explore", Icon: Compass },
       { label: "Senior High School", href: "#/programs/shs", Icon: GraduationCap },
       { label: "Higher Education", href: "#/programs#academic", Icon: University },
       {
