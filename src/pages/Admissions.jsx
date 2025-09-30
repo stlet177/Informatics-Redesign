@@ -11,11 +11,70 @@ export default function Admissions() {
     fetch(import.meta.env.BASE_URL + "src/content/news.json").then(r => r.json()).then(setNews).catch(() => setNews([]));
   }, []);
   const events = useMemo(() => news.filter(n => (n.category || 'news') === 'event').slice(0, 3), [news]);
+  const requirements = [
+    {
+      title: "Senior High School Applicants",
+      items: [
+        "Completed online application form",
+        "Form 138 or latest report card",
+        "PSA birth certificate (copy)",
+        "2x2 ID photos (2 pieces)",
+      ],
+    },
+    {
+      title: "College Freshmen",
+      items: [
+        "Filled-out application form",
+        "Grade 12 report card / Form 138",
+        "Good moral certificate",
+        "PSA birth certificate",
+      ],
+    },
+    {
+      title: "Transferees & Second Degree",
+      items: [
+        "Transcript of records or certified true copy",
+        "Honorable dismissal / transfer credentials",
+        "Course descriptions for evaluation",
+        "Valid ID and PSA birth certificate",
+      ],
+    },
+  ];
+
+  const tuitionHighlights = [
+    {
+      title: "Installment Plans",
+      copy: "Spread tuition across monthly or quarterly installments to match your budget.",
+    },
+    {
+      title: "Corporate & Partner Discounts",
+      copy: "Enjoy special rates through partner schools, companies, and government programs.",
+    },
+    {
+      title: "Financial Aid Support",
+      copy: "Talk to our counselors for assistance on CHED, TESDA, and school-based aid options.",
+    },
+  ];
+
+  const faqs = [
+    {
+      question: "When do classes start?",
+      answer: "Our main intake begins in August, with rolling admissions for selected programs year-round.",
+    },
+    {
+      question: "How long does application review take?",
+      answer: "Once requirements are complete, expect results within 3-5 business days via email or SMS.",
+    },
+    {
+      question: "Can I apply even without entrance exam results?",
+      answer: "Yes. You may submit your application while scheduling the assessment. Results must be completed before enrollment.",
+    },
+  ];
 
   return (
     <main className="pt-24 md:pt-28">
       {/* Guidelines */}
-      <section className="py-12 md:py-16" style={{ background: BRAND_LIGHT }}>
+      <section id="how-to-apply" className="py-12 md:py-16" style={{ background: BRAND_LIGHT }}>
         <Container>
           <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight" style={{ color: BRAND_DARK }}>Admissions</h1>
           <p className="mt-2 text-slate-700">Guidelines for application and enrollment.</p>
@@ -25,8 +84,44 @@ export default function Admissions() {
         </Container>
       </section>
 
+      {/* Requirements */}
+      <section id="requirements" className="py-12 md:py-16">
+        <Container>
+          <h2 className="text-2xl md:text-3xl font-semibold" style={{ color: BRAND_DARK }}>Requirements</h2>
+          <p className="mt-2 text-slate-700">Prepare the documents below based on the applicant type.</p>
+          <div className="mt-6 grid gap-6 md:grid-cols-3">
+            {requirements.map(({ title, items }) => (
+              <div key={title} className="rounded-2xl bg-white p-5 ring-1 ring-black/5 shadow-sm">
+                <div className="font-semibold" style={{ color: BRAND_DARK }}>{title}</div>
+                <ul className="mt-3 list-disc pl-5 text-sm text-slate-600 space-y-1">
+                  {items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Tuition / Aid */}
+      <section id="tuition" className="py-12 md:py-16" style={{ background: BRAND_LIGHT }}>
+        <Container>
+          <h2 className="text-2xl md:text-3xl font-semibold" style={{ color: BRAND_DARK }}>Tuition & Financial Aid</h2>
+          <p className="mt-2 text-slate-700">Flexible pathways help make Informatics accessible and affordable.</p>
+          <div className="mt-6 grid gap-6 md:grid-cols-3">
+            {tuitionHighlights.map(({ title, copy }) => (
+              <div key={title} className="rounded-2xl bg-white p-5 ring-1 ring-black/5 shadow-sm">
+                <div className="font-semibold" style={{ color: BRAND_DARK }}>{title}</div>
+                <p className="mt-3 text-sm text-slate-600">{copy}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* Scholarships */}
-      <section className="py-12 md:py-16">
+      <section id="scholarships" className="py-12 md:py-16">
         <Container>
           <h2 className="text-2xl md:text-3xl font-semibold" style={{ color: BRAND_DARK }}>Scholarships</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
@@ -81,6 +176,21 @@ export default function Admissions() {
                 </a>
               ))
             )}
+          </div>
+        </Container>
+      </section>
+
+      {/* FAQs */}
+      <section id="faqs" className="py-12 md:py-16" style={{ background: BRAND_LIGHT }}>
+        <Container>
+          <h2 className="text-2xl md:text-3xl font-semibold" style={{ color: BRAND_DARK }}>Admissions FAQs</h2>
+          <div className="mt-6 space-y-4">
+            {faqs.map(({ question, answer }) => (
+              <div key={question} className="rounded-2xl bg-white p-5 ring-1 ring-black/5 shadow-sm">
+                <div className="text-base font-semibold" style={{ color: BRAND_DARK }}>{question}</div>
+                <p className="mt-2 text-sm text-slate-600">{answer}</p>
+              </div>
+            ))}
           </div>
         </Container>
       </section>

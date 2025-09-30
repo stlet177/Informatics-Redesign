@@ -1,7 +1,6 @@
 import Container from "../components/Container";
 import { Globe, GraduationCap, Briefcase, Users, Award, Target, Heart, Lightbulb, Shield, TrendingUp, Mail, Phone, MapPin, Calendar } from "lucide-react";
 import FeatureStats from "../components/FeatureStats";
-import Partners from "../components/Partners";
 import InquiryForm from "../components/InquiryForm";
 import { BRAND_DARK, BRAND_LIGHT, BRAND_BLUE } from "../lib/brand";
 import { motion } from "framer-motion";
@@ -442,25 +441,6 @@ export default function About() {
                 { value: "100+", label: "Industry Partners" },
                 { value: "1000s", label: "Successful Graduates" },
               ]} />
-            </div>
-          </Container>
-        </motion.div>
-      </section>
-
-      {/* Partners */}
-      <section className="py-16 md:py-20 bg-gradient-to-b from-slate-50 to-white">
-        <motion.div {...fadeInUp}>
-          <Container>
-            <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: BRAND_DARK }}>
-                  Our Strategic Partners
-                </h2>
-                <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-                  Collaborating with industry leaders to ensure our curriculum meets global standards
-                </p>
-              </div>
-              <Partners />
             </div>
           </Container>
         </motion.div>

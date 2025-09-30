@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Search } from "lucide-react";
+import { Search, ChevronDown, GraduationCap, University, Layers, ClipboardList, FileText, Wallet, Award, HelpCircle } from "lucide-react";
 import Container from "./Container";
 import { BRAND_DARK } from "../lib/brand";
 import { INFO_LOGO, PLACEHOLDER_IMG } from "../lib/assets";
@@ -7,8 +7,26 @@ import { INFO_LOGO, PLACEHOLDER_IMG } from "../lib/assets";
 const NAV_LINKS = [
   { label: "Home", href: "#hero" },
   { label: "About us", href: "#/about" },
-  { label: "Programs", href: "#/programs" },
-  { label: "Admissions", href: "/admissions" },
+  {
+    label: "Programs",
+    href: "#/programs",
+    children: [
+      { label: "Senior High School", href: "#/programs/shs", Icon: GraduationCap },
+      { label: "Higher Education", href: "#/programs#academic", Icon: University },
+      { label: "Microcredentials", href: "#/programs#certificates", Icon: Layers },
+    ],
+  },
+  {
+    label: "Admissions",
+    href: "#/admissions",
+    children: [
+      { label: "How to Apply", href: "#/admissions#how-to-apply", Icon: ClipboardList },
+      { label: "Requirements", href: "#/admissions#requirements", Icon: FileText },
+      { label: "Tuition & Financial Aid", href: "#/admissions#tuition", Icon: Wallet },
+      { label: "Scholarships", href: "#/admissions#scholarships", Icon: Award },
+      { label: "FAQs", href: "#/admissions#faqs", Icon: HelpCircle },
+    ],
+  },
   { label: "News & Events", href: "/news-events" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
@@ -26,7 +44,10 @@ export default function Nav() {
   const [searchValue, setSearchValue] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [mobileDropdowns, setMobileDropdowns] = useState({});
   const searchInputRef = useRef(null);
+  const dropdownTimeoutRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -47,6 +68,20 @@ export default function Nav() {
     return () => {
       body.style.overflow = original || "";
     };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (dropdownTimeoutRef.current) {
+        window.clearTimeout(dropdownTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!mobileOpen) {
+      setMobileDropdowns({});
+    }
   }, [mobileOpen]);
 
   const handleSubmitSearch = (event) => {
@@ -74,6 +109,27 @@ export default function Nav() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [searchOpen]);
 
+  const openDropdownImmediate = (label) => {
+    if (dropdownTimeoutRef.current) {
+      window.clearTimeout(dropdownTimeoutRef.current);
+    }
+    setOpenDropdown(label);
+  };
+
+  const scheduleDropdownClose = () => {
+    if (dropdownTimeoutRef.current) {
+      window.clearTimeout(dropdownTimeoutRef.current);
+    }
+    dropdownTimeoutRef.current = window.setTimeout(() => setOpenDropdown(null), 100);
+  };
+
+  const toggleMobileDropdown = (label) => {
+    setMobileDropdowns((prev) => ({
+      ...prev,
+      [label]: !prev[label],
+    }));
+  };
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all ${
@@ -97,17 +153,71 @@ export default function Nav() {
           aria-label="Main navigation"
           style={{ color: BRAND_DARK }}
         >
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target={link.external ? "_blank" : undefined}
-              rel={link.external ? "noopener noreferrer" : undefined}
-              className="nav-glow transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-            >
-              {link.label}
-            </a>
-          ))}
+          {NAV_LINKS.map((link) => {
+            if (link.children?.length) {
+              const isOpen = openDropdown === link.label;
+              const dropdownId = `${link.label.replace(/\s+/g, "-").toLowerCase()}-menu`;
+              return (
+                <div
+                  key={link.label}
+                  className="relative"
+                  onMouseEnter={() => openDropdownImmediate(link.label)}
+                  onMouseLeave={scheduleDropdownClose}
+                  onFocus={() => openDropdownImmediate(link.label)}
+                  onBlur={(event) => {
+                    if (!event.currentTarget.contains(event.relatedTarget)) {
+                      setOpenDropdown(null);
+                    }
+                  }}
+                >
+                  <button
+                    type="button"
+                    className="flex items-center gap-1 nav-glow transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+                    aria-expanded={isOpen}
+                    aria-controls={dropdownId}
+                    onClick={() => setOpenDropdown(isOpen ? null : link.label)}
+                  >
+                    <span>{link.label}</span>
+                    <ChevronDown size={16} className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                  </button>
+                  {isOpen ? (
+                    <div
+                      id={dropdownId}
+                      className="absolute left-0 top-full mt-3 w-64 rounded-2xl border border-slate-200 bg-white p-3 shadow-xl"
+                    >
+                      <div className="flex flex-col gap-2">
+                        {link.children.map(({ label, href, Icon }) => (
+                          <a
+                            key={label}
+                            href={href}
+                            className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100"
+                            onClick={() => setOpenDropdown(null)}
+                          >
+                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-sky-600">
+                              <Icon size={18} />
+                            </div>
+                            <span>{label}</span>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+              );
+            }
+
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                className="nav-glow transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+              >
+                {link.label}
+              </a>
+            );
+          })}
           <div className="relative">
             <button
               type="button"
@@ -230,18 +340,66 @@ export default function Nav() {
               aria-label="Mobile navigation"
               style={{ color: BRAND_DARK }}
             >
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  rel={link.external ? "noopener noreferrer" : undefined}
-                  onClick={() => setMobileOpen(false)}
-                  className="nav-glow rounded-full px-4 py-2 transition hover:bg-slate-100"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {NAV_LINKS.map((link) => {
+                if (link.children?.length) {
+                  const expanded = !!mobileDropdowns[link.label];
+                  const sectionId = `${link.label.replace(/\s+/g, "-").toLowerCase()}-subnav`;
+                  return (
+                    <div key={link.label} className="rounded-2xl border border-slate-200">
+                      <div className="flex items-center justify-between">
+                        <a
+                          href={link.href}
+                          className="flex-1 nav-glow rounded-full px-4 py-2 transition hover:bg-slate-100"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          {link.label}
+                        </a>
+                        <button
+                          type="button"
+                          onClick={() => toggleMobileDropdown(link.label)}
+                          className="px-4 py-2 text-slate-600"
+                          aria-expanded={expanded}
+                          aria-controls={sectionId}
+                        >
+                          <ChevronDown size={18} className={`transition-transform ${expanded ? "rotate-180" : ""}`} />
+                        </button>
+                      </div>
+                      {expanded ? (
+                        <div id={sectionId} className="border-t border-slate-200 px-4 py-2">
+                          <div className="flex flex-col gap-2">
+                            {link.children.map(({ label, href, Icon }) => (
+                              <a
+                                key={label}
+                                href={href}
+                                className="flex items-center gap-3 rounded-xl bg-slate-50 px-3 py-2 text-sm"
+                                onClick={() => setMobileOpen(false)}
+                              >
+                                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-sky-600">
+                                  <Icon size={18} />
+                                </div>
+                                <span className="font-semibold">{label}</span>
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
+                  );
+                }
+
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
+                    onClick={() => setMobileOpen(false)}
+                    className="nav-glow rounded-full px-4 py-2 transition hover:bg-slate-100"
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
             </nav>
           </div>
         </div>
