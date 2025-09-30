@@ -2,9 +2,18 @@ import Container from "../components/Container";
 import { Globe, GraduationCap, Briefcase, Users, Award, Target, Heart, Lightbulb, Shield, TrendingUp, Mail, Phone, MapPin, Calendar } from "lucide-react";
 import FeatureStats from "../components/FeatureStats";
 import InquiryForm from "../components/InquiryForm";
-import { BRAND_DARK, BRAND_LIGHT, BRAND_BLUE } from "../lib/brand";
+import { BRAND_DARK, BRAND_LIGHT } from "../lib/brand";
+import { asset } from "../lib/assets";
 import { motion } from "framer-motion";
 import { fadeInUp } from "../lib/variants";
+
+const ABOUT_BLUE = "#0097FF";
+const ABOUT_BLUE_DARK = "#007fe0";
+const ABOUT_BLUE_LIGHT = "#e0f4ff";
+
+const HERO_BG = asset("assets/campus.jpg");
+const CAMPUS_IMAGE = asset("assets/campus.jpg");
+const FOUNDER_IMAGE = asset("assets/ourFounder.jpg");
 
 export default function About() {
   const coreValues = [
@@ -107,7 +116,7 @@ export default function About() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('/assets/campus.jpg')`,
+            backgroundImage: `url('${HERO_BG}')`,
             filter: 'grayscale(20%) blur(1px) brightness(0.8)',
             transform: 'scale(1.1)'
           }}
@@ -124,7 +133,12 @@ export default function About() {
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 text-white leading-tight">
-              Empowering <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Future</span> Leaders
+              Empowering <span
+                className="text-transparent bg-clip-text"
+                style={{ backgroundImage: `linear-gradient(90deg, ${ABOUT_BLUE}, ${ABOUT_BLUE_DARK})` }}
+              >
+                Future
+              </span> Leaders
             </h1>
 
             <p className="text-lg md:text-xl lg:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8 font-light">
@@ -135,7 +149,12 @@ export default function About() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
                 href="#/programs"
-                className="group inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-white font-bold text-lg bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:-translate-y-1 border border-blue-500/50"
+                className="group inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-white font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:brightness-105 hover:shadow-[0_30px_60px_rgba(0,151,255,0.35)]"
+                style={{
+                  background: `linear-gradient(90deg, ${ABOUT_BLUE}, ${ABOUT_BLUE_DARK})`,
+                  border: `1px solid ${ABOUT_BLUE}90`,
+                  boxShadow: "0 20px 45px rgba(0, 151, 255, 0.25)",
+                }}
               >
                 <GraduationCap size={20} />
                 Explore Programs
@@ -159,9 +178,14 @@ export default function About() {
             <div className="max-w-7xl mx-auto">
               <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <div className="order-2 lg:order-1">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 mb-6">
-                    <Award size={16} style={{ color: BRAND_BLUE }} />
-                    <span className="text-sm font-medium" style={{ color: BRAND_BLUE }}>Our Story</span>
+                  <div
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                    style={{ backgroundColor: ABOUT_BLUE_LIGHT }}
+                  >
+                    <Award size={16} style={{ color: ABOUT_BLUE }} />
+                    <span className="text-sm font-medium" style={{ color: ABOUT_BLUE }}>
+                      Our Story
+                    </span>
                   </div>
 
                   <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: BRAND_DARK }}>
@@ -170,7 +194,7 @@ export default function About() {
 
                   <div className="space-y-4 text-slate-700 leading-relaxed">
                     <p className="text-lg">
-                      Our roots trace back to <span className="font-semibold" style={{ color: BRAND_BLUE }}>1983</span> when Informatics Education was founded in Singapore in response to Asia's growing demand for skilled IT professionals. With a passion for technology and a vision to make IT education accessible to Filipinos, entrepreneur <span className="font-semibold" style={{ color: BRAND_BLUE }}>Leonardo "Leo" Riingen</span> established Informatics Philippines in <span className="font-semibold" style={{ color: BRAND_BLUE }}>1993</span>.
+                      Our roots trace back to <span className="font-semibold" style={{ color: ABOUT_BLUE }}>1983</span> when Informatics Education was founded in Singapore in response to Asia's growing demand for skilled IT professionals. With a passion for technology and a vision to make IT education accessible to Filipinos, entrepreneur <span className="font-semibold" style={{ color: ABOUT_BLUE }}>Leonardo "Leo" Riingen</span> established Informatics Philippines in <span className="font-semibold" style={{ color: ABOUT_BLUE }}>1993</span>.
                     </p>
 
                     <p>
@@ -186,9 +210,12 @@ export default function About() {
                 <div className="order-1 lg:order-2">
                   <div className="relative">
                     <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                      <img src="/assets/campus.jpg" alt="Informatics Campus" className="w-full h-full object-cover" />
+                      <img src={CAMPUS_IMAGE} alt="Informatics Campus" className="w-full h-full object-cover" />
                     </div>
-                    <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                    <div
+                      className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl flex items-center justify-center shadow-lg"
+                      style={{ background: `linear-gradient(135deg, ${ABOUT_BLUE}, ${ABOUT_BLUE_DARK})` }}
+                    >
                       <span className="text-white font-bold text-2xl">30+</span>
                       <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-white rounded-full"></div>
                     </div>
@@ -216,8 +243,11 @@ export default function About() {
 
               <div className="grid md:grid-cols-3 gap-8">
                 <div className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100 p-8">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 mb-6">
-                    <Target size={28} style={{ color: BRAND_BLUE }} />
+                  <div
+                    className="flex items-center justify-center w-16 h-16 rounded-2xl mb-6"
+                    style={{ background: `linear-gradient(135deg, ${ABOUT_BLUE_LIGHT}, rgba(0,151,255,0.3))` }}
+                  >
+                    <Target size={28} style={{ color: ABOUT_BLUE }} />
                   </div>
                   <h3 className="text-xl font-bold mb-4" style={{ color: BRAND_DARK }}>Mission</h3>
                   <p className="text-slate-600 leading-relaxed">
@@ -227,7 +257,7 @@ export default function About() {
 
                 <div className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100 p-8">
                   <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-green-50 to-green-100 mb-6">
-                    <Globe size={28} style={{ color: BRAND_BLUE }} />
+                    <Globe size={28} style={{ color: ABOUT_BLUE }} />
                   </div>
                   <h3 className="text-xl font-bold mb-4" style={{ color: BRAND_DARK }}>Vision</h3>
                   <p className="text-slate-600 leading-relaxed">
@@ -237,7 +267,7 @@ export default function About() {
 
                 <div className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100 p-8">
                   <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-50 to-purple-100 mb-6">
-                    <Award size={28} style={{ color: BRAND_BLUE }} />
+                    <Award size={28} style={{ color: ABOUT_BLUE }} />
                   </div>
                   <h3 className="text-xl font-bold mb-4" style={{ color: BRAND_DARK }}>History</h3>
                   <p className="text-slate-600 leading-relaxed">
@@ -266,19 +296,28 @@ export default function About() {
 
               <div className="relative">
                 {/* Timeline Line */}
-                <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 to-blue-400 transform md:-translate-x-1/2"></div>
+                <div
+                  className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 transform md:-translate-x-1/2"
+                  style={{ background: `linear-gradient(to bottom, ${ABOUT_BLUE_LIGHT}, ${ABOUT_BLUE})` }}
+                ></div>
 
                 <div className="space-y-12">
                   {milestones.map((milestone, index) => (
                     <div key={index} className={`relative flex items-start gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                       {/* Timeline Dot */}
-                      <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full border-4 border-white shadow-lg transform md:-translate-x-1/2 z-10"></div>
+                      <div
+                        className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full border-4 border-white shadow-lg transform md:-translate-x-1/2 z-10"
+                        style={{ background: `linear-gradient(90deg, ${ABOUT_BLUE}, ${ABOUT_BLUE_DARK})` }}
+                      ></div>
 
                       {/* Content */}
                       <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
                         <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-slate-100">
                           <div className="flex items-center gap-3 mb-3">
-                            <div className="px-3 py-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full text-sm font-bold">
+                            <div
+                              className="px-3 py-1 text-white rounded-full text-sm font-bold"
+                              style={{ background: `linear-gradient(90deg, ${ABOUT_BLUE}, ${ABOUT_BLUE_DARK})` }}
+                            >
                               {milestone.year}
                             </div>
                           </div>
@@ -316,8 +355,11 @@ export default function About() {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {coreValues.map((value, index) => (
                   <div key={index} className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100 p-8">
-                    <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 mb-6">
-                      <value.icon size={28} style={{ color: BRAND_BLUE }} />
+                    <div
+                      className="flex items-center justify-center w-16 h-16 rounded-2xl mb-6"
+                      style={{ background: `linear-gradient(135deg, ${ABOUT_BLUE_LIGHT}, rgba(0,151,255,0.25))` }}
+                    >
+                      <value.icon size={28} style={{ color: ABOUT_BLUE }} />
                     </div>
                     <h3 className="text-xl font-bold mb-4" style={{ color: BRAND_DARK }}>
                       {value.title}
@@ -350,11 +392,17 @@ export default function About() {
               <div className="grid lg:grid-cols-3 gap-8">
                 {whyChooseUs.map((item, index) => (
                   <div key={index} className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100 p-8">
-                    <div className="flex items-center justify-center w-20 h-20 rounded-3xl bg-gradient-to-br from-blue-50 to-blue-100 mb-6">
-                      <item.icon size={32} style={{ color: BRAND_BLUE }} />
+                    <div
+                      className="flex items-center justify-center w-20 h-20 rounded-3xl mb-6"
+                      style={{ background: `linear-gradient(135deg, ${ABOUT_BLUE_LIGHT}, rgba(0,151,255,0.2))` }}
+                    >
+                      <item.icon size={32} style={{ color: ABOUT_BLUE }} />
                     </div>
                     <div className="mb-4">
-                      <span className="inline-block px-3 py-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-bold rounded-full mb-3">
+                      <span
+                        className="inline-block px-3 py-1 text-white text-xs font-bold rounded-full mb-3"
+                        style={{ background: `linear-gradient(90deg, ${ABOUT_BLUE}, ${ABOUT_BLUE_DARK})` }}
+                      >
                         {item.highlight}
                       </span>
                       <h3 className="text-xl font-bold mb-3" style={{ color: BRAND_DARK }}>
@@ -378,9 +426,14 @@ export default function About() {
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="order-2 lg:order-1">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 mb-6">
-                  <Users size={16} style={{ color: BRAND_BLUE }} />
-                  <span className="text-sm font-medium" style={{ color: BRAND_BLUE }}>Leadership</span>
+                <div
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                  style={{ backgroundColor: ABOUT_BLUE_LIGHT }}
+                >
+                  <Users size={16} style={{ color: ABOUT_BLUE }} />
+                  <span className="text-sm font-medium" style={{ color: ABOUT_BLUE }}>
+                    Leadership
+                  </span>
                 </div>
 
                 <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: BRAND_DARK }}>
@@ -389,7 +442,7 @@ export default function About() {
 
                 <div className="space-y-4 text-slate-700 leading-relaxed">
                   <p className="text-lg">
-                    <span className="font-semibold" style={{ color: BRAND_BLUE }}>Leonardo Riingen</span> is a pioneering entrepreneur who has significantly contributed to advancing information technology training and education in the Philippines.
+                    <span className="font-semibold" style={{ color: ABOUT_BLUE }}>Leonardo Riingen</span> is a pioneering entrepreneur who has significantly contributed to advancing information technology training and education in the Philippines.
                   </p>
 
                   <p>
@@ -409,9 +462,12 @@ export default function About() {
               <div className="order-1 lg:order-2">
                 <div className="relative">
                   <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                    <img src="/assets/ourFounder.jpg" alt="Founder Leonardo Riingen" className="w-full h-full object-cover" />
+                    <img src={FOUNDER_IMAGE} alt="Founder Leonardo Riingen" className="w-full h-full object-cover" />
                   </div>
-                  <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                  <div
+                    className="absolute -bottom-6 -left-6 w-24 h-24 rounded-2xl flex items-center justify-center shadow-lg"
+                    style={{ background: `linear-gradient(135deg, ${ABOUT_BLUE}, ${ABOUT_BLUE_DARK})` }}
+                  >
                     <Award className="text-white" size={32} />
                   </div>
                 </div>
@@ -462,17 +518,23 @@ export default function About() {
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <a href="#/campuses" className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-slate-100 p-6">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 mb-4">
-                    <MapPin size={20} style={{ color: BRAND_BLUE }} />
+                  <div
+                    className="flex items-center justify-center w-12 h-12 rounded-xl mb-4"
+                    style={{ background: `linear-gradient(135deg, ${ABOUT_BLUE_LIGHT}, rgba(0,151,255,0.2))` }}
+                  >
+                    <MapPin size={20} style={{ color: ABOUT_BLUE }} />
                   </div>
                   <h3 className="text-lg font-bold mb-2" style={{ color: BRAND_DARK }}>Campuses</h3>
                   <p className="text-sm text-slate-600">Find our locations nationwide</p>
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: `linear-gradient(90deg, rgba(0,151,255,0), rgba(0,151,255,0.12))` }}
+                  ></div>
                 </a>
 
                 <a href="#/programs" className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-slate-100 p-6">
                   <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-green-50 to-green-100 mb-4">
-                    <GraduationCap size={20} style={{ color: BRAND_BLUE }} />
+                    <GraduationCap size={20} style={{ color: ABOUT_BLUE }} />
                   </div>
                   <h3 className="text-lg font-bold mb-2" style={{ color: BRAND_DARK }}>Academic Programs</h3>
                   <p className="text-sm text-slate-600">Bachelor's and SHS tracks</p>
@@ -481,7 +543,7 @@ export default function About() {
 
                 <a href="#/programs" className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-slate-100 p-6">
                   <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 mb-4">
-                    <Award size={20} style={{ color: BRAND_BLUE }} />
+                    <Award size={20} style={{ color: ABOUT_BLUE }} />
                   </div>
                   <h3 className="text-lg font-bold mb-2" style={{ color: BRAND_DARK }}>Certificate Programs</h3>
                   <p className="text-sm text-slate-600">TESDA, Diploma, and Short Courses</p>
@@ -490,7 +552,7 @@ export default function About() {
 
                 <a href="#/careers" className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-slate-100 p-6">
                   <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 mb-4">
-                    <Users size={20} style={{ color: BRAND_BLUE }} />
+                    <Users size={20} style={{ color: ABOUT_BLUE }} />
                   </div>
                   <h3 className="text-lg font-bold mb-2" style={{ color: BRAND_DARK }}>Careers</h3>
                   <p className="text-sm text-slate-600">Join our team of educators</p>
@@ -524,12 +586,15 @@ export default function About() {
 
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100">
-                        <Mail size={20} style={{ color: BRAND_BLUE }} />
+                      <div
+                        className="flex items-center justify-center w-12 h-12 rounded-xl"
+                        style={{ background: `linear-gradient(135deg, ${ABOUT_BLUE_LIGHT}, rgba(0,151,255,0.2))` }}
+                      >
+                        <Mail size={20} style={{ color: ABOUT_BLUE }} />
                       </div>
                       <div>
                         <p className="font-semibold" style={{ color: BRAND_DARK }}>Email</p>
-                        <a href="mailto:info@informatics.edu.ph" className="text-slate-600 hover:text-blue-600 transition-colors">
+                        <a href="mailto:info@informatics.edu.ph" className="text-slate-600 hover:text-[#0097FF] transition-colors">
                           info.northgate@informatics.com.ph
                         </a>
                       </div>
@@ -537,7 +602,7 @@ export default function About() {
 
                     <div className="flex items-center gap-4">
                       <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-green-50 to-green-100">
-                        <Phone size={20} style={{ color: BRAND_BLUE }} />
+                        <Phone size={20} style={{ color: ABOUT_BLUE }} />
                       </div>
                       <div>
                         <p className="font-semibold" style={{ color: BRAND_DARK }}>Phone</p>
@@ -549,7 +614,7 @@ export default function About() {
 
                     <div className="flex items-center gap-4">
                       <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100">
-                        <MapPin size={20} style={{ color: BRAND_BLUE }} />
+                        <MapPin size={20} style={{ color: ABOUT_BLUE }} />
                       </div>
                       <div>
                         <p className="font-semibold" style={{ color: BRAND_DARK }}>Main Campus</p>
