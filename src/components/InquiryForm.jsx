@@ -1,4 +1,5 @@
 import { BRAND_BLUE, BRAND_DARK } from "../lib/brand";
+import SelectField from "./SelectField";
 
 export default function InquiryForm() {
 
@@ -17,9 +18,10 @@ export default function InquiryForm() {
           <label className="block text-sm font-medium" style={{color: BRAND_DARK}}>Contact Number</label>
           <input type="tel" className="mt-1 w-full rounded-xl border px-4 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)] focus:border-[var(--brand-blue)] transition-colors" style={{ borderColor: "#E2E8F0" }} placeholder="09xx xxx xxxx" />
         </div>
+        <SelectField label="Type" options={["New student", "Enrolled student", "Alumni", "Job Applicant", "Other"]} />
+        <SelectField label="Concern" options={["Programs/Courses", "Tuition Fee", "Enrollment", "Credentials", "Careers", "Proposals", "Other"]} />
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium" style={{color: BRAND_DARK}}>Preferred Branch</label>
-          <input className="mt-1 w-full rounded-xl border px-4 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)] focus:border-[var(--brand-blue)] transition-colors" style={{ borderColor: "#E2E8F0" }} placeholder="e.g., Manila, Northgate…" />
+          <SelectField label="Preferred Branch" options={["Informatics Manila", "Northgate Alabang", "North Luzon", "South Luzon", "Visayas", "Mindanao", "Others/Any"]} />
         </div>
         <div className="md:col-span-2">
           <label className="block text-sm font-medium" style={{color: BRAND_DARK}}>Message</label>

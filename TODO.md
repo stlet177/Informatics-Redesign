@@ -1,16 +1,10 @@
-# Sidebar Redesign Tasks
+# TODO: About Page Updates
 
-- [x] Add hamburger button for mobile sidebar toggle
-- [x] Make sidebar responsive: hidden on mobile, slide in/out animation
-- [x] Adjust content area margin for desktop only
-- [x] Enhance sidebar aesthetics: brand colors, icons for items, improved gradients/shadows
-- [x] Improve animations: stagger effects for sidebar items, smooth transitions
+## Completed Tasks
+- [x] Added framer-motion animations to all milestone boxes in the About page (fade in and slide up with staggered delay on scroll).
+- [x] Updated Careers sidebar link to redirect to external JobStreet URL: https://ph.jobstreet.com/companies/informatics-college-168552199237399/jobs
 
-# About Page Mobile Responsiveness Tasks
-
-- [x] Adjust hero section font sizes and spacing for better mobile readability
-- [x] Optimize timeline layout in milestones section for mobile screens
-- [x] Ensure all grid layouts stack properly on mobile
-- [x] Adjust padding and margins in sections for mobile
-- [x] Verify button sizes and touch targets on mobile
-- [x] Test sidebar and content area on mobile widths
+## Pending Tasks
+- [ ] Test milestone section animations for smoothness and correct scroll triggering.
+- [ ] Test community engagement section images link correctly to Facebook share URLs.
+- [ ] Test Careers link redirects to external URL.
