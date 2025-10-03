@@ -1,10 +1,10 @@
-# TODO: About Page Updates
+# TODO: Modify Milestone Section in About Page
 
-## Completed Tasks
-- [x] Added framer-motion animations to all milestone boxes in the About page (fade in and slide up with staggered delay on scroll).
-- [x] Updated Careers sidebar link to redirect to external JobStreet URL: https://ph.jobstreet.com/companies/informatics-college-168552199237399/jobs
+## Tasks
+- [x] Update year button styling: Change background to white and text to black
+- [x] Remove box styling from milestone content: Eliminate background, rounded corners, shadows, and borders
+- [x] Ensure title and description remain as plain white text
+- [x] Retain LottiePlayer animations unchanged
 
-## Pending Tasks
-- [ ] Test milestone section animations for smoothness and correct scroll triggering.
-- [ ] Test community engagement section images link correctly to Facebook share URLs.
-- [ ] Test Careers link redirects to external URL.
+## Status
+- [x] All tasks completed

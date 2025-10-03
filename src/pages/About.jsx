@@ -652,7 +652,7 @@ export default function About() {
           </section>
 
           {/* Our Milestones Timeline */}
-          <section className="py-16 md:py-20 bg-cyan-500" id="leadership-and-legacy">
+          <section className="py-16 md:py-20 bg-slate-900" id="leadership-and-legacy">
             <motion.div>
               <Container>
                 <div className="max-w-7xl mx-auto">
@@ -673,7 +673,7 @@ export default function About() {
 
                   <div className="relative">
                     {/* Timeline Line */}
-                    <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 to-blue-400 transform md:-translate-x-1/2"></div>
+                    <div className="hidden md:block absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 to-blue-400 transform md:-translate-x-1/2"></div>
 
                   <div className="space-y-12">
                     {milestones.map((milestone, index) => {
@@ -704,16 +704,16 @@ export default function About() {
 
                     {/* Content */}
                     <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
-                      <div className="bg-blue-900 rounded-2xl shadow-[0_20px_55px_rgba(59,130,246,0.12)] hover:shadow-[0_32px_70px_rgba(59,130,246,0.18)] transition-all duration-300 p-6 border border-blue-700">
+                      <div className="p-6">
                         <div className="flex items-center gap-3 mb-3">
-                          <div className="px-3 py-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full text-sm font-bold">
+                          <div className="px-3 py-1 bg-white text-black rounded-full text-sm font-bold">
                             {milestone.year}
                           </div>
                         </div>
                         <h3 className="text-lg font-bold mb-2 text-white">
                           {milestone.title}
                         </h3>
-                        <p className="text-blue-200 leading-relaxed">
+                        <p className="text-white leading-relaxed">
                           {milestone.description}
                         </p>
                         <div className="mt-4">
@@ -784,8 +784,8 @@ export default function About() {
 
                       <div className="space-y-4">
                         <div className="flex items-start gap-3 lg:gap-4">
-                          <div className="flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 flex-shrink-0">
-                            <Mail size={18} className="lg:w-5 lg:h-5" style={{ color: BRAND_BLUE }} />
+                          <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50">
+                            <Mail size={28} style={{ color: BRAND_BLUE }} />
                           </div>
                           <div className="min-w-0 flex-1">
                             <p className="font-semibold text-sm lg:text-base" style={{ color: BRAND_DARK }}>Email</p>
@@ -796,8 +796,8 @@ export default function About() {
                         </div>
 
                         <div className="flex items-start gap-3 lg:gap-4">
-                          <div className="flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-to-br from-green-50 to-green-100 flex-shrink-0">
-                            <Phone size={18} className="lg:w-5 lg:h-5" style={{ color: BRAND_BLUE }} />
+                          <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50">
+                            <Phone size={28} style={{ color: BRAND_BLUE }} />
                           </div>
                           <div className="min-w-0 flex-1">
                             <p className="font-semibold text-sm lg:text-base" style={{ color: BRAND_DARK }}>Phone</p>
@@ -808,8 +808,8 @@ export default function About() {
                         </div>
 
                         <div className="flex items-start gap-3 lg:gap-4">
-                          <div className="flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 flex-shrink-0">
-                            <MapPin size={18} className="lg:w-5 lg:h-5" style={{ color: BRAND_BLUE }} />
+                          <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50">
+                            <MapPin size={28} style={{ color: BRAND_BLUE }} />
                           </div>
                           <div className="min-w-0 flex-1">
                             <p className="font-semibold text-sm lg:text-base" style={{ color: BRAND_DARK }}>Main Campus</p>
