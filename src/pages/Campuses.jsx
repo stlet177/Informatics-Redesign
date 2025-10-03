@@ -1,6 +1,7 @@
 import Container from "../components/Container";
 import { MapPin, Phone, Mail, Clock, Users, GraduationCap, Star, Award, Building2, Globe, BookOpen } from "lucide-react";
 import { BRAND_DARK, BRAND_LIGHT, BRAND_BLUE } from "../lib/brand";
+import { asset } from "../lib/assets";
 import { motion } from "framer-motion";
 import { fadeInUp } from "../lib/variants";
 
@@ -17,7 +18,7 @@ export default function Campuses() {
       established: "1993",
       highlights: ["Flagship Campus", "Central Location"],
       features: ["Modern Labs", "WiFi Campus", "24/7 Library"],
-      image: "/assets/manila-campus.jpg"
+      image: asset("assets/manila-campus.jpg")
     },
     {
       name: "North Luzon Campus",
@@ -30,7 +31,7 @@ export default function Campuses() {
       established: "2008",
       highlights: ["Mountain Campus", "Cool Climate"],
       features: ["Scenic Location", "Creative Spaces", "Innovation Hub"],
-      image: "/assets/north-luzon.jpg"
+      image: asset("assets/north-luzon.jpg")
     },
     {
       name: "South Luzon Campus",
@@ -43,7 +44,7 @@ export default function Campuses() {
       established: "2010",
       highlights: ["Western Visayas", "Cultural Heritage"],
       features: ["Cultural Programs", "Heritage Building", "Community Center"],
-      image: "/assets/south-luzon.jpg"
+      image: asset("assets/south-luzon.jpg")
     },
     {
       name: "Visayas (Cebu) Campus",
@@ -56,7 +57,7 @@ export default function Campuses() {
       established: "2001",
       highlights: ["Regional Excellence", "Growing Community"],
       features: ["Regional Training", "Local Industry Focus", "Community Programs"],
-      image: "/assets/visayas-cebu.jpg"
+      image: asset("assets/visayas-cebu.jpg")
     },
     {
       name: "Mindanao (CDO) Campus",
@@ -69,7 +70,7 @@ export default function Campuses() {
       established: "2005",
       highlights: ["Southern Gateway", "Innovation Center"],
       features: ["Research Facilities", "Advanced Computing", "AI Lab"],
-      image: "/assets/mindanao-cdo.jpg"
+      image: asset("assets/mindanao-cdo.jpg")
     },
     {
       name: "Northgate (Alabang) Campus",
@@ -82,7 +83,7 @@ export default function Campuses() {
       established: "1997",
       highlights: ["Tech Hub", "Modern Facilities"],
       features: ["Innovation Center", "Industry Partnerships", "Startup Incubator"],
-      image: "/assets/campus.jpg"
+      image: asset("assets/campus.jpg")
     }
   ];
 
@@ -94,7 +95,7 @@ export default function Campuses() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('/assets/Informationsystem.jpg')`,
+            backgroundImage: `url('${asset('assets/Informationsystem.jpg')}')`,
             filter: 'grayscale(100%) blur(3px) brightness(0.6)',
             transform: 'scale(1.2)'
           }}

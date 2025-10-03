@@ -3,11 +3,25 @@ import Container from "../components/Container";
 import { BRAND_DARK, BRAND_LIGHT, BRAND_BLUE } from "../lib/brand";
 import CalendarList from "../components/CalendarList";
 import { admissionsConfig } from "../lib/content.config";
+import { resolveAsset } from "../lib/assets";
 
 export default function Admissions() {
   const [news, setNews] = useState([]);
   useEffect(() => {
-    fetch(import.meta.env.BASE_URL + "src/content/news.json").then(r => r.json()).then(setNews).catch(() => setNews([]));
+    const newsUrl = new URL("../content/news.json", import.meta.url).href;
+    fetch(newsUrl)
+      .then((r) => r.json())
+      .then((data) => {
+        if (!Array.isArray(data)) {
+          setNews([]);
+          return;
+        }
+        setNews(data.map((item) => ({
+          ...item,
+          image: resolveAsset(item.image),
+        })));
+      })
+      .catch(() => setNews([]));
   }, []);
   const events = useMemo(() => news.filter(n => (n.category || 'news') === 'event').slice(0, 3), [news]);
   const requirements = [

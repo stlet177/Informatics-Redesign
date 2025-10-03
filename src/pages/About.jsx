@@ -4,6 +4,7 @@ import FeatureStats from "../components/FeatureStats";
 import Partners from "../components/Partners";
 import InquiryForm from "../components/InquiryForm";
 import { BRAND_DARK, BRAND_LIGHT, BRAND_BLUE } from "../lib/brand";
+import { asset } from "../lib/assets";
 import { motion, useInView } from "framer-motion";
 import { fadeInUp } from "../lib/variants";
 import LottiePlayer from "../components/LottiePlayer";
@@ -57,31 +58,31 @@ export default function About() {
       icon: Heart,
       title: "Student-Centric",
       description: "We put students at the heart of everything we do",
-      image: "/assets/campus.jpg"
+      image: asset("assets/campus.jpg")
     },
     {
       icon: Users,
       title: "People Excellence",
       description: "We empower our people to uphold professionalism, ethics, and integrity. ",
-      image: "/assets/campus2.jpg"
+      image: asset("assets/campus2.jpg")
     },
     {
       icon: Lightbulb,
       title: "Innovation",
       description: "We drive creativity and innovation in every program and service.",
-      image: "/assets/manila-campus.jpg"
+      image: asset("assets/manila-campus.jpg")
     },
     {
       icon: Shield,
       title: "Social Responsibility",
       description: "We give back to our communities through initiatives that expand access to education.",
-      image: "/assets/north-luzon.jpg"
+      image: asset("assets/north-luzon.jpg")
     },
     {
       icon: TrendingUp,
       title: "Results-Driven",
       description: "We create lasting value by developing future-ready graduates and sustaining impact for our stakeholders.",
-      image: "/assets/south-luzon.jpg"
+      image: asset("assets/south-luzon.jpg")
     }
   ];
 
@@ -375,7 +376,7 @@ export default function About() {
           <motion.section {...fadeInUp} className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
             {/* Background Image */}
             <motion.img
-              src="/assets/campus.jpg"
+              src={asset("assets/campus.jpg")}
               alt="Informatics campus exterior"
               className="absolute inset-0 h-full w-full object-cover"
               initial={{ opacity: 0, scale: 1.05 }}
@@ -456,7 +457,7 @@ export default function About() {
                     <div className="order-1 lg:order-2">
                       <div className="relative">
                         <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                          <img src="/assets/ourstory.jpg" alt="Informatics Campus" className="w-full h-full object-cover" />
+                          <img src={asset("assets/ourstory.jpg")} alt="Informatics Campus" className="w-full h-full object-cover" />
                         </div>
                         <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
                           <span className="text-white font-bold text-2xl">30+</span>
@@ -597,7 +598,7 @@ export default function About() {
                       ))}
                     </div>
                     <div className="h-full hidden lg:block">
-                      <img src="/assets/corevalues.jpg" alt="Core Values" className="w-full h-full object-cover rounded-none shadow-none" />
+                      <img src={asset("assets/corevalues.jpg")} alt="Core Values" className="w-full h-full object-cover rounded-none shadow-none" />
                     </div>
                   </div>
                 </div>
@@ -638,7 +639,7 @@ export default function About() {
                   <div className="order-1 lg:order-2">
                     <div className="relative">
                       <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="/assets/ourFounder.jpg" alt="Founder Leonardo Riingen" className="w-full h-full object-cover" />
+                        <img src={asset("assets/ourFounder.jpg")} alt="Founder Leonardo Riingen" className="w-full h-full object-cover" />
                       </div>
                       <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
                         <Award className="text-white" size={32} />
@@ -679,14 +680,14 @@ export default function About() {
                     {milestones.map((milestone, index) => {
                       let lottieSrc;
                       if (index === 4) { // Singapore milestone
-                        lottieSrc = "/assets/Singapore flag Lottie JSON animation.lottie";
+                        lottieSrc = asset("assets/Singapore flag Lottie JSON animation.lottie");
                       } else {
                         const lottieFiles = [
-                          "/assets/education.lottie",
-                          "/assets/Teacher.lottie",
-                          "/assets/Growth Chart.lottie",
-                          "/assets/Coding.lottie",
-                          "/assets/Advanced Analytics.lottie"
+                          asset("assets/education.lottie"),
+                          asset("assets/Teacher.lottie"),
+                          asset("assets/Growth Chart.lottie"),
+                          asset("assets/Coding.lottie"),
+                          asset("assets/Advanced Analytics.lottie")
                         ];
                         lottieSrc = lottieFiles[index % lottieFiles.length];
                       }

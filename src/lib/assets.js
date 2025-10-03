@@ -1,6 +1,14 @@
 // Helper for assets respecting Vite base URL
 export const asset = (p) => `${import.meta.env.BASE_URL}${p.replace(/^\//, "")}`;
 
+export const resolveAsset = (p) => {
+  if (!p) return p;
+  if (/^(https?:|data:)/i.test(p)) return p;
+  const base = import.meta.env.BASE_URL || "/";
+  if (p.startsWith(base)) return p;
+  return asset(p);
+};
+
 // Shared assets
 export const INFO_LOGO = asset("assets/informatics-logo.png");
 export const CAMPUS_IMG = asset("assets/campus2.jpg");
@@ -28,4 +36,3 @@ export const PARTNERS = [
   { src: asset("assets/partner-google-edu.png"), alt: "Google for Education" },
   { src: asset("assets/partner-comptia.jpg"), alt: "CompTIA" },
 ];
-

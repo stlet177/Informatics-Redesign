@@ -1,6 +1,8 @@
 // Central site content configuration for navigation, programs, admissions, partners, and socials
 // This is config-first so pages/components can reference consistent data.
 
+import { asset } from "./assets";
+
 export const navConfig = {
   primary: [
     { label: "Home", href: "#/" },
@@ -103,12 +105,12 @@ export const admissionsConfig = {
 };
 
 export const partnersConfig = [
-  { name: "Cybersecurity Partner", src: "/assets/partner-cybersecurity.png", url: "#", alt: "Cybersecurity Partner" },
-  { name: "PhilSmile", src: "/assets/partner-philsmile.png", url: "#", alt: "PhilSmile" },
-  { name: "MS Imagine Academy", src: "/assets/partner-ms-imagine.png", url: "#", alt: "Microsoft Imagine Academy" },
-  { name: "Percipio", src: "/assets/partner-percipio.png", url: "#", alt: "Percipio" },
-  { name: "Google for Education", src: "/assets/partner-google-edu.png", url: "#", alt: "Google for Education" },
-  { name: "CompTIA", src: "/assets/partner-comptia.jpg", url: "#", alt: "CompTIA" },
+  { name: "Cybersecurity Partner", src: asset("assets/partner-cybersecurity.png"), url: "#", alt: "Cybersecurity Partner" },
+  { name: "PhilSmile", src: asset("assets/partner-philsmile.png"), url: "#", alt: "PhilSmile" },
+  { name: "MS Imagine Academy", src: asset("assets/partner-ms-imagine.png"), url: "#", alt: "Microsoft Imagine Academy" },
+  { name: "Percipio", src: asset("assets/partner-percipio.png"), url: "#", alt: "Percipio" },
+  { name: "Google for Education", src: asset("assets/partner-google-edu.png"), url: "#", alt: "Google for Education" },
+  { name: "CompTIA", src: asset("assets/partner-comptia.jpg"), url: "#", alt: "CompTIA" },
 ];
 
 export const socialsConfig = [

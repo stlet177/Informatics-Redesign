@@ -3,15 +3,26 @@ import Container from "../components/Container";
 import CardGrid from "../components/CardGrid";
 import NewsCard from "../components/NewsCard";
 import { BRAND_DARK, BRAND_LIGHT } from "../lib/brand";
+import { resolveAsset } from "../lib/assets";
 
 export default function NewsIndex() {
   const [items, setItems] = useState([]);
   const [filter, setFilter] = useState("all");
 
   useEffect(() => {
-    fetch(import.meta.env.BASE_URL + "src/content/news.json")
+    const newsUrl = new URL("../content/news.json", import.meta.url).href;
+    fetch(newsUrl)
       .then((r) => r.json())
-      .then((data) => setItems(data))
+      .then((data) => {
+        if (!Array.isArray(data)) {
+          setItems([]);
+          return;
+        }
+        setItems(data.map((item) => ({
+          ...item,
+          image: resolveAsset(item.image),
+        })));
+      })
       .catch(() => setItems([]));
   }, []);
 
@@ -54,4 +65,3 @@ export default function NewsIndex() {
     </main>
   );
 }
-

@@ -1,6 +1,7 @@
 import Container from "../components/Container";
 import { Users, MapPin, Clock, Mail, Phone, Building2 } from "lucide-react";
 import { BRAND_DARK, BRAND_LIGHT, BRAND_BLUE } from "../lib/brand";
+import { asset } from "../lib/assets";
 import { motion } from "framer-motion";
 import { fadeInUp } from "../lib/variants";
 
@@ -37,7 +38,7 @@ export default function Careers() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('/assets/Informationsystem.jpg')`,
+            backgroundImage: `url('${asset('assets/Informationsystem.jpg')}')`,
             filter: 'grayscale(100%) blur(3px) brightness(0.6)',
             transform: 'scale(1.2)'
           }}
