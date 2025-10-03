@@ -16,6 +16,7 @@ import Admissions from "./pages/Admissions";
 import NewsIndex from "./pages/NewsIndex";
 import NewsDetail from "./pages/NewsDetail";
 import ContactPage from "./pages/ContactPage";
+import Privacy from "./pages/Privacy";
 import SHS from "./pages/SHS";
 import TuitionAid from "./pages/TuitionAid";
 import Scholarships from "./pages/Scholarships";
@@ -113,6 +114,8 @@ export default function App() {
           <Admissions />
         ) : route.startsWith("#/contact") ? (
           <ContactPage />
+        ) : route.startsWith("#/privacy") ? (
+          <Privacy />
         ) : (
           <Home />
         )}
@@ -140,6 +143,7 @@ function titleForRoute(route) {
   if (route.startsWith("#/admissions/scholarships")) return "Scholarships";
   if (route.startsWith("#/admissions/faqs")) return "Admissions FAQs";
   if (route.startsWith("#/admissions")) return "Admissions";
+  if (route.startsWith("#/privacy")) return "Privacy Policy";
   if (route.startsWith("#/contact")) return "Contact Us";
   return "Home";
 }

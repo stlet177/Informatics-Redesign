@@ -65,7 +65,7 @@ export default function Footer() {
       <Container className="mt-10 flex flex-col items-center justify-between gap-4 text-xs text-slate-500 sm:flex-row">
         <div className="text-slate-400">© {new Date().getFullYear()} Informatics Philippines. All rights reserved.</div>
         <div className="flex items-center gap-3 text-slate-400">
-          <a href="#/about#privacy" className="transition hover:text-white">Privacy</a>
+          <a href="#/privacy" className="transition hover:text-white">Privacy</a>
           <span>•</span>
           <a href="#/news" className="transition hover:text-white">News</a>
           <span>•</span>
