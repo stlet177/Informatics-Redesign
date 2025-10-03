@@ -78,7 +78,7 @@ export default function App() {
       {/* Foreground content */}
       <div className="relative z-10">
         <Nav />
-        <SocialBar />
+        {!route.startsWith("#/about") && <SocialBar />}
         {route.startsWith("#/news/") ? (
           <NewsDetail slug={route.replace(/^#\/news\//, "")} />
         ) : route.startsWith("#/news") ? (
