@@ -8,25 +8,29 @@ import { fadeInUp } from "../lib/variants";
 export default function Campuses() {
   const campuses = [
     {
-      name: "Manila Campus",
-      address: "2070 BDO Bldg. Recto Ave Quiapo, Manila",
-      phone: "0945 321 0716",
-      email: "info.manila@informatics.com.ph",
-      hours: "Mon-Fri: 8:00 AM - 8:00 PM, Sat: 8:00 AM - 5:00 PM",
-      programs: ["BS Information Technology", "BS Computer Science", "Senior High School"],
-      students: "2,500+",
-      established: "1993",
-      highlights: ["Flagship Campus", "Central Location"],
-      features: ["Modern Labs", "WiFi Campus", "24/7 Library"],
-      image: asset("assets/manila-campus.jpg")
-    },
-    {
-      name: "North Luzon Campus",
-      address: "3/F Decibar Bldg., #65 Lower Bonifacio St., Baguio City",
+      name: "INFORMATICS NORTH LUZON - BAGUIO CAMPUS",
+      address: "3rd Floor Decibar Bldg., #65 Lower Bonifacio Street, Baguio City",
       phone: "0746613754, 09175753237",
       email: "info.baguio@informatics.com.ph",
       hours: "Mon-Fri: 8:00 AM - 8:00 PM, Sat: 8:00 AM - 5:00 PM",
-      programs: ["Senior High School", "BS Information Technology", "Short Courses"],
+      programs: [
+        "Senior High School Programs - Business and Entrepreneurship Track",
+        "Senior High School Programs - Arts, Social Science, and Humanities Track",
+        "Senior High School Programs - TechPro Tracks - Computer Programming (Java)",
+        "Senior High School Programs - TechPro Tracks - Technical Drafting",
+        "Senior High School Programs - TechPro Tracks - Animation",
+        "Senior High School Programs - TechPro Tracks - Illustration",
+        "Senior High School Programs - TechPro Tracks - Visual Graphic Design",
+        "Certificate Programs - Computer Systems Servicing NC II",
+        "Certificate Programs - Technical Drafting NC II",
+        "Certificate Programs - Bookkeeping NC III",
+        "Certificate Programs - 2D Animation NC III",
+        "Certificate Programs - 3D Animation NC III",
+        "Certificate Programs - Visual Graphic Design NC III",
+        "Diploma Programs - Diploma in Information Technology (DIT)",
+        "Diploma Programs - Diploma in Computer Science (DCS)",
+        "Diploma Programs - Diploma in Information Systems (DIS)"
+      ],
       students: "700+",
       established: "2008",
       highlights: ["Mountain Campus", "Cool Climate"],
@@ -34,12 +38,66 @@ export default function Campuses() {
       image: asset("assets/north-luzon.jpg")
     },
     {
-      name: "South Luzon Campus",
-      address: "Informatics Bldg. E. Aguinaldo Highway, Tanzang Luma V, Imus City, Cavite",
+      name: "INFORMATICS MANILA CAMPUS",
+      address: "2070 BDO Building CM Recto Ave., Quiapo, Manila",
+      phone: "0945 321 0716",
+      email: "info.manila@informatics.com.ph",
+      hours: "Mon-Fri: 8:00 AM - 8:00 PM, Sat: 8:00 AM - 5:00 PM",
+      programs: [
+        "Degree Programs - BS Computer Science (BSCS)",
+        "Degree Programs - BS Information Systems (BSIS)",
+        "Degree Programs - BS Information Technology (BSIT)",
+        "Degree Programs - BS Business Administration Major in Marketing Management (BSBA – MM)"
+      ],
+      students: "2,500+",
+      established: "1993",
+      highlights: ["Flagship Campus", "Central Location"],
+      features: ["Modern Labs", "WiFi Campus", "24/7 Library"],
+      image: "/assets/manila-campus.jpg"
+    },
+    {
+      name: "INFORMATICS ALABANG CAMPUS",
+      address: "Ground Floor, Convergence Bldg., Indo China Drive Northgate Cyberzone Filinvest Corporate City Alabang Muntinlupa City",
+      phone: "0960-611-4435",
+      email: "info.northgate@informatics.com.ph",
+      hours: "Mon-Fri: 8:00 AM - 8:00 PM, Sat: 8:00 AM - 5:00 PM",
+      programs: [
+        "Degree Programs - BS Computer Science (BSCS)",
+        "Degree Programs - BS Information Technology (BSIT)",
+        "Degree Programs - BS Business Administration Major in Marketing Management (BSBA – MM)",
+        "Degree Programs - Associate in Computer Technology with Specialization in Application Development",
+        "Degree Programs - Associate in Computer Technology with Specialization in Multimedia",
+        "Degree Programs - Associate in Computer Technology with Specialization in Networking",
+        "Senior High School Programs - Business and Entrepreneurship Track",
+        "Senior High School Programs - Arts, Social Science, and Humanities Track",
+        "Senior High School Programs - TechPro Tracks - Computer Programming (Java)",
+        "Senior High School Programs - TechPro Tracks - Animation",
+        "Certificate Programs - Contact Center Services NC II",
+        "Certificate Programs - Technical Drafting NC II"
+      ],
+      students: "1,800+",
+      established: "1997",
+      highlights: ["Tech Hub", "Modern Facilities"],
+      features: ["Innovation Center", "Industry Partnerships", "Startup Incubator"],
+      image: "/assets/campus.jpg"
+    },
+    {
+      name: "INFORMATICS CAVITE CAMPUS",
+      address: "Km. 21, Informatics Building, Emilio Aguinaldo Highway, Anabu 1-E, Imus, Cavite",
       phone: "046-4712310 and 046-4895451",
       email: "info.cavite@informatics.com.ph",
       hours: "Mon-Fri: 8:00 AM - 8:00 PM, Sat: 8:00 AM - 5:00 PM",
-      programs: ["BS Information Systems", "Certificate Programs", "TESDA Programs"],
+      programs: [
+        "Degree Programs - BS Office Administration (BSOA)",
+        "Degree Programs - Associate in Computer Technology with Specialization in Application Development",
+        "Degree Programs - Associate in Computer Technology with Specialization in Multimedia",
+        "Degree Programs - Associate in Computer Technology with Specialization in Networking",
+        "Senior High School Programs - Business and Entrepreneurship Track",
+        "Senior High School Programs - Arts, Social Science, and Humanities Track",
+        "Senior High School Programs - TechPro Tracks - Computer Programming (Java)",
+        "Senior High School Programs - TechPro Tracks - Computer Systems Servicing",
+        "Senior High School Programs - TechPro Tracks - Animation"
+      ],
       students: "600+",
       established: "2010",
       highlights: ["Western Visayas", "Cultural Heritage"],
@@ -47,12 +105,20 @@ export default function Campuses() {
       image: asset("assets/south-luzon.jpg")
     },
     {
-      name: "Visayas (Cebu) Campus",
-      address: "National Highway, Eskina Jugan, Pitogo Consolacion, Cebu City",
+      name: "INFORMATICS VISAYAS - CONSOLACION CAMPUS",
+      address: "National Highway Brgy. Pitogo Consolacion, Cebu",
       phone: "564-2078, 0917-8364963",
       email: "info.consolacion@informatics.com.ph",
       hours: "Mon-Fri: 8:00 AM - 8:00 PM, Sat: 8:00 AM - 5:00 PM",
-      programs: ["BS Information Technology", "Senior High School", "TESDA Programs"],
+      programs: [
+        "Degree Programs - Associate in Computer Technology with Specialization in Application Development",
+        "Degree Programs - Associate in Computer Technology with Specialization in Multimedia",
+        "Degree Programs - Associate in Computer Technology with Specialization in Networking",
+        "Senior High School Programs - Business and Entrepreneurship Track",
+        "Senior High School Programs - Arts, Social Science, and Humanities Track",
+        "Senior High School Programs - TechPro Tracks - Computer Systems Servicing",
+        "Senior High School Programs - TechPro Tracks - Animation"
+      ],
       students: "1,200+",
       established: "2001",
       highlights: ["Regional Excellence", "Growing Community"],
@@ -60,113 +126,71 @@ export default function Campuses() {
       image: asset("assets/visayas-cebu.jpg")
     },
     {
-      name: "Mindanao (CDO) Campus",
-      address: "2nd level, Stary Bldg. Max Suniel St., Carmen, Cagayan De Oro",
+      name: "INFORMATICS MINDANAO - CAGAYAN DE ORO CAMPUS",
+      address: "2F Stary Building, Max Suniel Street, Carmen, Cagayan de Oro City",
       phone: "N/A",
       email: "info.cdo@informatics.com.ph",
       hours: "Mon-Fri: 8:00 AM - 8:00 PM, Sat: 8:00 AM - 5:00 PM",
-      programs: ["BS Computer Science", "Certificate Programs", "Professional Training"],
+      programs: [
+        "Senior High School Programs - Business and Entrepreneurship Track",
+        "Senior High School Programs - Arts, Social Science, and Humanities Track",
+        "Certificate Programs - Contact Center Services NC II",
+        "Certificate Programs - Computer Systems Servicing NC II"
+      ],
       students: "900+",
       established: "2005",
       highlights: ["Southern Gateway", "Innovation Center"],
       features: ["Research Facilities", "Advanced Computing", "AI Lab"],
-      image: asset("assets/mindanao-cdo.jpg")
-    },
-    {
-      name: "Northgate (Alabang) Campus",
-      address: "Indo China Drive, Northgate Cyberzone Filinvest Corporate City, Alabang Muntinlupa City, Metro Manila",
-      phone: "0960-611-4435",
-      email: "info.northgate@informatics.com.ph",
-      hours: "Mon-Fri: 8:00 AM - 8:00 PM, Sat: 8:00 AM - 5:00 PM",
-      programs: ["BS Information Systems", "BS Business Administration", "Certificate Programs"],
-      students: "1,800+",
-      established: "1997",
-      highlights: ["Tech Hub", "Modern Facilities"],
-      features: ["Innovation Center", "Industry Partnerships", "Startup Incubator"],
-      image: asset("assets/campus.jpg")
+      image: "/assets/mindanao-cdo.jpg"
     }
   ];
 
   return (
     <main className="pt-24 md:pt-28">
       {/* Mobile-Friendly Hero Banner */}
-      <section className="relative min-h-screen max-h-screen flex items-center justify-center overflow-hidden py-20 md:py-0">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('${asset('assets/Informationsystem.jpg')}')`,
-            filter: 'grayscale(100%) blur(3px) brightness(0.6)',
-            transform: 'scale(1.2)'
-          }}
-        ></div>
+      <motion.section {...fadeInUp} className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+            {/* Background Image */}
+            <motion.img
+              src="/assets/campuseshero.jpg"
+              alt="Informatics campuses"
+              className="absolute inset-0 h-full w-full object-cover"
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 0.9, scale: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            />
 
-        {/* Multiple Overlay Layers for Depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/30 via-transparent to-blue-900/30"></div>
+            {/* Overlay */}
+            <motion.div
+              aria-hidden
+              className="absolute inset-0 bg-gradient-to-br from-[#0b1120]/95 via-[#0f172a]/85 to-[#020617]/90"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            />
 
-        <Container className="relative z-10">
-          <div className="text-center max-w-5xl mx-auto px-4 sm:px-6">
-            {/* Hero Badge */}
-            <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl mb-6 sm:mb-8">
-              <Building2 size={20} className="text-white sm:w-6 sm:h-6" />
-              <span className="text-sm sm:text-base font-semibold text-white">Campus Network</span>
-            </div>
+            <Container className="relative z-10">
+              <div className="text-center max-w-6xl mx-auto px-4">
+                <div className="inline-flex items-center justify-center px-6 py-3 rounded mb-8">
+                  <span className="text-base font-semibold uppercase tracking-widest bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+                    INFORMATICS PHILIPPINES
+                  </span>
+                </div>
 
-            {/* Main Hero Title */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 sm:mb-6 md:mb-8 text-white leading-tight">
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Campuses</span>
-            </h1>
+                <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-white leading-tight">
+                  Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Campuses</span>
+                </h1>
 
-            {/* Hero Subtitle */}
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8 sm:mb-10 md:mb-12 font-light px-4">
-              With 6 strategically located campuses nationwide, Informatics Philippines brings quality IT education
-              closer to students across the country. Each campus is equipped with modern facilities and experienced faculty.
-            </p>
-
-            {/* Hero Stats */}
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-10 md:mb-12">
-              <div className="flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20">
-                <Star size={16} className="text-yellow-400 sm:w-5 sm:h-5" />
-                <span className="text-sm sm:text-base md:text-lg font-bold text-white">6 Strategic Locations</span>
+                <p className="text-base md:text-lg lg:text-xl xl:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8 font-light">
+                  With 6 strategically located campuses nationwide, Informatics Philippines brings quality IT education
+                  closer to students across the country. Each campus is equipped with modern facilities and experienced faculty.
+                </p>
               </div>
-              <div className="flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20">
-                <Award size={16} className="text-blue-400 sm:w-5 sm:h-5" />
-                <span className="text-sm sm:text-base md:text-lg font-bold text-white">30+ Years Excellence</span>
-              </div>
-            </div>
-
-            {/* Hero CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
-              <a
-                href="#/contact"
-                className="group inline-flex items-center justify-center gap-2 sm:gap-3 rounded-2xl px-6 sm:px-8 py-3 sm:py-4 text-white font-bold text-base sm:text-lg bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:-translate-y-1 border border-blue-500/50 w-full sm:w-auto"
-              >
-                <Phone size={20} className="sm:w-6 sm:h-6" />
-                Contact Us
-              </a>
-              <a
-                href="#/admissions"
-                className="group inline-flex items-center justify-center gap-2 sm:gap-3 rounded-2xl px-6 sm:px-8 py-3 sm:py-4 text-white font-bold text-base sm:text-lg border-2 border-white/30 hover:border-white/50 bg-white/10 hover:bg-white/20 backdrop-blur-xl shadow-2xl transition-all duration-300 hover:-translate-y-1 w-full sm:w-auto"
-              >
-                <BookOpen size={20} className="sm:w-6 sm:h-6" />
-                View Admissions
-              </a>
-            </div>
-          </div>
-        </Container>
-
-        {/* Scroll Indicator - Hidden on mobile for cleaner look */}
-        <div className="hidden md:block absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
-          </div>
-        </div>
-      </section>
+            </Container>
+          </motion.section>
 
       {/* Mobile-Friendly Enhanced Campuses Grid */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-slate-50/50">
-        <motion.div {...fadeInUp}>
+        <div>
           <Container>
           <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {campuses.map((campus, index) => (
@@ -252,14 +276,40 @@ export default function Campuses() {
                         </div>
                         <span className="text-xs sm:text-sm font-bold" style={{ color: BRAND_DARK }}>Programs Offered:</span>
                       </div>
-                      <div className="grid grid-cols-1 gap-2">
-                        {campus.programs.map((program, idx) => (
-                          <div key={idx} className="flex items-center gap-3 p-2 rounded-lg bg-slate-50/50">
-                            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gradient-to-r from-blue-400 to-blue-500" />
-                            <span className="text-xs sm:text-sm text-slate-700 font-medium">{program}</span>
-                          </div>
-                        ))}
-                      </div>
+                      {(() => {
+                        const degreePrograms = campus.programs.filter(p => p.startsWith("Degree Programs -") || p.startsWith("Certificate Programs -") || p.startsWith("Diploma Programs -"));
+                        const seniorHighPrograms = campus.programs.filter(p => p.startsWith("Senior High School Programs -"));
+                        return (
+                          <>
+                            {degreePrograms.length > 0 && (
+                              <div className="mb-4">
+                                <h4 className="text-xs sm:text-sm font-bold mb-2" style={{ color: BRAND_DARK }}>Degree Programs:</h4>
+                                <div className="grid grid-cols-1 gap-2">
+                                  {degreePrograms.map((program, idx) => (
+                                    <div key={idx} className="flex items-center gap-3 p-2 rounded-lg bg-slate-50/50">
+                                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gradient-to-r from-blue-400 to-blue-500" />
+                                      <span className="text-xs sm:text-sm text-slate-700 font-medium">{program.replace(/^(Degree Programs|Certificate Programs|Diploma Programs) - /, "")}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                            {seniorHighPrograms.length > 0 && (
+                              <div className="mb-4">
+                                <h4 className="text-xs sm:text-sm font-bold mb-2" style={{ color: BRAND_DARK }}>Senior High School Programs:</h4>
+                                <div className="grid grid-cols-1 gap-2">
+                                  {seniorHighPrograms.map((program, idx) => (
+                                    <div key={idx} className="flex items-center gap-3 p-2 rounded-lg bg-slate-50/50">
+                                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gradient-to-r from-blue-400 to-blue-500" />
+                                      <span className="text-xs sm:text-sm text-slate-700 font-medium">{program.replace("Senior High School Programs - ", "")}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </>
+                        );
+                      })()}
                     </div>
 
                     {/* Footer Stats */}
@@ -283,7 +333,7 @@ export default function Campuses() {
             ))}
           </div>
         </Container>
-        </motion.div>
+        </div>
       </section>
 
       {/* Mobile-Friendly Enhanced Statistics Section */}
