@@ -33,7 +33,7 @@ const NAV_LINKS = [
     ],
   },
   { label: "News & Events", href: "/news-events" },
-  { label: "Careers", href: "/careers" },
+  { label: "Careers", href: "https://ph.jobstreet.com/companies/informatics-college-168552199237399/jobs", external: true },
   { label: "Contact", href: "/contact" },
 
   {

@@ -31,6 +31,7 @@ const WHY_POINTS = [
     copy:
       "Our accelerated programs are designed by industry experts to deliver maximum learning in minimum time. Get job-ready skills through intensive, focused curricula.",
     cta: "See pathways",
+    ctaHref: "#/programs/explore",
     icon: GraduationCap,
   },
   {
@@ -38,6 +39,8 @@ const WHY_POINTS = [
     copy:
       "Hands-on training with real projects, OJT placements, and direct mentorship from industry professionals. Build a portfolio that showcases your skills to employers.",
     cta: "View opportunities",
+    ctaHref: "https://ph.jobstreet.com/companies/informatics-college-168552199237399/jobs",
+    external: true,
     icon: Briefcase,
   },
   {
@@ -45,6 +48,8 @@ const WHY_POINTS = [
     copy:
       "Industry-informed curriculum updated quarterly to reflect the latest trends, technologies, and in-demand skills. Learn what employers are actually looking for.",
     cta: "Explore skills",
+    ctaHref: "https://imc.informatics.edu.ph/",
+    external: true,
     icon: TrendingUp,
   },
 ];
@@ -147,7 +152,15 @@ export default function Programs() {
                 <div className="mt-6 border-t border-blue-50 pt-5">
                   <button
                     type="button"
-                    onClick={() => navigateHash("#/contact")}
+                    onClick={() => {
+                      if (item.external) {
+                        window.open(item.ctaHref, "_blank", "noopener");
+                      } else if (item.ctaHref) {
+                        navigateHash(item.ctaHref);
+                      } else {
+                        navigateHash("#/contact");
+                      }
+                    }}
                     className="text-sm font-semibold"
                     style={{ color: BRAND_BLUE }}
                   >

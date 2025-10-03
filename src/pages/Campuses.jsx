@@ -1,6 +1,7 @@
 import Container from "../components/Container";
 import { MapPin, Phone, Mail, Clock, Users, GraduationCap, Star, Award, Building2, Globe, BookOpen } from "lucide-react";
 import { BRAND_DARK, BRAND_LIGHT, BRAND_BLUE } from "../lib/brand";
+import { asset } from "../lib/assets";
 import { motion } from "framer-motion";
 import { fadeInUp } from "../lib/variants";
 
@@ -34,7 +35,7 @@ export default function Campuses() {
       established: "2008",
       highlights: ["Mountain Campus", "Cool Climate"],
       features: ["Scenic Location", "Creative Spaces", "Innovation Hub"],
-      image: "/assets/north-luzon.jpg"
+      image: asset("assets/north-luzon.jpg")
     },
     {
       name: "INFORMATICS MANILA CAMPUS",
@@ -101,7 +102,7 @@ export default function Campuses() {
       established: "2010",
       highlights: ["Western Visayas", "Cultural Heritage"],
       features: ["Cultural Programs", "Heritage Building", "Community Center"],
-      image: "/assets/south-luzon.jpg"
+      image: asset("assets/south-luzon.jpg")
     },
     {
       name: "INFORMATICS VISAYAS - CONSOLACION CAMPUS",
@@ -122,7 +123,7 @@ export default function Campuses() {
       established: "2001",
       highlights: ["Regional Excellence", "Growing Community"],
       features: ["Regional Training", "Local Industry Focus", "Community Programs"],
-      image: "/assets/visayas-cebu.jpg"
+      image: asset("assets/visayas-cebu.jpg")
     },
     {
       name: "INFORMATICS MINDANAO - CAGAYAN DE ORO CAMPUS",

@@ -4,7 +4,7 @@ import { BRAND_BLUE, BRAND_DARK, BRAND_LIGHT } from "../lib/brand";
 import { fadeInUp } from "../lib/variants";
 import { ChevronRight } from "lucide-react";
 import newsData from "../content/news.json";
-import { asset, PLACEHOLDER_IMG } from "../lib/assets";
+import { PLACEHOLDER_IMG, resolveAsset } from "../lib/assets";
 
 export default function News() {
   const fallback = [
@@ -12,8 +12,11 @@ export default function News() {
     { slug: "business-analytics-capstone-showcase", title: "Business Analytics Capstone Showcase", date: "2025-08-08", teaser: "Student teams present data-driven SME solutions.", image: "/assets/BSBA.jpg" },
     { slug: "comptia-cybersecurity-bootcamp", title: "CompTIA‑aligned Cybersecurity Bootcamp", date: "2025-07-30", teaser: "Pathway prepares learners for Security+ and SOC roles.", image: "/assets/informationtechnology.jpg" },
   ];
-  const items = (Array.isArray(newsData) && newsData.length ? newsData : fallback).slice(0, 6);
-  const marqueeItems = [...items, ...items];
+  const rawItems = (Array.isArray(newsData) && newsData.length ? newsData : fallback).slice(0, 6);
+  const items = rawItems.map((item) => ({
+    ...item,
+    image: resolveAsset(item.image),
+  }));
 
   return (
     <section id="news" className="py-16 md:py-24" style={{ background: BRAND_LIGHT }}>
@@ -55,7 +58,7 @@ function MarqueeGroup({ items }) {
           {n.image && (
             <div className="w-full h-28 sm:h-32 md:h-36 bg-slate-100">
               <img
-                src={asset((n.image || '').replace(/^\//, ''))}
+                src={n.image}
                 alt={n.title}
                 className="w-full h-full object-cover"
                 onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = PLACEHOLDER_IMG; }}

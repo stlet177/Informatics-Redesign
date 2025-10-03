@@ -1,14 +1,14 @@
 import { BRAND_DARK } from "../lib/brand";
-import { asset, PLACEHOLDER_IMG } from "../lib/assets";
+import { PLACEHOLDER_IMG, resolveAsset } from "../lib/assets";
 
 export default function NewsCard({ item }) {
   const href = `#/news/${item.slug}`;
-  const img = asset((item.image || '').replace(/^\//, ''));
+  const img = resolveAsset(item.image);
   return (
     <a href={href} className="group rounded-2xl bg-white ring-1 ring-black/10 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
       <div className="aspect-[16/9] w-full bg-slate-100">
         <img
-          src={img}
+          src={img || PLACEHOLDER_IMG}
           alt={item.title}
           className="w-full h-full object-cover"
           onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = PLACEHOLDER_IMG; }}
@@ -31,4 +31,3 @@ function formatDate(d) {
     return d;
   }
 }
-
