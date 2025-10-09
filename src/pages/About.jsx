@@ -1,8 +1,7 @@
 import Container from "../components/Container";
-import { Globe, GraduationCap, Briefcase, Users, Award, Target, Heart, Lightbulb, Shield, TrendingUp, Mail, Phone, MapPin, Calendar, Menu, History, Rocket, Share } from "lucide-react";
+import { Globe, GraduationCap, Briefcase, Users, Award, Target, Heart, Lightbulb, Shield, TrendingUp, MapPin, Calendar, Menu, History, Rocket, Share } from "lucide-react";
 import FeatureStats from "../components/FeatureStats";
 import Partners from "../components/Partners";
-import InquiryForm from "../components/InquiryForm";
 import { BRAND_DARK, BRAND_LIGHT, BRAND_BLUE } from "../lib/brand";
 import { asset } from "../lib/assets";
 import { motion, useInView } from "framer-motion";
@@ -28,10 +27,9 @@ export default function About() {
     { text: "The future we're building", icon: Target, action: () => scrollToSection('the-future-were-building') },
     { text: "Leadership and Legacy", icon: Users, action: () => scrollToSection('our-founder') },
     { text: "Our Achievements", icon: Award, action: () => scrollToSection('leadership-and-legacy') },
-    { text: "Campuses", icon: MapPin, action: () => window.location.hash = '#/campuses' },
+    { text: "Campuses", icon: MapPin, action: () => scrollToSection('campuses') },
     { text: "Community Engagements", icon: Heart, action: () => scrollToSection('community-engagements') },
-    { text: "Careers", icon: Briefcase, action: () => window.location.href = 'https://ph.jobstreet.com/companies/informatics-college-168552199237399/jobs' },
-    { text: "Contact Us", icon: Mail, action: () => scrollToSection('contact') }
+    { text: "Careers", icon: Briefcase, action: () => window.location.href = 'https://ph.jobstreet.com/companies/informatics-college-168552199237399/jobs' }
   ];
 
   const itemVariants = {
@@ -62,13 +60,13 @@ export default function About() {
     },
     {
       icon: Users,
-      title: "People Excellence",
+      title: "People",
       description: "We empower our people to uphold professionalism, ethics, and integrity. ",
       image: asset("assets/campus2.jpg")
     },
     {
       icon: Lightbulb,
-      title: "Innovation",
+      title: "Innovative culture",
       description: "We drive creativity and innovation in every program and service.",
       image: asset("assets/manila-campus.jpg")
     },
@@ -80,7 +78,7 @@ export default function About() {
     },
     {
       icon: TrendingUp,
-      title: "Results-Driven",
+      title: "Results",
       description: "We create lasting value by developing future-ready graduates and sustaining impact for our stakeholders.",
       image: asset("assets/south-luzon.jpg")
     }
@@ -152,6 +150,39 @@ export default function About() {
 
   ];
 
+  const campuses = [
+    {
+      name: "INFORMATICS NORTH LUZON -BAGUIO CAMPUS",
+      address: "3rd Floor Decibar Bldg., #65 Lower Bonifacio Street, Baguio City",
+      image: asset("assets/north-luzon.jpg")
+    },
+    {
+      name: "INFORMATICS MANILA CAMPUS",
+      address: "2070 BDO Building CM Recto Ave., Quiapo, Manila",
+      image: asset("assets/manila-campus.jpg")
+    },
+    {
+      name: "INFORMATICS CAVITE CAMPUS",
+      address: "Km. 21, Informatics Building, Emilio Aguinaldo Highway, Anabu 1-E, Imus, Cavite",
+      image: asset("assets/south-luzon.jpg")
+    },
+    {
+      name: "INFORMATICS ALABANG CAMPUS",
+      address: "Ground Floor, Convergence Bldg., Indo China Drive Northgate Cyberzone Filinvest Corporate City Alabang Muntinlupa City",
+      image: asset("assets/campus.jpg")
+    },
+    {
+      name: "INFORMATICS MINDANAO - CAGAYAN DE ORO CAMPUS",
+      address: "2F Stary Building, Max Suniel Street, Carmen, Cagayan de Oro City",
+      image: asset("assets/mindanao-cdo.jpg")
+    },
+    {
+      name: "INFORMATICS VISAYAS - CONSOLACION CAMPUS",
+      address: "National Highway Brgy. Pitogo Consolacion, Cebu",
+      image: asset("assets/visayas-cebu.jpg")
+    }
+  ];
+
   const facebookLinks = [
     "https://scontent.fmnl8-2.fna.fbcdn.net/v/t39.30808-6/528959311_1335355621293786_5866450033975963540_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF72FobdWp3y4yc-rAFIH6-RZ5_cFDORYZFnn9wUM5FhlXVCQKU7PoMGmSvNiMDsisnR_jsd3RHea0F90Hxb6Xc&_nc_ohc=1K73G1r-k2kQ7kNvwGucak_&_nc_oc=AdlrQF_A_MNMN1UPb5G2ut2koJPJ0kbLVhlkGwa9hV6-liN0-YTRHczCgMpcpcZsMITDpNue9Jb-sG-K4FhBvuMz&_nc_zt=23&_nc_ht=scontent.fmnl8-2.fna&_nc_gid=IpwKb_tqPAjXt3wealLQHQ&oh=00_AfYU3JgBn27SGx7FMe_RMZXmWlDxjGiEXGQ9BU_QEHyTvA&oe=68E4761B",
     "https://scontent.fmnl8-3.fna.fbcdn.net/v/t39.30808-6/509604002_779362648087318_9112359933200247564_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHmGchxrKDXuoWQk4YuiqzKI9hCsu_EoEsj2EKy78SgS98YjNNyK_2Q3DVvY_xcPpWlFBAHFoH4eqDmW1ZRqjin&_nc_ohc=kUSDKss77vgQ7kNvwFgXSoO&_nc_oc=AdlWfxmxo7is4eTSHCF3LLsEpo4tSxd8uYZ2C2nd7EwaWDYTzIXfuINbpXNrIhseYvq4cMDduJVx2o33eNmf-r-X&_nc_zt=23&_nc_ht=scontent.fmnl8-3.fna&_nc_gid=u7BVohNJHbDi9GgwKvaVew&oh=00_AfbPxSSLhBMcu6BlRszOq8FQeWUbSyQjL_XC4ds7fHa9EA&oe=68E47D92",
@@ -168,10 +199,25 @@ export default function About() {
     "https://www.facebook.com/share/p/1FZdFiyhKk/"
   ];
 
-  const facebookItems = facebookLinks.map((link, index) => ({
+  const newTitles = [
+    "𝐈𝐒𝐊𝐎𝐋𝐀𝐑 𝐧𝐠 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐜𝐬 𝐢𝐬 𝐜𝐨𝐦𝐢𝐧𝐠 𝐛𝐚𝐜𝐤!",
+    "𝐅𝐨𝐫𝐠𝐢𝐧𝐠 𝐚 𝐅𝐮𝐭𝐮𝐫𝐞-𝐑𝐞𝐚𝐝𝐲 𝐅𝐨𝐫𝐜𝐞 𝐭𝐡𝐫𝐨𝐮𝐠𝐡 𝐄𝐝𝐮𝐜𝐚𝐭𝐢𝐨𝐧 𝐚𝐧𝐝 𝐈𝐧𝐧𝐨𝐯𝐚𝐭𝐢𝐨𝐧",
+    "𝗡𝗕𝗜 𝗔𝗡𝗗 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗖𝗦 𝗠𝗔𝗡𝗜𝗟𝗔 𝗦𝗜𝗚𝗡𝗦 𝗠𝗘𝗠𝗢𝗥𝗔𝗡𝗗𝗨𝗠 𝗢𝗙 𝗔𝗚𝗥𝗘𝗘𝗠𝗘𝗡𝗧",
+    "𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐜𝐬 𝐏𝐡𝐢𝐥𝐢𝐩𝐩𝐢𝐧𝐞𝐬 𝐚𝐧𝐝 𝐍𝐁𝐈 𝐋𝐚𝐮𝐧𝐜𝐡 𝐄𝐝𝐮𝐜𝐚𝐭𝐢𝐨𝐧𝐚𝐥 𝐁𝐞𝐧𝐞𝐟𝐢𝐭 𝐏𝐫𝐨𝐠𝐫𝐚𝐦",
+    "𝐓𝐡𝐞 𝐃𝐈𝐋𝐆-𝐁𝐚𝐠𝐮𝐢𝐨 𝐩𝐚𝐫𝐭𝐧𝐞𝐫𝐬 𝐰𝐢𝐭𝐡 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐜𝐬 𝐭𝐨 𝐛𝐨𝐨𝐬𝐭 𝐝𝐢𝐠𝐢𝐭𝐚𝐥 𝐥𝐢𝐭𝐞𝐫𝐚𝐜𝐲 𝐢𝐧 𝐭𝐡𝐞 𝐋𝐆𝐔."
+  ];
+
+const truncateTitle = (title, maxLength = 20) => {
+  if (title.length > maxLength) {
+    return title.slice(0, maxLength) + "... read more";
+  }
+  return title;
+};
+
+const facebookItems = facebookLinks.map((link, index) => ({
     slug: facebookShareLinks[index],
     image: link,
-    title: `Facebook Post ${index + 1}`,
+    title: truncateTitle(newTitles[index], 20),
     teaser: "Click to view on Facebook"
   }));
 
@@ -254,13 +300,13 @@ export default function About() {
              href={n.slug}
              target="_blank"
              rel="noopener noreferrer"
-             className="min-w-[200px] sm:min-w-[260px] md:min-w-[320px] max-w-[85vw] rounded-2xl bg-white ring-1 ring-black/10 shadow-sm hover:shadow-md transition-shadow overflow-hidden scroll-snap-align-start">
+             className="flex-shrink-0 min-w-[150px] sm:min-w-[200px] md:min-w-[250px] max-w-[85vw] rounded-2xl bg-white ring-1 ring-black/10 shadow-sm hover:shadow-md transition-shadow overflow-hidden scroll-snap-align-start">
             <div className="w-full h-24 sm:h-28 md:h-32 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center overflow-hidden">
               <img src={n.image} alt={n.title} className="object-cover w-full h-full" />
             </div>
             <div className="p-3 sm:p-4">
               <div className="text-[10px] sm:text-[11px] uppercase tracking-wide text-slate-500">Social Media</div>
-              <div className="mt-1 text-xs sm:text-sm font-semibold" style={{ color: BRAND_DARK }}>{n.title}</div>
+              <div className="mt-1 text-xs sm:text-sm font-semibold truncate" style={{ color: BRAND_DARK }}>{n.title}</div>
               {n.teaser && <div className="mt-1 text-xs sm:text-xs text-slate-600 line-clamp-2">{n.teaser}</div>}
             </div>
           </a>
@@ -270,13 +316,13 @@ export default function About() {
              href={n.slug}
              target="_blank"
              rel="noopener noreferrer"
-             className="min-w-[200px] sm:min-w-[260px] md:min-w-[320px] max-w-[85vw] rounded-2xl bg-white ring-1 ring-black/10 shadow-sm hover:shadow-md transition-shadow overflow-hidden scroll-snap-align-start">
+             className="flex-shrink-0 min-w-[150px] sm:min-w-[200px] md:min-w-[250px] max-w-[85vw] rounded-2xl bg-white ring-1 ring-black/10 shadow-sm hover:shadow-md transition-shadow overflow-hidden scroll-snap-align-start">
             <div className="w-full h-24 sm:h-28 md:h-32 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center overflow-hidden">
               <img src={n.image} alt={n.title} className="object-cover w-full h-full" />
             </div>
             <div className="p-3 sm:p-4">
               <div className="text-[10px] sm:text-[11px] uppercase tracking-wide text-slate-500">Social Media</div>
-              <div className="mt-1 text-xs sm:text-sm font-semibold" style={{ color: BRAND_DARK }}>{n.title}</div>
+              <div className="mt-1 text-xs sm:text-sm font-semibold truncate" style={{ color: BRAND_DARK }}>{n.title}</div>
               {n.teaser && <div className="mt-1 text-xs sm:text-xs text-slate-600 line-clamp-2">{n.teaser}</div>}
             </div>
           </a>
@@ -301,31 +347,34 @@ export default function About() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="hidden md:flex fixed left-0 top-16 w-48 h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border-r border-gray-300 p-4 overflow-y-auto shadow-xl"
+          className="hidden md:flex fixed left-0 top-16 w-48 h-screen bg-[#0F172A] border-r border-white/20 p-3 overflow-y-auto shadow-xl"
         >
-        <motion.nav
-          initial="hidden"
-          animate="visible"
-          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-          className="flex flex-col gap-6"
-        >
-          {sidebarItems.map((item, index) => (
-            <motion.a
-              key={index}
-              href="#"
-              onClick={(e) => { e.preventDefault(); item.action(); }}
-              transition={{ type: "spring", stiffness: 300 }}
-              variants={itemVariants}
-              className="flex items-center gap-3 px-3 py-2 text-sm font-semibold text-slate-600 transition border-b border-gray-200 hover:border-blue-300"
-              whileHover={{ scale: 1.05, y: -2, color: "#2563eb" }}
+          <div>
+            <h3 className="text-xs font-bold text-white/70 uppercase tracking-wider mb-3">On This Page</h3>
+            <motion.nav
+              initial="hidden"
+              animate="visible"
+              variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+              className="flex flex-col gap-3"
             >
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-sky-600">
-                <item.icon size={18} />
-              </div>
-              {item.text}
-            </motion.a>
-          ))}
-        </motion.nav>
+              {sidebarItems.map((item, index) => (
+                <motion.a
+                  key={index}
+                  href="#"
+                  onClick={(e) => { e.preventDefault(); item.action(); }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  variants={itemVariants}
+                  className="flex items-center gap-2 px-2 py-1 text-xs font-medium text-white transition border-b border-white/20 hover:border-white/50"
+                  whileHover={{ scale: 1.05, y: -1, color: "#ffffff" }}
+                >
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-white">
+                    <item.icon size={14} />
+                  </div>
+                  {item.text}
+                </motion.a>
+              ))}
+            </motion.nav>
+          </div>
         </motion.aside>
 
         {/* Mobile Sidebar */}
@@ -333,31 +382,34 @@ export default function About() {
           initial={{ opacity: 0, x: -20 }}
           animate={sidebarOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
           transition={{ duration: 0.3 }}
-          className={`fixed md:hidden left-0 top-16 w-64 h-screen bg-gradient-to-b from-blue-50 to-blue-100 border-r border-gray-300 p-4 overflow-y-auto shadow-xl z-50`}
+          className={`fixed md:hidden left-0 top-16 w-64 h-screen bg-[#0F172A] border-r border-white/20 p-3 overflow-y-auto shadow-xl z-50`}
         >
-          <motion.nav
-            initial="hidden"
-            animate="visible"
-            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-            className="flex flex-col gap-6"
-          >
-            {sidebarItems.map((item, index) => (
-            <motion.a
-              key={index}
-              href="#"
-              onClick={(e) => { e.preventDefault(); item.action(); }}
-              transition={{ type: "spring", stiffness: 300 }}
-              variants={itemVariants}
-              className="flex items-center gap-3 px-3 py-2 text-sm font-semibold text-slate-600 transition border-b border-gray-200 hover:border-blue-300"
-              whileHover={{ scale: 1.05, y: -2, color: "#2563eb" }}
+          <div>
+            <h3 className="text-xs font-bold text-white/70 uppercase tracking-wider mb-3">On This Page</h3>
+            <motion.nav
+              initial="hidden"
+              animate="visible"
+              variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+              className="flex flex-col gap-3"
             >
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-sky-600">
-                  <item.icon size={18} />
-                </div>
-                {item.text}
-              </motion.a>
-            ))}
-          </motion.nav>
+              {sidebarItems.map((item, index) => (
+                <motion.a
+                  key={index}
+                  href="#"
+                  onClick={(e) => { e.preventDefault(); item.action(); }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  variants={itemVariants}
+                  className="flex items-center gap-2 px-2 py-1 text-xs font-medium text-white transition border-b border-white/20 hover:border-white/50"
+                  whileHover={{ scale: 1.05, y: -1, color: "#ffffff" }}
+                >
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-white">
+                    <item.icon size={14} />
+                  </div>
+                  {item.text}
+                </motion.a>
+              ))}
+            </motion.nav>
+          </div>
         </motion.aside>
 
         {/* Content Area */}
@@ -439,17 +491,23 @@ export default function About() {
                           whileInView="visible"
                           viewport={{ once: true }}
                         >
+                        <motion.p variants={paragraphVariants} className="mb-6">
+                          Our story began in 1983 in Singapore, when Informatics was founded to open doors for a
+                          new generation of IT professionals. A decade later, in 1993, Leonardo “Leo” Riingen brought
+                          that same vision to the Philippines. What started as one computer school in Manila has
+                          since grown into a nationwide network of colleges and training centers, helping
+                          thousands of Filipinos build brighter futures in IT and Business. In the early 2000s, we
+                          introduced Purple Train, one of the first digital learning platforms in the country, proving
+                          that education could be flexible, accessible, and ahead of its time.</motion.p>
+
                         <motion.p variants={paragraphVariants}>
-                            Our story began in 1983 in Singapore, when Informatics Education was founded to answer the growing demand for skilled IT professionals in Asia. A decade later, in 1993, Leonardo “Leo” Riingen brought that same vision to the Philippines, establishing Informatics Philippines as a premier IT training institution. From one computer school in Metro Manila, we expanded into a nationwide network of colleges and training centers, empowering thousands of Filipinos through education in Information and Communication Technology (ICT) and Business Management.
-                          </motion.p>
+                          Now, more than 30 years later, Informatics continues to move forward with the same
+                          passion—to equip students and professionals with the skills they need to thrive in a
+                          changing world. Whether through Senior High, Diploma and Degree programs, or short,
+                          practical Informatics Microcredential Courses (IMC) for working professionals, our
+                          mission has never changed: to empower Filipinos with learning that is future-ready,
+                          meaningful, and built to last.</motion.p>
 
-                          <motion.p variants={paragraphVariants}>
-                            Long before online learning became the norm, Informatics pioneered digital education in the Philippines with Purple Train in the early 2000s. Even before the pandemic, our students were already benefiting from a blended learning model — combining online flexibility with face-to-face engagement. Today, our award-winning learning management system and globally recognized digital platforms continue to power our programs, equipping students and professionals with future-ready skills.
-                          </motion.p>
-
-                          <motion.p variants={paragraphVariants}>
-                            Beyond academic pathways in Senior High, Diploma, and Degree programs, we also deliver Informatics Microcredential Courses (IMC) – these are short, bite-sized courses for professionals and corporations, helping them stay ahead in a rapidly changing digital landscape. Backed by flexible modes of learning and expert trainers who continually upskill themselves, Informatics remains committed to helping Filipinos thrive.
-                          </motion.p>
                         </motion.div>
                       </div>
                     </div>
@@ -477,62 +535,54 @@ export default function About() {
               <Container>
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-12">
-                    <span
-                      className="inline-flex items-center rounded-full bg-blue-50 px-4 py-1 text-xs font-semibold tracking-[0.25em] uppercase mb-2"
-                      style={{ color: BRAND_BLUE }}
-                    >
-                      The Future We're Building
-                    </span>
+                    
                     <h2 className="text-3xl md:text-[40px] font-extrabold tracking-tight mb-4">
-                      <span style={{ color: BRAND_DARK }}>Informatics at a </span>
-                      <span style={{ color: "#0097FF" }}>Glance</span>
+                      <span style={{ color: BRAND_DARK }}>The Future </span>
+                      <span style={{ color: "#0097FF" }}>We're Building</span>
                     </h2>
-                    <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-                      A comprehensive overview of our institutional identity, guiding principles, and remarkable journey
-                    </p>
                   </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div
-              className="group relative bg-white rounded-[28px] border border-blue-100 p-10 shadow-[0_20px_55px_rgba(59,130,246,0.12)] transition-all duration-300 hover:-translate-y-2 hover:border-blue-300 hover:shadow-[0_32px_70px_rgba(59,130,246,0.18)]"
+              className="group relative bg-gradient-to-br from-white via-blue-50 to-indigo-50 rounded-[32px] border border-blue-200 p-12 shadow-[0_40px_80px_rgba(59,130,246,0.15)] transition-all duration-500 hover:-translate-y-3 hover:border-blue-400 hover:shadow-[0_50px_100px_rgba(59,130,246,0.25)] text-center"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.03 }}
             >
               <motion.div
-                className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 mb-3"
+                className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-blue-100 to-blue-200 mb-6 mx-auto"
                 whileHover={{ rotate: 5, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Users size={28} style={{ color: BRAND_BLUE }} />
-              </motion.div>
-              <h3 className="mt-5 text-lg font-semibold" style={{ color: BRAND_DARK }}>Mission</h3>
-              <p className="mt-3 text-sm text-slate-600 leading-relaxed flex-1">
-                We Help People Learn Technology To Make Their Lives Better.
-              </p>
+    <Users size={36} style={{ color: BRAND_BLUE }} />
+  </motion.div>
+  <h3 className="text-5xl font-bold mb-4" style={{ color: BRAND_DARK }}>Mission</h3>
+  <p className="text-xl text-slate-700 leading-relaxed max-w-md mx-auto">
+    We Help People Learn Technology To Make Their Lives Better.
+  </p>
             </motion.div>
 
             <motion.div
-              className="group relative bg-white rounded-[28px] border border-blue-100 p-10 shadow-[0_20px_55px_rgba(59,130,246,0.12)] transition-all duration-300 hover:-translate-y-2 hover:border-blue-300 hover:shadow-[0_32px_70px_rgba(59,130,246,0.18)]"
+              className="group relative bg-gradient-to-br from-white via-blue-50 to-indigo-50 rounded-[32px] border border-blue-200 p-12 shadow-[0_40px_80px_rgba(59,130,246,0.15)] transition-all duration-500 hover:-translate-y-3 hover:border-blue-400 hover:shadow-[0_50px_100px_rgba(59,130,246,0.25)] text-center"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.03 }}
             >
               <motion.div
-                className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 mb-3"
+                className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-blue-100 to-blue-200 mb-6 mx-auto"
                 whileHover={{ rotate: -5, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Rocket size={28} style={{ color: BRAND_BLUE }} />
-              </motion.div>
-              <h3 className="mt-5 text-lg font-semibold" style={{ color: BRAND_DARK }}>Vision</h3>
-              <p className="mt-3 text-sm text-slate-600 leading-relaxed flex-1">
-                We Transform Individuals To Become Successful Innovators By Leveraging The Power Of Technology.
-              </p>
+    <Rocket size={36} style={{ color: BRAND_BLUE }} />
+  </motion.div>
+  <h3 className="text-5xl font-bold mb-4" style={{ color: BRAND_DARK }}>Vision</h3>
+  <p className="text-xl text-slate-700 leading-relaxed max-w-md mx-auto">
+    We Transform Individuals To Become Successful Innovators By Leveraging The Power Of Technology.
+  </p>
             </motion.div>
           </div>
                 </div>
@@ -546,12 +596,7 @@ export default function About() {
               <Container>
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-12">
-                    <span
-                      className="inline-flex items-center rounded-full bg-blue-50 px-4 py-1 text-xs font-semibold tracking-[0.25em] uppercase mb-2"
-                      style={{ color: BRAND_BLUE }}
-                    >
-                      The Future We're Building
-                    </span>
+                    
                     <motion.h2
                       className="text-3xl md:text-[40px] font-extrabold tracking-tight mb-4"
                       initial={{ opacity: 0, y: 20 }}
@@ -573,7 +618,7 @@ export default function About() {
                   </div>
 
                   <div className="grid lg:grid-cols-2 gap-0 items-stretch">
-                    <div className="space-y-8 bg-blue-900 p-8 rounded-lg">
+                    <div className="space-y-8 bg-[#001F3F] p-8 rounded-lg">
                       {coreValues.map((value, index) => (
                         <motion.div
                           key={index}
@@ -629,10 +674,21 @@ export default function About() {
                       </p>
 
                       <p>
-                        Leonardo “Leo” Riingen, founder of Informatics Philippines, is a visionary leader who has made technology education more accessible to Filipinos since 1993. Inspired by his education in the U.K., he pioneered ladderized IT programs patterned after the British system, ensuring students could gain employable skills at every stage while continuing their learning. His bold decision to bring IT education into malls redefined access to technology learning — making it approachable, practical, and vital to everyday Filipinos. He also championed customized training for companies and government institutions, aligning education with industry and global standards.                      </p>
+Since 1993, Leonardo “Leo” Riingen has made
+technology education more accessible to Filipinos.
+Inspired by his studies in the U.K., he introduced
+ladderized IT programs that provided skills at every
+stage, and even brought IT learning into malls to make
+it practical and within reach. He also pushed for training
+tailored to companies and government, keeping
+education aligned with industry needs.                      </p>
 
                       <p>
-                        Guided by his vision, Informatics has become more than a school — it is a platform that equips Filipinos not just to be job-ready, but to excel and lead in a global economy. With internationally recognized courses, flexible digital learning platforms, and a culture of continuous upskilling, Informatics carries forward Riingen’s mission: to help Filipinos thrive in the digital age and build a legacy of innovation, excellence, and leadership for generations to come.                      </p>
+Through his vision, Informatics has grown into more
+than a school. It is a platform that helps Filipinos build
+skills for the digital age and prepares them not only for
+work, but also for leadership in a changing world.
+</p>
                     </div>
                   </div>
 
@@ -653,83 +709,115 @@ export default function About() {
           </section>
 
           {/* Our Milestones Timeline */}
-          <section className="py-16 md:py-20 bg-cyan-500" id="leadership-and-legacy">
+          <section className="py-8 sm:py-12 md:py-16 bg-gradient-to-b from-white to-slate-50/50" id="leadership-and-legacy">
             <motion.div>
               <Container>
                 <div className="max-w-7xl mx-auto">
-                  <div className="text-center mb-12">
-                  <span
-                    className="inline-flex items-center rounded-full bg-white px-4 py-1 text-xs font-semibold tracking-[0.25em] uppercase mb-2 text-cyan-600"
-                  >
-                    Our Achievements
-                  </span>
-                  <h2 className="text-3xl md:text-[40px] font-extrabold tracking-tight mb-4 text-white">
-                    <span>Our </span>
-                    <span>Milestones</span>
+                  <div className="text-center mb-8">
+
+                  <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-3">
+                    <span style={{ color: BRAND_DARK }}>Our </span>
+                    <span style={{ color: "#0097FF" }}>Achievements</span>
                   </h2>
-                    <p className="text-lg text-white max-w-3xl mx-auto">
+                    <p className="text-base text-slate-600 max-w-3xl mx-auto">
                       A journey of excellence, innovation, and commitment to educational transformation
                     </p>
                   </div>
 
-                  <div className="relative">
-                    {/* Timeline Line */}
-                    <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 to-blue-400 transform md:-translate-x-1/2"></div>
-
-                  <div className="space-y-12">
-                    {milestones.map((milestone, index) => {
-                      let lottieSrc;
-                      if (index === 4) { // Singapore milestone
-                        lottieSrc = asset("assets/Singapore flag Lottie JSON animation.lottie");
-                      } else {
-                        const lottieFiles = [
-                          asset("assets/education.lottie"),
-                          asset("assets/Teacher.lottie"),
-                          asset("assets/Growth Chart.lottie"),
-                          asset("assets/Coding.lottie"),
-                          asset("assets/Advanced Analytics.lottie")
-                        ];
-                        lottieSrc = lottieFiles[index % lottieFiles.length];
-                      }
-                      return (
+                  <div className="grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                    {milestones.map((milestone, index) => (
                   <motion.div
                     key={index}
+                    className="group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className={`relative flex items-start gap-4 md:gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                    whileHover={{ scale: 1.02 }}
                   >
-                    {/* Timeline Dot */}
-                    <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full border-4 border-white shadow-lg transform md:-translate-x-1/2 z-10"></div>
-
-                    {/* Content */}
-                    <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
-                      <div className="bg-blue-900 rounded-2xl shadow-[0_20px_55px_rgba(59,130,246,0.12)] hover:shadow-[0_32px_70px_rgba(59,130,246,0.18)] transition-all duration-300 p-6 border border-blue-700">
-                        <div className="flex items-center gap-3 mb-3">
-                          <div className="px-3 py-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full text-sm font-bold">
-                            {milestone.year}
+                    <div className="p-2 sm:p-3">
+                      <div className="mb-2">
+                        <div className="flex items-start justify-between mb-2">
+                          <div className="flex items-center gap-2">
+                            <div className="p-1.5 sm:p-2 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100">
+                              <Award size={14} className="sm:w-4 sm:h-4" style={{ color: BRAND_BLUE }} />
+                            </div>
+                            <div>
+                              <h3 className="text-sm sm:text-base font-bold mb-0.5" style={{ color: BRAND_DARK }}>
+                                {milestone.title}
+                              </h3>
+                              <p className="text-xs text-slate-600">{milestone.description}</p>
+                            </div>
                           </div>
-                        </div>
-                        <h3 className="text-lg font-bold mb-2 text-white">
-                          {milestone.title}
-                        </h3>
-                        <p className="text-blue-200 leading-relaxed">
-                          {milestone.description}
-                        </p>
-                        <div className="mt-4">
-                          <LottiePlayer src={lottieSrc} className="w-full max-w-xs mx-auto" />
+                          <div className="text-xs font-bold text-slate-500">{milestone.year}</div>
                         </div>
                       </div>
                     </div>
                   </motion.div>
-                );
-              })}
-                  </div>
+                ))}
                   </div>
                 </div>
               </Container>
             </motion.div>
+          </section>
+
+          {/* Our Campuses */}
+          <section className="py-8 sm:py-12 md:py-16 bg-gradient-to-b from-white to-slate-50/50" id="campuses">
+            <Container>
+              <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl md:text-[40px] font-extrabold tracking-tight mb-4">
+                    <span style={{ color: BRAND_DARK }}>Our </span>
+                    <span style={{ color: "#0097FF" }}>Campuses</span>
+                  </h2>
+                  <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                    Discover our nationwide network of campuses dedicated to providing quality IT education.
+                  </p>
+                </div>
+
+                <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                  {campuses.map((campus, index) => (
+                    <motion.div
+                      key={index}
+                      className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100"
+                      initial={{ opacity: 0, y: 50 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.02 }}
+                    >
+                      {/* Campus Image */}
+                      <div className="relative overflow-hidden h-32 sm:h-40 md:h-48">
+                        <img
+                          src={campus.image}
+                          alt={`${campus.name} Campus`}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+                      </div>
+
+                      <div className="p-3 sm:p-4">
+                        <div className="mb-4">
+                          <div className="flex items-start justify-between mb-3">
+                            <div className="flex items-center gap-3">
+                              <div className="p-2 sm:p-3 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100">
+                                <MapPin size={16} className="sm:w-5 sm:h-5" style={{ color: BRAND_BLUE }} />
+                              </div>
+                              <div>
+                                <h3 className="text-base sm:text-lg font-bold mb-1" style={{ color: BRAND_DARK }}>
+                                  {campus.name}
+                                </h3>
+                                <p className="text-xs text-slate-600">{campus.address}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </Container>
           </section>
 
           {/* Community Engagement Section*/}
@@ -740,7 +828,6 @@ export default function About() {
                   className="inline-flex items-center rounded-full bg-blue-50 px-4 py-1 text-xs font-semibold tracking-[0.25em] uppercase mb-2"
                   style={{ color: BRAND_BLUE }}
                 >
-                  Community Engagement
                 </span>
                 <motion.h2 {...fadeInUp} className="text-3xl md:text-[40px] font-extrabold tracking-tight mb-4">
                   <span style={{ color: BRAND_DARK }}>Community </span>
@@ -756,76 +843,34 @@ export default function About() {
             </Container>
           </section>
 
-          {/* Contact Section */}
-          <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50/50" id="contact">
+          {/* Explore Careers at Informatics */}
+          <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50/50">
             <motion.div {...fadeInUp}>
               <Container>
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-12">
-                  <span
-                    className="inline-flex items-center rounded-full bg-blue-50 px-4 py-1 text-xs font-semibold tracking-[0.25em] uppercase mb-2"
-                    style={{ color: BRAND_BLUE }}
-                  >
-                    Contact Us
-                  </span>
-                  <h2 className="text-3xl md:text-[40px] font-extrabold tracking-tight mb-4">
-                    <span style={{ color: BRAND_DARK }}>Get in </span>
-                    <span style={{ color: "#0097FF" }}>Touch</span>
-                  </h2>
+                   
+                    <h2 className="text-3xl md:text-[40px] font-extrabold tracking-tight mb-4">
+                      <span style={{ color: BRAND_DARK }}>Explore Careers at </span>
+                      <span style={{ color: "#0097FF" }}>Informatics</span>
+                    </h2>
                     <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-                      Ready to start your journey with Informatics? Contact us today to learn more about our programs and admissions process.
+                      Join our team and be part of a dynamic organization committed to transforming lives through technology education.
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
-                    <div className="bg-white rounded-2xl lg:rounded-3xl shadow-lg p-6 lg:p-8 border border-slate-100">
-                      <h3 className="text-xl lg:text-2xl font-bold mb-4 lg:mb-6" style={{ color: BRAND_DARK }}>
-                        Contact Information
-                      </h3>
-
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3 lg:gap-4">
-                          <div className="flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 flex-shrink-0">
-                            <Mail size={18} className="lg:w-5 lg:h-5" style={{ color: BRAND_BLUE }} />
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <p className="font-semibold text-sm lg:text-base" style={{ color: BRAND_DARK }}>Email</p>
-                            <a href="mailto:info@informatics.edu.ph" className="text-slate-600 hover:text-blue-600 transition-colors text-sm lg:text-base break-all">
-                              info.northgate@informatics.com.ph
-                            </a>
-                          </div>
-                        </div>
-
-                        <div className="flex items-start gap-3 lg:gap-4">
-                          <div className="flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-to-br from-green-50 to-green-100 flex-shrink-0">
-                            <Phone size={18} className="lg:w-5 lg:h-5" style={{ color: BRAND_BLUE }} />
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <p className="font-semibold text-sm lg:text-base" style={{ color: BRAND_DARK }}>Phone</p>
-                            <a href="tel:+63285231234" className="text-slate-600 hover:text-green-600 transition-colors text-sm lg:text-base">
-                              0960-611-4435
-                            </a>
-                          </div>
-                        </div>
-
-                        <div className="flex items-start gap-3 lg:gap-4">
-                          <div className="flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 flex-shrink-0">
-                            <MapPin size={18} className="lg:w-5 lg:h-5" style={{ color: BRAND_BLUE }} />
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <p className="font-semibold text-sm lg:text-base" style={{ color: BRAND_DARK }}>Main Campus</p>
-                            <p className="text-slate-600 text-sm lg:text-base leading-relaxed">2070 BDO Bldg. Recto Ave Quiapo, Manila</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-white rounded-2xl lg:rounded-3xl shadow-lg p-6 lg:p-8 border border-slate-100">
-                      <h3 className="text-xl lg:text-2xl font-bold mb-4 lg:mb-6" style={{ color: BRAND_DARK }}>
-                        Quick Inquiry
-                      </h3>
-                      <InquiryForm />
-                    </div>
+                  <div className="text-center">
+                    <motion.a
+                      href="https://ph.jobstreet.com/companies/informatics-college-168552199237399/jobs"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Briefcase size={24} />
+                      View Open Positions
+                    </motion.a>
                   </div>
                 </div>
               </Container>
