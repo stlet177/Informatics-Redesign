@@ -10,7 +10,7 @@ export default function ProgramsIndex() {
     "BS Information Technology": asset("assets/informationtechnology.jpg"),
     "BS Computer Science": asset("assets/computerscience.jpg"),
     "BS Information Systems": asset("assets/Informationsystem.jpg"),
-    "BS Business Administration (Business Analytics)": asset("assets/BSBA.jpg"),
+    "BS Business Administration": asset("assets/BSBA.jpg"),
   };
   return (
     <main className="pt-24 md:pt-28">
@@ -67,4 +67,3 @@ export default function ProgramsIndex() {
     </main>
   );
 }
-

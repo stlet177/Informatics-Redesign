@@ -4,10 +4,11 @@
 import { useEffect, useRef, useState } from "react";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
-import ProgramIT from "./pages/ProgramIT";
-import ProgramCS from "./pages/ProgramCS";
-import ProgramIS from "./pages/ProgramIS";
-import ProgramBA from "./pages/ProgramBA";
+import BSIT from "./pages/BSIT";
+import BSCS from "./pages/BSCS";
+import BSIS from "./pages/BSIS";
+import BSBA from "./pages/BSBA";
+import BSOA from "./pages/BSOA";
 import About from "./pages/About";
 import Campuses from "./pages/Campuses";
 import Careers from "./pages/Careers";
@@ -92,14 +93,16 @@ export default function App() {
           <Careers />
         ) : route.startsWith("#/programs/shs") ? (
           <SHS />
-        ) : route.startsWith("#/programs/information-technology") ? (
-          <ProgramIT />
-        ) : route.startsWith("#/programs/computer-science") ? (
-          <ProgramCS />
-        ) : route.startsWith("#/programs/information-systems") ? (
-          <ProgramIS />
-        ) : route.startsWith("#/programs/business-administration") ? (
-          <ProgramBA />
+        ) : route.startsWith("#/programs/college/bsit") || route.startsWith("#/programs/information-technology") ? (
+          <BSIT />
+        ) : route.startsWith("#/programs/college/bscs") || route.startsWith("#/programs/computer-science") ? (
+          <BSCS />
+        ) : route.startsWith("#/programs/college/bsis") || route.startsWith("#/programs/information-systems") ? (
+          <BSIS />
+        ) : route.startsWith("#/programs/college/bsba") || route.startsWith("#/programs/business-administration") ? (
+          <BSBA />
+        ) : route.startsWith("#/programs/college/bsoa") ? (
+          <BSOA />
         ) : route.startsWith("#/programs/explore") ? (
           <ExplorePrograms />
         ) : route.startsWith("#/programs") ? (
@@ -133,10 +136,11 @@ function titleForRoute(route) {
   if (route.startsWith("#/campuses")) return "Our Campuses";
   if (route.startsWith("#/careers")) return "Careers";
   if (route.startsWith("#/programs/shs")) return "Senior High School Tracks";
-  if (route.startsWith("#/programs/information-technology")) return "BS Information Technology";
-  if (route.startsWith("#/programs/computer-science")) return "BS Computer Science";
-  if (route.startsWith("#/programs/information-systems")) return "BS Information Systems";
-  if (route.startsWith("#/programs/business-administration")) return "BS Business Administration";
+  if (route.startsWith("#/programs/college/bsit") || route.startsWith("#/programs/information-technology")) return "BS Information Technology";
+  if (route.startsWith("#/programs/college/bscs") || route.startsWith("#/programs/computer-science")) return "BS Computer Science";
+  if (route.startsWith("#/programs/college/bsis") || route.startsWith("#/programs/information-systems")) return "BS Information Systems";
+  if (route.startsWith("#/programs/college/bsba") || route.startsWith("#/programs/business-administration")) return "BS Business Administration";
+  if (route.startsWith("#/programs/college/bsoa")) return "BS Office Administration";
   if (route.startsWith("#/programs/explore")) return "Explore Programs";
   if (route.startsWith("#/programs")) return "Programs";
   if (route.startsWith("#/admissions/tuition")) return "Tuition & Financial Aid";

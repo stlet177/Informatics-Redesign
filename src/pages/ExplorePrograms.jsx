@@ -54,11 +54,26 @@ const SECTION_CONTENT = [
       {
         title: "College Programs",
         items: [
-          "BS Computer Science (BSCS)",
-          "BS Information Systems (BSIS)",
-          "BS Information Technology (BSIT)",
-          "BS Business Administration Major in Marketing Management (BSBA – MM)",
-          "BS Office Administration (BSOA)",
+          {
+            label: "BSBA - Bachelor of Science in Business Administration",
+            href: "#/programs/college/bsba",
+          },
+          {
+            label: "BSCS - Bachelor of Science in Computer Science",
+            href: "#/programs/college/bscs",
+          },
+          {
+            label: "BSIS - Bachelor of Science in Information Systems",
+            href: "#/programs/college/bsis",
+          },
+          {
+            label: "BSIT - Bachelor of Science in Information Technology",
+            href: "#/programs/college/bsit",
+          },
+          {
+            label: "BSOA - Bachelor of Science in Office Administration",
+            href: "#/programs/college/bsoa",
+          },
         ],
       },
       {
@@ -219,19 +234,33 @@ const GroupList = ({ group }) => (
     <h4 className="text-lg font-semibold text-slate-900">{group.title}</h4>
     {group.lead ? <p className="text-sm text-slate-600">{group.lead}</p> : null}
     <ul className="grid gap-2 text-sm text-slate-700 md:grid-cols-2 md:gap-3">
-      {group.items.map((item) => (
-        <li
-          key={item}
-          className="relative rounded-xl border border-slate-100 bg-slate-50/80 px-4 py-2 pl-6"
-        >
-          <span
-            className="absolute left-3 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full"
-            style={{ background: LIGHT_BLUE }}
-            aria-hidden
-          />
-          {item}
-        </li>
-      ))}
+      {group.items.map((item) => {
+        const itemData = typeof item === "string" ? { label: item } : item;
+        const key = itemData.label ?? item;
+
+        return (
+          <li
+            key={key}
+            className="group relative rounded-xl border border-slate-100 bg-slate-50/80 transition hover:border-sky-200 hover:bg-sky-50"
+          >
+            <span
+              className="pointer-events-none absolute left-3 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full"
+              style={{ background: LIGHT_BLUE }}
+              aria-hidden
+            />
+            {itemData.href ? (
+              <a
+                href={itemData.href}
+                className="block px-4 py-2 pl-6 text-sm font-medium text-slate-700 transition group-hover:text-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300"
+              >
+                {itemData.label}
+              </a>
+            ) : (
+              <span className="block px-4 py-2 pl-6 text-sm text-slate-700">{itemData.label}</span>
+            )}
+          </li>
+        );
+      })}
     </ul>
   </div>
 );
@@ -262,14 +291,16 @@ const ProgramSection = ({ section }) => (
               <p className="max-w-3xl text-base leading-relaxed text-slate-600">{section.blurb}</p>
             ) : null}
           </div>
-          <a
-            href={section.cta.href}
-            target={section.cta.external ? "_blank" : undefined}
-            rel={section.cta.external ? "noopener noreferrer" : undefined}
-            className={LIGHT_BUTTON_CLASS}
-          >
-            {section.cta.label}
-          </a>
+          {section.cta && section.id !== "higher-ed" ? (
+            <a
+              href={section.cta.href}
+              target={section.cta.external ? "_blank" : undefined}
+              rel={section.cta.external ? "noopener noreferrer" : undefined}
+              className={LIGHT_BUTTON_CLASS}
+            >
+              {section.cta.label}
+            </a>
+          ) : null}
         </div>
 
         <div className="mt-10 space-y-8">
