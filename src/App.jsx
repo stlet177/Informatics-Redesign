@@ -19,6 +19,16 @@ import NewsDetail from "./pages/NewsDetail";
 import ContactPage from "./pages/ContactPage";
 import Privacy from "./pages/Privacy";
 import SHS from "./pages/SHS";
+import SHSHUMSS from "./pages/SHSHUMSS";
+import SHSABM from "./pages/SHSABM";
+import SHSSTEM from "./pages/SHSSTEM";
+import SHSTechnicalDrafting from "./pages/SHSTechnicalDrafting";
+import SHSAnimation from "./pages/SHSAnimation";
+import SHSIllustration from "./pages/SHSIllustration";
+import SHSVisualGraphicDesign from "./pages/SHSVisualGraphicDesign";
+import SHSComputerProgramming from "./pages/SHSComputerProgramming";
+import SHSComputerSystemsServicing from "./pages/SHSComputerSystemsServicing";
+import SHSContactCenterServices from "./pages/SHSContactCenterServices";
 import TuitionAid from "./pages/TuitionAid";
 import Scholarships from "./pages/Scholarships";
 import AdmissionsFAQs from "./pages/AdmissionsFAQs";
@@ -91,6 +101,26 @@ export default function App() {
           <Campuses />
         ) : route.startsWith("#/careers") ? (
           <Careers />
+        ) : route.startsWith("#/programs/shs/humss") ? (
+          <SHSHUMSS />
+        ) : route.startsWith("#/programs/shs/abm") ? (
+          <SHSABM />
+        ) : route.startsWith("#/programs/shs/stem") ? (
+          <SHSSTEM />
+        ) : route.startsWith("#/programs/shs/technical-drafting") ? (
+          <SHSTechnicalDrafting />
+        ) : route.startsWith("#/programs/shs/animation") ? (
+          <SHSAnimation />
+        ) : route.startsWith("#/programs/shs/illustration") ? (
+          <SHSIllustration />
+        ) : route.startsWith("#/programs/shs/visual-graphic-design") ? (
+          <SHSVisualGraphicDesign />
+        ) : route.startsWith("#/programs/shs/computer-programming") ? (
+          <SHSComputerProgramming />
+        ) : route.startsWith("#/programs/shs/computer-systems-servicing") ? (
+          <SHSComputerSystemsServicing />
+        ) : route.startsWith("#/programs/shs/contact-center-services") ? (
+          <SHSContactCenterServices />
         ) : route.startsWith("#/programs/shs") ? (
           <SHS />
         ) : route.startsWith("#/programs/college/bsit") || route.startsWith("#/programs/information-technology") ? (
@@ -135,6 +165,16 @@ function titleForRoute(route) {
   if (route.startsWith("#/about")) return "About Informatics";
   if (route.startsWith("#/campuses")) return "Our Campuses";
   if (route.startsWith("#/careers")) return "Careers";
+  if (route.startsWith("#/programs/shs/humss")) return "Arts, Social Sciences, and Humanities";
+  if (route.startsWith("#/programs/shs/abm")) return "Accountancy, Business, and Management";
+  if (route.startsWith("#/programs/shs/stem")) return "Science, Technology, Engineering, and Mathematics";
+  if (route.startsWith("#/programs/shs/technical-drafting")) return "Technical Drafting";
+  if (route.startsWith("#/programs/shs/animation")) return "Animation";
+  if (route.startsWith("#/programs/shs/illustration")) return "Illustration";
+  if (route.startsWith("#/programs/shs/visual-graphic-design")) return "Visual Graphic Design";
+  if (route.startsWith("#/programs/shs/computer-programming")) return "Computer Programming (Java)";
+  if (route.startsWith("#/programs/shs/computer-systems-servicing")) return "Computer Systems Servicing";
+  if (route.startsWith("#/programs/shs/contact-center-services")) return "Contact Center Services";
   if (route.startsWith("#/programs/shs")) return "Senior High School Tracks";
   if (route.startsWith("#/programs/college/bsit") || route.startsWith("#/programs/information-technology")) return "BS Information Technology";
   if (route.startsWith("#/programs/college/bscs") || route.startsWith("#/programs/computer-science")) return "BS Computer Science";
