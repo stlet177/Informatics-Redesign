@@ -27,9 +27,9 @@ const WHO_CAN_APPLY = [
 
 const ENROLLMENT_REQUIREMENTS = [
   {
-    title: "For Senior High School Graduates (Freshmen)",
+    title: "For Highschool Graduates",
     items: [
-      "Completed Form 138 (Report Card) or Senior High School card",
+      "Completed Form 137 (Report Card) or High School card",
       "Certificate of Good Moral Character from your school",
       "PSA Birth Certificate (photocopy)",
       "2x2 ID photos (recent, white background)",
@@ -38,7 +38,7 @@ const ENROLLMENT_REQUIREMENTS = [
     ],
   },
   {
-    title: "For College Transferees",
+    title: "For Shs Transferees",
     items: [
       "Transcript of Records (TOR) from previous school",
       "Honorable Dismissal or Transfer Credentials",
