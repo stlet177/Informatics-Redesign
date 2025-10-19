@@ -1,5 +1,16 @@
 import { useEffect, useRef, useState } from "react";
-import { Search, ChevronDown, GraduationCap, University, Layers, ClipboardList, Wallet, Award, HelpCircle, Compass } from "lucide-react";
+import {
+  Search,
+  ChevronDown,
+  GraduationCap,
+  University,
+  Layers,
+  ClipboardList,
+  Wallet,
+  Award,
+  HelpCircle,
+  Compass,
+} from "lucide-react";
 import Container from "./Container";
 import { BRAND_DARK } from "../lib/brand";
 import { INFO_LOGO, PLACEHOLDER_IMG } from "../lib/assets";
@@ -7,13 +18,26 @@ import { INFO_LOGO, PLACEHOLDER_IMG } from "../lib/assets";
 const NAV_LINKS = [
   { label: "Home", href: "#hero" },
   { label: "About us", href: "#/about" },
+  { label: "Alumni", href: "#/alumni" },
   {
     label: "Programs",
     href: "#/programs",
     children: [
-      { label: "Explore Our Programs", href: "#/programs/explore", Icon: Compass },
-      { label: "Senior High School", href: "#/programs/shs", Icon: GraduationCap },
-      { label: "Higher Education", href: "#/programs#academic", Icon: University },
+      {
+        label: "Explore Our Programs",
+        href: "#/programs/explore",
+        Icon: Compass,
+      },
+      {
+        label: "Senior High School",
+        href: "#/programs/shs",
+        Icon: GraduationCap,
+      },
+      {
+        label: "Higher Education",
+        href: "#/programs#academic",
+        Icon: University,
+      },
       {
         label: "Microcredentials",
         href: "https://imc.informatics.edu.ph",
@@ -26,14 +50,26 @@ const NAV_LINKS = [
     label: "Admissions",
     href: "#/admissions",
     children: [
-      { label: "How to Apply", href: "#/admissions#how-to-apply", Icon: ClipboardList },
-      { label: "Tuition & Financial Aid", href: "#/admissions/tuition", Icon: Wallet },
+      {
+        label: "How to Apply",
+        href: "#/admissions#how-to-apply",
+        Icon: ClipboardList,
+      },
+      {
+        label: "Tuition & Financial Aid",
+        href: "#/admissions/tuition",
+        Icon: Wallet,
+      },
       { label: "Scholarships", href: "#/admissions/scholarships", Icon: Award },
       { label: "FAQs", href: "#/admissions/faqs", Icon: HelpCircle },
     ],
   },
   { label: "News & Events", href: "/news-events" },
-  { label: "Careers", href: "https://ph.jobstreet.com/companies/informatics-college-168552199237399/jobs", external: true },
+  {
+    label: "Careers",
+    href: "https://ph.jobstreet.com/companies/informatics-college-168552199237399/jobs",
+    external: true,
+  },
   { label: "Contact", href: "/contact" },
 
   {
@@ -92,7 +128,9 @@ export default function Nav() {
   const handleSubmitSearch = (event) => {
     event.preventDefault();
     if (!searchValue.trim()) return;
-    window.location.assign(`/search?query=${encodeURIComponent(searchValue.trim())}`);
+    window.location.assign(
+      `/search?query=${encodeURIComponent(searchValue.trim())}`
+    );
     setSearchOpen(false);
     setMobileSearchOpen(false);
   };
@@ -125,7 +163,10 @@ export default function Nav() {
     if (dropdownTimeoutRef.current) {
       window.clearTimeout(dropdownTimeoutRef.current);
     }
-    dropdownTimeoutRef.current = window.setTimeout(() => setOpenDropdown(null), 100);
+    dropdownTimeoutRef.current = window.setTimeout(
+      () => setOpenDropdown(null),
+      100
+    );
   };
 
   const toggleMobileDropdown = (label) => {
@@ -142,7 +183,11 @@ export default function Nav() {
       }`}
     >
       <Container className="flex items-center justify-between gap-6 py-3">
-        <a href="#/" className="flex items-center" aria-label="Informatics Philippines">
+        <a
+          href="#/"
+          className="flex items-center"
+          aria-label="Informatics Philippines"
+        >
           <img
             src={INFO_LOGO}
             alt="Informatics Philippines logo"
@@ -161,7 +206,9 @@ export default function Nav() {
           {NAV_LINKS.map((link) => {
             if (link.children?.length) {
               const isOpen = openDropdown === link.label;
-              const dropdownId = `${link.label.replace(/\s+/g, "-").toLowerCase()}-menu`;
+              const dropdownId = `${link.label
+                .replace(/\s+/g, "-")
+                .toLowerCase()}-menu`;
               return (
                 <div
                   key={link.label}
@@ -183,7 +230,12 @@ export default function Nav() {
                     onClick={() => setOpenDropdown(isOpen ? null : link.label)}
                   >
                     <span>{link.label}</span>
-                    <ChevronDown size={16} className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    />
                   </button>
                   {isOpen ? (
                     <div
@@ -191,21 +243,23 @@ export default function Nav() {
                       className="absolute left-0 top-full mt-3 w-64 rounded-2xl border border-slate-200 bg-white p-3 shadow-xl"
                     >
                       <div className="flex flex-col gap-2">
-                        {link.children.map(({ label, href, Icon, external }) => (
-                          <a
-                            key={label}
-                            href={href}
-                            target={external ? "_blank" : undefined}
-                            rel={external ? "noopener noreferrer" : undefined}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100"
-                            onClick={() => setOpenDropdown(null)}
-                          >
-                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-sky-600">
-                              <Icon size={18} />
-                            </div>
-                            <span>{label}</span>
-                          </a>
-                        ))}
+                        {link.children.map(
+                          ({ label, href, Icon, external }) => (
+                            <a
+                              key={label}
+                              href={href}
+                              target={external ? "_blank" : undefined}
+                              rel={external ? "noopener noreferrer" : undefined}
+                              className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100"
+                              onClick={() => setOpenDropdown(null)}
+                            >
+                              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-sky-600">
+                                <Icon size={18} />
+                              </div>
+                              <span>{label}</span>
+                            </a>
+                          )
+                        )}
                       </div>
                     </div>
                   ) : null}
@@ -301,11 +355,16 @@ export default function Nav() {
       </Container>
       {mobileSearchOpen ? (
         <div className="border-t border-slate-200 bg-white px-6 py-3 lg:hidden">
-          <form onSubmit={handleSubmitSearch} role="search" aria-label="Mobile site search" className="flex items-center gap-3">
+          <form
+            onSubmit={handleSubmitSearch}
+            role="search"
+            aria-label="Mobile site search"
+            className="flex items-center gap-3"
+          >
             <label htmlFor="mobile-search" className="sr-only">
               Search
             </label>
-           <input
+            <input
               id="mobile-search"
               type="search"
               value={searchValue}
@@ -331,7 +390,10 @@ export default function Nav() {
           />
           <div className="fixed inset-y-0 right-0 z-50 w-72 max-w-full bg-white shadow-xl">
             <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4">
-              <span className="text-base font-semibold" style={{ color: BRAND_DARK }}>
+              <span
+                className="text-base font-semibold"
+                style={{ color: BRAND_DARK }}
+              >
                 Navigation
               </span>
               <button
@@ -350,9 +412,14 @@ export default function Nav() {
               {NAV_LINKS.map((link) => {
                 if (link.children?.length) {
                   const expanded = !!mobileDropdowns[link.label];
-                  const sectionId = `${link.label.replace(/\s+/g, "-").toLowerCase()}-subnav`;
+                  const sectionId = `${link.label
+                    .replace(/\s+/g, "-")
+                    .toLowerCase()}-subnav`;
                   return (
-                    <div key={link.label} className="rounded-2xl border border-slate-200">
+                    <div
+                      key={link.label}
+                      className="rounded-2xl border border-slate-200"
+                    >
                       <div className="flex items-center justify-between">
                         <a
                           href={link.href}
@@ -368,27 +435,39 @@ export default function Nav() {
                           aria-expanded={expanded}
                           aria-controls={sectionId}
                         >
-                          <ChevronDown size={18} className={`transition-transform ${expanded ? "rotate-180" : ""}`} />
+                          <ChevronDown
+                            size={18}
+                            className={`transition-transform ${
+                              expanded ? "rotate-180" : ""
+                            }`}
+                          />
                         </button>
                       </div>
                       {expanded ? (
-                        <div id={sectionId} className="border-t border-slate-200 px-4 py-2">
+                        <div
+                          id={sectionId}
+                          className="border-t border-slate-200 px-4 py-2"
+                        >
                           <div className="flex flex-col gap-2">
-                            {link.children.map(({ label, href, Icon, external }) => (
-                              <a
-                                key={label}
-                                href={href}
-                                target={external ? "_blank" : undefined}
-                                rel={external ? "noopener noreferrer" : undefined}
-                                className="flex items-center gap-3 rounded-xl bg-slate-50 px-3 py-2 text-sm"
-                                onClick={() => setMobileOpen(false)}
-                              >
-                                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-sky-600">
-                                  <Icon size={18} />
-                                </div>
-                                <span className="font-semibold">{label}</span>
-                              </a>
-                            ))}
+                            {link.children.map(
+                              ({ label, href, Icon, external }) => (
+                                <a
+                                  key={label}
+                                  href={href}
+                                  target={external ? "_blank" : undefined}
+                                  rel={
+                                    external ? "noopener noreferrer" : undefined
+                                  }
+                                  className="flex items-center gap-3 rounded-xl bg-slate-50 px-3 py-2 text-sm"
+                                  onClick={() => setMobileOpen(false)}
+                                >
+                                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-sky-600">
+                                    <Icon size={18} />
+                                  </div>
+                                  <span className="font-semibold">{label}</span>
+                                </a>
+                              )
+                            )}
                           </div>
                         </div>
                       ) : null}
