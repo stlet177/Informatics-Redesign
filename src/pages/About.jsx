@@ -23,7 +23,7 @@ export default function About() {
   };
 
   const sidebarItems = [
-    { text: "Where it all began", icon: History, action: () => scrollToSection('where-it-all-began') },
+    { text: "Where It all began", icon: History, action: () => scrollToSection('where-it-all-began') },
     { text: "The future we're building", icon: Target, action: () => scrollToSection('the-future-were-building') },
     { text: "Leadership and Legacy", icon: Users, action: () => scrollToSection('our-founder') },
     { text: "Our Achievements", icon: Award, action: () => scrollToSection('leadership-and-legacy') },
@@ -152,32 +152,32 @@ export default function About() {
 
   const campuses = [
     {
-      name: "INFORMATICS NORTH LUZON -BAGUIO CAMPUS",
+      name: "INFORMATICS NORTH LUZON -BAGUIO BRANCH",
       address: "3rd Floor Decibar Bldg., #65 Lower Bonifacio Street, Baguio City",
       image: asset("assets/north-luzon.jpg")
     },
     {
-      name: "INFORMATICS MANILA CAMPUS",
+      name: "INFORMATICS MANILA BRANCH",
       address: "2070 BDO Building CM Recto Ave., Quiapo, Manila",
       image: asset("assets/manila-campus.jpg")
     },
     {
-      name: "INFORMATICS CAVITE CAMPUS",
+      name: "INFORMATICS CAVITE BRANCH",
       address: "Km. 21, Informatics Building, Emilio Aguinaldo Highway, Anabu 1-E, Imus, Cavite",
       image: asset("assets/south-luzon.jpg")
     },
     {
-      name: "INFORMATICS ALABANG CAMPUS",
+      name: "INFORMATICS ALABANG BRANCH",
       address: "Ground Floor, Convergence Bldg., Indo China Drive Northgate Cyberzone Filinvest Corporate City Alabang Muntinlupa City",
       image: asset("assets/campus.jpg")
     },
     {
-      name: "INFORMATICS MINDANAO - CAGAYAN DE ORO CAMPUS",
+      name: "INFORMATICS MINDANAO - CAGAYAN DE ORO BRANCH",
       address: "2F Stary Building, Max Suniel Street, Carmen, Cagayan de Oro City",
       image: asset("assets/mindanao-cdo.jpg")
     },
     {
-      name: "INFORMATICS VISAYAS - CONSOLACION CAMPUS",
+      name: "INFORMATICS VISAYAS - CONSOLACION BRANCH",
       address: "National Highway Brgy. Pitogo Consolacion, Cebu",
       image: asset("assets/visayas-cebu.jpg")
     }
@@ -221,7 +221,7 @@ const facebookItems = facebookLinks.map((link, index) => ({
     teaser: "Click to view on Facebook"
   }));
 
-  const marqueeItems = [...facebookItems, ...facebookItems];
+  const marqueeItems = [...facebookItems, ...facebookItems, ...facebookItems, ...facebookItems, ...facebookItems, ...facebookItems];
 
   function MarqueeGroup({ items }) {
     const [translateX, setTranslateX] = useState(0);
@@ -341,7 +341,7 @@ const facebookItems = facebookLinks.map((link, index) => ({
         onClick={() => setSidebarOpen(false)}
       ></div>
 
-      <main className={`pt-12 md:pt-16 flex min-h-screen bg-white`}>
+      <main className={`pt-12 md:pt-16 flex min-h-screen bg-white font-sans`}>
         {/* Desktop Sidebar */}
         <motion.aside
           initial={{ opacity: 0, x: -20 }}
@@ -517,10 +517,6 @@ const facebookItems = facebookLinks.map((link, index) => ({
                         <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
                           <img src={asset("assets/ourstory.jpg")} alt="Informatics Campus" className="w-full h-full object-cover" />
                         </div>
-                        <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
-                          <span className="text-white font-bold text-2xl">30+</span>
-                          <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-white rounded-full"></div>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -632,10 +628,10 @@ const facebookItems = facebookLinks.map((link, index) => ({
                             <value.icon size={48} style={{ color: "white" }} />
                           </div>
                           <div>
-                            <h3 className="text-xl font-bold mb-2 text-white">
+                            <h3 className="text-lg font-bold mb-2 text-white">
                               {value.title}
                             </h3>
-                            <p className="text-white leading-relaxed">
+                            <p className="text-sm text-white leading-relaxed">
                               {value.description}
                             </p>
                           </div>
@@ -674,21 +670,22 @@ const facebookItems = facebookLinks.map((link, index) => ({
                       </p>
 
                       <p>
-Since 1993, Leonardo “Leo” Riingen has made
-technology education more accessible to Filipinos.
-Inspired by his studies in the U.K., he introduced
-ladderized IT programs that provided skills at every
-stage, and even brought IT learning into malls to make
-it practical and within reach. He also pushed for training
-tailored to companies and government, keeping
-education aligned with industry needs.                      </p>
+                        Since 1993, Leonardo “Leo” Riingen has made
+                        technology education more accessible to Filipinos.
+                        Inspired by his studies in the U.K., he introduced
+                        ladderized IT programs that provided skills at every
+                        stage, and even brought IT learning into malls to make
+                        it practical and within reach. He also pushed for training
+                        tailored to companies and government, keeping
+                        education aligned with industry needs.                      
+                        </p>
 
-                      <p>
-Through his vision, Informatics has grown into more
-than a school. It is a platform that helps Filipinos build
-skills for the digital age and prepares them not only for
-work, but also for leadership in a changing world.
-</p>
+                        <p>
+                        Through his vision, Informatics has grown into more
+                        than a school. It is a platform that helps Filipinos build
+                        skills for the digital age and prepares them not only for
+                        work, but also for leadership in a changing world.
+                        </p>
                     </div>
                   </div>
 
@@ -696,9 +693,6 @@ work, but also for leadership in a changing world.
                     <div className="relative">
                       <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
                         <img src={asset("assets/ourFounder.jpg")} alt="Founder Leonardo Riingen" className="w-full h-full object-cover" />
-                      </div>
-                      <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
-                        <Award className="text-white" size={32} />
                       </div>
                     </div>
                   </div>
@@ -728,12 +722,11 @@ work, but also for leadership in a changing world.
                     {milestones.map((milestone, index) => (
                   <motion.div
                     key={index}
-                    className="group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100"
+                    className="group relative bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-500 border border-slate-100"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    whileHover={{ scale: 1.02 }}
                   >
                     <div className="p-2 sm:p-3">
                       <div className="mb-2">
@@ -777,21 +770,20 @@ work, but also for leadership in a changing world.
                   {campuses.map((campus, index) => (
                     <motion.div
                       key={index}
-                      className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100"
+                      className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg transition-all duration-500 border border-slate-100"
                       initial={{ opacity: 0, y: 50 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       viewport={{ once: true }}
-                      whileHover={{ scale: 1.02 }}
                     >
                       {/* Campus Image */}
                       <div className="relative overflow-hidden h-32 sm:h-40 md:h-48">
                         <img
                           src={campus.image}
                           alt={`${campus.name} Campus`}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                          className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 transition-opacity duration-300" />
                       </div>
 
                       <div className="p-3 sm:p-4">
