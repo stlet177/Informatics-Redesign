@@ -1,5 +1,5 @@
 import Container from "../components/Container";
-import { Globe, GraduationCap, Briefcase, Users, Award, Target, Heart, Lightbulb, Shield, TrendingUp, MapPin, Calendar, Menu, History, Rocket, Share } from "lucide-react";
+import { Globe, GraduationCap, Briefcase, Users, Award, Target, Heart, Lightbulb, Shield, TrendingUp, MapPin, Menu, History, Rocket } from "lucide-react";
 import FeatureStats from "../components/FeatureStats";
 import Partners from "../components/Partners";
 import { BRAND_DARK, BRAND_LIGHT, BRAND_BLUE } from "../lib/brand";
@@ -23,7 +23,7 @@ export default function About() {
   };
 
   const sidebarItems = [
-    { text: "Where it all began", icon: History, action: () => scrollToSection('where-it-all-began') },
+    { text: "Where It all began", icon: History, action: () => scrollToSection('where-it-all-began') },
     { text: "The future we're building", icon: Target, action: () => scrollToSection('the-future-were-building') },
     { text: "Leadership and Legacy", icon: Users, action: () => scrollToSection('our-founder') },
     { text: "Our Achievements", icon: Award, action: () => scrollToSection('leadership-and-legacy') },
@@ -152,43 +152,43 @@ export default function About() {
 
   const campuses = [
     {
-      name: "INFORMATICS NORTH LUZON -BAGUIO CAMPUS",
+      name: "INFORMATICS NORTH LUZON -BAGUIO BRANCH",
       address: "3rd Floor Decibar Bldg., #65 Lower Bonifacio Street, Baguio City",
       image: asset("assets/north-luzon.jpg")
     },
     {
-      name: "INFORMATICS MANILA CAMPUS",
+      name: "INFORMATICS MANILA BRANCH",
       address: "2070 BDO Building CM Recto Ave., Quiapo, Manila",
       image: asset("assets/manila-campus.jpg")
     },
     {
-      name: "INFORMATICS CAVITE CAMPUS",
+      name: "INFORMATICS CAVITE BRANCH",
       address: "Km. 21, Informatics Building, Emilio Aguinaldo Highway, Anabu 1-E, Imus, Cavite",
       image: asset("assets/south-luzon.jpg")
     },
     {
-      name: "INFORMATICS ALABANG CAMPUS",
+      name: "INFORMATICS ALABANG BRANCH",
       address: "Ground Floor, Convergence Bldg., Indo China Drive Northgate Cyberzone Filinvest Corporate City Alabang Muntinlupa City",
       image: asset("assets/campus.jpg")
     },
     {
-      name: "INFORMATICS MINDANAO - CAGAYAN DE ORO CAMPUS",
+      name: "INFORMATICS MINDANAO - CAGAYAN DE ORO BRANCH",
       address: "2F Stary Building, Max Suniel Street, Carmen, Cagayan de Oro City",
       image: asset("assets/mindanao-cdo.jpg")
     },
     {
-      name: "INFORMATICS VISAYAS - CONSOLACION CAMPUS",
+      name: "INFORMATICS VISAYAS - CONSOLACION BRANCH",
       address: "National Highway Brgy. Pitogo Consolacion, Cebu",
       image: asset("assets/visayas-cebu.jpg")
     }
   ];
 
   const facebookLinks = [
-    "https://scontent.fmnl8-2.fna.fbcdn.net/v/t39.30808-6/528959311_1335355621293786_5866450033975963540_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF72FobdWp3y4yc-rAFIH6-RZ5_cFDORYZFnn9wUM5FhlXVCQKU7PoMGmSvNiMDsisnR_jsd3RHea0F90Hxb6Xc&_nc_ohc=1K73G1r-k2kQ7kNvwGucak_&_nc_oc=AdlrQF_A_MNMN1UPb5G2ut2koJPJ0kbLVhlkGwa9hV6-liN0-YTRHczCgMpcpcZsMITDpNue9Jb-sG-K4FhBvuMz&_nc_zt=23&_nc_ht=scontent.fmnl8-2.fna&_nc_gid=IpwKb_tqPAjXt3wealLQHQ&oh=00_AfYU3JgBn27SGx7FMe_RMZXmWlDxjGiEXGQ9BU_QEHyTvA&oe=68E4761B",
-    "https://scontent.fmnl8-3.fna.fbcdn.net/v/t39.30808-6/509604002_779362648087318_9112359933200247564_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHmGchxrKDXuoWQk4YuiqzKI9hCsu_EoEsj2EKy78SgS98YjNNyK_2Q3DVvY_xcPpWlFBAHFoH4eqDmW1ZRqjin&_nc_ohc=kUSDKss77vgQ7kNvwFgXSoO&_nc_oc=AdlWfxmxo7is4eTSHCF3LLsEpo4tSxd8uYZ2C2nd7EwaWDYTzIXfuINbpXNrIhseYvq4cMDduJVx2o33eNmf-r-X&_nc_zt=23&_nc_ht=scontent.fmnl8-3.fna&_nc_gid=u7BVohNJHbDi9GgwKvaVew&oh=00_AfbPxSSLhBMcu6BlRszOq8FQeWUbSyQjL_XC4ds7fHa9EA&oe=68E47D92",
-    "https://scontent.fmnl8-1.fna.fbcdn.net/v/t39.30808-6/500612511_713102617776108_7830812769912256440_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF5-QfTevfUMBuFOU1ioeMTtCgnkGBtFpO0KCeQYG0WkwZY4Ex9gtMdwrCPTsdpoDrHeiDvqZJSBkHPn1uXeX5C&_nc_ohc=NCezZaJeD-gQ7kNvwERTpGo&_nc_oc=AdnEsnEw1Gd2ZxoZg8TC1tLRW7irjXSB66sKFfGNgzbc9xsgMV-i7Y-nJIiXmONXVExCRs9ApvOlxxkRl-BTo5Vo&_nc_zt=23&_nc_ht=scontent.fmnl8-1.fna&_nc_gid=uimuLAjBRpjA41vXIre-ow&oh=00_Afagq1JqL5VYzCzbG_DjFQpHhVUz9ZF9Wd6WyOP0O6q08A&oe=68E48230",
-    "https://scontent.fmnl8-5.fna.fbcdn.net/v/t39.30808-6/500650129_996735152675368_1018214043556453986_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFMjZB29KehM47-jflZfmbkrVw6IZ2pmj2tXDohnamaPRFv9_z3xWkFHKgFxxw7t7ZjtzUl7PxNg2B0uxnxaBds&_nc_ohc=iU3H7jkrC7oQ7kNvwGq46bf&_nc_oc=Adlkr9UY2PNfmPyZo7Xh35REeUl-Rfjh2QqmGnBihK01PcqRTJC1M2rWbotBF07NUfYmNzPL5kAuwdNWtRGnhzqq&_nc_zt=23&_nc_ht=scontent.fmnl8-5.fna&_nc_gid=WOsnNwat-4Bu5PrCXrujXw&oh=00_Afbci7Tyfo2QQH7T8qdEmQffHy22uPOqahweDmaYhxQVnw&oe=68E48CCF",
-    "https://scontent.fmnl8-3.fna.fbcdn.net/v/t39.30808-6/500060788_995669096115307_78722843202150056_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGkgd--APYeObmM4RhpTahiq3Gp7tI8gPircanu0jyA-DHDCW0-gf5dCY1yZVbJ-HAUzT8gtsd6RPtOLUdQQPt_&_nc_ohc=J_ChbUl-1M0Q7kNvwEPmy8E&_nc_oc=AdmZb3F81Ln6IUI2zCK58na98LkLB4-DIh2XZ1gVtCEka4KZZ6fQ9Xy8M90jaKZmmKr-SvTppcUWVle_q7yiP4_h&_nc_zt=23&_nc_ht=scontent.fmnl8-3.fna&_nc_gid=YtcKzTAcEY2wYNlRNT0L6Q&oh=00_AfY-PiL0s0hqOXD2cNPsJqklPSBOa7XoI0Gl7Dz_PEuqSw&oe=68E47D79"
+    "https://scontent.fmnl8-2.fna.fbcdn.net/v/t39.30808-6/528959311_1335355621293786_5866450033975963540_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF72FobdWp3y4yc-rAFIH6-RZ5_cFDORYZFnn9wUM5FhlXVCQKU7PoMGmSvNiMDsisnR_jsd3RHea0F90Hxb6Xc&_nc_ohc=K8eaDIqJunEQ7kNvwGXXECi&_nc_oc=Adnsjj171pQBwz_DAlO_yaZloKwjcRbvYzy71BJylNwK5t5K2cx5gHpYKI5wWk3wTkXHi_rHZLiRkZx1ZkKnmKrW&_nc_zt=23&_nc_ht=scontent.fmnl8-2.fna&_nc_gid=KoIba5CyMTy-D7J5NHGXxg&oh=00_Affnk6dFSxA-NG9XbkWO-QoMzIEftGFC2LnrnIDVBEt6Vg&oe=68F793DB",
+    "https://scontent.fmnl8-3.fna.fbcdn.net/v/t39.30808-6/509604002_779362648087318_9112359933200247564_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHmGchxrKDXuoWQk4YuiqzKI9hCsu_EoEsj2EKy78SgS98YjNNyK_2Q3DVvY_xcPpWlFBAHFoH4eqDmW1ZRqjin&_nc_ohc=t05tfWHkO-0Q7kNvwFGUl1W&_nc_oc=AdlTGNByx2OMyrJO1ogDz2RWK9R4vdoxD42BxnmDMAG2p_Q-Kk06-ZF6K7Jm_rd4-gzt0qK1gXQbB3vBZoeGa4Kd&_nc_zt=23&_nc_ht=scontent.fmnl8-3.fna&_nc_gid=WqaiMoW4gZSzV1fF1ZcqeA&oh=00_Afe1ctqpUGwSWhVQFTaGJYwtq7zg0ZzQKa4onD2wiwoKWw&oe=68F79B52",
+    "https://scontent.fmnl8-1.fna.fbcdn.net/v/t39.30808-6/500612511_713102617776108_7830812769912256440_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF5-QfTevfUMBuFOU1ioeMTtCgnkGBtFpO0KCeQYG0WkwZY4Ex9gtMdwrCPTsdpoDrHeiDvqZJSBkHPn1uXeX5C&_nc_ohc=_MAfq02J20IQ7kNvwGdeIIl&_nc_oc=Adkyua8fVwgNWnuOAIYhg9Gu66jDTzr7qeQUbgnjrjMNwMu3iuR8edd8YuYdhHszI-Wt6FUk483oLZnS3AX_87U9&_nc_zt=23&_nc_ht=scontent.fmnl8-1.fna&_nc_gid=tr3eyOmy_0ms5hNH8XKCTg&oh=00_AfcoIiKfZwWdPcDORPygdLazDr7nBOswrfR8ecv3Zul4EQ&oe=68F79FF0",
+    "https://scontent.fmnl8-5.fna.fbcdn.net/v/t39.30808-6/500650129_996735152675368_1018214043556453986_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFMjZB29KehM47-jflZfmbkrVw6IZ2pmj2tXDohnamaPRFv9_z3xWkFHKgFxxw7t7ZjtzUl7PxNg2B0uxnxaBds&_nc_ohc=3rx38J74gGoQ7kNvwEdfBLf&_nc_oc=AdlM5432ca0ku0alnkrkMXgqMTEi2cTIs6enu2Vab2SjorG0xe3F1JRrClxqtZQDxF-8fQJuKrBUF8-Gpx_HJEox&_nc_zt=23&_nc_ht=scontent.fmnl8-5.fna&_nc_gid=L7wzXaUb89Chd8717u19nA&oh=00_AfdP7S0-dbUTpuV5yV7OnCJ20B2phro8gNr4sIbMwrQfRw&oe=68F7724F",
+    "https://scontent.fmnl8-3.fna.fbcdn.net/v/t39.30808-6/500060788_995669096115307_78722843202150056_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGkgd--APYeObmM4RhpTahiq3Gp7tI8gPircanu0jyA-DHDCW0-gf5dCY1yZVbJ-HAUzT8gtsd6RPtOLUdQQPt_&_nc_ohc=1Ni0ANSoj9cQ7kNvwFaKm6E&_nc_oc=Adlpu4eStS27kiUjDpBQ26SSKHf3nfJTaUfy_AB0b593jZETHHPWcLw26ahxw9n8FKQt6bCHqIjPsnOloGwLIMwm&_nc_zt=23&_nc_ht=scontent.fmnl8-3.fna&_nc_gid=mpNDAC-dkicRTjDg4HHgwg&oh=00_AfddnbY0XnHBvyzmxXyJXclfLDYQ36DCxTyWHTC-hpyhVw&oe=68F79B39"
   ];
 
   const facebookShareLinks = [
@@ -207,7 +207,7 @@ export default function About() {
     "𝐓𝐡𝐞 𝐃𝐈𝐋𝐆-𝐁𝐚𝐠𝐮𝐢𝐨 𝐩𝐚𝐫𝐭𝐧𝐞𝐫𝐬 𝐰𝐢𝐭𝐡 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐜𝐬 𝐭𝐨 𝐛𝐨𝐨𝐬𝐭 𝐝𝐢𝐠𝐢𝐭𝐚𝐥 𝐥𝐢𝐭𝐞𝐫𝐚𝐜𝐲 𝐢𝐧 𝐭𝐡𝐞 𝐋𝐆𝐔."
   ];
 
-const truncateTitle = (title, maxLength = 20) => {
+const truncateTitle = (title, maxLength = 90) => {
   if (title.length > maxLength) {
     return title.slice(0, maxLength) + "... read more";
   }
@@ -221,7 +221,7 @@ const facebookItems = facebookLinks.map((link, index) => ({
     teaser: "Click to view on Facebook"
   }));
 
-  const marqueeItems = [...facebookItems, ...facebookItems];
+  const marqueeItems = [...facebookItems, ...facebookItems, ...facebookItems, ...facebookItems, ...facebookItems, ...facebookItems];
 
   function MarqueeGroup({ items }) {
     const [translateX, setTranslateX] = useState(0);
@@ -340,7 +340,7 @@ const facebookItems = facebookLinks.map((link, index) => ({
         onClick={() => setSidebarOpen(false)}
       ></div>
 
-      <main className={`pt-12 md:pt-16 flex min-h-screen bg-white`}>
+      <main className={`pt-12 md:pt-16 flex min-h-screen bg-white font-sans`}>
         <motion.aside
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -502,10 +502,6 @@ const facebookItems = facebookLinks.map((link, index) => ({
                         <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
                           <img src={asset("assets/ourstory.jpg")} alt="Informatics Campus" className="w-full h-full object-cover" />
                         </div>
-                        <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
-                          <span className="text-white font-bold text-2xl">30+</span>
-                          <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-white rounded-full"></div>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -613,10 +609,10 @@ const facebookItems = facebookLinks.map((link, index) => ({
                             <value.icon size={48} style={{ color: "white" }} />
                           </div>
                           <div>
-                            <h3 className="text-xl font-bold mb-2 text-white">
+                            <h3 className="text-lg font-bold mb-2 text-white">
                               {value.title}
                             </h3>
-                            <p className="text-white leading-relaxed">
+                            <p className="text-sm text-white leading-relaxed">
                               {value.description}
                             </p>
                           </div>
@@ -653,21 +649,22 @@ const facebookItems = facebookLinks.map((link, index) => ({
                       </p>
 
                       <p>
-Since 1993, Leonardo “Leo” Riingen has made
-technology education more accessible to Filipinos.
-Inspired by his studies in the U.K., he introduced
-ladderized IT programs that provided skills at every
-stage, and even brought IT learning into malls to make
-it practical and within reach. He also pushed for training
-tailored to companies and government, keeping
-education aligned with industry needs.                      </p>
+                        Since 1993, Leonardo “Leo” Riingen has made
+                        technology education more accessible to Filipinos.
+                        Inspired by his studies in the U.K., he introduced
+                        ladderized IT programs that provided skills at every
+                        stage, and even brought IT learning into malls to make
+                        it practical and within reach. He also pushed for training
+                        tailored to companies and government, keeping
+                        education aligned with industry needs.                      
+                        </p>
 
-                      <p>
-Through his vision, Informatics has grown into more
-than a school. It is a platform that helps Filipinos build
-skills for the digital age and prepares them not only for
-work, but also for leadership in a changing world.
-</p>
+                        <p>
+                        Through his vision, Informatics has grown into more
+                        than a school. It is a platform that helps Filipinos build
+                        skills for the digital age and prepares them not only for
+                        work, but also for leadership in a changing world.
+                        </p>
                     </div>
                   </div>
 
@@ -675,9 +672,6 @@ work, but also for leadership in a changing world.
                     <div className="relative">
                       <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
                         <img src={asset("assets/ourFounder.jpg")} alt="Founder Leonardo Riingen" className="w-full h-full object-cover" />
-                      </div>
-                      <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
-                        <Award className="text-white" size={32} />
                       </div>
                     </div>
                   </div>
@@ -705,28 +699,25 @@ work, but also for leadership in a changing world.
                     {milestones.map((milestone, index) => (
                   <motion.div
                     key={index}
-                    className="group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100"
+                    className="group relative bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-500 border border-slate-100"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    whileHover={{ scale: 1.02 }}
                   >
                     <div className="p-2 sm:p-3">
                       <div className="mb-2">
-                        <div className="flex items-start justify-between mb-2">
-                          <div className="flex items-center gap-2">
-                            <div className="p-1.5 sm:p-2 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100">
-                              <Award size={14} className="sm:w-4 sm:h-4" style={{ color: BRAND_BLUE }} />
-                            </div>
-                            <div>
-                              <h3 className="text-sm sm:text-base font-bold mb-0.5" style={{ color: BRAND_DARK }}>
-                                {milestone.title}
-                              </h3>
-                              <p className="text-xs text-slate-600">{milestone.description}</p>
-                            </div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="p-1.5 sm:p-2 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100">
+                            <Award size={14} className="sm:w-4 sm:h-4" style={{ color: BRAND_BLUE }} />
                           </div>
-                          <div className="text-xs font-bold text-slate-500">{milestone.year}</div>
+                          <div>
+                            <h3 className="text-sm sm:text-base font-bold mb-0.5" style={{ color: BRAND_DARK }}>
+                              {milestone.title}
+                            </h3>
+                            <div className="text-xs font-bold text-slate-500 mb-1">{milestone.year}</div>
+                            <p className="text-xs text-slate-600">{milestone.description}</p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -754,20 +745,19 @@ work, but also for leadership in a changing world.
                   {campuses.map((campus, index) => (
                     <motion.div
                       key={index}
-                      className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100"
+                      className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg transition-all duration-500 border border-slate-100"
                       initial={{ opacity: 0, y: 50 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       viewport={{ once: true }}
-                      whileHover={{ scale: 1.02 }}
                     >
                       <div className="relative overflow-hidden h-32 sm:h-40 md:h-48">
                         <img
                           src={campus.image}
                           alt={`${campus.name} Campus`}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                          className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 transition-opacity duration-300" />
                       </div>
 
                       <div className="p-3 sm:p-4">
@@ -850,4 +840,3 @@ work, but also for leadership in a changing world.
     </>
   );
 }
-
