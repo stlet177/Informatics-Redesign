@@ -8,15 +8,7 @@ const textVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
 
-const CTA_LINKS = [
-  { label: "View Senior High Programs", href: "#/programs/shs" },
-  { label: "View College Programs", href: "#/programs#academic" },
-  {
-    label: "View Microcredentials",
-    href: "https://imc.informatics.edu.ph",
-    external: true,
-  },
-];
+const PRIMARY_CTA = { label: "Explore our Programs", href: "#/programs" };
 
 const HERO_SECONDARY = asset("assets/Herosecond.jpg");
 const HERO_BACKGROUND = CAMPUS_IMG;
@@ -77,29 +69,25 @@ export default function HeroBanner() {
               className="mt-4 text-4xl font-bold leading-tight text-white md:text-6xl"
               variants={textVariants}
             >
-              Upskill the Future
+              <span className="block">From Learning to</span>
+              <span className="block">Earning</span>
             </motion.h1>
             <motion.p
               className="mt-6 max-w-xl text-base text-slate-200 md:text-lg md:leading-relaxed"
               variants={textVariants}
             >
-              Transform your career with cutting-edge AI and technology programs. Join thousands of professionals advancing their skills with industry-leading certifications.
+              Advance with courses that build skills and launch careers.
             </motion.p>
 
             <div
               className="mt-10 flex w-full flex-col gap-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-3 md:justify-start md:gap-4"
             >
-              {CTA_LINKS.map(({ label, href, external }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={external ? "_blank" : undefined}
-                  rel={external ? "noopener noreferrer" : undefined}
-                  className="inline-flex w-full items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold transition hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-200 md:w-auto"
-                >
-                  {label}
-                </a>
-              ))}
+              <a
+                href={PRIMARY_CTA.href}
+                className="inline-flex w-full items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold transition hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-200 md:w-auto"
+              >
+                {PRIMARY_CTA.label}
+              </a>
             </div>
           </motion.div>
 

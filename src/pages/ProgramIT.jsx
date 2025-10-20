@@ -25,7 +25,6 @@ export default function ProgramIT() {
 
   return (
     <div className="bg-white">
-      {/* Top banner */}
       <section className="pt-24 md:pt-28 pb-10 relative overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute -right-40 -top-36 h-[420px] w-[420px] opacity-10 -z-10" style={{ background: `linear-gradient(135deg, ${BRAND_BLUE} 0%, #0A84FF 100%)`, clipPath: "polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)" }} />
         <Container className="grid items-center gap-8 md:grid-cols-2">
@@ -74,8 +73,6 @@ export default function ProgramIT() {
           </motion.div>
         </Container>
       </section>
-
-      {/* Overview */}
       <section className="py-12 md:py-16">
         <Container>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
@@ -86,8 +83,6 @@ export default function ProgramIT() {
           </motion.div>
         </Container>
       </section>
-
-      {/* Specializations */}
       <section className="py-12 md:py-16" style={{ background: BRAND_LIGHT }}>
         <Container>
           <motion.h3 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="text-xl md:text-2xl font-semibold" style={{ color: BRAND_DARK }}>Specializations</motion.h3>
@@ -110,8 +105,6 @@ export default function ProgramIT() {
           </div>
         </Container>
       </section>
-
-      {/* Learning outcomes */}
       <section className="py-12 md:py-16">
         <Container>
           <motion.h3 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="text-xl md:text-2xl font-semibold" style={{ color: BRAND_DARK }}>What you’ll learn</motion.h3>
@@ -134,8 +127,6 @@ export default function ProgramIT() {
           </motion.ul>
         </Container>
       </section>
-
-      {/* Career paths */}
       <section className="py-12 md:py-16" style={{ background: BRAND_LIGHT }}>
         <Container>
           <motion.h3 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="text-xl md:text-2xl font-semibold" style={{ color: BRAND_DARK }}>Career paths</motion.h3>
@@ -155,8 +146,6 @@ export default function ProgramIT() {
           </motion.div>
         </Container>
       </section>
-
-      {/* Call to action */}
       <section className="py-12 md:py-16">
         <Container className="grid items-center gap-6 md:grid-cols-2">
           <div>

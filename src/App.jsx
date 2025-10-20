@@ -1,5 +1,5 @@
-// Informatics Philippines - Modularized React App
-// Components split for readability and maintainability
+
+
 
 import { useEffect, useRef, useState } from "react";
 import Nav from "./components/Nav";
@@ -55,7 +55,7 @@ export default function App() {
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  // Expose brand color as CSS variable for Tailwind utility hooks
+  
   useEffect(() => {
     const style = document.createElement("style");
     style.innerHTML = `:root{--brand-blue:${BRAND_BLUE};}`;
@@ -63,7 +63,7 @@ export default function App() {
     return () => document.head.removeChild(style);
   }, []);
 
-  // Basic SEO title per route
+  
   useEffect(() => {
     const base = "Informatics Philippines";
     const t = titleForRoute(route);
@@ -72,7 +72,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Large light-gray geometric shapes (site background) */}
       <div aria-hidden className="pointer-events-none absolute z-0" style={{
         left: '-220px', top: '12%', width: '720px', height: '720px', opacity: 0.16,
         background: 'linear-gradient(135deg, rgba(148,163,184,0.16) 0%, rgba(148,163,184,0.08) 100%)',
@@ -86,8 +85,6 @@ export default function App() {
         transform: 'rotate(18deg)',
         filter: 'blur(1.2px)'
       }} />
-
-      {/* Foreground content */}
       <div className="relative z-10">
         <Nav />
         {!route.startsWith("#/about") && <SocialBar />}

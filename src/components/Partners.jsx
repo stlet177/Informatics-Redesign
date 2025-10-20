@@ -7,7 +7,6 @@ import { BRAND_BLUE } from "../lib/brand";
 export default function Partners() {
   return (
     <section id="partners" className="py-16 md:py-24 relative overflow-hidden">
-      {/* Decorative geometry left/right */}
       <div aria-hidden className="pointer-events-none absolute -z-10" style={{
         left: '-80px', top: '10%', width: '300px', height: '300px', opacity: 0.12,
         background: `linear-gradient(135deg, ${BRAND_BLUE} 0%, #0A84FF 100%)`,

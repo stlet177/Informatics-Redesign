@@ -56,7 +56,6 @@ export default function Admissions() {
 
   return (
     <main className="pt-24 md:pt-28">
-      {/* Guidelines */}
       <section id="how-to-apply" className="py-12 md:py-16" style={{ background: BRAND_LIGHT }}>
         <Container>
           <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight" style={{ color: BRAND_DARK }}>Admissions</h1>
@@ -66,8 +65,6 @@ export default function Admissions() {
           </ul>
         </Container>
       </section>
-
-      {/* Requirements */}
       <section id="requirements" className="py-12 md:py-16">
         <Container>
           <h2 className="text-2xl md:text-3xl font-semibold" style={{ color: BRAND_DARK }}>Requirements</h2>
@@ -118,8 +115,6 @@ export default function Admissions() {
           </div>
         </Container>
       </section>
-
-      {/* Calendars */}
       <section className="py-12 md:py-16" style={{ background: BRAND_LIGHT }}>
         <Container>
           <h2 className="text-2xl md:text-3xl font-semibold" style={{ color: BRAND_DARK }}>Academic Calendars</h2>
@@ -129,8 +124,6 @@ export default function Admissions() {
           </div>
         </Container>
       </section>
-
-      {/* Upcoming events */}
       <section className="py-12 md:py-16">
         <Container>
           <div className="flex items-center justify-between gap-3">
@@ -156,8 +149,6 @@ export default function Admissions() {
           </div>
         </Container>
       </section>
-
-      {/* Register IMC */}
       <section className="py-12 md:py-16" style={{ background: BRAND_LIGHT }}>
         <Container className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div>

@@ -1,4 +1,4 @@
-// Helper for assets respecting Vite base URL
+
 export const asset = (p) => `${import.meta.env.BASE_URL}${p.replace(/^\//, "")}`;
 
 export const resolveAsset = (p) => {
@@ -9,11 +9,11 @@ export const resolveAsset = (p) => {
   return asset(p);
 };
 
-// Shared assets
+
 export const INFO_LOGO = asset("assets/informatics-logo.png");
 export const CAMPUS_IMG = asset("assets/campus2.jpg");
 
-// Fallback placeholder for missing images (inline SVG data URI)
+
 import { BRAND_BLUE } from "./brand";
 export const PLACEHOLDER_IMG =
   "data:image/svg+xml;utf8," +
@@ -27,7 +27,7 @@ export const PLACEHOLDER_IMG =
     </svg>
   `);
 
-// Partners (logos under /public/assets)
+
 export const PARTNERS = [
   { src: asset("assets/partner-cybersecurity.png"), alt: "Cybersecurity Partner" },
   { src: asset("assets/partner-philsmile.png"), alt: "PhilSmile" },

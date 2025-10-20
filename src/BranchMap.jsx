@@ -6,7 +6,7 @@ import markerRetina from 'leaflet/dist/images/marker-icon-2x.png?url'
 import markerStandard from 'leaflet/dist/images/marker-icon.png?url'
 import markerShadow from 'leaflet/dist/images/marker-shadow.png?url'
 
-// Fix default icon paths in bundlers
+
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: markerRetina,
   iconUrl: markerStandard,
@@ -27,7 +27,7 @@ function FlyTo({ active, branches, markersRef }) {
         setTimeout(() => m.openPopup(), 500)
       }
     } else {
-      // Philippines center if none
+      
       map.flyTo([12.8797, 121.7740], 6, { duration: 1.2 })
     }
   }, [map, target?.lat, target?.lng])
@@ -52,7 +52,7 @@ export default function BranchMap({ branches, active }) {
 
   return (
     <MapContainer
-      center={[12.8797, 121.7740]} // Philippines
+      center={[12.8797, 121.7740]} 
       zoom={6}
       scrollWheelZoom={false}
       dragging={!isMobile}

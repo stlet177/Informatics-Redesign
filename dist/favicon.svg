@@ -7,11 +7,8 @@
   </defs>
   <rect width="64" height="64" rx="12" fill="#ffffff"/>
   <g transform="translate(8 12)">
-    <!-- Graduation cap top -->
     <path d="M24 0 48 10 24 20 0 10 24 0Z" fill="url(#g)"/>
-    <!-- Cap band -->
     <path d="M8 18v8c0 2 7.2 6 16 6s16-4 16-6v-8l-16 6-16-6Z" fill="#4A4F55"/>
-    <!-- Tassel -->
     <path d="M36 10v10" stroke="#FDBA21" stroke-width="2" stroke-linecap="round"/>
     <circle cx="36" cy="22" r="2.5" fill="#FDBA21"/>
   </g>

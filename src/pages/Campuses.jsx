@@ -147,9 +147,7 @@ export default function Campuses() {
 
   return (
     <main className="pt-24 md:pt-28">
-      {/* Mobile-Friendly Hero Banner */}
       <motion.section {...fadeInUp} className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-            {/* Background Image */}
             <motion.img
               src="/assets/campuseshero.jpg"
               alt="Informatics campuses"
@@ -158,8 +156,6 @@ export default function Campuses() {
               animate={{ opacity: 0.9, scale: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
             />
-
-            {/* Overlay */}
             <motion.div
               aria-hidden
               className="absolute inset-0 bg-gradient-to-br from-[#0b1120]/95 via-[#0f172a]/85 to-[#020617]/90"
@@ -187,19 +183,14 @@ export default function Campuses() {
               </div>
             </Container>
           </motion.section>
-
-      {/* Mobile-Friendly Enhanced Campuses Grid */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-slate-50/50">
         <div>
           <Container>
           <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {campuses.map((campus, index) => (
               <div key={index} className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100">
-                {/* Premium Badge */}
                 <div className="absolute top-4 right-4 z-10">
                 </div>
-
-                {/* Campus Image */}
                 <div className="relative overflow-hidden h-48 sm:h-56 md:h-64">
                   <img
                     src={campus.image}
@@ -207,8 +198,6 @@ export default function Campuses() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
-
-                  {/* Overlay Content */}
                   <div className="absolute bottom-4 left-4 right-4">
                     <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-3 sm:p-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                       <h3 className="text-base sm:text-lg font-bold mb-1" style={{ color: BRAND_DARK }}>
@@ -228,8 +217,6 @@ export default function Campuses() {
                     </div>
                   </div>
                 </div>
-
-                {/* Content */}
                 <div className="p-4 sm:p-6">
                   <div className="mb-6">
                     <div className="flex items-start justify-between mb-4">
@@ -245,8 +232,6 @@ export default function Campuses() {
                         </div>
                       </div>
                     </div>
-
-                    {/* Contact Information */}
                     <div className="space-y-2 sm:space-y-3 mb-6">
                       <div className="flex items-center gap-3 p-2 sm:p-3 rounded-xl bg-gradient-to-r from-slate-50 to-slate-100/50 hover:from-blue-50 hover:to-blue-100/50 transition-colors">
                         <div className="p-1.5 sm:p-2 rounded-xl bg-blue-100">
@@ -267,8 +252,6 @@ export default function Campuses() {
                         <span className="text-xs sm:text-sm text-slate-700">{campus.hours}</span>
                       </div>
                     </div>
-
-                    {/* Programs Section */}
                     <div className="border-t border-slate-100 pt-3 sm:pt-4 mb-4">
                       <div className="flex items-center gap-2 mb-3">
                         <div className="p-1.5 sm:p-2 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100">
@@ -312,7 +295,7 @@ export default function Campuses() {
                       })()}
                     </div>
 
-                    {/* Footer Stats */}
+                    
                     <div className="border-t border-slate-100 pt-3 sm:pt-4 flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <div className="p-1.5 sm:p-2 rounded-xl bg-gradient-to-br from-green-50 to-green-100">
@@ -335,8 +318,6 @@ export default function Campuses() {
         </Container>
         </div>
       </section>
-
-      {/* Mobile-Friendly Enhanced Statistics Section */}
       <section className="py-12 sm:py-16 md:py-20" style={{ background: `linear-gradient(135deg, ${BRAND_LIGHT} 0%, #e2e8f0 100%)` }}>
         <Container>
           <div className="text-center mb-8 sm:mb-12">
@@ -383,8 +364,6 @@ export default function Campuses() {
           </div>
         </Container>
       </section>
-
-      {/* Mobile-Friendly Enhanced Call to Action */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-50 to-white">
         <Container>
           <div className="text-center max-w-4xl mx-auto px-4">

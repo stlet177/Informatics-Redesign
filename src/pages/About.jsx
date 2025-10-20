@@ -234,7 +234,7 @@ const facebookItems = facebookLinks.map((link, index) => ({
         const interval = setInterval(() => {
           setTranslateX(prev => {
             const newTranslate = prev - 1;
-            const itemWidth = 300; // approximate width per item
+            const itemWidth = 300; 
             const totalWidth = items.length * itemWidth;
             if (Math.abs(newTranslate) >= totalWidth) {
               return 0;
@@ -333,7 +333,6 @@ const facebookItems = facebookLinks.map((link, index) => ({
 
   return (
     <>
-      {/* Mobile Sidebar Overlay */}
       <div
         className={`fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden ${
           sidebarOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
@@ -342,7 +341,6 @@ const facebookItems = facebookLinks.map((link, index) => ({
       ></div>
 
       <main className={`pt-12 md:pt-16 flex min-h-screen bg-white`}>
-        {/* Desktop Sidebar */}
         <motion.aside
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -376,8 +374,6 @@ const facebookItems = facebookLinks.map((link, index) => ({
             </motion.nav>
           </div>
         </motion.aside>
-
-        {/* Mobile Sidebar */}
         <motion.aside
           initial={{ opacity: 0, x: -20 }}
           animate={sidebarOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
@@ -411,10 +407,7 @@ const facebookItems = facebookLinks.map((link, index) => ({
             </motion.nav>
           </div>
         </motion.aside>
-
-        {/* Content Area */}
         <div className="flex-1 md:ml-48 relative min-h-[calc(100vh-4rem)] p-6 max-w-full overflow-x-hidden">
-          {/* Mobile hamburger button */}
           <div className="md:hidden fixed top-16 left-4 z-50">
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -423,10 +416,7 @@ const facebookItems = facebookLinks.map((link, index) => ({
               <Menu size={24} className="text-gray-700" />
             </button>
           </div>
-
-          {/* Existing content */}
           <motion.section {...fadeInUp} className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-            {/* Background Image */}
             <motion.img
               src={asset("assets/campus.jpg")}
               alt="Informatics campus exterior"
@@ -435,8 +425,6 @@ const facebookItems = facebookLinks.map((link, index) => ({
               animate={{ opacity: 0.9, scale: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
             />
-
-            {/* Overlay */}
             <motion.div
               aria-hidden
               className="absolute inset-0 bg-gradient-to-br from-[#0b1120]/95 via-[#0f172a]/85 to-[#020617]/90"
@@ -464,9 +452,6 @@ const facebookItems = facebookLinks.map((link, index) => ({
               </div>
             </Container>
           </motion.section>
-
-          {/* The rest of the existing content sections remain unchanged */}
-          {/* Our Story Section */}
           <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50/50" id="where-it-all-began">
             <motion.div {...fadeInUp}>
               <Container>
@@ -528,8 +513,6 @@ const facebookItems = facebookLinks.map((link, index) => ({
               </Container>
             </motion.div>
           </section>
-
-          {/* Mission, Vision, History */}
           <section className="py-16 md:py-20" id="the-future-were-building" style={{ background: `linear-gradient(135deg, ${BRAND_LIGHT} 0%, #e2e8f0 100%)` }}>
             <motion.div {...fadeInUp}>
               <Container>
@@ -589,8 +572,6 @@ const facebookItems = facebookLinks.map((link, index) => ({
               </Container>
             </motion.div>
           </section>
-          
-          {/* Core Values */}
           <section ref={ref} className="py-16 md:py-20" id="our-achievements">
             <motion.div {...fadeInUp}>
               <Container>
@@ -650,8 +631,6 @@ const facebookItems = facebookLinks.map((link, index) => ({
               </Container>
             </motion.div>
           </section>
-
-          {/* Our Founder */}
           <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50/50" id="our-founder">
             <motion.div {...fadeInUp}>
               <Container>
@@ -707,8 +686,6 @@ work, but also for leadership in a changing world.
             </Container>
             </motion.div>
           </section>
-
-          {/* Our Milestones Timeline */}
           <section className="py-8 sm:py-12 md:py-16 bg-gradient-to-b from-white to-slate-50/50" id="leadership-and-legacy">
             <motion.div>
               <Container>
@@ -760,8 +737,6 @@ work, but also for leadership in a changing world.
               </Container>
             </motion.div>
           </section>
-
-          {/* Our Campuses */}
           <section className="py-8 sm:py-12 md:py-16 bg-gradient-to-b from-white to-slate-50/50" id="campuses">
             <Container>
               <div className="max-w-7xl mx-auto">
@@ -786,7 +761,6 @@ work, but also for leadership in a changing world.
                       viewport={{ once: true }}
                       whileHover={{ scale: 1.02 }}
                     >
-                      {/* Campus Image */}
                       <div className="relative overflow-hidden h-32 sm:h-40 md:h-48">
                         <img
                           src={campus.image}
@@ -819,8 +793,6 @@ work, but also for leadership in a changing world.
               </div>
             </Container>
           </section>
-
-          {/* Community Engagement Section*/}
           <section id="community-engagements" className="py-16 md:py-24" style={{ background: BRAND_LIGHT }}>
             <Container>
               <div className="text-center mb-12">
@@ -834,7 +806,6 @@ work, but also for leadership in a changing world.
                   <span style={{ color: "#0097FF" }}>Engagements</span>
                 </motion.h2>
               </div>
-              {/* Continuous marquee strip */}
               <div className="mt-8 relative overflow-hidden">
                 <div className="news-marquee">
                   <MarqueeGroup items={facebookItems} />
@@ -842,8 +813,6 @@ work, but also for leadership in a changing world.
               </div>
             </Container>
           </section>
-
-          {/* Explore Careers at Informatics */}
           <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50/50">
             <motion.div {...fadeInUp}>
               <Container>

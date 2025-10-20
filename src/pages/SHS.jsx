@@ -86,9 +86,7 @@ export default function SHS() {
 
   return (
     <main className="pt-24 md:pt-28">
-      {/* Hero Section with Campuses Hero Image */}
       <motion.section {...fadeInUp} className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
         <motion.img
           src="/assets/campuseshero.jpg"
           alt="Informatics Senior High School"
@@ -97,8 +95,6 @@ export default function SHS() {
           animate={{ opacity: 0.9, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
         />
-
-        {/* Overlay */}
         <motion.div
           aria-hidden
           className="absolute inset-0 bg-gradient-to-br from-[#0b1120]/95 via-[#0f172a]/85 to-[#020617]/90"
@@ -149,8 +145,6 @@ export default function SHS() {
           </div>
         </Container>
       </motion.section>
-
-      {/* Academic Tracks Section */}
       <section id="academic-tracks" className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50/50">
         <Container>
           <div className="text-center mb-12">
@@ -196,8 +190,6 @@ export default function SHS() {
           </div>
         </Container>
       </section>
-
-      {/* Technical-Professional Tracks Section */}
       <section id="techpro-tracks" className="py-16 md:py-20 bg-white">
         <Container>
           <div className="text-center mb-12">
@@ -242,8 +234,6 @@ export default function SHS() {
           </div>
         </Container>
       </section>
-
-      {/* Statistics Section */}
       <section className="py-16 md:py-20" style={{ background: `linear-gradient(135deg, ${BRAND_LIGHT} 0%, #e2e8f0 100%)` }}>
         <Container>
           <div className="text-center mb-12">
@@ -290,8 +280,6 @@ export default function SHS() {
           </div>
         </Container>
       </section>
-
-      {/* Call to Action */}
       <section className="py-16 md:py-20 bg-gradient-to-br from-slate-50 to-white">
         <Container>
           <div className="text-center max-w-4xl mx-auto">
