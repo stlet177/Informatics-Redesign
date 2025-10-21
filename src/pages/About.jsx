@@ -24,10 +24,10 @@ export default function About() {
 
   const sidebarItems = [
     { text: "Where It all began", icon: History, action: () => scrollToSection('where-it-all-began') },
-    { text: "The future we're building", icon: Target, action: () => scrollToSection('the-future-were-building') },
-    { text: "Leadership and Legacy", icon: Users, action: () => scrollToSection('our-founder') },
+    { text: "The Future We're Building", icon: Target, action: () => scrollToSection('the-future-were-building') },
+    { text: "Leadership And Legacy", icon: Users, action: () => scrollToSection('our-founder') },
     { text: "Our Achievements", icon: Award, action: () => scrollToSection('leadership-and-legacy') },
-    { text: "Campuses", icon: MapPin, action: () => scrollToSection('campuses') },
+    { text: "Our Campuses", icon: MapPin, action: () => scrollToSection('campuses') },
     { text: "Community Engagements", icon: Heart, action: () => scrollToSection('community-engagements') },
     { text: "Careers", icon: Briefcase, action: () => window.location.href = 'https://ph.jobstreet.com/companies/informatics-college-168552199237399/jobs' }
   ];
@@ -132,11 +132,6 @@ export default function About() {
       description: "Acknowledged for strong and trusted brand presence."
     },
     {
-      year: "19th Annual National Consumers Quality Awards (Philippines) - 2003",
-      title: "People's Choice Award - Top Computer Learning Center",
-      description: "Public-Voted Recognition For Computer Learning Excellence."
-    },
-    {
       year: "(International) - 2004",
       title: "Franchise Excellence Award (Finalist)",
       description: "Shortlisted Among The Top Franchise Organizations."
@@ -146,8 +141,11 @@ export default function About() {
       title: "Best IT School For Employment (70% Post-Training Employment Rate)",
       description: "Cited For Strong Graduate Employability Outcomes."
     },
-
-
+    {
+      year: "19th Annual National Consumers Quality Awards (Philippines) - 2003",
+      title: "People's Choice Award - Top Computer Learning Center",
+      description: "Public-Voted Recognition For Computer Learning Excellence."
+    },
   ];
 
   const campuses = [
@@ -696,13 +694,68 @@ const facebookItems = facebookLinks.map((link, index) => ({
                   </div>
 
                   <div className="grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                    {milestones.map((milestone, index) => (
+                    {milestones.slice(0, 3).map((milestone, index) => (
                   <motion.div
                     key={index}
                     className="group relative bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-500 border border-slate-100"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="p-2 sm:p-3">
+                      <div className="mb-2">
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="p-1.5 sm:p-2 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100">
+                            <Award size={14} className="sm:w-4 sm:h-4" style={{ color: BRAND_BLUE }} />
+                          </div>
+                          <div>
+                            <h3 className="text-sm sm:text-base font-bold mb-0.5" style={{ color: BRAND_DARK }}>
+                              {milestone.title}
+                            </h3>
+                            <div className="text-xs font-bold text-slate-500 mb-1">{milestone.year}</div>
+                            <p className="text-xs text-slate-600">{milestone.description}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+                    {milestones.slice(3, 5).map((milestone, index) => (
+                  <motion.div
+                    key={index + 3}
+                    className="group relative bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-500 border border-slate-100"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: (index + 3) * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="p-2 sm:p-3">
+                      <div className="mb-2">
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="p-1.5 sm:p-2 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100">
+                            <Award size={14} className="sm:w-4 sm:h-4" style={{ color: BRAND_BLUE }} />
+                          </div>
+                          <div>
+                            <h3 className="text-sm sm:text-base font-bold mb-0.5" style={{ color: BRAND_DARK }}>
+                              {milestone.title}
+                            </h3>
+                            <div className="text-xs font-bold text-slate-500 mb-1">{milestone.year}</div>
+                            <p className="text-xs text-slate-600">{milestone.description}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+                    <div className="lg:col-span-1"></div>
+                    {milestones.slice(5).map((milestone, index) => (
+                  <motion.div
+                    key={index + 5}
+                    className="group relative bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-500 border border-slate-100"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: (index + 5) * 0.1 }}
                     viewport={{ once: true }}
                   >
                     <div className="p-2 sm:p-3">
@@ -768,7 +821,7 @@ const facebookItems = facebookLinks.map((link, index) => ({
                                 <MapPin size={16} className="sm:w-5 sm:h-5" style={{ color: BRAND_BLUE }} />
                               </div>
                               <div>
-                                <h3 className="text-base sm:text-lg font-bold mb-1" style={{ color: BRAND_DARK }}>
+                                <h3 className="text-sm sm:text-base font-bold mb-1" style={{ color: BRAND_DARK }}>
                                   {campus.name}
                                 </h3>
                                 <p className="text-xs text-slate-600">{campus.address}</p>
