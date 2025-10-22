@@ -14,7 +14,6 @@ export default function ProgramsIndex() {
   };
   return (
     <main className="pt-24 md:pt-28">
-      {/* Program Features */}
       <section className="py-12 md:py-16" style={{ background: BRAND_LIGHT }}>
         <Container>
           <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight" style={{ color: BRAND_DARK }}>Programs</h1>
@@ -29,8 +28,6 @@ export default function ProgramsIndex() {
           </div>
         </Container>
       </section>
-
-      {/* Academic Programs */}
       <section id="academic" className="py-12 md:py-16">
         <Container>
           <h2 className="text-2xl md:text-3xl font-semibold" style={{ color: BRAND_DARK }}>Academic Programs</h2>
@@ -41,8 +38,6 @@ export default function ProgramsIndex() {
           </div>
         </Container>
       </section>
-
-      {/* Certificates */}
       <section id="certificates" className="py-12 md:py-16" style={{ background: BRAND_LIGHT }}>
         <Container>
           <div className="flex items-center justify-between gap-3">

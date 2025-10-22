@@ -22,7 +22,6 @@ export default function News() {
     <section id="news" className="py-16 md:py-24" style={{ background: BRAND_LIGHT }}>
       <Container>
         <motion.h2 {...fadeInUp} className="text-2xl md:text-3xl font-semibold" style={{color: BRAND_DARK}}>News & Events</motion.h2>
-        {/* Continuous marquee strip */}
         <div className="mt-8 relative overflow-hidden">
           <div className="news-marquee flex gap-4">
             <MarqueeGroup items={items} />

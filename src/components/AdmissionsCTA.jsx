@@ -1,10 +1,8 @@
 import { motion } from "framer-motion";
 import Container from "./Container";
 import { BRAND_BLUE, BRAND_DARK, BRAND_LIGHT } from "../lib/brand";
-import { asset } from "../lib/assets";
 import { fadeInUp } from "../lib/variants";
 import { ChevronRight } from "lucide-react";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { admissionsConfig } from "../lib/content.config";
 import { navigateHash } from "../lib/navigation";
 
@@ -45,22 +43,17 @@ export default function AdmissionsCTA() {
         </motion.div>
         <motion.div {...fadeInUp}>
           <div className="rounded-3xl p-6 shadow-lg ring-1 ring-black/5 bg-white">
-            <div className="text-sm font-medium" style={{color: BRAND_DARK}}>Key Dates (SY 2025-2026)</div>
-            <div className="mt-3 grid grid-cols-2 gap-4 text-sm">
-              <div className="rounded-xl p-4" style={{ background: "#EEF4FF" }}>
-                <div className="font-semibold" style={{ color: BRAND_BLUE }}>Applications</div>
-                <div className="text-slate-600">Open - Rolling</div>
-              </div>
-              <div className="rounded-xl p-4" style={{ background: "#EEF4FF" }}>
-                <div className="font-semibold" style={{ color: BRAND_BLUE }}>Classes Start</div>
-                <div className="text-slate-600">August 2025</div>
-              </div>
+            <div className="flex items-center gap-2 text-sm font-medium" style={{color: BRAND_DARK}}>
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
+              </span>
+              Enrollment is ongoing
             </div>
-          </div>
-          {/* Admissions Lottie under Key Dates */}
-          <div className="mt-4 rounded-3xl bg-transparent">
-            <div className="h-56 md:h-64">
-              <DotLottieReact src={asset("assets/admission.lottie")} loop autoplay className="mix-blend-multiply" style={{ width: '100%', height: '100%', mixBlendMode: 'multiply', background: 'transparent' }} />
+            <div className="mt-3 grid grid-cols-1 gap-4 text-sm">
+              <div className="rounded-xl p-4 text-center" style={{ background: "#EEF4FF" }}>
+                <div className="text-base font-semibold" style={{ color: BRAND_BLUE }}>Apply today to secure your slot for SY 2025-2026.</div>
+              </div>
             </div>
           </div>
         </motion.div>

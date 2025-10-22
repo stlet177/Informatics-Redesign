@@ -1,5 +1,5 @@
-// Central site content configuration for navigation, programs, admissions, partners, and socials
-// This is config-first so pages/components can reference consistent data.
+
+
 
 import { asset } from "./assets";
 
@@ -11,7 +11,7 @@ export const navConfig = {
     { label: "Microcredentials", href: "https://imc.informatics.edu.ph/", external: true },
     { label: "Admissions", href: "#/admissions" },
   ],
-  // Dropdowns for About + Programs
+  
   about: [
     { label: "Who is Informatics", href: "#/about#glance" },
     { label: "Info by the Numbers", href: "#/about#numbers" },

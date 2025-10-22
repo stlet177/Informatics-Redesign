@@ -1,7 +1,8 @@
 import Container from "./Container";
 import { BRAND_BLUE, HOME_HREF } from "../lib/brand";
 import { INFO_LOGO, PLACEHOLDER_IMG } from "../lib/assets";
-import { Facebook, Instagram, Linkedin, Youtube, Twitter } from "lucide-react";
+import { Facebook, Linkedin, Youtube } from "lucide-react";
+import { SiTiktok } from "react-icons/si";
 
 export default function Footer() {
   return (
@@ -18,58 +19,77 @@ export default function Footer() {
               />
             </a>
           </div>
-          <p className="mt-3 max-w-md text-sm text-slate-400">
-            A multinational corporation that provides Information and Communications Technology training and education established in 1993 in the Philippines. It offers corporate productivity, business solutions.and higher education from undergraduate to corporate/short courses completions. It also offers diploma courses and senior high school in compliance with K-12.
-          </p>
-          <div className="mt-4 flex items-center gap-2">
-            {[{ href: "https://www.facebook.com/informaticsph", Icon: Facebook, label: "Facebook" },
-              { href: "https://www.instagram.com/informaticsph", Icon: Instagram, label: "Instagram" },
-              { href: "https://www.linkedin.com/company/informatics-philippines/", Icon: Linkedin, label: "LinkedIn" },
-              { href: "https://www.youtube.com/@informaticsph", Icon: Youtube, label: "YouTube" },
-              { href: "https://twitter.com/informaticsph", Icon: Twitter, label: "Twitter" },
-            ].map(({ href, Icon, label }) => (
-              <a
-                key={href}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-white/10 p-2 text-slate-200 transition hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
-                title={label}
-              >
-                <Icon size={16} style={{ color: BRAND_BLUE }} />
-                <span className="sr-only">{label}</span>
-              </a>
-            ))}
-          </div>
+          <address className="mt-3 max-w-sm text-sm not-italic leading-relaxed text-slate-400">
+            Informatics Holdings Philippines, Inc.<br />
+            Penthouse, Manta Corporate Plaza, ARCA Blvd.,<br />
+            ARCA South, Taguig City, Metro Manila<br />
+            ask@informatics.com.ph
+          </address>
         </div>
         <div>
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-200">Quick Links</div>
           <ul className="mt-3 space-y-2 text-sm text-slate-400">
-            <li><a href="#/about" className="transition hover:text-white">About Informatics</a></li>
-            <li><a href="#/programs" className="transition hover:text-white">Programs</a></li>
-            <li><a href="https://imc.informatics.edu.ph/" target="_blank" rel="noopener noreferrer" className="transition hover:text-white">Microcredentials</a></li>
-            <li><a href="#/admissions" className="transition hover:text-white">Admissions</a></li>
-            <li><a href="#/news" className="transition hover:text-white">News & Events</a></li>
-            <li><a href="#/contact" className="transition hover:text-white">Contact</a></li>
+            <li><a href="#/about" className="transition hover:text-white">About</a></li>
+            <li><a href="#/careers" className="transition hover:text-white">Careers</a></li>
+            <li><a href="https://imc.informatics.edu.ph/" target="_blank" rel="noopener noreferrer" className="transition hover:text-white">Informatics Microcredentials</a></li>
+            <li><a href="#/contact" className="transition hover:text-white">Registrar Services</a></li>
+            <li><a href="https://ion.informatics.edu.ph/login/index.php" target="_blank" rel="noopener noreferrer" className="transition hover:text-white">ION-LMS</a></li>
+            <li><a href="#/contact" className="transition hover:text-white">Alumni</a></li>
+            <li><a href="#/contact" className="transition hover:text-white">Contact Us</a></li>
+            <li><a href="#/privacy" className="transition hover:text-white">Privacy Policy</a></li>
           </ul>
         </div>
         <div>
-          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-200">Contact</div>
-          <ul className="mt-3 space-y-2 text-sm text-slate-400">
-            <li>admissions@informatics.edu.ph</li>
-            <li>+63 (02) 1234 5678</li>
-            <li>123 University Ave, Metro Manila</li>
+          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-200">Connect with us</div>
+          <ul className="mt-3 space-y-3 text-sm text-slate-400">
+            {[{
+              href: "https://www.facebook.com/informaticsph",
+              label: "Facebook",
+              description: "Facebook",
+              Icon: Facebook,
+            },
+            {
+              href: "https://www.linkedin.com/company/informaticsph/",
+              label: "LinkedIn",
+              description: "linkedin.com/company/informaticsph",
+              Icon: Linkedin,
+            },
+            {
+              href: "https://www.youtube.com/@informaticsph",
+              label: "YouTube",
+              description: "Informatics ABM Video Subs",
+              Icon: Youtube,
+            },
+            {
+              href: "https://www.tiktok.com/@informaticsphilippines",
+              label: "TikTok",
+              description: "https://www.tiktok.com/@informaticsphilippines",
+              Icon: SiTiktok,
+            }].map(({ href, label, description, Icon }) => (
+              <li key={href} className="flex items-start gap-3">
+                <span className="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-slate-200">
+                  <Icon size={18} style={{ color: BRAND_BLUE }} />
+                </span>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex w-full max-w-[220px] flex-col text-left transition hover:text-white"
+                >
+                  <span className="font-semibold text-slate-200">{label}</span>
+                  <span className="text-xs leading-relaxed text-slate-400 break-words">{description}</span>
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </Container>
       <Container className="mt-10 flex flex-col items-center justify-between gap-4 text-xs text-slate-500 sm:flex-row">
         <div className="text-slate-400">© {new Date().getFullYear()} Informatics Philippines. All rights reserved.</div>
         <div className="flex items-center gap-3 text-slate-400">
-          <a href="#/privacy" className="transition hover:text-white">Privacy</a>
+          <a href="#/privacy" className="transition hover:text-white">Privacy Policy</a>
           <span>•</span>
-          <a href="#/news" className="transition hover:text-white">News</a>
-          <span>•</span>
-          <a href="https://ion.informatics.edu.ph/login/index.php" target="_blank" rel="noopener noreferrer" className="transition hover:text-white">ION-LMS</a>
+          <a href="#/contact" className="transition hover:text-white">Contact Us</a>
         </div>
       </Container>
     </footer>

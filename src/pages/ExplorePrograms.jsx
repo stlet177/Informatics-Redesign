@@ -159,17 +159,6 @@ const Hero = () => (
           <p className="text-lg text-slate-600 md:text-xl">
             Map out your next move—whether you’re preparing for college, deepening your expertise, or collecting industry credentials.
           </p>
-          <div className="flex flex-wrap gap-3">
-            {SECTION_CONTENT.map((section) => (
-              <a
-                key={section.id}
-                href={`#${section.id}`}
-                className="inline-flex items-center rounded-full border border-sky-200 bg-white px-5 py-2 text-sm font-semibold text-sky-600 transition hover:border-sky-300 hover:text-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300"
-              >
-                {section.label}
-              </a>
-            ))}
-          </div>
         </div>
         <div className="relative hidden max-w-sm self-stretch rounded-3xl bg-white/80 p-6 shadow-xl md:flex md:flex-col md:justify-between">
           <div className="space-y-2 text-sm text-slate-600">
@@ -291,7 +280,7 @@ const ProgramSection = ({ section }) => (
               <p className="max-w-3xl text-base leading-relaxed text-slate-600">{section.blurb}</p>
             ) : null}
           </div>
-          {section.cta && section.id !== "higher-ed" ? (
+          {section.cta && !["higher-ed", "senior-high"].includes(section.id) ? (
             <a
               href={section.cta.href}
               target={section.cta.external ? "_blank" : undefined}

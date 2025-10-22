@@ -2,50 +2,21 @@ import { useEffect, useRef, useState } from "react";
 import {
   Search,
   ChevronDown,
+  Monitor,
+  Compass,
   GraduationCap,
   University,
-  Layers,
   ClipboardList,
   Wallet,
   Award,
   HelpCircle,
-  Compass,
 } from "lucide-react";
 import Container from "./Container";
 import { BRAND_DARK } from "../lib/brand";
 import { INFO_LOGO, PLACEHOLDER_IMG } from "../lib/assets";
 
 const NAV_LINKS = [
-  { label: "Home", href: "#hero" },
-  { label: "About us", href: "#/about" },
-  { label: "Alumni", href: "#/alumni" },
-  {
-    label: "Programs",
-    href: "#/programs",
-    children: [
-      {
-        label: "Explore Our Programs",
-        href: "#/programs/explore",
-        Icon: Compass,
-      },
-      {
-        label: "Senior High School",
-        href: "#/programs/shs",
-        Icon: GraduationCap,
-      },
-      {
-        label: "Higher Education",
-        href: "#/programs#academic",
-        Icon: University,
-      },
-      {
-        label: "Microcredentials",
-        href: "https://imc.informatics.edu.ph",
-        Icon: Layers,
-        external: true,
-      },
-    ],
-  },
+  { label: "Home", href: "#/" },
   {
     label: "Admissions",
     href: "#/admissions",
@@ -64,19 +35,34 @@ const NAV_LINKS = [
       { label: "FAQs", href: "#/admissions/faqs", Icon: HelpCircle },
     ],
   },
-  { label: "News & Events", href: "/news-events" },
   {
-    label: "Careers",
-    href: "https://ph.jobstreet.com/companies/informatics-college-168552199237399/jobs",
+    label: "Programs",
+    href: "#/programs",
+    children: [
+      { label: "Explore Our Programs", href: "#/programs/explore", Icon: Compass },
+      { label: "Senior High School", href: "#/programs/shs", Icon: GraduationCap },
+      { label: "Higher Education", href: "#/programs#academic", Icon: University },
+    ],
+  },
+  {
+    label: "Microcredentials",
+    href: "https://imc.informatics.edu.ph",
     external: true,
   },
-  { label: "Contact", href: "/contact" },
-
+  { label: "About Us", href: "#/about" },
   {
-    label: "ION-LMS (For Students)",
-    href: "https://ion.informatics.edu.ph",
-    external: true,
+    label: "Student Services",
+    href: "#/student-services",
+    children: [
+      {
+        label: "ION-LMS (for students)",
+        href: "https://ion.informatics.edu.ph",
+        Icon: Monitor,
+        external: true,
+      },
+    ],
   },
+  { label: "Contact Us", href: "#/contact" },
 ];
 
 export default function Nav() {
@@ -176,6 +162,30 @@ export default function Nav() {
     }));
   };
 
+  const handleLinkClick = (event, href, external = false, closeMobile = false) => {
+    if (closeMobile) {
+      setMobileOpen(false);
+      setMobileSearchOpen(false);
+    }
+
+    if (external) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    event.preventDefault();
+    setOpenDropdown(null);
+    setSearchOpen(false);
+    setMobileSearchOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    if (href.startsWith("#")) {
+      window.location.hash = href.slice(1);
+    } else {
+      window.location.assign(href);
+    }
+  };
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all ${
@@ -187,6 +197,7 @@ export default function Nav() {
           href="#/"
           className="flex items-center"
           aria-label="Informatics Philippines"
+          onClick={(event) => handleLinkClick(event, "#/")}
         >
           <img
             src={INFO_LOGO}
@@ -243,23 +254,21 @@ export default function Nav() {
                       className="absolute left-0 top-full mt-3 w-64 rounded-2xl border border-slate-200 bg-white p-3 shadow-xl"
                     >
                       <div className="flex flex-col gap-2">
-                        {link.children.map(
-                          ({ label, href, Icon, external }) => (
-                            <a
-                              key={label}
-                              href={href}
-                              target={external ? "_blank" : undefined}
-                              rel={external ? "noopener noreferrer" : undefined}
-                              className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100"
-                              onClick={() => setOpenDropdown(null)}
-                            >
-                              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-sky-600">
-                                <Icon size={18} />
-                              </div>
-                              <span>{label}</span>
-                            </a>
-                          )
-                        )}
+                        {link.children.map(({ label, href, Icon, external }) => (
+                          <a
+                            key={label}
+                            href={href}
+                            target={external ? "_blank" : undefined}
+                            rel={external ? "noopener noreferrer" : undefined}
+                            className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100"
+                            onClick={(event) => handleLinkClick(event, href, external)}
+                          >
+                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-sky-600">
+                              <Icon size={18} />
+                            </div>
+                            <span>{label}</span>
+                          </a>
+                        ))}
                       </div>
                     </div>
                   ) : null}
@@ -274,6 +283,7 @@ export default function Nav() {
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
                 className="nav-glow transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+                onClick={(event) => handleLinkClick(event, link.href, link.external)}
               >
                 {link.label}
               </a>
@@ -302,14 +312,14 @@ export default function Nav() {
                 <label htmlFor="desktop-search" className="sr-only">
                   Search
                 </label>
-                <div className="flex items-center gap-2">
+                <div className="flex rounded-full bg-slate-100 p-1">
                   <input
                     id="desktop-search"
                     ref={searchInputRef}
                     type="search"
                     value={searchValue}
                     onChange={(event) => setSearchValue(event.target.value)}
-                    className="flex-1 h-10 rounded-full border border-slate-300 px-3 text-sm focus:border-sky-500 focus:outline-none"
+                    className="flex-1 h-10 rounded-full border border-transparent px-3 text-sm focus:border-sky-500 focus:outline-none"
                     placeholder="Search"
                     onBlur={() => {
                       window.setTimeout(() => setSearchOpen(false), 150);
@@ -317,7 +327,7 @@ export default function Nav() {
                   />
                   <button
                     type="submit"
-                    className="flex h-10 items-center justify-center rounded-full bg-slate-900 px-4 text-xs font-semibold uppercase tracking-wide text-white"
+                    className="ml-2 flex h-10 items-center justify-center rounded-full bg-slate-900 px-4 text-xs font-semibold uppercase tracking-wide text-white"
                   >
                     Go
                   </button>
@@ -424,7 +434,7 @@ export default function Nav() {
                         <a
                           href={link.href}
                           className="flex-1 nav-glow rounded-full px-4 py-2 transition hover:bg-slate-100"
-                          onClick={() => setMobileOpen(false)}
+                          onClick={(event) => handleLinkClick(event, link.href, link.external, true)}
                         >
                           {link.label}
                         </a>
@@ -449,25 +459,21 @@ export default function Nav() {
                           className="border-t border-slate-200 px-4 py-2"
                         >
                           <div className="flex flex-col gap-2">
-                            {link.children.map(
-                              ({ label, href, Icon, external }) => (
-                                <a
-                                  key={label}
-                                  href={href}
-                                  target={external ? "_blank" : undefined}
-                                  rel={
-                                    external ? "noopener noreferrer" : undefined
-                                  }
-                                  className="flex items-center gap-3 rounded-xl bg-slate-50 px-3 py-2 text-sm"
-                                  onClick={() => setMobileOpen(false)}
-                                >
-                                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-sky-600">
-                                    <Icon size={18} />
-                                  </div>
-                                  <span className="font-semibold">{label}</span>
-                                </a>
-                              )
-                            )}
+                            {link.children.map(({ label, href, Icon, external }) => (
+                              <a
+                                key={label}
+                                href={href}
+                                target={external ? "_blank" : undefined}
+                                rel={external ? "noopener noreferrer" : undefined}
+                                className="flex items-center gap-3 rounded-xl bg-slate-50 px-3 py-2 text-sm"
+                                onClick={(event) => handleLinkClick(event, href, external, true)}
+                              >
+                                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-sky-600">
+                                  <Icon size={18} />
+                                </div>
+                                <span className="font-semibold">{label}</span>
+                              </a>
+                            ))}
                           </div>
                         </div>
                       ) : null}
@@ -481,7 +487,7 @@ export default function Nav() {
                     href={link.href}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={(event) => handleLinkClick(event, link.href, link.external, true)}
                     className="nav-glow rounded-full px-4 py-2 transition hover:bg-slate-100"
                   >
                     {link.label}

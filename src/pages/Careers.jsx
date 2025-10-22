@@ -32,9 +32,7 @@ export default function Careers() {
 
   return (
     <main className="pt-24 md:pt-28">
-      {/* Hero Section */}
       <section className="relative min-h-screen max-h-screen flex items-center justify-center overflow-hidden py-20 md:py-0">
-        {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
@@ -43,31 +41,22 @@ export default function Careers() {
             transform: 'scale(1.2)'
           }}
         ></div>
-
-        {/* Multiple Overlay Layers for Depth */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/30 via-transparent to-blue-900/30"></div>
 
         <Container className="relative z-10">
           <div className="text-center max-w-5xl mx-auto px-4 sm:px-6">
-            {/* Hero Badge */}
             <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl mb-6 sm:mb-8">
               <Users size={20} className="text-white sm:w-6 sm:h-6" />
               <span className="text-sm sm:text-base font-semibold text-white">Join Our Team</span>
             </div>
-
-            {/* Main Hero Title */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 sm:mb-6 md:mb-8 text-white leading-tight">
               Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Future</span> With Us
             </h1>
-
-            {/* Hero Subtitle */}
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8 sm:mb-10 md:mb-12 font-light px-4">
               Join Informatics Philippines and be part of a team that's shaping the future of IT education.
               We're looking for passionate professionals who want to make a difference.
             </p>
-
-            {/* Hero CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
               <a
                 href="#/openings"
@@ -84,16 +73,12 @@ export default function Careers() {
             </div>
           </div>
         </Container>
-
-        {/* Scroll Indicator - Hidden on mobile for cleaner look */}
         <div className="hidden md:block absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
             <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </section>
-
-      {/* Current Openings */}
       <section id="openings" className="py-12 sm:py-16 md:py-20" style={{ background: `linear-gradient(135deg, ${BRAND_LIGHT} 0%, #e2e8f0 100%)` }}>
         <motion.div {...fadeInUp}>
           <Container>
@@ -149,8 +134,6 @@ export default function Careers() {
           </Container>
         </motion.div>
       </section>
-
-      {/* Contact HR */}
       <section className="py-12 sm:py-16 md:py-20" style={{ background: `linear-gradient(135deg, ${BRAND_LIGHT} 0%, #e2e8f0 100%)` }}>
         <Container>
           <div className="text-center max-w-4xl mx-auto px-4">

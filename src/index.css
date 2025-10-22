@@ -2,24 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom animations and small utilities */
 @keyframes blink {
   0%, 60%, 100% { opacity: 1; }
   30% { opacity: .25; }
 }
 
-/* Admissions status: add blinking green dot before "Open" without changing markup */
 #admissions .grid > div:nth-child(2) .grid > div:nth-child(1) .text-slate-600 {
   position: relative;
-  padding-left: 16px; /* space for dot + small gap */
-}
+  padding-left: 16px; }
 
-/* Global digital-age background */
 :root {
-  --bg-grid-color: rgba(2, 6, 23, 0.06); /* slate-950 @ 6% */
-  --bg-geom: rgba(148, 163, 184, 0.16); /* slate-400 @ 16% */
-  --bg-geom-soft: rgba(148, 163, 184, 0.08); /* softer */
-}
+  --bg-grid-color: rgba(2, 6, 23, 0.06);   --bg-geom: rgba(148, 163, 184, 0.16);   --bg-geom-soft: rgba(148, 163, 184, 0.08); }
 
 body {
   background-image:
@@ -30,7 +23,6 @@ body {
   background-attachment: fixed, fixed;
 }
 
-/* Decorative large light-gray geometric shapes on left and right */
 body::before,
 body::after {
   content: "";
@@ -39,7 +31,7 @@ body::after {
   z-index: -1;
   filter: blur(1.2px);
 }
-/* Left shape */
+
 body::before {
   width: 480px;
   height: 480px;
@@ -48,7 +40,7 @@ body::before {
   background: linear-gradient(135deg, var(--bg-geom) 0%, var(--bg-geom-soft) 100%);
   clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%);
 }
-/* Right shape */
+
 body::after {
   width: 420px;
   height: 420px;
@@ -59,25 +51,25 @@ body::after {
   transform: rotate(18deg);
 }
 
-/* Mobile optimizations */
+
 @media (max-width: 640px) {
-  /* Avoid iOS repaint jank with fixed backgrounds */
+  
   body { background-attachment: scroll, scroll; }
-  /* Resize/offset background shapes for phones */
+  
   body::before { width: 420px; height: 420px; left: -160px; top: 6%; }
   body::after { width: 360px; height: 360px; right: -140px; bottom: 6%; transform: rotate(12deg); }
 }
 
-/* Respect reduced-motion preferences */
+
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
   .news-marquee { animation: none !important; transform: translateX(0) !important; }
 }
 
-/* Ensure media never overflows on small screens */
+
 img, video { max-width: 100%; height: auto; }
 
-/* Animated gradient text utility for hero keyword */
+
 @keyframes gradient-move {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -93,7 +85,7 @@ img, video { max-width: 100%; height: auto; }
   text-shadow: 0 0 12px rgba(0, 142, 230, 0.18);
 }
 
-/* Micro-interactions: gentle hover elevation */
+
 .simple-btn {
   display: inline-flex;
   align-items: center;
@@ -165,15 +157,12 @@ select {
   position: absolute;
   left: 0;
   top: 50%;
-  transform: translateY(-50%); /* vertically center alongside text */
-  width: 10px;
+  transform: translateY(-50%);   width: 10px;
   height: 10px;
   border-radius: 9999px;
-  background: #16a34a; /* green-600 */
-  animation: blink 1s infinite;
+  background: #16a34a;   animation: blink 1s infinite;
 }
 
-/* News marquee animation */
 @keyframes news-marquee-left {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }

@@ -15,7 +15,6 @@ export default function Contact() {
     baguio: { label: "Baguio", registrar: "registrar_baguio@informatics.edu.ph", cashier: "cashierbaguio@informatics.edu.ph", phone: "09175753237", address: "3/F Decibar Bldg., #65 Lower Bonifacio St., Baguio City", coords: { lat: 16.41810002387948, lng: 120.59632471103312 } },
     cebu: { label: "Cebu", registrar: "registrar_conso@informatics.edu.ph", cashier: "N/A", phone: "09178364963", address: "National Highway, Eskina Jugan, Pitogo Consolacion, Cebu City", coords: { lat: 10.31008717904268, lng: 123.89518818022984 } },
     cdo: { label: "CDO", registrar: "registrar.cdo@informatics.edu.ph", cashier: "cashier.cdo@informatics.edu.ph", phone: "N/A", address: "2nd level, Stary Bldg. Max Suniel St., Carmen, Cagayan De Oro", coords: { lat: 8.482402863722893, lng: 124.63492003787852 } },
-    conso: { label: "Consolidated", registrar: "registrar_conso@informatics.edu.ph", cashier: "cashier_conso@informatics.edu.ph", phone: null, address: null, coords: null },
   };
 
   const branchOptions = Object.entries(BRANCH_CONTACTS).map(([key, v]) => ({ key, label: v.label }));
@@ -103,17 +102,14 @@ export default function Contact() {
   return (
     <section id="contact" className="py-16 md:py-24 overflow-x-hidden">
       <Container className="grid gap-6 md:gap-10 md:grid-cols-2">
-        {/* Mobile heading + blurb at the top */}
         <div className="md:hidden order-1">
           <h2 className="text-2xl font-semibold" style={{color: BRAND_DARK}}>Get in touch</h2>
           <p className="mt-3 text-slate-600">Questions about admissions, tuition, or programs? Our team will reach out within 1-2 business days.</p>
         </div>
 
-        <motion.div {...fadeInUp} className="order-3 md:order-1 px-0">
-          <h2 className="hidden md:block text-2xl md:text-3xl font-semibold" style={{color: BRAND_DARK}}>Get in touch</h2>
-          <p className="hidden md:block mt-3 text-slate-600">Questions about admissions, tuition, or programs? Our team will reach out within 1-2 business days.</p>
+        <motion.div {...fadeInUp} className="order-3 md:order-2 px-0">
 
-          <div className="mt-8">
+          <div className="mt-8 md:mt-0">
             <div className="text-sm font-semibold flex items-center gap-2" style={{color: BRAND_DARK}}>
               <Mail size={16} style={{ color: BRAND_BLUE }} /> Emails For Your Concern
             </div>
@@ -124,8 +120,6 @@ export default function Contact() {
                 <SelectField label="Branch" options={branchOptions} value={branch} onChange={handleBranchChange} placeholder="Select a branch." />
               </div>
             </div>
-
-            {/* Contacts + Map */}
             <div className="sm:contents rounded-2xl bg-white ring-1 ring-black/5 p-3 mt-4 space-y-3 sm:space-y-0">
               <div className="grid gap-3 text-sm min-h-[148px]" ref={contactsRef}>
                 <div className="rounded-xl bg-white sm:bg-transparent p-3 sm:p-0 ring-1 sm:ring-0 ring-black/5 sm:shadow-none shadow-sm">
@@ -169,8 +163,6 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-
-            {/* Keep technical support visible */}
             <div className="mt-6">
               <div className="font-medium text-sm" style={{color: BRAND_DARK}}>Technical Support</div>
               <button type="button" onClick={() => copyToClipboard("tech.support@informatics.edu.ph", "tech")} className="mt-1 inline-flex items-center justify-between gap-3 rounded-lg border px-3 py-1.5 hover:bg-slate-50 active:scale-[0.99] text-[13px] sm:text-sm w-full" style={{ borderColor: "#E2E8F0", color: BRAND_DARK }}>
@@ -182,8 +174,11 @@ export default function Contact() {
           </div>
         </motion.div>
 
-        <motion.form {...fadeInUp} className="order-2 md:order-2 rounded-2xl bg-white p-6 shadow-md ring-1 ring-black/5">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <motion.form {...fadeInUp} className="order-2 md:order-1 rounded-2xl bg-white p-6 shadow-md ring-1 ring-black/5">
+          <h2 className="hidden md:block text-2xl md:text-3xl font-semibold" style={{color: BRAND_DARK}}>Get in touch</h2>
+          <p className="hidden md:block mt-3 text-slate-600">Questions about admissions, tuition, or programs? Our team will reach out within 1-2 business days.</p>
+
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="md:col-span-2">
               <label className="block text-sm font-medium" style={{color: BRAND_DARK}}>First & Last Name</label>
               <input className="mt-1 w-full rounded-xl border px-4 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)] focus:border-[var(--brand-blue)] transition-colors" style={{ borderColor: "#E2E8F0" }} placeholder="Juan Dela Cruz" />

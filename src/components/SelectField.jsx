@@ -67,7 +67,7 @@ export default function SelectField({ label, options = [], value: controlledValu
             exit={{ opacity: 0, y: 6 }}
             transition={{ duration: 0.15, ease: "easeOut" }}
             role="listbox"
-            className="absolute left-0 right-0 top-full z-30 mt-2 max-h-56 w-full overflow-auto rounded-xl border bg-white p-1 text-sm shadow-lg ring-1 ring-black/5"
+            className="absolute left-0 right-0 top-full z-[1200] mt-2 max-h-56 w-full overflow-auto rounded-xl border bg-white p-1 text-sm shadow-lg ring-1 ring-black/5"
             style={{ borderColor: "#E2E8F0" }}
           >
             {normalizedOptions.map((opt, idx) => (
