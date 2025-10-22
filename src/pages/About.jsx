@@ -12,6 +12,7 @@ import React, { useState, useRef, useEffect } from "react";
 
 export default function About() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -24,7 +25,7 @@ export default function About() {
 
   const sidebarItems = [
     { text: "Where It all began", icon: History, action: () => scrollToSection('where-it-all-began') },
-    { text: "The Future We're Building", icon: Target, action: () => scrollToSection('the-future-were-building') },
+    { text: "The Future We're Building", icon: Rocket, action: () => scrollToSection('the-future-were-building') },
     { text: "Leadership And Legacy", icon: Users, action: () => scrollToSection('our-founder') },
     { text: "Our Achievements", icon: Award, action: () => scrollToSection('leadership-and-legacy') },
     { text: "Our Campuses", icon: MapPin, action: () => scrollToSection('campuses') },
@@ -507,64 +508,76 @@ const facebookItems = facebookLinks.map((link, index) => ({
               </Container>
             </motion.div>
           </section>
-          <section className="py-16 md:py-20" id="the-future-were-building" style={{ background: `linear-gradient(135deg, ${BRAND_LIGHT} 0%, #e2e8f0 100%)` }}>
-            <motion.div {...fadeInUp}>
-              <Container>
-                <div className="max-w-7xl mx-auto">
-                  <div className="text-center mb-12">
-                    
-                    <h2 className="text-3xl md:text-[40px] font-extrabold tracking-tight mb-4">
-                      <span style={{ color: BRAND_DARK }}>The Future </span>
-                      <span style={{ color: "#0097FF" }}>We're Building</span>
-                    </h2>
-                  </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div
-              className="group relative bg-gradient-to-br from-white via-blue-50 to-indigo-50 rounded-[32px] border border-blue-200 p-12 shadow-[0_40px_80px_rgba(59,130,246,0.15)] transition-all duration-500 hover:-translate-y-3 hover:border-blue-400 hover:shadow-[0_50px_100px_rgba(59,130,246,0.25)] text-center"
-              initial={{ opacity: 0, y: 50 }}
+          <div className="text-center mb-12 relative z-10 py-8 bg-white">
+            <motion.h2 id="the-future-were-building"
+              className="text-3xl md:text-[40px] font-extrabold tracking-tight mb-4"
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.03 }}
+              style={{ color: BRAND_DARK }}
             >
-              <motion.div
-                className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-blue-100 to-blue-200 mb-6 mx-auto"
-                whileHover={{ rotate: 5, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-    <Users size={36} style={{ color: BRAND_BLUE }} />
-  </motion.div>
-  <h3 className="text-5xl font-bold mb-4" style={{ color: BRAND_DARK }}>Mission</h3>
-  <p className="text-xl text-slate-700 leading-relaxed max-w-md mx-auto">
-    We Help People Learn Technology To Make Their Lives Better.
-  </p>
-            </motion.div>
-
-            <motion.div
-              className="group relative bg-gradient-to-br from-white via-blue-50 to-indigo-50 rounded-[32px] border border-blue-200 p-12 shadow-[0_40px_80px_rgba(59,130,246,0.15)] transition-all duration-500 hover:-translate-y-3 hover:border-blue-400 hover:shadow-[0_50px_100px_rgba(59,130,246,0.25)] text-center"
-              initial={{ opacity: 0, y: 50 }}
+              <span>The Future </span>
+              <span style={{ color: "#0097FF" }}>We're Building</span>
+            </motion.h2>
+            <motion.p
+              className="text-lg text-slate-600 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.03 }}
             >
-              <motion.div
-                className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-blue-100 to-blue-200 mb-6 mx-auto"
-                whileHover={{ rotate: -5, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-    <Rocket size={36} style={{ color: BRAND_BLUE }} />
-  </motion.div>
-  <h3 className="text-5xl font-bold mb-4" style={{ color: BRAND_DARK }}>Vision</h3>
-  <p className="text-xl text-slate-700 leading-relaxed max-w-md mx-auto">
-    We Transform Individuals To Become Successful Innovators By Leveraging The Power Of Technology.
-  </p>
-            </motion.div>
+              The core principles that guide Informatics Philippines in empowering Filipinos through technology education and innovation.
+            </motion.p>
           </div>
-                </div>
-              </Container>
-            </motion.div>
+          <section className="py-8 md:py-12 relative overflow-hidden" id="our-mission-vision">
+            <div className="absolute inset-0">
+              <div className="absolute inset-0" style={{ backgroundImage: `url(${asset("assets/missionvision1.jpg")})`, backgroundSize: 'cover', backgroundPosition: 'center', clipPath: 'polygon(0 0, 100% 0, 0 100%)' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#3d0a0a]/95 to-[#3d0a0a]/80"></div>
+              </div>
+              <div className="absolute inset-0" style={{ backgroundImage: `url(${asset("assets/missionvision.jpg")})`, backgroundSize: 'cover', backgroundPosition: 'center', clipPath: 'polygon(100% 0, 100% 100%, 0 100%)' }}>
+                <div className="absolute inset-0 bg-gradient-to-tl from-[#001F3F]/95 to-[#001F3F]/80"></div>
+              </div>
+              <div className="absolute inset-0 bg-black/20"></div>
+            </div>
+            <Container className="relative z-10">
+              <div className="max-w-7xl mx-auto relative min-h-[60vh] flex flex-col justify-center">
+                <motion.div
+                  className="absolute top-8 left-8 md:top-16 md:left-16 text-white text-left max-w-md"
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <Target size={32} className="text-blue-300" />
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold border-b-4 border-blue-300 pb-2">Our Mission</h3>
+                  </div>
+                  <p className="text-base md:text-lg lg:text-xl leading-relaxed font-light">We Help People Learn Technology To Make Their Lives Better.</p>
+                </motion.div>
+                <motion.div
+                  className="absolute bottom-8 right-8 md:bottom-16 md:right-16 text-white text-right max-w-md"
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-center justify-end gap-3 mb-4">
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold border-b-4 border-blue-300 pb-2">Our Vision</h3>
+                    <Lightbulb size={32} className="text-blue-300" />
+                  </div>
+                  <p className="text-base md:text-lg lg:text-xl leading-relaxed font-light">We Transform Individuals To Become Successful Innovators By Leveraging The Power Of Technology.</p>
+                </motion.div>
+                <motion.div
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 1, delay: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                </motion.div>
+              </div>
+            </Container>
           </section>
           <section ref={ref} className="py-16 md:py-20" id="our-achievements">
             <motion.div {...fadeInUp}>
@@ -592,8 +605,8 @@ const facebookItems = facebookLinks.map((link, index) => ({
                     </motion.p>
                   </div>
 
-                  <div className="grid lg:grid-cols-2 gap-0 items-stretch">
-                    <div className="space-y-8 bg-[#001F3F] p-8 rounded-lg">
+                  <div className="grid lg:grid-cols-2 gap-0 items-stretch mb-8">
+                    <div className="flex flex-col justify-center space-y-8 bg-[#001F3F] p-8 rounded-lg">
                       {coreValues.map((value, index) => (
                         <motion.div
                           key={index}
@@ -694,88 +707,53 @@ const facebookItems = facebookLinks.map((link, index) => ({
                   </div>
 
                   <div className="grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                    {milestones.slice(0, 3).map((milestone, index) => (
-                  <motion.div
-                    key={index}
-                    className="group relative bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-500 border border-slate-100"
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="p-2 sm:p-3">
-                      <div className="mb-2">
-                        <div className="flex items-center gap-2 mb-2">
-                          <div className="p-1.5 sm:p-2 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100">
-                            <Award size={14} className="sm:w-4 sm:h-4" style={{ color: BRAND_BLUE }} />
+                    {(() => {
+                      const startIndex = currentPage * 3;
+                      const endIndex = startIndex + 3;
+                      const pageMilestones = milestones.slice(startIndex, endIndex);
+                      return pageMilestones.map((milestone, index) => (
+                        <motion.div
+                          key={startIndex + index}
+                          className="group relative bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-500 border border-slate-100"
+                          initial={{ opacity: 0, y: 50 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.6, delay: index * 0.1 }}
+                          viewport={{ once: true }}
+                        >
+                          <div className="p-2 sm:p-3">
+                            <div className="mb-2">
+                              <div className="flex items-center gap-2 mb-2">
+                                <div className="p-1.5 sm:p-2 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100">
+                                  <Award size={14} className="sm:w-4 sm:h-4" style={{ color: BRAND_BLUE }} />
+                                </div>
+                                <div>
+                                  <h3 className="text-sm sm:text-base font-bold mb-0.5" style={{ color: BRAND_DARK }}>
+                                    {milestone.title}
+                                  </h3>
+                                  <div className="text-xs font-bold text-slate-500 mb-1">{milestone.year}</div>
+                                  <p className="text-xs text-slate-600">{milestone.description}</p>
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                          <div>
-                            <h3 className="text-sm sm:text-base font-bold mb-0.5" style={{ color: BRAND_DARK }}>
-                              {milestone.title}
-                            </h3>
-                            <div className="text-xs font-bold text-slate-500 mb-1">{milestone.year}</div>
-                            <p className="text-xs text-slate-600">{milestone.description}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-                    {milestones.slice(3, 5).map((milestone, index) => (
-                  <motion.div
-                    key={index + 3}
-                    className="group relative bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-500 border border-slate-100"
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: (index + 3) * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="p-2 sm:p-3">
-                      <div className="mb-2">
-                        <div className="flex items-center gap-2 mb-2">
-                          <div className="p-1.5 sm:p-2 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100">
-                            <Award size={14} className="sm:w-4 sm:h-4" style={{ color: BRAND_BLUE }} />
-                          </div>
-                          <div>
-                            <h3 className="text-sm sm:text-base font-bold mb-0.5" style={{ color: BRAND_DARK }}>
-                              {milestone.title}
-                            </h3>
-                            <div className="text-xs font-bold text-slate-500 mb-1">{milestone.year}</div>
-                            <p className="text-xs text-slate-600">{milestone.description}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-                    <div className="lg:col-span-1"></div>
-                    {milestones.slice(5).map((milestone, index) => (
-                  <motion.div
-                    key={index + 5}
-                    className="group relative bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-500 border border-slate-100"
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: (index + 5) * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="p-2 sm:p-3">
-                      <div className="mb-2">
-                        <div className="flex items-center gap-2 mb-2">
-                          <div className="p-1.5 sm:p-2 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100">
-                            <Award size={14} className="sm:w-4 sm:h-4" style={{ color: BRAND_BLUE }} />
-                          </div>
-                          <div>
-                            <h3 className="text-sm sm:text-base font-bold mb-0.5" style={{ color: BRAND_DARK }}>
-                              {milestone.title}
-                            </h3>
-                            <div className="text-xs font-bold text-slate-500 mb-1">{milestone.year}</div>
-                            <p className="text-xs text-slate-600">{milestone.description}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+                        </motion.div>
+                      ));
+                    })()}
+                  </div>
+
+                  <div className="flex justify-center gap-2 mt-8">
+                    {[0, 1, 2].map((page) => (
+                      <button
+                        key={page}
+                        onClick={() => setCurrentPage(page)}
+                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                          currentPage === page
+                            ? 'bg-blue-600 scale-125'
+                            : 'bg-slate-300 hover:bg-slate-400'
+                        }`}
+                        aria-label={`Go to page ${page + 1}`}
+                      />
+                    ))}
                   </div>
                 </div>
               </Container>
@@ -798,7 +776,7 @@ const facebookItems = facebookLinks.map((link, index) => ({
                   {campuses.map((campus, index) => (
                     <motion.div
                       key={index}
-                      className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg transition-all duration-500 border border-slate-100"
+                      className="group relative overflow-hidden rounded-2xl sm:rounded-3xl transition-all duration-500"
                       initial={{ opacity: 0, y: 50 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -811,23 +789,9 @@ const facebookItems = facebookLinks.map((link, index) => ({
                           className="w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 transition-opacity duration-300" />
-                      </div>
-
-                      <div className="p-3 sm:p-4">
-                        <div className="mb-4">
-                          <div className="flex items-start justify-between mb-3">
-                            <div className="flex items-center gap-3">
-                              <div className="p-2 sm:p-3 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100">
-                                <MapPin size={16} className="sm:w-5 sm:h-5" style={{ color: BRAND_BLUE }} />
-                              </div>
-                              <div>
-                                <h3 className="text-sm sm:text-base font-bold mb-1" style={{ color: BRAND_DARK }}>
-                                  {campus.name}
-                                </h3>
-                                <p className="text-xs text-slate-600">{campus.address}</p>
-                              </div>
-                            </div>
-                          </div>
+                        <div className="absolute bottom-0 left-0 right-0 bg-black/60 p-3">
+                          <h3 className="text-sm sm:text-base font-bold text-white mb-1">{campus.name}</h3>
+                          <p className="text-xs text-white/80">{campus.address}</p>
                         </div>
                       </div>
                     </motion.div>
