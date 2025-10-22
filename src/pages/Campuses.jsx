@@ -2,10 +2,19 @@ import Container from "../components/Container";
 import { MapPin, Phone, Mail, Clock, Users, GraduationCap, Star, Award, Building2, Globe, BookOpen } from "lucide-react";
 import { BRAND_DARK, BRAND_LIGHT, BRAND_BLUE } from "../lib/brand";
 import { asset } from "../lib/assets";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { fadeInUp } from "../lib/variants";
+import React, { useRef } from "react";
 
 export default function Campuses() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, -200]);
+
   const campuses = [
     {
       name: "INFORMATICS NORTH LUZON - BAGUIO CAMPUS",
@@ -146,7 +155,7 @@ export default function Campuses() {
   ];
 
   return (
-    <main className="pt-24 md:pt-28">
+    <main className="pt-24 md:pt-28" ref={containerRef}>
       <motion.section {...fadeInUp} className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
             <motion.img
               src="/assets/campuseshero.jpg"
@@ -155,6 +164,7 @@ export default function Campuses() {
               initial={{ opacity: 0, scale: 1.05 }}
               animate={{ opacity: 0.9, scale: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
+              style={{ y }}
             />
             <motion.div
               aria-hidden
