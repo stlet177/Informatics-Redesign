@@ -4,7 +4,7 @@ import {
   Building2,
   Rocket,
   Compass,
-  Link as LinkIcon,
+  ArrowUpRight,
 } from "lucide-react";
 import { BRAND_LIGHT } from "../lib/brand";
 
@@ -137,6 +137,7 @@ const PATHWAYS = SECTION_CONTENT.map((section) => ({
       : section.blurb ?? "Discover guided pathways, academic advisement, and career-ready support for this track.",
   cta: section.cta,
   icon: section.icon,
+  targetId: section.id,
 }));
 
 const Hero = () => (
@@ -146,7 +147,7 @@ const Hero = () => (
   >
     <Container className="relative z-10 max-w-6xl px-6 py-20 md:py-28">
       <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-        <div className="max-w-2xl space-y-6 text-slate-900">
+              <div className="max-w-2xl space-y-6 text-slate-900">
           <div className="inline-flex items-center gap-3 rounded-full bg-white/90 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-sky-600 shadow-sm">
             <Compass size={16} color={LIGHT_BLUE} /> Paths at Informatics
           </div>
@@ -204,12 +205,18 @@ const Pathways = () => (
             </div>
             <p className="flex-1 text-sm leading-relaxed text-slate-600">{path.description}</p>
             <a
-              href={path.cta.href}
-              target={path.cta.external ? "_blank" : undefined}
-              rel={path.cta.external ? "noopener noreferrer" : undefined}
+              href={`#${path.targetId}`}
+              onClick={(event) => {
+                event.preventDefault();
+                const target = document.getElementById(path.targetId);
+                if (target) {
+                  target.scrollIntoView({ behavior: "smooth", block: "start" });
+                  window.history.replaceState(null, "", `#${path.targetId}`);
+                }
+              }}
               className={`${LIGHT_BUTTON_CLASS} w-fit`}
             >
-              {path.cta.label}
+              {path.cta?.label ?? "Learn more"}
             </a>
           </article>
         ))}
@@ -265,22 +272,36 @@ const ProgramSection = ({ section }) => (
               {section.label}
             </span>
             <div className="flex items-start gap-2">
-              <h2 className="text-3xl font-bold text-slate-900" id={`${section.id}-heading`}>
-                {section.title}
-              </h2>
               <a
-                href={`#${section.id}`}
-                className="mt-1 inline-flex items-center justify-center rounded-full border border-transparent p-1 text-slate-400 transition hover:text-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300"
-                aria-label={`Copy link to ${section.title}`}
+                href={section.id === "senior-high" ? "#/programs/shs" : section.id === "higher-ed" ? "#/programs#academic" : section.id === "imc" ? "https://imc.informatics.edu.ph" : `#${section.id}`}
+                onClick={(event) => {
+                  const link = event.currentTarget;
+                  const href = link.getAttribute("href") ?? "#";
+                  if (href.startsWith("#") && !href.startsWith("#/")) {
+                    event.preventDefault();
+                    const target = document.getElementById(href.replace(/^#/, ""));
+                    if (target) {
+                      target.scrollIntoView({ behavior: "smooth", block: "start" });
+                      window.history.replaceState(null, "", href);
+                    }
+                  } else {
+                    window.location.assign(href);
+                  }
+                }}
+                className="group inline-flex items-center gap-3 text-3xl font-bold text-slate-900 transition hover:text-sky-600"
+                id={`${section.id}-heading`}
               >
-                <LinkIcon size={16} />
+                <span>{section.title}</span>
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-sky-200 bg-sky-50 text-sky-500 transition group-hover:bg-sky-100 group-hover:text-sky-600">
+                  <ArrowUpRight size={18} />
+                </span>
               </a>
             </div>
             {section.blurb ? (
               <p className="max-w-3xl text-base leading-relaxed text-slate-600">{section.blurb}</p>
             ) : null}
           </div>
-          {section.cta && !["higher-ed", "senior-high"].includes(section.id) ? (
+          {section.cta && section.id === "senior-high" ? null : section.cta && section.id === "higher-ed" ? null : section.cta && section.id === "imc" ? null : section.cta ? (
             <a
               href={section.cta.href}
               target={section.cta.external ? "_blank" : undefined}
