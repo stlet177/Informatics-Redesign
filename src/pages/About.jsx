@@ -220,7 +220,7 @@ const facebookItems = facebookLinks.map((link, index) => ({
     teaser: "Click to view on Facebook"
   }));
 
-  const marqueeItems = [...facebookItems, ...facebookItems, ...facebookItems, ...facebookItems, ...facebookItems, ...facebookItems];
+  const marqueeItems = Array.from({ length: 20 }, () => facebookItems).flat();
 
   function MarqueeGroup({ items }) {
     const [translateX, setTranslateX] = useState(0);
@@ -358,7 +358,7 @@ const facebookItems = facebookLinks.map((link, index) => ({
                 <motion.a
                   key={index}
                   href="#"
-                  onClick={(e) => { e.preventDefault(); item.action(); }}
+                  onClick={(e) => { e.preventDefault(); setSidebarOpen(false); item.action(); }}
                   transition={{ type: "spring", stiffness: 300 }}
                   variants={itemVariants}
                   className="flex items-center gap-2 px-2 py-1 text-xs font-medium text-white transition border-b border-white/20 hover:border-white/50"
@@ -391,7 +391,7 @@ const facebookItems = facebookLinks.map((link, index) => ({
                 <motion.a
                   key={index}
                   href="#"
-                  onClick={(e) => { e.preventDefault(); item.action(); }}
+                  onClick={(e) => { e.preventDefault(); item.action(); setSidebarOpen(false); }}
                   transition={{ type: "spring", stiffness: 300 }}
                   variants={itemVariants}
                   className="flex items-center gap-2 px-2 py-1 text-xs font-medium text-white transition border-b border-white/20 hover:border-white/50"
@@ -532,12 +532,26 @@ const facebookItems = facebookLinks.map((link, index) => ({
           </div>
           <section className="py-8 md:py-12 relative overflow-hidden" id="our-mission-vision">
             <div className="absolute inset-0">
-              <div className="absolute inset-0" style={{ backgroundImage: `url(${asset("assets/missionvision1.jpg")})`, backgroundSize: 'cover', backgroundPosition: 'center', clipPath: 'polygon(0 0, 100% 0, 0 100%)' }}>
+              <motion.div
+                className="absolute inset-0"
+                style={{ backgroundImage: `url(${asset("assets/missionvision1.jpg")})`, backgroundSize: 'cover', backgroundPosition: 'center', clipPath: 'polygon(0 0, 100% 0, 0 100%)' }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#3d0a0a]/95 to-[#3d0a0a]/80"></div>
-              </div>
-              <div className="absolute inset-0" style={{ backgroundImage: `url(${asset("assets/missionvision.jpg")})`, backgroundSize: 'cover', backgroundPosition: 'center', clipPath: 'polygon(100% 0, 100% 100%, 0 100%)' }}>
+              </motion.div>
+              <motion.div
+                className="absolute inset-0"
+                style={{ backgroundImage: `url(${asset("assets/missionvision.jpg")})`, backgroundSize: 'cover', backgroundPosition: 'center', clipPath: 'polygon(100% 0, 100% 100%, 0 100%)' }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
                 <div className="absolute inset-0 bg-gradient-to-tl from-[#001F3F]/95 to-[#001F3F]/80"></div>
-              </div>
+              </motion.div>
               <div className="absolute inset-0 bg-black/20"></div>
             </div>
             <Container className="relative z-10">
@@ -549,8 +563,7 @@ const facebookItems = facebookLinks.map((link, index) => ({
                   transition={{ duration: 0.8, delay: 0.2 }}
                   viewport={{ once: true }}
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <Target size={32} className="text-blue-300" />
+                  <div className="flex items-center mb-4">
                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold border-b-4 border-blue-300 pb-2">Our Mission</h3>
                   </div>
                   <p className="text-base md:text-lg lg:text-xl leading-relaxed font-light">We Help People Learn Technology To Make Their Lives Better.</p>
@@ -562,9 +575,8 @@ const facebookItems = facebookLinks.map((link, index) => ({
                   transition={{ duration: 0.8, delay: 0.4 }}
                   viewport={{ once: true }}
                 >
-                  <div className="flex items-center justify-end gap-3 mb-4">
+                  <div className="flex items-center justify-end mb-4">
                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold border-b-4 border-blue-300 pb-2">Our Vision</h3>
-                    <Lightbulb size={32} className="text-blue-300" />
                   </div>
                   <p className="text-base md:text-lg lg:text-xl leading-relaxed font-light">We Transform Individuals To Become Successful Innovators By Leveraging The Power Of Technology.</p>
                 </motion.div>
