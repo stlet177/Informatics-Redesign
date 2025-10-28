@@ -8,7 +8,7 @@ const textVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
 
-const PRIMARY_CTA = { label: "Explore our Programs", href: "#/programs" };
+const PRIMARY_CTA = { label: "Explore our Programs", href: "#/programs/explore" };
 
 const HERO_SECONDARY = asset("assets/Herosecond.jpg");
 const HERO_BACKGROUND = CAMPUS_IMG;

@@ -176,12 +176,12 @@ export default function Nav() {
   const headerClasses = mobileOpen
     ? "bg-white shadow-lg"
     : scrolled
-      ? "backdrop-blur bg-white/90 shadow"
+      ? "bg-white/90 backdrop-blur-md shadow"
       : "bg-white";
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all ${headerClasses}`}
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${headerClasses}`}
     >
       <Container className="flex items-center justify-between gap-6 py-3">
         <a
