@@ -12,7 +12,15 @@
   padding-left: 16px; }
 
 :root {
-  --bg-grid-color: rgba(2, 6, 23, 0.06);   --bg-geom: rgba(148, 163, 184, 0.16);   --bg-geom-soft: rgba(148, 163, 184, 0.08); }
+  --bg-grid-color: rgba(2, 6, 23, 0.06);
+  --bg-geom: rgba(148, 163, 184, 0.16);
+  --bg-geom-soft: rgba(148, 163, 184, 0.08);
+  --header-offset: 6.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background-image:
@@ -21,6 +29,10 @@ body {
   background-repeat: no-repeat, repeat;
   background-size: cover, 40px 40px;
   background-attachment: fixed, fixed;
+}
+
+:where(section[id], main[id], div[id]) {
+  scroll-margin-top: var(--header-offset);
 }
 
 body::before,
@@ -53,7 +65,8 @@ body::after {
 
 
 @media (max-width: 640px) {
-  
+  :root { --header-offset: 5.5rem; }
+
   body { background-attachment: scroll, scroll; }
   
   body::before { width: 420px; height: 420px; left: -160px; top: 6%; }

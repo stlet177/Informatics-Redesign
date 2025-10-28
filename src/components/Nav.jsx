@@ -173,6 +173,12 @@ export default function Nav() {
     }
   };
 
+  const headerClasses = mobileOpen
+    ? "bg-white shadow-lg"
+    : scrolled
+      ? "bg-white/90 backdrop-blur-md shadow"
+      : "bg-white";
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all ${
@@ -367,13 +373,13 @@ export default function Nav() {
         </div>
       ) : null}
       {mobileOpen ? (
-        <div className="lg:hidden" id="mobile-navigation">
+        <div className="fixed inset-0 z-[1300]">
           <div
-            className="fixed inset-0 z-40 bg-black/40"
+            className="fixed inset-0 bg-black/40"
             onClick={() => setMobileOpen(false)}
             aria-hidden="true"
           />
-          <div className="fixed inset-y-0 right-0 z-50 w-72 max-w-full bg-white shadow-xl">
+          <div className="fixed inset-y-0 right-0 w-72 max-w-full bg-white shadow-xl">
             <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4">
               <span className="text-base font-semibold" style={{ color: BRAND_DARK }}>
                 Navigation
