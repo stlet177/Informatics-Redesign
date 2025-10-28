@@ -377,7 +377,7 @@ const facebookItems = facebookLinks.map((link, index) => ({
           initial={{ opacity: 0, x: -20 }}
           animate={sidebarOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
           transition={{ duration: 0.3 }}
-          className={`fixed md:hidden left-0 top-16 w-64 h-screen bg-[#0F172A] border-r border-white/20 p-3 overflow-y-auto shadow-xl z-50`}
+          className={`fixed md:hidden left-0 top-16 w-64 h-screen bg-[#0F172A] border-r border-white/20 p-3 overflow-y-auto shadow-xl z-50 ${!sidebarOpen ? 'pointer-events-none' : ''}`}
         >
           <div>
             <h3 className="text-xs font-bold text-white/70 uppercase tracking-wider mb-3">On This Page</h3>
