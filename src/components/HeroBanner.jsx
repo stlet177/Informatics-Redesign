@@ -111,9 +111,9 @@ export default function HeroBanner() {
         </div>
       </Container>
 
-      <div className="pointer-events-none absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center text-xs font-semibold uppercase tracking-[0.4em] text-white/70">
-        <span>Scroll</span>
-        <ArrowDown className="mt-2 h-5 w-5 animate-bounce" aria-hidden="true" />
+      <div className="pointer-events-none absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-center text-xs font-semibold uppercase tracking-[0.4em] text-white/70">
+        <span className="block">Scroll</span>
+        <ArrowDown className="h-5 w-5 animate-bounce" aria-hidden="true" />
       </div>
     </section>
   );
