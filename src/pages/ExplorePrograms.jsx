@@ -81,9 +81,9 @@ const SECTION_CONTENT = [
         lead:
           "Fast-track your career in just 2 years with hands-on training and industry-ready skills—your pathway to immediate employment or a full degree.",
         items: [
-          "ACT with Specialization in Application Development",
-          "ACT with Specialization in Multimedia",
-          "ACT with Specialization in Networking",
+          { label: "ACT with Specialization in Application Development", href: "#/programs/explore/associate-diploma-programs" },
+          { label: "ACT with Specialization in Multimedia", href: "#/programs/explore/associate-diploma-programs" },
+          { label: "ACT with Specialization in Networking", href: "#/programs/explore/associate-diploma-programs" },
         ],
       },
       {
@@ -91,9 +91,9 @@ const SECTION_CONTENT = [
         lead:
           "Build your career foundation in 3 years with practical training, industry-focused skills, and a clear pathway to employment or continuing toward a full degree.",
         items: [
-          "Diploma in Information Technology (DIT)",
-          "Diploma in Computer Science (DCS)",
-          "Diploma in Information Systems (DIS)",
+          { label: "Diploma in Information Technology (DIT)", href: "#/programs/explore/diploma-programs" },
+          { label: "Diploma in Computer Science (DCS)", href: "#/programs/explore/diploma-programs" },
+          { label: "Diploma in Information Systems (DIS)", href: "#/programs/explore/diploma-programs" },
         ],
       },
     ],
@@ -110,15 +110,16 @@ const SECTION_CONTENT = [
       {
         title: "Certificate Programs",
         items: [
-          "2D Animation",
-          "3D Animation",
-          "Bookkeeping",
-          "Computer Systems Servicing",
-          "Contact Center Services",
-          "Creative Web Design",
-          "Technical Drafting",
-          "Visual Graphics Design",
-          "Web Development",
+          { label: "Cybersecurity Specialist", href: "https://imc.informatics.edu.ph/career-details/02f69e11-c4f1-4556-a04a-e6c5e5b1f027", external: true },
+          { label: "Software Developer", href: "https://imc.informatics.edu.ph/career-details/bccf4b99-deec-4e93-98d7-84b0bf16c376", external: true },
+          { label: "Web Developer", href: "https://imc.informatics.edu.ph/career-details/0bd263a9-b118-4e18-9a2b-71ae7a1bdc22", external: true },
+          { label: "Data Science", href: "https://imc.informatics.edu.ph/career-details/cad306b7-a9c5-4a00-a081-bf14521e1134", external: true },
+          { label: "Level 1: AI Essentials", href: "https://imc.informatics.edu.ph/career-details/314438bf-b22d-49f1-a43a-15d09829dd0c", external: true },
+          { label: "Level 2: Certified AI Professional - AI for Non-IT Practitioners", href: "https://imc.informatics.edu.ph/career-details/e80686e0-5905-468a-89e2-a46ba0c65d81", external: true },
+          { label: "Level 3: Certified AI Professional - AI for Tech", href: "https://imc.informatics.edu.ph/career-details/da2191f1-0d91-4996-8f39-f7394b77b23e", external: true },
+          { label: "Digital Transformation", href: "https://imc.informatics.edu.ph/career-details/29632520-6c02-4065-8f3e-b665c5475bbc", external: true },
+          { label: "Digital Marketing and Sales Learning", href: "https://imc.informatics.edu.ph/career-details/1e60e7db-db4d-4512-bc55-4eca505fd0bc", external: true },
+          { label: "Professional Improvement Learning Paths", href: "https://imc.informatics.edu.ph/career-details/b791f981-2367-4429-9be6-0079ed18aa51", external: true },
         ],
       },
     ],
@@ -233,6 +234,7 @@ const GroupList = ({ group }) => (
       {group.items.map((item) => {
         const itemData = typeof item === "string" ? { label: item } : item;
         const key = itemData.label ?? item;
+        const { href, external } = itemData;
 
         return (
           <li
@@ -244,9 +246,11 @@ const GroupList = ({ group }) => (
               style={{ background: LIGHT_BLUE }}
               aria-hidden
             />
-            {itemData.href ? (
+            {href ? (
               <a
-                href={itemData.href}
+                href={href}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noopener noreferrer" : undefined}
                 className="block px-4 py-2 pl-6 text-sm font-medium text-slate-700 transition group-hover:text-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300"
               >
                 {itemData.label}

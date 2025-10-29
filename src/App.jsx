@@ -33,6 +33,8 @@ import TuitionAid from "./pages/TuitionAid";
 import Scholarships from "./pages/Scholarships";
 import AdmissionsFAQs from "./pages/AdmissionsFAQs";
 import ExplorePrograms from "./pages/ExplorePrograms";
+import AssociateDiplomaPrograms from "./pages/AssociateDiplomaPrograms";
+import DiplomaPrograms from "./pages/DiplomaPrograms";
 import Footer from "./components/Footer";
 import SocialBar from "./components/SocialBar";
 import { BRAND_BLUE } from "./lib/brand";
@@ -130,6 +132,10 @@ export default function App() {
           <BSBA />
         ) : route.startsWith("#/programs/college/bsoa") ? (
           <BSOA />
+        ) : route.startsWith("#/programs/explore/associate-diploma") ? (
+          <AssociateDiplomaPrograms />
+        ) : route.startsWith("#/programs/explore/diploma") ? (
+          <DiplomaPrograms />
         ) : route.startsWith("#/programs/explore") ? (
           <ExplorePrograms />
         ) : route.startsWith("#/programs") ? (
@@ -178,6 +184,8 @@ function titleForRoute(route) {
   if (route.startsWith("#/programs/college/bsis") || route.startsWith("#/programs/information-systems")) return "BS Information Systems";
   if (route.startsWith("#/programs/college/bsba") || route.startsWith("#/programs/business-administration")) return "BS Business Administration";
   if (route.startsWith("#/programs/college/bsoa")) return "BS Office Administration";
+  if (route.startsWith("#/programs/explore/associate-diploma")) return "Associate Diploma Programs (ACT)";
+  if (route.startsWith("#/programs/explore/diploma")) return "Diploma Programs";
   if (route.startsWith("#/programs/explore")) return "Explore Programs";
   if (route.startsWith("#/programs")) return "Programs";
   if (route.startsWith("#/admissions/tuition")) return "Tuition & Financial Aid";
