@@ -33,11 +33,6 @@ export default function About() {
     { text: "Careers", icon: Briefcase, action: () => window.location.href = 'https://ph.jobstreet.com/companies/informatics-college-168552199237399/jobs' }
   ];
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0 }
-  };
-
   const paragraphVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 1.2 } }
@@ -340,72 +335,50 @@ const facebookItems = facebookLinks.map((link, index) => ({
       ></div>
 
       <main className={`pt-12 md:pt-16 flex min-h-screen bg-white font-sans`}>
-        <motion.aside
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="hidden md:flex fixed left-0 top-16 w-48 h-screen bg-[#0F172A] border-r border-white/20 p-3 overflow-y-auto shadow-xl"
+        <aside className="hidden md:flex fixed left-0 top-16 w-48 h-screen bg-[#0F172A] border-r border-white/20 p-3 overflow-y-auto shadow-xl">
+          <div>
+            <h3 className="text-xs font-bold text-white/70 uppercase tracking-wider mb-3">On This Page</h3>
+            <nav className="flex flex-col gap-2">
+              {sidebarItems.map((item, index) => (
+                <button
+                  type="button"
+                  key={index}
+                  onClick={() => { item.action(); setSidebarOpen(false); }}
+                  className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-white/80 transition-colors duration-200 hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-white">
+                    <item.icon size={14} />
+                  </span>
+                  <span className="text-left">{item.text}</span>
+                </button>
+              ))}
+            </nav>
+          </div>
+        </aside>
+        <aside
+          className={`fixed md:hidden left-0 top-16 w-64 h-screen bg-[#0F172A] border-r border-white/20 p-3 overflow-y-auto shadow-xl z-50 transform transition-all duration-300 ${
+            sidebarOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0 pointer-events-none"
+          }`}
         >
           <div>
             <h3 className="text-xs font-bold text-white/70 uppercase tracking-wider mb-3">On This Page</h3>
-            <motion.nav
-              initial="hidden"
-              animate="visible"
-              variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-              className="flex flex-col gap-3"
-            >
+            <nav className="flex flex-col gap-3">
               {sidebarItems.map((item, index) => (
-                <motion.a
+                <button
+                  type="button"
                   key={index}
-                  href="#"
-                  onClick={(e) => { e.preventDefault(); setSidebarOpen(false); item.action(); }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  variants={itemVariants}
-                  className="flex items-center gap-2 px-2 py-1 text-xs font-medium text-white transition border-b border-white/20 hover:border-white/50"
-                  whileHover={{ scale: 1.05, y: -1, color: "#ffffff" }}
+                  onClick={() => { item.action(); setSidebarOpen(false); }}
+                  className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-white/80 transition-colors duration-200 hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-white">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-white">
                     <item.icon size={14} />
-                  </div>
-                  {item.text}
-                </motion.a>
+                  </span>
+                  <span className="text-left">{item.text}</span>
+                </button>
               ))}
-            </motion.nav>
+            </nav>
           </div>
-        </motion.aside>
-        <motion.aside
-          initial={{ opacity: 0, x: -20 }}
-          animate={sidebarOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
-          transition={{ duration: 0.3 }}
-          className={`fixed md:hidden left-0 top-16 w-64 h-screen bg-[#0F172A] border-r border-white/20 p-3 overflow-y-auto shadow-xl z-50`}
-        >
-          <div>
-            <h3 className="text-xs font-bold text-white/70 uppercase tracking-wider mb-3">On This Page</h3>
-            <motion.nav
-              initial="hidden"
-              animate="visible"
-              variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-              className="flex flex-col gap-3"
-            >
-              {sidebarItems.map((item, index) => (
-                <motion.a
-                  key={index}
-                  href="#"
-                  onClick={(e) => { e.preventDefault(); item.action(); setSidebarOpen(false); }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  variants={itemVariants}
-                  className="flex items-center gap-2 px-2 py-1 text-xs font-medium text-white transition border-b border-white/20 hover:border-white/50"
-                  whileHover={{ scale: 1.05, y: -1, color: "#ffffff" }}
-                >
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-white">
-                    <item.icon size={14} />
-                  </div>
-                  {item.text}
-                </motion.a>
-              ))}
-            </motion.nav>
-          </div>
-        </motion.aside>
+        </aside>
         <div className="flex-1 md:ml-48 relative min-h-[calc(100vh-4rem)] p-6 max-w-full overflow-x-hidden">
           <div className="md:hidden fixed top-16 left-4 z-50">
             <button
@@ -788,11 +761,11 @@ const facebookItems = facebookLinks.map((link, index) => ({
                   {campuses.map((campus, index) => (
                     <motion.div
                       key={index}
-                      className="group relative overflow-hidden rounded-2xl sm:rounded-3xl transition-all duration-500"
-                      initial={{ opacity: 0, y: 50 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      viewport={{ once: true }}
+                      className="group relative overflow-hidden rounded-2xl sm:rounded-3xl transition-transform duration-300"
+                      initial={{ opacity: 0, y: 20, scale: 0.96 }}
+                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ duration: 0.45, ease: "easeOut", delay: index * 0.08 }}
+                      viewport={{ once: true, amount: 0.2 }}
                     >
                       <div className="relative overflow-hidden h-32 sm:h-40 md:h-48">
                         <img

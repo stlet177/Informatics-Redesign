@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import Container from "../components/Container";
 import { BRAND_DARK, BRAND_LIGHT, BRAND_BLUE } from "../lib/brand";
 import { BookOpen, BarChart3, GraduationCap, Compass, Palette, Code, Wrench, Phone, Users, Award, Building2 } from "lucide-react";
@@ -84,6 +85,40 @@ export default function SHS() {
     },
   ];
 
+  function AnimatedCard({ children, index, className }) {
+    const ref = useRef(null);
+
+    useEffect(() => {
+      const node = ref.current;
+      if (!node) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              node.classList.add("card-animate-in");
+              observer.unobserve(node);
+            }
+          });
+        },
+        { threshold: 0.25 }
+      );
+
+      observer.observe(node);
+      return () => observer.disconnect();
+    }, []);
+
+    return (
+      <div
+        ref={ref}
+        className={`card-animate ${className ?? ""}`}
+        style={{ "--card-delay": `${index * 0.08}s` }}
+      >
+        {children}
+      </div>
+    );
+  }
+
   return (
     <main className="pt-24 md:pt-28">
       <motion.section {...fadeInUp} className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
@@ -162,10 +197,10 @@ export default function SHS() {
 
           <div className="grid gap-8 md:grid-cols-3">
             {academicTracks.map((track, index) => (
-              <motion.div
-                key={index}
-                {...fadeInUp}
-                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100"
+              <AnimatedCard
+                key={track.title}
+                index={index}
+                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl border border-slate-100"
               >
                 <div className={`h-2 bg-gradient-to-r ${track.color}`} />
                 <div className="p-6">
@@ -185,7 +220,7 @@ export default function SHS() {
                     Learn More →
                   </a>
                 </div>
-              </motion.div>
+              </AnimatedCard>
             ))}
           </div>
         </Container>
@@ -207,10 +242,10 @@ export default function SHS() {
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {techProTracks.map((track, index) => (
-              <motion.div
-                key={index}
-                {...fadeInUp}
-                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100"
+              <AnimatedCard
+                key={track.title}
+                index={index}
+                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl border border-slate-100"
               >
                 <div className={`h-2 bg-gradient-to-r ${track.color}`} />
                 <div className="p-6">
@@ -229,7 +264,7 @@ export default function SHS() {
                     Learn More →
                   </a>
                 </div>
-              </motion.div>
+              </AnimatedCard>
             ))}
           </div>
         </Container>
@@ -313,4 +348,3 @@ export default function SHS() {
     </main>
   );
 }
-
