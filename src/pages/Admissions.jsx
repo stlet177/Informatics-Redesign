@@ -5,6 +5,9 @@ import CalendarList from "../components/CalendarList";
 import { admissionsConfig } from "../lib/content.config";
 import { resolveAsset } from "../lib/assets";
 
+const ENROLL_BUTTON_CLASS =
+  "inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#bae6fd] px-6 py-3 text-base font-semibold text-sky-900 shadow-sm transition hover:bg-[#7dd3fc] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300 md:w-auto md:px-8 md:py-3.5 md:text-lg";
+
 export default function Admissions() {
   const [news, setNews] = useState([]);
   useEffect(() => {
@@ -58,11 +61,21 @@ export default function Admissions() {
     <main className="pt-24 md:pt-28">
       <section id="how-to-apply" className="py-12 md:py-16" style={{ background: BRAND_LIGHT }}>
         <Container>
-          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight" style={{ color: BRAND_DARK }}>Admissions</h1>
-          <p className="mt-2 text-slate-700">Guidelines for application and enrollment.</p>
-          <ul className="mt-4 list-disc pl-5 text-slate-700">
-            {admissionsConfig.guidelines.map((g, i) => <li key={i}>{g}</li>)}
-          </ul>
+          <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-10">
+            <div className="max-w-3xl md:flex-1">
+              <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight" style={{ color: BRAND_DARK }}>Admissions</h1>
+              <p className="mt-2 text-slate-700">Guidelines for application and enrollment.</p>
+              <ul className="mt-4 list-disc pl-5 text-slate-700 space-y-2">
+                {admissionsConfig.guidelines.map((g, i) => <li key={i}>{g}</li>)}
+              </ul>
+            </div>
+            <a
+              href="#/contact"
+              className={`${ENROLL_BUTTON_CLASS} text-center md:self-center md:flex-none`}
+            >
+              Enroll Now
+            </a>
+          </div>
         </Container>
       </section>
       <section id="requirements" className="py-12 md:py-16">
