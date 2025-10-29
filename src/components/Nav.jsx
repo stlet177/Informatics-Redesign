@@ -176,7 +176,7 @@ export default function Nav() {
   const headerClasses = mobileOpen
     ? "bg-white shadow-lg"
     : scrolled
-      ? "bg-white/90 backdrop-blur-md shadow"
+      ? "bg-white shadow lg:bg-white/90 lg:backdrop-blur-md"
       : "bg-white";
 
   return (
