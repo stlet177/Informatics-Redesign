@@ -39,9 +39,21 @@ const NAV_LINKS = [
     label: "Programs",
     href: "#/programs",
     children: [
-      { label: "Explore Our Programs", href: "#/programs/explore", Icon: Compass },
-      { label: "Senior High School", href: "#/programs/shs", Icon: GraduationCap },
-      { label: "Higher Education", href: "#/programs#academic", Icon: University },
+      {
+        label: "Explore Our Programs",
+        href: "#/programs/explore",
+        Icon: Compass,
+      },
+      {
+        label: "Senior High School",
+        href: "#/programs/shs",
+        Icon: GraduationCap,
+      },
+      {
+        label: "Higher Education",
+        href: "#/programs#academic",
+        Icon: University,
+      },
     ],
   },
   {
@@ -50,6 +62,7 @@ const NAV_LINKS = [
     external: true,
   },
   { label: "About Us", href: "#/about" },
+  { label: "Alumni", href: "#/alumni-tracer" },
   {
     label: "Student Services",
     href: "#/student-services",
@@ -162,7 +175,12 @@ export default function Nav() {
     }));
   };
 
-  const handleLinkClick = (event, href, external = false, closeMobile = false) => {
+  const handleLinkClick = (
+    event,
+    href,
+    external = false,
+    closeMobile = false
+  ) => {
     if (closeMobile) {
       setMobileOpen(false);
       setMobileSearchOpen(false);
@@ -254,21 +272,25 @@ export default function Nav() {
                       className="absolute left-0 top-full mt-3 w-64 rounded-2xl border border-slate-200 bg-white p-3 shadow-xl"
                     >
                       <div className="flex flex-col gap-2">
-                        {link.children.map(({ label, href, Icon, external }) => (
-                          <a
-                            key={label}
-                            href={href}
-                            target={external ? "_blank" : undefined}
-                            rel={external ? "noopener noreferrer" : undefined}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100"
-                            onClick={(event) => handleLinkClick(event, href, external)}
-                          >
-                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-sky-600">
-                              <Icon size={18} />
-                            </div>
-                            <span>{label}</span>
-                          </a>
-                        ))}
+                        {link.children.map(
+                          ({ label, href, Icon, external }) => (
+                            <a
+                              key={label}
+                              href={href}
+                              target={external ? "_blank" : undefined}
+                              rel={external ? "noopener noreferrer" : undefined}
+                              className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100"
+                              onClick={(event) =>
+                                handleLinkClick(event, href, external)
+                              }
+                            >
+                              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-sky-600">
+                                <Icon size={18} />
+                              </div>
+                              <span>{label}</span>
+                            </a>
+                          )
+                        )}
                       </div>
                     </div>
                   ) : null}
@@ -283,7 +305,9 @@ export default function Nav() {
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
                 className="nav-glow transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-                onClick={(event) => handleLinkClick(event, link.href, link.external)}
+                onClick={(event) =>
+                  handleLinkClick(event, link.href, link.external)
+                }
               >
                 {link.label}
               </a>
@@ -434,7 +458,14 @@ export default function Nav() {
                         <a
                           href={link.href}
                           className="flex-1 nav-glow rounded-full px-4 py-2 transition hover:bg-slate-100"
-                          onClick={(event) => handleLinkClick(event, link.href, link.external, true)}
+                          onClick={(event) =>
+                            handleLinkClick(
+                              event,
+                              link.href,
+                              link.external,
+                              true
+                            )
+                          }
                         >
                           {link.label}
                         </a>
@@ -459,21 +490,27 @@ export default function Nav() {
                           className="border-t border-slate-200 px-4 py-2"
                         >
                           <div className="flex flex-col gap-2">
-                            {link.children.map(({ label, href, Icon, external }) => (
-                              <a
-                                key={label}
-                                href={href}
-                                target={external ? "_blank" : undefined}
-                                rel={external ? "noopener noreferrer" : undefined}
-                                className="flex items-center gap-3 rounded-xl bg-slate-50 px-3 py-2 text-sm"
-                                onClick={(event) => handleLinkClick(event, href, external, true)}
-                              >
-                                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-sky-600">
-                                  <Icon size={18} />
-                                </div>
-                                <span className="font-semibold">{label}</span>
-                              </a>
-                            ))}
+                            {link.children.map(
+                              ({ label, href, Icon, external }) => (
+                                <a
+                                  key={label}
+                                  href={href}
+                                  target={external ? "_blank" : undefined}
+                                  rel={
+                                    external ? "noopener noreferrer" : undefined
+                                  }
+                                  className="flex items-center gap-3 rounded-xl bg-slate-50 px-3 py-2 text-sm"
+                                  onClick={(event) =>
+                                    handleLinkClick(event, href, external, true)
+                                  }
+                                >
+                                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-sky-600">
+                                    <Icon size={18} />
+                                  </div>
+                                  <span className="font-semibold">{label}</span>
+                                </a>
+                              )
+                            )}
                           </div>
                         </div>
                       ) : null}
@@ -487,7 +524,9 @@ export default function Nav() {
                     href={link.href}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
-                    onClick={(event) => handleLinkClick(event, link.href, link.external, true)}
+                    onClick={(event) =>
+                      handleLinkClick(event, link.href, link.external, true)
+                    }
                     className="nav-glow rounded-full px-4 py-2 transition hover:bg-slate-100"
                   >
                     {link.label}

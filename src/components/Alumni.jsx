@@ -63,7 +63,15 @@ export default function Alumni() {
     not_employed: "",
   });
 
-  const handleNext = () => setActiveStep((prev) => prev + 1);
+  // const handleNext = () => setActiveStep((prev) => prev + 1);
+  const handleNext = () => {
+    if (!isStepValid()) {
+      alert("Please fill in all required fields before proceeding.");
+      return;
+    }
+    setActiveStep((prev) => prev + 1);
+  };
+
   const handleBack = () => setActiveStep((prev) => prev - 1);
 
   const handleChange = (e) => {
@@ -76,13 +84,66 @@ export default function Alumni() {
     alert("Thank you for submitting your alumni information!");
   };
 
+  const isStepValid = () => {
+    switch (activeStep) {
+      case 0: // Personal Info
+        return (
+          formData.firstname.trim() &&
+          formData.lastname.trim() &&
+          formData.email.trim() &&
+          formData.contact_number.trim() &&
+          formData.birthdate.trim() &&
+          formData.gender.trim() &&
+          formData.civil_status.trim()
+        );
+
+      case 1: // Educational Background
+        return (
+          formData.course.trim() &&
+          formData.year_graduated.trim() &&
+          formData.center_id.trim() &&
+          formData.awards_received.trim() &&
+          formData.failing_grades.trim() &&
+          formData.drop_subjects.trim()
+        );
+
+      case 2: // Company Info
+        return (
+          formData.working_while_studying.trim() &&
+          (formData.working_while_studying === "No" ||
+            formData.engaged_in.trim()) &&
+          formData.promote_after_grad.trim() &&
+          formData.first_employed.trim() &&
+          formData.first_job.trim() &&
+          formData.first_stablishment.trim() &&
+          formData.how_you_apply.trim() &&
+          formData.favorable_factors.trim() &&
+          formData.how_long_employer.trim() &&
+          formData.were_you_promoted.trim() &&
+          formData.promoted_more_than_once.trim() &&
+          formData.inline_job.trim() &&
+          formData.knowledge_obtained.trim() &&
+          formData.why_did_you_leave.trim() &&
+          formData.current_position.trim() &&
+          formData.company_name.trim() &&
+          formData.monthly_salary.trim() &&
+          formData.not_employed.trim()
+        );
+
+      case 3: // Feedback
+        return formData.rating > 0; // optional: require rating or feedback
+      default:
+        return true;
+    }
+  };
+
   const renderStepContent = (step) => {
     switch (step) {
       case 0: //personal info
         return (
-          <Grid spacing={2}>
-            {/* Row 1 */}
-            <Grid item xs={12} md={6}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* First Name */}
+            <div>
               <TextField
                 fullWidth
                 label="First Name"
@@ -92,8 +153,10 @@ export default function Alumni() {
                 margin="normal"
                 required
               />
-            </Grid>
-            <Grid item xs={12} md={6}>
+            </div>
+
+            {/* Last Name */}
+            <div>
               <TextField
                 fullWidth
                 label="Last Name"
@@ -103,10 +166,10 @@ export default function Alumni() {
                 margin="normal"
                 required
               />
-            </Grid>
+            </div>
 
-            {/* Row 2 */}
-            <Grid item xs={12} md={6}>
+            {/* Middle Name */}
+            <div>
               <TextField
                 fullWidth
                 label="Middle Name"
@@ -115,8 +178,10 @@ export default function Alumni() {
                 onChange={handleChange}
                 margin="normal"
               />
-            </Grid>
-            <Grid item xs={12} md={6}>
+            </div>
+
+            {/* Email */}
+            <div>
               <TextField
                 fullWidth
                 type="email"
@@ -127,10 +192,10 @@ export default function Alumni() {
                 margin="normal"
                 required
               />
-            </Grid>
+            </div>
 
-            {/* Row 3 */}
-            <Grid item xs={12} md={6}>
+            {/* Contact Number */}
+            <div>
               <TextField
                 fullWidth
                 label="Contact Number"
@@ -140,8 +205,10 @@ export default function Alumni() {
                 margin="normal"
                 required
               />
-            </Grid>
-            <Grid item xs={12} md={6}>
+            </div>
+
+            {/* Birthdate */}
+            <div>
               <TextField
                 fullWidth
                 type="date"
@@ -153,8 +220,10 @@ export default function Alumni() {
                 margin="normal"
                 required
               />
-            </Grid>
-            <Grid item xs={12} md={6}>
+            </div>
+
+            {/* Gender */}
+            <div>
               <FormControl fullWidth margin="normal" required>
                 <InputLabel>Gender</InputLabel>
                 <Select
@@ -168,10 +237,10 @@ export default function Alumni() {
                   <MenuItem value="Female">Female</MenuItem>
                 </Select>
               </FormControl>
-            </Grid>
+            </div>
 
-            {/* Row 4 */}
-            <Grid item xs={12} md={6}>
+            {/* Civil Status */}
+            <div>
               <FormControl fullWidth margin="normal" required>
                 <InputLabel>Civil Status</InputLabel>
                 <Select
@@ -187,8 +256,8 @@ export default function Alumni() {
                   <MenuItem value="Widowed">Widowed</MenuItem>
                 </Select>
               </FormControl>
-            </Grid>
-          </Grid>
+            </div>
+          </div>
         );
 
       case 1: //educational background
@@ -228,7 +297,7 @@ export default function Alumni() {
                   {[...Array(2025 - 2000)].map((_, i) => {
                     const year = 2000 + i;
                     return (
-                      <MenuItem key={year} value={year}>
+                      <MenuItem key={year} value={year.toString()}>
                         {year}
                       </MenuItem>
                     );
@@ -322,11 +391,11 @@ export default function Alumni() {
           </Grid>
         );
 
-      case 2: //company info
+      case 2: // company info
         return (
-          <Grid container spacing={2}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Were you working while studying? */}
-            <Grid item xs={12} md={6}>
+            <div className="md:col-span-2">
               <FormControl fullWidth margin="normal" required>
                 <InputLabel>
                   Were you working while studying at Informatics?
@@ -343,23 +412,25 @@ export default function Alumni() {
                   <MenuItem value="No">No</MenuItem>
                 </Select>
               </FormControl>
-            </Grid>
+            </div>
 
             {/* If YES, what work were you engaged in? */}
-            <Grid item xs={12} md={6}>
-              <TextField
-                fullWidth
-                margin="normal"
-                required
-                label="If YES, what work were you engaged in?"
-                name="engaged_in"
-                value={formData.engaged_in}
-                onChange={handleChange}
-              />
-            </Grid>
+            {formData.working_while_studying === "Yes" && (
+              <div className="md:col-span-2">
+                <TextField
+                  fullWidth
+                  margin="normal"
+                  required
+                  label="If YES, what work were you engaged in?"
+                  name="engaged_in"
+                  value={formData.engaged_in}
+                  onChange={handleChange}
+                />
+              </div>
+            )}
 
             {/* Were you promoted after graduation? */}
-            <Grid item xs={12} md={6}>
+            <div>
               <FormControl fullWidth margin="normal" required>
                 <InputLabel>Were you promoted after graduation?</InputLabel>
                 <Select
@@ -374,10 +445,10 @@ export default function Alumni() {
                   <MenuItem value="No">No</MenuItem>
                 </Select>
               </FormControl>
-            </Grid>
+            </div>
 
             {/* When were you first employed after graduation? */}
-            <Grid item xs={12} md={6}>
+            <div>
               <TextField
                 fullWidth
                 margin="normal"
@@ -387,10 +458,10 @@ export default function Alumni() {
                 value={formData.first_employed}
                 onChange={handleChange}
               />
-            </Grid>
+            </div>
 
             {/* If never employed, reason why */}
-            <Grid item xs={12} md={6}>
+            <div>
               <TextField
                 fullWidth
                 margin="normal"
@@ -400,10 +471,10 @@ export default function Alumni() {
                 value={formData.never_employed}
                 onChange={handleChange}
               />
-            </Grid>
+            </div>
 
             {/* First job */}
-            <Grid item xs={12} md={6}>
+            <div>
               <TextField
                 fullWidth
                 margin="normal"
@@ -413,10 +484,10 @@ export default function Alumni() {
                 value={formData.first_job}
                 onChange={handleChange}
               />
-            </Grid>
+            </div>
 
             {/* First establishment */}
-            <Grid item xs={12} md={6}>
+            <div>
               <TextField
                 fullWidth
                 margin="normal"
@@ -426,10 +497,10 @@ export default function Alumni() {
                 value={formData.first_stablishment}
                 onChange={handleChange}
               />
-            </Grid>
+            </div>
 
             {/* How did you apply there? */}
-            <Grid item xs={12} md={6}>
+            <div>
               <TextField
                 fullWidth
                 margin="normal"
@@ -439,10 +510,10 @@ export default function Alumni() {
                 value={formData.how_you_apply}
                 onChange={handleChange}
               />
-            </Grid>
+            </div>
 
             {/* Favorable factors */}
-            <Grid item xs={12} md={6}>
+            <div>
               <TextField
                 fullWidth
                 margin="normal"
@@ -452,10 +523,10 @@ export default function Alumni() {
                 value={formData.favorable_factors}
                 onChange={handleChange}
               />
-            </Grid>
+            </div>
 
             {/* How long did you stay */}
-            <Grid item xs={12} md={6}>
+            <div>
               <TextField
                 fullWidth
                 margin="normal"
@@ -465,10 +536,10 @@ export default function Alumni() {
                 value={formData.how_long_employer}
                 onChange={handleChange}
               />
-            </Grid>
+            </div>
 
             {/* Were you promoted in your first employment? */}
-            <Grid item xs={12} md={6}>
+            <div>
               <FormControl fullWidth margin="normal" required>
                 <InputLabel>
                   Were you promoted in your first employment?
@@ -485,10 +556,10 @@ export default function Alumni() {
                   <MenuItem value="No">No</MenuItem>
                 </Select>
               </FormControl>
-            </Grid>
+            </div>
 
             {/* If yes, when were you first promoted */}
-            <Grid item xs={12} md={6}>
+            <div>
               <TextField
                 fullWidth
                 margin="normal"
@@ -498,10 +569,10 @@ export default function Alumni() {
                 value={formData.promoted_more_than_once}
                 onChange={handleChange}
               />
-            </Grid>
+            </div>
 
             {/* Is current job related to course */}
-            <Grid item xs={12} md={6}>
+            <div>
               <FormControl fullWidth margin="normal" required>
                 <InputLabel>
                   Is your current job related to your course?
@@ -518,10 +589,10 @@ export default function Alumni() {
                   <MenuItem value="No">No</MenuItem>
                 </Select>
               </FormControl>
-            </Grid>
+            </div>
 
             {/* Knowledge obtained usefulness */}
-            <Grid item xs={12} md={6}>
+            <div>
               <TextField
                 fullWidth
                 margin="normal"
@@ -531,10 +602,10 @@ export default function Alumni() {
                 value={formData.knowledge_obtained}
                 onChange={handleChange}
               />
-            </Grid>
+            </div>
 
             {/* Why did you leave */}
-            <Grid item xs={12} md={6}>
+            <div>
               <TextField
                 fullWidth
                 margin="normal"
@@ -544,10 +615,10 @@ export default function Alumni() {
                 value={formData.why_did_you_leave}
                 onChange={handleChange}
               />
-            </Grid>
+            </div>
 
             {/* Current position */}
-            <Grid item xs={12} md={6}>
+            <div>
               <TextField
                 fullWidth
                 margin="normal"
@@ -557,10 +628,10 @@ export default function Alumni() {
                 value={formData.current_position}
                 onChange={handleChange}
               />
-            </Grid>
+            </div>
 
             {/* Company name */}
-            <Grid item xs={12} md={6}>
+            <div>
               <TextField
                 fullWidth
                 margin="normal"
@@ -570,10 +641,10 @@ export default function Alumni() {
                 value={formData.company_name}
                 onChange={handleChange}
               />
-            </Grid>
+            </div>
 
             {/* Monthly salary */}
-            <Grid item xs={12} md={6}>
+            <div>
               <TextField
                 fullWidth
                 margin="normal"
@@ -583,10 +654,10 @@ export default function Alumni() {
                 value={formData.monthly_salary}
                 onChange={handleChange}
               />
-            </Grid>
+            </div>
 
             {/* If not employed now, why */}
-            <Grid item xs={12} md={6}>
+            <div className="md:col-span-2">
               <TextField
                 fullWidth
                 margin="normal"
@@ -596,8 +667,8 @@ export default function Alumni() {
                 value={formData.not_employed}
                 onChange={handleChange}
               />
-            </Grid>
-          </Grid>
+            </div>
+          </div>
         );
 
       case 3:
@@ -697,13 +768,21 @@ export default function Alumni() {
                 <Button
                   variant="contained"
                   onClick={handleNext}
-                  sx={{
-                    backgroundColor: BRAND_BLUE,
-                    "&:hover": { backgroundColor: "#0056b3" },
-                  }}
+                  disabled={!isStepValid()} // disable if validation fails
                 >
                   Next
                 </Button>
+
+                // <Button
+                //   variant="contained"
+                //   onClick={handleNext}
+                //   sx={{
+                //     backgroundColor: BRAND_BLUE,
+                //     "&:hover": { backgroundColor: "#0056b3" },
+                //   }}
+                // >
+                //   Next
+                // </Button>
               )}
             </div>
           </form>
