@@ -6,8 +6,6 @@ import {
   StepLabel,
   Button,
   TextField,
-  Box,
-  Rating,
   FormControl,
   InputLabel,
   Select,
@@ -21,7 +19,7 @@ const steps = [
   "Personal Information",
   "Educational Background",
   "Company Information",
-  "Ratings",
+  "Alumni Program",
 ];
 
 export default function Alumni() {
@@ -673,37 +671,282 @@ export default function Alumni() {
 
       case 3:
         return (
-          <>
-            <Box sx={{ mt: 2 }}>
-              <label
-                style={{
-                  display: "block",
-                  color: BRAND_DARK,
-                  marginBottom: 8,
-                  fontWeight: 600,
-                }}
-              >
-                Rate your Informatics experience
-              </label>
-              <Rating
-                name="rating"
-                value={formData.rating}
-                onChange={(e, newValue) =>
-                  setFormData({ ...formData, rating: newValue })
-                }
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Were you working while studying? */}
+            <div className="md:col-span-2">
+              <FormControl fullWidth margin="normal" required>
+                <InputLabel>
+                  Were you working while studying at Informatics?
+                </InputLabel>
+                <Select
+                  name="working_while_studying"
+                  value={formData.working_while_studying}
+                  label="Were you working while studying at Informatics?"
+                  onChange={handleChange}
+                  required
+                >
+                  <MenuItem value="">Select Yes or No</MenuItem>
+                  <MenuItem value="Yes">Yes</MenuItem>
+                  <MenuItem value="No">No</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+
+            {/* If YES, what work were you engaged in? */}
+            {formData.working_while_studying === "Yes" && (
+              <div className="md:col-span-2">
+                <TextField
+                  fullWidth
+                  margin="normal"
+                  required
+                  label="If YES, what work were you engaged in?"
+                  name="engaged_in"
+                  value={formData.engaged_in}
+                  onChange={handleChange}
+                />
+              </div>
+            )}
+
+            {/* Were you promoted after graduation? */}
+            <div>
+              <FormControl fullWidth margin="normal" required>
+                <InputLabel>Were you promoted after graduation?</InputLabel>
+                <Select
+                  name="promote_after_grad"
+                  value={formData.promote_after_grad}
+                  label="Were you promoted after graduation?"
+                  onChange={handleChange}
+                  required
+                >
+                  <MenuItem value="">Select Yes or No</MenuItem>
+                  <MenuItem value="Yes">Yes</MenuItem>
+                  <MenuItem value="No">No</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+
+            {/* When were you first employed after graduation? */}
+            <div>
+              <TextField
+                fullWidth
+                margin="normal"
+                required
+                label="When were you first employed after graduation?"
+                name="first_employed"
+                value={formData.first_employed}
+                onChange={handleChange}
               />
-            </Box>
-            <TextField
-              fullWidth
-              multiline
-              rows={4}
-              label="Feedback / Comments"
-              name="feedback"
-              value={formData.feedback}
-              onChange={handleChange}
-              margin="normal"
-            />
-          </>
+            </div>
+
+            {/* If never employed, reason why */}
+            <div>
+              <TextField
+                fullWidth
+                margin="normal"
+                required
+                label="If you were never employed, reason why?"
+                name="never_employed"
+                value={formData.never_employed}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* First job */}
+            <div>
+              <TextField
+                fullWidth
+                margin="normal"
+                required
+                label="What was your first job/position when first hired?"
+                name="first_job"
+                value={formData.first_job}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* First establishment */}
+            <div>
+              <TextField
+                fullWidth
+                margin="normal"
+                required
+                label="Name of your first establishment"
+                name="first_stablishment"
+                value={formData.first_stablishment}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* How did you apply there? */}
+            <div>
+              <TextField
+                fullWidth
+                margin="normal"
+                required
+                label="How did you apply there?"
+                name="how_you_apply"
+                value={formData.how_you_apply}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* Favorable factors */}
+            <div>
+              <TextField
+                fullWidth
+                margin="normal"
+                required
+                label="Favorable factors that made you accepted"
+                name="favorable_factors"
+                value={formData.favorable_factors}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* How long did you stay */}
+            <div>
+              <TextField
+                fullWidth
+                margin="normal"
+                required
+                label="How long did you stay with your first employer?"
+                name="how_long_employer"
+                value={formData.how_long_employer}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* Were you promoted in your first employment? */}
+            <div>
+              <FormControl fullWidth margin="normal" required>
+                <InputLabel>
+                  Were you promoted in your first employment?
+                </InputLabel>
+                <Select
+                  name="were_you_promoted"
+                  value={formData.were_you_promoted}
+                  label="Were you promoted in your first employment?"
+                  onChange={handleChange}
+                  required
+                >
+                  <MenuItem value="">Select Yes or No</MenuItem>
+                  <MenuItem value="Yes">Yes</MenuItem>
+                  <MenuItem value="No">No</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+
+            {/* If yes, when were you first promoted */}
+            <div>
+              <TextField
+                fullWidth
+                margin="normal"
+                required
+                label="If yes, when were you first promoted?"
+                name="promoted_more_than_once"
+                value={formData.promoted_more_than_once}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* Is current job related to course */}
+            <div>
+              <FormControl fullWidth margin="normal" required>
+                <InputLabel>
+                  Is your current job related to your course?
+                </InputLabel>
+                <Select
+                  name="inline_job"
+                  value={formData.inline_job}
+                  label="Is your current job related to your course?"
+                  onChange={handleChange}
+                  required
+                >
+                  <MenuItem value="">Select Yes or No</MenuItem>
+                  <MenuItem value="Yes">Yes</MenuItem>
+                  <MenuItem value="No">No</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+
+            {/* Knowledge obtained usefulness */}
+            <div>
+              <TextField
+                fullWidth
+                margin="normal"
+                required
+                label="How useful are your skills obtained from Informatics?"
+                name="knowledge_obtained"
+                value={formData.knowledge_obtained}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* Why did you leave */}
+            <div>
+              <TextField
+                fullWidth
+                margin="normal"
+                required
+                label="If you left your first employer, why?"
+                name="why_did_you_leave"
+                value={formData.why_did_you_leave}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* Current position */}
+            <div>
+              <TextField
+                fullWidth
+                margin="normal"
+                required
+                label="Current Position"
+                name="current_position"
+                value={formData.current_position}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* Company name */}
+            <div>
+              <TextField
+                fullWidth
+                margin="normal"
+                required
+                label="Company Name"
+                name="company_name"
+                value={formData.company_name}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* Monthly salary */}
+            <div>
+              <TextField
+                fullWidth
+                margin="normal"
+                required
+                label="Current Monthly Salary"
+                name="monthly_salary"
+                value={formData.monthly_salary}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* If not employed now, why */}
+            <div className="md:col-span-2">
+              <TextField
+                fullWidth
+                margin="normal"
+                required
+                label="If not employed now, why?"
+                name="not_employed"
+                value={formData.not_employed}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
         );
 
       default:
