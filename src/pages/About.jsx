@@ -380,7 +380,7 @@ const facebookItems = facebookLinks.map((link, index) => ({
           </div>
         </aside>
         <div className="flex-1 md:ml-48 relative min-h-[calc(100vh-4rem)] p-6 max-w-full overflow-x-hidden">
-          <div className="md:hidden fixed top-16 left-4 z-50">
+          <div className={`md:hidden fixed top-16 z-50 ${sidebarOpen ? 'left-[272px]' : 'left-4'}`}>
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
               className="bg-white p-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200"
