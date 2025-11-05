@@ -10,6 +10,7 @@ import BSIS from "./pages/BSIS";
 import BSBA from "./pages/BSBA";
 import BSOA from "./pages/BSOA";
 import About from "./pages/About";
+import Alumni from "./pages/AlumniTracer";
 import Campuses from "./pages/Campuses";
 import Careers from "./pages/Careers";
 import ProgramsIndex from "./pages/ProgramsIndex";
@@ -48,8 +49,10 @@ export default function App() {
       const next = window.location.hash || "#/";
       setRoute(next);
       const prev = prevRoute.current;
-      const navigatedBetweenPages = prev.startsWith("#/") !== next.startsWith("#/") ||
-        prev.startsWith("#/programs/") || next.startsWith("#/programs/");
+      const navigatedBetweenPages =
+        prev.startsWith("#/") !== next.startsWith("#/") ||
+        prev.startsWith("#/programs/") ||
+        next.startsWith("#/programs/");
       if (navigatedBetweenPages) window.scrollTo({ top: 0, behavior: "auto" });
       prevRoute.current = next;
     };
@@ -90,12 +93,15 @@ export default function App() {
       <div className="relative z-10">
         <Nav />
         {!route.startsWith("#/about") && <SocialBar />}
+        {!route.startsWith("#/alumni")}
         {route.startsWith("#/news/") ? (
           <NewsDetail slug={route.replace(/^#\/news\//, "")} />
         ) : route.startsWith("#/news") ? (
           <NewsIndex />
         ) : route.startsWith("#/about") ? (
           <About />
+        ) : route.startsWith("#/alumni") ? (
+          <Alumni />
         ) : route.startsWith("#/campuses") ? (
           <Campuses />
         ) : route.startsWith("#/careers") ? (
@@ -122,13 +128,17 @@ export default function App() {
           <SHSContactCenterServices />
         ) : route.startsWith("#/programs/shs") ? (
           <SHS />
-        ) : route.startsWith("#/programs/college/bsit") || route.startsWith("#/programs/information-technology") ? (
+        ) : route.startsWith("#/programs/college/bsit") ||
+          route.startsWith("#/programs/information-technology") ? (
           <BSIT />
-        ) : route.startsWith("#/programs/college/bscs") || route.startsWith("#/programs/computer-science") ? (
+        ) : route.startsWith("#/programs/college/bscs") ||
+          route.startsWith("#/programs/computer-science") ? (
           <BSCS />
-        ) : route.startsWith("#/programs/college/bsis") || route.startsWith("#/programs/information-systems") ? (
+        ) : route.startsWith("#/programs/college/bsis") ||
+          route.startsWith("#/programs/information-systems") ? (
           <BSIS />
-        ) : route.startsWith("#/programs/college/bsba") || route.startsWith("#/programs/business-administration") ? (
+        ) : route.startsWith("#/programs/college/bsba") ||
+          route.startsWith("#/programs/business-administration") ? (
           <BSBA />
         ) : route.startsWith("#/programs/college/bsoa") ? (
           <BSOA />
@@ -166,29 +176,54 @@ function titleForRoute(route) {
   if (route.startsWith("#/news/")) return "News";
   if (route.startsWith("#/news")) return "News & Events";
   if (route.startsWith("#/about")) return "About Informatics";
+  if (route.startsWith("#/alumni")) return "Alumni";
   if (route.startsWith("#/campuses")) return "Our Campuses";
   if (route.startsWith("#/careers")) return "Careers";
-  if (route.startsWith("#/programs/shs/humss")) return "Arts, Social Sciences, and Humanities";
-  if (route.startsWith("#/programs/shs/abm")) return "Accountancy, Business, and Management";
-  if (route.startsWith("#/programs/shs/stem")) return "Science, Technology, Engineering, and Mathematics";
-  if (route.startsWith("#/programs/shs/technical-drafting")) return "Technical Drafting";
+  if (route.startsWith("#/programs/shs/humss"))
+    return "Arts, Social Sciences, and Humanities";
+  if (route.startsWith("#/programs/shs/abm"))
+    return "Accountancy, Business, and Management";
+  if (route.startsWith("#/programs/shs/stem"))
+    return "Science, Technology, Engineering, and Mathematics";
+  if (route.startsWith("#/programs/shs/technical-drafting"))
+    return "Technical Drafting";
   if (route.startsWith("#/programs/shs/animation")) return "Animation";
   if (route.startsWith("#/programs/shs/illustration")) return "Illustration";
-  if (route.startsWith("#/programs/shs/visual-graphic-design")) return "Visual Graphic Design";
-  if (route.startsWith("#/programs/shs/computer-programming")) return "Computer Programming (Java)";
-  if (route.startsWith("#/programs/shs/computer-systems-servicing")) return "Computer Systems Servicing";
-  if (route.startsWith("#/programs/shs/contact-center-services")) return "Contact Center Services";
+  if (route.startsWith("#/programs/shs/visual-graphic-design"))
+    return "Visual Graphic Design";
+  if (route.startsWith("#/programs/shs/computer-programming"))
+    return "Computer Programming (Java)";
+  if (route.startsWith("#/programs/shs/computer-systems-servicing"))
+    return "Computer Systems Servicing";
+  if (route.startsWith("#/programs/shs/contact-center-services"))
+    return "Contact Center Services";
   if (route.startsWith("#/programs/shs")) return "Senior High School Tracks";
-  if (route.startsWith("#/programs/college/bsit") || route.startsWith("#/programs/information-technology")) return "BS Information Technology";
-  if (route.startsWith("#/programs/college/bscs") || route.startsWith("#/programs/computer-science")) return "BS Computer Science";
-  if (route.startsWith("#/programs/college/bsis") || route.startsWith("#/programs/information-systems")) return "BS Information Systems";
-  if (route.startsWith("#/programs/college/bsba") || route.startsWith("#/programs/business-administration")) return "BS Business Administration";
-  if (route.startsWith("#/programs/college/bsoa")) return "BS Office Administration";
-  if (route.startsWith("#/programs/explore/associate-diploma")) return "Associate Diploma Programs (ACT)";
-  if (route.startsWith("#/programs/explore/diploma")) return "Diploma Programs";
+  if (
+    route.startsWith("#/programs/college/bsit") ||
+    route.startsWith("#/programs/information-technology")
+  )
+    return "BS Information Technology";
+  if (
+    route.startsWith("#/programs/college/bscs") ||
+    route.startsWith("#/programs/computer-science")
+  )
+    return "BS Computer Science";
+  if (
+    route.startsWith("#/programs/college/bsis") ||
+    route.startsWith("#/programs/information-systems")
+  )
+    return "BS Information Systems";
+  if (
+    route.startsWith("#/programs/college/bsba") ||
+    route.startsWith("#/programs/business-administration")
+  )
+    return "BS Business Administration";
+  if (route.startsWith("#/programs/college/bsoa"))
+    return "BS Office Administration";
   if (route.startsWith("#/programs/explore")) return "Explore Programs";
   if (route.startsWith("#/programs")) return "Programs";
-  if (route.startsWith("#/admissions/tuition")) return "Tuition & Financial Aid";
+  if (route.startsWith("#/admissions/tuition"))
+    return "Tuition & Financial Aid";
   if (route.startsWith("#/admissions/scholarships")) return "Scholarships";
   if (route.startsWith("#/admissions/faqs")) return "Admissions FAQs";
   if (route.startsWith("#/admissions")) return "Admissions";

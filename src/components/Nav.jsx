@@ -21,8 +21,16 @@ const NAV_LINKS = [
     label: "Admissions",
     href: "#/admissions",
     children: [
-      { label: "How to Apply", href: "#/admissions#how-to-apply", Icon: ClipboardList },
-      { label: "Tuition & Financial Aid", href: "#/admissions/tuition", Icon: Wallet },
+      {
+        label: "How to Apply",
+        href: "#/admissions#how-to-apply",
+        Icon: ClipboardList,
+      },
+      {
+        label: "Tuition & Financial Aid",
+        href: "#/admissions/tuition",
+        Icon: Wallet,
+      },
       { label: "Scholarships", href: "#/admissions/scholarships", Icon: Award },
       { label: "FAQs", href: "#/admissions/faqs", Icon: HelpCircle },
     ],
@@ -31,9 +39,21 @@ const NAV_LINKS = [
     label: "Programs",
     href: "#/programs",
     children: [
-      { label: "Explore Our Programs", href: "#/programs/explore", Icon: Compass },
-      { label: "Senior High School", href: "#/programs/shs", Icon: GraduationCap },
-      { label: "Higher Education", href: "#/programs#academic", Icon: University },
+      {
+        label: "Explore Our Programs",
+        href: "#/programs/explore",
+        Icon: Compass,
+      },
+      {
+        label: "Senior High School",
+        href: "#/programs/shs",
+        Icon: GraduationCap,
+      },
+      {
+        label: "Higher Education",
+        href: "#/programs#academic",
+        Icon: University,
+      },
     ],
   },
   {
@@ -42,6 +62,7 @@ const NAV_LINKS = [
     external: true,
   },
   { label: "About Us", href: "#/about" },
+  { label: "Alumni", href: "#/alumni-tracer" },
   {
     label: "Student Services",
     href: "#/student-services",
@@ -106,7 +127,9 @@ export default function Nav() {
   const handleSubmitSearch = (event) => {
     event.preventDefault();
     if (!searchValue.trim()) return;
-    window.location.assign(`/search?query=${encodeURIComponent(searchValue.trim())}`);
+    window.location.assign(
+      `/search?query=${encodeURIComponent(searchValue.trim())}`
+    );
     setSearchOpen(false);
     setMobileSearchOpen(false);
   };
@@ -139,7 +162,10 @@ export default function Nav() {
     if (dropdownTimeoutRef.current) {
       window.clearTimeout(dropdownTimeoutRef.current);
     }
-    dropdownTimeoutRef.current = window.setTimeout(() => setOpenDropdown(null), 100);
+    dropdownTimeoutRef.current = window.setTimeout(
+      () => setOpenDropdown(null),
+      100
+    );
   };
 
   const toggleMobileDropdown = (label) => {
@@ -149,7 +175,12 @@ export default function Nav() {
     }));
   };
 
-  const handleLinkClick = (event, href, external = false, closeMobile = false) => {
+  const handleLinkClick = (
+    event,
+    href,
+    external = false,
+    closeMobile = false
+  ) => {
     if (closeMobile) {
       setMobileOpen(false);
       setMobileSearchOpen(false);
@@ -208,7 +239,9 @@ export default function Nav() {
           {NAV_LINKS.map((link) => {
             if (link.children?.length) {
               const isOpen = openDropdown === link.label;
-              const dropdownId = `${link.label.replace(/\s+/g, "-").toLowerCase()}-menu`;
+              const dropdownId = `${link.label
+                .replace(/\s+/g, "-")
+                .toLowerCase()}-menu`;
               return (
                 <div
                   key={link.label}
@@ -230,7 +263,12 @@ export default function Nav() {
                     onClick={() => setOpenDropdown(isOpen ? null : link.label)}
                   >
                     <span>{link.label}</span>
-                    <ChevronDown size={16} className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    />
                   </button>
                   {isOpen ? (
                     <div
@@ -238,21 +276,25 @@ export default function Nav() {
                       className="absolute left-0 top-full mt-3 w-64 rounded-2xl border border-slate-200 bg-white p-3 shadow-xl"
                     >
                       <div className="flex flex-col gap-2">
-                        {link.children.map(({ label, href, Icon, external }) => (
-                          <a
-                            key={label}
-                            href={href}
-                            target={external ? "_blank" : undefined}
-                            rel={external ? "noopener noreferrer" : undefined}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100"
-                            onClick={(event) => handleLinkClick(event, href, external)}
-                          >
-                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-sky-600">
-                              <Icon size={18} />
-                            </div>
-                            <span>{label}</span>
-                          </a>
-                        ))}
+                        {link.children.map(
+                          ({ label, href, Icon, external }) => (
+                            <a
+                              key={label}
+                              href={href}
+                              target={external ? "_blank" : undefined}
+                              rel={external ? "noopener noreferrer" : undefined}
+                              className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100"
+                              onClick={(event) =>
+                                handleLinkClick(event, href, external)
+                              }
+                            >
+                              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-sky-600">
+                                <Icon size={18} />
+                              </div>
+                              <span>{label}</span>
+                            </a>
+                          )
+                        )}
                       </div>
                     </div>
                   ) : null}
@@ -267,7 +309,9 @@ export default function Nav() {
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
                 className="nav-glow transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-                onClick={(event) => handleLinkClick(event, link.href, link.external)}
+                onClick={(event) =>
+                  handleLinkClick(event, link.href, link.external)
+                }
               >
                 {link.label}
               </a>
@@ -349,11 +393,16 @@ export default function Nav() {
       </Container>
       {mobileSearchOpen ? (
         <div className="border-t border-slate-200 bg-white px-6 py-3 lg:hidden">
-          <form onSubmit={handleSubmitSearch} role="search" aria-label="Mobile site search" className="flex items-center gap-3">
+          <form
+            onSubmit={handleSubmitSearch}
+            role="search"
+            aria-label="Mobile site search"
+            className="flex items-center gap-3"
+          >
             <label htmlFor="mobile-search" className="sr-only">
               Search
             </label>
-           <input
+            <input
               id="mobile-search"
               type="search"
               value={searchValue}
@@ -379,7 +428,10 @@ export default function Nav() {
           />
           <div className="fixed inset-y-0 right-0 w-72 max-w-full bg-white shadow-xl">
             <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4">
-              <span className="text-base font-semibold" style={{ color: BRAND_DARK }}>
+              <span
+                className="text-base font-semibold"
+                style={{ color: BRAND_DARK }}
+              >
                 Navigation
               </span>
               <button
@@ -398,14 +450,26 @@ export default function Nav() {
               {NAV_LINKS.map((link) => {
                 if (link.children?.length) {
                   const expanded = !!mobileDropdowns[link.label];
-                  const sectionId = `${link.label.replace(/\s+/g, "-").toLowerCase()}-subnav`;
+                  const sectionId = `${link.label
+                    .replace(/\s+/g, "-")
+                    .toLowerCase()}-subnav`;
                   return (
-                    <div key={link.label} className="rounded-2xl border border-slate-200">
+                    <div
+                      key={link.label}
+                      className="rounded-2xl border border-slate-200"
+                    >
                       <div className="flex items-center justify-between">
                         <a
                           href={link.href}
                           className="flex-1 nav-glow rounded-full px-4 py-2 transition hover:bg-slate-100"
-                          onClick={(event) => handleLinkClick(event, link.href, link.external, true)}
+                          onClick={(event) =>
+                            handleLinkClick(
+                              event,
+                              link.href,
+                              link.external,
+                              true
+                            )
+                          }
                         >
                           {link.label}
                         </a>
@@ -416,27 +480,41 @@ export default function Nav() {
                           aria-expanded={expanded}
                           aria-controls={sectionId}
                         >
-                          <ChevronDown size={18} className={`transition-transform ${expanded ? "rotate-180" : ""}`} />
+                          <ChevronDown
+                            size={18}
+                            className={`transition-transform ${
+                              expanded ? "rotate-180" : ""
+                            }`}
+                          />
                         </button>
                       </div>
                       {expanded ? (
-                        <div id={sectionId} className="border-t border-slate-200 px-4 py-2">
+                        <div
+                          id={sectionId}
+                          className="border-t border-slate-200 px-4 py-2"
+                        >
                           <div className="flex flex-col gap-2">
-                            {link.children.map(({ label, href, Icon, external }) => (
-                              <a
-                                key={label}
-                                href={href}
-                                target={external ? "_blank" : undefined}
-                                rel={external ? "noopener noreferrer" : undefined}
-                                className="flex items-center gap-3 rounded-xl bg-slate-50 px-3 py-2 text-sm"
-                                onClick={(event) => handleLinkClick(event, href, external, true)}
-                              >
-                                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-sky-600">
-                                  <Icon size={18} />
-                                </div>
-                                <span className="font-semibold">{label}</span>
-                              </a>
-                            ))}
+                            {link.children.map(
+                              ({ label, href, Icon, external }) => (
+                                <a
+                                  key={label}
+                                  href={href}
+                                  target={external ? "_blank" : undefined}
+                                  rel={
+                                    external ? "noopener noreferrer" : undefined
+                                  }
+                                  className="flex items-center gap-3 rounded-xl bg-slate-50 px-3 py-2 text-sm"
+                                  onClick={(event) =>
+                                    handleLinkClick(event, href, external, true)
+                                  }
+                                >
+                                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-sky-600">
+                                    <Icon size={18} />
+                                  </div>
+                                  <span className="font-semibold">{label}</span>
+                                </a>
+                              )
+                            )}
                           </div>
                         </div>
                       ) : null}
@@ -450,7 +528,9 @@ export default function Nav() {
                     href={link.href}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
-                    onClick={(event) => handleLinkClick(event, link.href, link.external, true)}
+                    onClick={(event) =>
+                      handleLinkClick(event, link.href, link.external, true)
+                    }
                     className="nav-glow rounded-full px-4 py-2 transition hover:bg-slate-100"
                   >
                     {link.label}
