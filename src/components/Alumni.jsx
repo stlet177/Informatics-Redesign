@@ -59,9 +59,9 @@ export default function Alumni() {
     company_name: "",
     monthly_salary: "",
     not_employed: "",
+    useful_skills: [],
   });
 
-  // const handleNext = () => setActiveStep((prev) => prev + 1);
   const handleNext = () => {
     if (!isStepValid()) {
       alert("Please fill in all required fields before proceeding.");
@@ -112,6 +112,7 @@ export default function Alumni() {
             formData.engaged_in.trim()) &&
           formData.promote_after_grad.trim() &&
           formData.first_employed.trim() &&
+          formData.never_employed.trim() &&
           formData.first_job.trim() &&
           formData.first_stablishment.trim() &&
           formData.how_you_apply.trim() &&
@@ -129,9 +130,19 @@ export default function Alumni() {
         );
 
       case 3: // Feedback
-        return formData.rating > 0; // optional: require rating or feedback
-      default:
-        return true;
+        return (
+          formData.skills_acquired.trim() &&
+          formData.career_services.trim() &&
+          formData.internship_opportunities.trim() &&
+          formData.quality_teaching.trim() &&
+          formData.relevance_curriculum.trim() &&
+          formData.recommend_degree.trim() &&
+          formData.interested_participating.trim() &&
+          formData.alumni_mentoring.trim()
+        );
+      // return formData.rating > 0; // optional: require rating or feedback
+      // default:
+      //   return true;
     }
   };
 
@@ -672,279 +683,190 @@ export default function Alumni() {
       case 3:
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Were you working while studying? */}
+            {/* Skills acquired */}
             <div className="md:col-span-2">
               <FormControl fullWidth margin="normal" required>
                 <InputLabel>
-                  Were you working while studying at Informatics?
+                  Which skills acquired during your studies have been most
+                  useful in your career?
                 </InputLabel>
                 <Select
-                  name="working_while_studying"
-                  value={formData.working_while_studying}
-                  label="Were you working while studying at Informatics?"
-                  onChange={handleChange}
-                  required
+                  multiple
+                  name="skills_acquired"
+                  value={formData.skills_acquired || []}
+                  label="Which skills acquired during your studies have been most useful in your career?"
+                  onChange={(e) => {
+                    const {
+                      target: { value },
+                    } = e;
+                    setFormData({
+                      ...formData,
+                      skills_acquired:
+                        typeof value === "string" ? value.split(",") : value,
+                    });
+                  }}
+                  renderValue={(selected) => selected.join(", ")}
                 >
-                  <MenuItem value="">Select Yes or No</MenuItem>
-                  <MenuItem value="Yes">Yes</MenuItem>
-                  <MenuItem value="No">No</MenuItem>
+                  <MenuItem value="Communication">Communication</MenuItem>
+                  <MenuItem value="Teamwork">Teamwork</MenuItem>
+                  <MenuItem value="Problem-solving">Problem-solving</MenuItem>
+                  <MenuItem value="Technical skills">Technical skills</MenuItem>
                 </Select>
               </FormControl>
             </div>
 
-            {/* If YES, what work were you engaged in? */}
-            {formData.working_while_studying === "Yes" && (
-              <div className="md:col-span-2">
-                <TextField
-                  fullWidth
-                  margin="normal"
-                  required
-                  label="If YES, what work were you engaged in?"
-                  name="engaged_in"
-                  value={formData.engaged_in}
-                  onChange={handleChange}
-                />
-              </div>
-            )}
-
-            {/* Were you promoted after graduation? */}
+            {/* Career Services */}
             <div>
               <FormControl fullWidth margin="normal" required>
-                <InputLabel>Were you promoted after graduation?</InputLabel>
+                <InputLabel>Availability of Career Services</InputLabel>
                 <Select
-                  name="promote_after_grad"
-                  value={formData.promote_after_grad}
-                  label="Were you promoted after graduation?"
+                  name="career_services"
+                  value={formData.career_services}
+                  label="Availability of Career Services"
                   onChange={handleChange}
                   required
                 >
-                  <MenuItem value="">Select Yes or No</MenuItem>
-                  <MenuItem value="Yes">Yes</MenuItem>
-                  <MenuItem value="No">No</MenuItem>
+                  <MenuItem value="">
+                    Rate from 1 = Very Dissatisfied to 5 = Very Satisfied
+                  </MenuItem>
+                  <MenuItem value="5">5</MenuItem>
+                  <MenuItem value="4">4</MenuItem>
+                  <MenuItem value="3">3</MenuItem>
+                  <MenuItem value="2">2</MenuItem>
+                  <MenuItem value="1">1</MenuItem>
                 </Select>
               </FormControl>
             </div>
 
-            {/* When were you first employed after graduation? */}
+            {/* Internship Opportunities */}
             <div>
-              <TextField
-                fullWidth
-                margin="normal"
-                required
-                label="When were you first employed after graduation?"
-                name="first_employed"
-                value={formData.first_employed}
-                onChange={handleChange}
-              />
+              <FormControl fullWidth margin="normal" required>
+                <InputLabel>Internship Opportunity</InputLabel>
+                <Select
+                  name="internship_opportunities"
+                  value={formData.internship_opportunities}
+                  label="Internship Opportunity"
+                  onChange={handleChange}
+                  required
+                >
+                  <MenuItem value="">
+                    Rate from 1 = Very Dissatisfied to 5 = Very Satisfied
+                  </MenuItem>
+                  <MenuItem value="5">5</MenuItem>
+                  <MenuItem value="4">4</MenuItem>
+                  <MenuItem value="3">3</MenuItem>
+                  <MenuItem value="2">2</MenuItem>
+                  <MenuItem value="1">1</MenuItem>
+                </Select>
+              </FormControl>
             </div>
 
-            {/* If never employed, reason why */}
+            {/* Quality of teaching */}
             <div>
-              <TextField
-                fullWidth
-                margin="normal"
-                required
-                label="If you were never employed, reason why?"
-                name="never_employed"
-                value={formData.never_employed}
-                onChange={handleChange}
-              />
+              <FormControl fullWidth margin="normal" required>
+                <InputLabel>Quality of Teaching</InputLabel>
+                <Select
+                  name="quality_of_teaching"
+                  value={formData.quality_of_teaching}
+                  label="Quality of Teaching"
+                  onChange={handleChange}
+                  required
+                >
+                  <MenuItem value="">
+                    Rate from 1 = Very Dissatisfied to 5 = Very Satisfied
+                  </MenuItem>
+                  <MenuItem value="5">5</MenuItem>
+                  <MenuItem value="4">4</MenuItem>
+                  <MenuItem value="3">3</MenuItem>
+                  <MenuItem value="2">2</MenuItem>
+                  <MenuItem value="1">1</MenuItem>
+                </Select>
+              </FormControl>
             </div>
 
-            {/* First job */}
-            <div>
-              <TextField
-                fullWidth
-                margin="normal"
-                required
-                label="What was your first job/position when first hired?"
-                name="first_job"
-                value={formData.first_job}
-                onChange={handleChange}
-              />
-            </div>
-
-            {/* First establishment */}
-            <div>
-              <TextField
-                fullWidth
-                margin="normal"
-                required
-                label="Name of your first establishment"
-                name="first_stablishment"
-                value={formData.first_stablishment}
-                onChange={handleChange}
-              />
-            </div>
-
-            {/* How did you apply there? */}
-            <div>
-              <TextField
-                fullWidth
-                margin="normal"
-                required
-                label="How did you apply there?"
-                name="how_you_apply"
-                value={formData.how_you_apply}
-                onChange={handleChange}
-              />
-            </div>
-
-            {/* Favorable factors */}
-            <div>
-              <TextField
-                fullWidth
-                margin="normal"
-                required
-                label="Favorable factors that made you accepted"
-                name="favorable_factors"
-                value={formData.favorable_factors}
-                onChange={handleChange}
-              />
-            </div>
-
-            {/* How long did you stay */}
-            <div>
-              <TextField
-                fullWidth
-                margin="normal"
-                required
-                label="How long did you stay with your first employer?"
-                name="how_long_employer"
-                value={formData.how_long_employer}
-                onChange={handleChange}
-              />
-            </div>
-
-            {/* Were you promoted in your first employment? */}
+            {/* Relevance Curriculum */}
             <div>
               <FormControl fullWidth margin="normal" required>
                 <InputLabel>
-                  Were you promoted in your first employment?
+                  Relevance of Curriculum to industry needs
                 </InputLabel>
                 <Select
-                  name="were_you_promoted"
-                  value={formData.were_you_promoted}
-                  label="Were you promoted in your first employment?"
+                  name="relevance_curriculum"
+                  value={formData.relevance_curriculum}
+                  label="Relevance of Curriculum to industry needs"
                   onChange={handleChange}
                   required
                 >
-                  <MenuItem value="">Select Yes or No</MenuItem>
-                  <MenuItem value="Yes">Yes</MenuItem>
-                  <MenuItem value="No">No</MenuItem>
+                  <MenuItem value="">
+                    Rate from 1 = Very Dissatisfied to 5 = Very Satisfied
+                  </MenuItem>
+                  <MenuItem value="5">5</MenuItem>
+                  <MenuItem value="4">4</MenuItem>
+                  <MenuItem value="3">3</MenuItem>
+                  <MenuItem value="2">2</MenuItem>
+                  <MenuItem value="1">1</MenuItem>
                 </Select>
               </FormControl>
             </div>
 
-            {/* If yes, when were you first promoted */}
-            <div>
-              <TextField
-                fullWidth
-                margin="normal"
-                required
-                label="If yes, when were you first promoted?"
-                name="promoted_more_than_once"
-                value={formData.promoted_more_than_once}
-                onChange={handleChange}
-              />
-            </div>
-
-            {/* Is current job related to course */}
-            <div>
-              <FormControl fullWidth margin="normal" required>
-                <InputLabel>
-                  Is your current job related to your course?
-                </InputLabel>
-                <Select
-                  name="inline_job"
-                  value={formData.inline_job}
-                  label="Is your current job related to your course?"
-                  onChange={handleChange}
-                  required
-                >
-                  <MenuItem value="">Select Yes or No</MenuItem>
-                  <MenuItem value="Yes">Yes</MenuItem>
-                  <MenuItem value="No">No</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-
-            {/* Knowledge obtained usefulness */}
-            <div>
-              <TextField
-                fullWidth
-                margin="normal"
-                required
-                label="How useful are your skills obtained from Informatics?"
-                name="knowledge_obtained"
-                value={formData.knowledge_obtained}
-                onChange={handleChange}
-              />
-            </div>
-
-            {/* Why did you leave */}
-            <div>
-              <TextField
-                fullWidth
-                margin="normal"
-                required
-                label="If you left your first employer, why?"
-                name="why_did_you_leave"
-                value={formData.why_did_you_leave}
-                onChange={handleChange}
-              />
-            </div>
-
-            {/* Current position */}
-            <div>
-              <TextField
-                fullWidth
-                margin="normal"
-                required
-                label="Current Position"
-                name="current_position"
-                value={formData.current_position}
-                onChange={handleChange}
-              />
-            </div>
-
-            {/* Company name */}
-            <div>
-              <TextField
-                fullWidth
-                margin="normal"
-                required
-                label="Company Name"
-                name="company_name"
-                value={formData.company_name}
-                onChange={handleChange}
-              />
-            </div>
-
-            {/* Monthly salary */}
-            <div>
-              <TextField
-                fullWidth
-                margin="normal"
-                required
-                label="Current Monthly Salary"
-                name="monthly_salary"
-                value={formData.monthly_salary}
-                onChange={handleChange}
-              />
-            </div>
-
-            {/* If not employed now, why */}
+            {/* Would you recommend your degree program to others? */}
             <div className="md:col-span-2">
-              <TextField
-                fullWidth
-                margin="normal"
-                required
-                label="If not employed now, why?"
-                name="not_employed"
-                value={formData.not_employed}
-                onChange={handleChange}
-              />
+              <FormControl fullWidth margin="normal" required>
+                <InputLabel>
+                  Would you recommend this degree program to others?
+                </InputLabel>
+                <Select
+                  name="recommend_degree"
+                  value={formData.recommend_degree}
+                  label="Would you recommend this degree program to others?"
+                  onChange={handleChange}
+                  required
+                >
+                  <MenuItem value="">Select Yes or No</MenuItem>
+                  <MenuItem value="yes">Yes</MenuItem>
+                  <MenuItem value="no">No</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+
+            {/* Are you interested in participating in alumni activities? */}
+            <div className="md:col-span-2">
+              <FormControl fullWidth margin="normal" required>
+                <InputLabel>
+                  Are you interested in participating in alumni activities?
+                </InputLabel>
+                <Select
+                  name="interested_participating"
+                  value={formData.interested_participating}
+                  label="Are you interested in participating in alumni activities?"
+                  onChange={handleChange}
+                  required
+                >
+                  <MenuItem value="">Select Yes or No</MenuItem>
+                  <MenuItem value="yes">Yes</MenuItem>
+                  <MenuItem value="no">No</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+
+            {/* Would you be open to mentoring current students? */}
+            <div className="md:col-span-2">
+              <FormControl fullWidth margin="normal" required>
+                <InputLabel>
+                  Would you be open to mentoring current students?
+                </InputLabel>
+                <Select
+                  name="alumni_mentoring"
+                  value={formData.alumni_mentoring}
+                  label="Would you be open to mentoring current students?"
+                  onChange={handleChange}
+                  required
+                >
+                  <MenuItem value="">Select Yes or No</MenuItem>
+                  <MenuItem value="yes">Yes</MenuItem>
+                  <MenuItem value="no">No</MenuItem>
+                </Select>
+              </FormControl>
             </div>
           </div>
         );
@@ -1008,24 +930,24 @@ export default function Alumni() {
                   Submit
                 </Button>
               ) : (
-                <Button
-                  variant="contained"
-                  onClick={handleNext}
-                  disabled={!isStepValid()} // disable if validation fails
-                >
-                  Next
-                </Button>
-
                 // <Button
                 //   variant="contained"
                 //   onClick={handleNext}
-                //   sx={{
-                //     backgroundColor: BRAND_BLUE,
-                //     "&:hover": { backgroundColor: "#0056b3" },
-                //   }}
+                //   disabled={!isStepValid()} // disable if validation fails
                 // >
                 //   Next
                 // </Button>
+
+                <Button
+                  variant="contained"
+                  onClick={handleNext}
+                  sx={{
+                    backgroundColor: BRAND_BLUE,
+                    "&:hover": { backgroundColor: "#0056b3" },
+                  }}
+                >
+                  Next
+                </Button>
               )}
             </div>
           </form>
